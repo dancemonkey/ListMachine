@@ -1,0 +1,61 @@
+//
+//  ViewController.swift
+//  ListMachine
+//
+//  Created by Drew Lanning on 12/19/18.
+//  Copyright © 2018 Drew Lanning. All rights reserved.
+//
+
+import UIKit
+
+class ListFieldCreationVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  @IBOutlet weak var nameFld: UITextField!
+  @IBOutlet weak var typePicker: UIPickerView!
+  @IBOutlet weak var valueFld: UITextField!
+  var fieldTypes: [FieldType]!
+  var saveDelegate: FieldSaveDelegate?
+  var existingField: ListFieldProtocol?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    fieldTypes = [.checkBox, .date, .memo, .number, .text]
+    typePicker.delegate = self
+    typePicker.dataSource = self
+    
+    if existingField != nil {
+      populateFields(with: existingField!)
+    }
+  }
+  
+  func populateFields(with existing: ListFieldProtocol) {
+    nameFld.text = existing.name
+    valueFld.text = "\(String(describing: existing.value.data))"
+    let typeIndex = fieldTypes.firstIndex(of: existing.type)
+    typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
+  }
+  
+  @IBAction func donePressed(sender: UIButton) {
+    let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
+    let newField = ListField(name: nameFld.text!, type: selectedType, value: FieldValue(data: valueFld.text!))
+    saveDelegate?.saveField(newField)
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction func cancelPressed(sender: UIButton) {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  // MARK: Picker functions
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return fieldTypes.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return fieldTypes[row].rawValue
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+}
+
