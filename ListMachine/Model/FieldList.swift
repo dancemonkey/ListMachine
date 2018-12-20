@@ -24,4 +24,16 @@ struct FieldList: FieldListProtocol {
     fields?[index] = field
   }
   
+  mutating func returnClearedValues() -> [ListFieldProtocol]? {
+    guard let allFields = fields else {
+      return nil
+    }
+    var blankFields = [ListFieldProtocol]()
+    let blankValue = FieldValue(data: "")
+    for field in allFields {
+      blankFields.append(ListField(name: field.name, type: field.type, value: blankValue))
+    }
+    return blankFields
+  }
+  
 }

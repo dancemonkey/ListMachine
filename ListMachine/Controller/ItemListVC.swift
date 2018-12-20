@@ -20,7 +20,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     if items == nil {
       items = [Item]()
     } else {
-      defaultFields = items![0].fields
+      defaultFields = items![0].defaultFields
     }
     
     tableView.delegate = self
@@ -54,13 +54,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   // MARK: Item Save Delegate
   func saveItem(_ item: Item) {
     items?.append(item)
-    defaultFields = item.fields
+    item.setDefaultFields()
+    defaultFields = item.defaultFields
+    print(defaultFields)
     tableView.reloadData()
   }
   
   func updateItem(_ item: Item, at index: Int) {
     items![index] = item
-    defaultFields = item.fields
+    item.setDefaultFields()
+    defaultFields = item.defaultFields
+    print(defaultFields)
     tableView.reloadData()
   }
   

@@ -14,4 +14,5 @@ protocol FieldListProtocol {
   mutating func add(newField: ListFieldProtocol)
   mutating func removeField(at index: Int)
   mutating func updateField(at index: Int, with field: ListFieldProtocol)
+  mutating func returnClearedValues() -> [ListFieldProtocol]? 
 }
