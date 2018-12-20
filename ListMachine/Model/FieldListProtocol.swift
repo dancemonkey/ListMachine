@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol ListProtocol {
+protocol FieldListProtocol {
   var name: String { get set }
-  var items: [ListFieldProtocol]? { get set }
+  var fields: [ListFieldProtocol]? { get set }
   mutating func add(newField: ListFieldProtocol)
-  mutating func removeItem(at index: Int)
+  mutating func removeField(at index: Int)
+  mutating func updateField(at index: Int, with field: ListFieldProtocol)
 }

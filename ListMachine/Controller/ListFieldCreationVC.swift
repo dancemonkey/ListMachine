@@ -14,7 +14,8 @@ class ListFieldCreationVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBOutlet weak var valueFld: UITextField!
   var fieldTypes: [FieldType]!
   var saveDelegate: FieldSaveDelegate?
-  var existingField: ListFieldProtocol?
+  var existingFields: ListFieldProtocol?
+  var existingFieldIndex: Int?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,8 +23,8 @@ class ListFieldCreationVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     typePicker.delegate = self
     typePicker.dataSource = self
     
-    if existingField != nil {
-      populateFields(with: existingField!)
+    if existingFields != nil {
+      populateFields(with: existingFields!)
     }
   }
   
@@ -37,7 +38,12 @@ class ListFieldCreationVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBAction func donePressed(sender: UIButton) {
     let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
     let newField = ListField(name: nameFld.text!, type: selectedType, value: FieldValue(data: valueFld.text!))
-    saveDelegate?.saveField(newField)
+    
+    if existingFields == nil {
+      saveDelegate?.saveField(newField)
+    } else {
+      saveDelegate?.update(newField, at: existingFieldIndex!)
+    }
     navigationController?.popViewController(animated: true)
   }
   

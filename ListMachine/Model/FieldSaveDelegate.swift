@@ -10,4 +10,5 @@ import Foundation
 
 protocol FieldSaveDelegate {
   func saveField(_ field: ListFieldProtocol)
+  func update(_ field: ListFieldProtocol, at index: Int)
 }

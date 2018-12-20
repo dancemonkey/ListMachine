@@ -10,19 +10,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List ViewVC-->
+        <!--List Fields-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ListViewVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FieldListViewVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-72-Fou">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" textLabel="vbY-Md-Rw6" detailTextLabel="4kb-3C-SBa" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="Yl3-CF-JNw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listFieldCell" textLabel="vbY-Md-Rw6" detailTextLabel="4kb-3C-SBa" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="Yl3-CF-JNw">
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yl3-CF-JNw" id="RKn-Gk-zFE">
@@ -48,17 +48,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKk-mG-d0D">
+                                <rect key="frame" x="137.5" y="590" width="100" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="F3x-It-5dU"/>
+                                    <constraint firstAttribute="width" constant="100" id="hIh-4a-04h"/>
+                                </constraints>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="savePressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d9w-F1-Wwk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Pew-72-Fou" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Gw-5V-oVv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pew-72-Fou" secondAttribute="bottom" id="Jng-Cs-d2G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AKk-mG-d0D" secondAttribute="bottom" constant="32" id="B6O-sN-3XK"/>
+                            <constraint firstItem="AKk-mG-d0D" firstAttribute="top" secondItem="Pew-72-Fou" secondAttribute="bottom" constant="16" id="IXU-GZ-S99"/>
                             <constraint firstItem="Pew-72-Fou" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SU6-k6-dVX"/>
+                            <constraint firstItem="AKk-mG-d0D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VnN-6P-EIH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pew-72-Fou" secondAttribute="trailing" id="ciA-O0-x5o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Lvp-Y0-wnk">
+                    <navigationItem key="navigationItem" title="List Fields" id="Lvp-Y0-wnk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="F2V-41-KmB">
                             <connections>
                                 <action selector="addNewItemPressedWithSender:" destination="BYZ-38-t0r" id="4u7-fP-IW5"/>
@@ -75,10 +88,58 @@
             </objects>
             <point key="canvasLocation" x="1088.8" y="111.99400299850076"/>
         </scene>
-        <!--List Field CreationVC-->
+        <!--List Items-->
+        <scene sceneID="x4G-ym-ekC">
+            <objects>
+                <viewController title="List Items" id="S3e-MS-CWW" customClass="ItemListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bmv-tX-6e6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="55" id="jLA-HX-5s1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jLA-HX-5s1" id="8oN-yt-jSp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="8bp-EK-BrX"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="nEh-Vb-gaJ"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="y9r-Wk-Hfe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7rf-28-oib">
+                            <connections>
+                                <action selector="newItemPressedWithSender:" destination="S3e-MS-CWW" id="zCK-tn-WXs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vky-wT-JT5" id="Dz2-lt-l5T"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showFieldList" id="JJT-2k-qGj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pag-zR-N6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="874"/>
+        </scene>
+        <!--New List Field-->
         <scene sceneID="1Cm-yn-RoM">
             <objects>
-                <viewController id="YGk-zg-QCW" customClass="ListFieldCreationVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New List Field" id="YGk-zg-QCW" customClass="ListFieldCreationVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mof-AN-uMY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,7 +269,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hgK-BL-C56"/>
+                        <segue destination="S3e-MS-CWW" kind="relationship" relationship="rootViewController" id="HYG-gh-P7W"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClQ-ke-W21" userLabel="First Responder" sceneMemberID="firstResponder"/>
