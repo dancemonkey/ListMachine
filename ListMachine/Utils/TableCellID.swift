@@ -9,5 +9,5 @@
 import Foundation
 
 enum TableCellID: String {
-  case listFieldCell, listItemCell
+  case listItemCell, itemFieldCell, itemTemplateCell, templateFieldCell
 }

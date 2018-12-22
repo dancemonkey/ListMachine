@@ -11,17 +11,15 @@ import UIKit
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
-  var items: [Item]?
-  var defaultFields: FieldListProtocol?
+  var itemList: ListProtocol!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    if items == nil {
-      items = [Item]()
-    } else {
-      defaultFields = items![0].defaultFields
-    }
+    // TEST DATA, LIST WILL BE CREATED FROM PRIOR SCREEN AND NAMED BEFORE ENTRY
+    itemList = List(name: "Movie Collection")
+    
+    self.title = itemList.name
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -33,52 +31,53 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return items?.count ?? 0
+    return itemList.listedItems?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.listItemCell.rawValue)
-    cell?.textLabel?.text = items![indexPath.row].fields.name
+    cell?.textLabel?.text = itemList.listedItems![indexPath.row].itemListTitle
     return cell!
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: SegueID.showFieldList.rawValue, sender: indexPath)
+//    performSegue(withIdentifier: SegueID.showItemFields.rawValue, sender: indexPath)
   }
   
   // MARK: Actions
   @IBAction func newItemPressed(sender: UIBarButtonItem) {
-    performSegue(withIdentifier: SegueID.showFieldList.rawValue, sender: self)
+    performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: self)
+  }
+  
+  @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
+    performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   
   // MARK: Item Save Delegate
-  func saveItem(_ item: Item) {
-    items?.append(item)
-    item.setDefaultFields()
-    defaultFields = item.defaultFields
-    print(defaultFields)
+  func saveItem(_ item: ItemProtocol) {
+    itemList.add(item: item)
+    itemList.setTemplate(item.templateItem)
     tableView.reloadData()
   }
   
-  func updateItem(_ item: Item, at index: Int) {
-    items![index] = item
-    item.setDefaultFields()
-    defaultFields = item.defaultFields
-    print(defaultFields)
+  func updateItem(_ item: ItemProtocol, at index: Int) {
+    itemList.update(itemAt: index, with: item)
     tableView.reloadData()
   }
   
   // MARK: Segues
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == SegueID.showFieldList.rawValue {
-      let destVC = segue.destination as! FieldListViewVC
+    if segue.identifier == SegueID.showItemCreator.rawValue {
+      let destVC = segue.destination as! ItemCreateEditVC
       destVC.itemSaveDelegate = self
-      destVC.fieldList = defaultFields
+      destVC.itemTemplate = self.itemList.templateItem
       destVC.item = nil
       if let indexPath = (sender as? IndexPath) {
-        destVC.item = items?[indexPath.row] ?? nil
-        destVC.itemIndex = indexPath.row
+
       }
+    } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
+      let dest = segue.destination as! TemplateCreateEditVC
+      dest.itemTemplate = sender as! TemplateItem
     }
   }
   

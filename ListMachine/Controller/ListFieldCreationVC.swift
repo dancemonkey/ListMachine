@@ -12,38 +12,37 @@ class ListFieldCreationVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBOutlet weak var nameFld: UITextField!
   @IBOutlet weak var typePicker: UIPickerView!
   @IBOutlet weak var valueFld: UITextField!
-  var fieldTypes: [FieldType]!
+  var fieldTypes: [FieldType] = [.checkBox, .date, .memo, .number, .text]
   var saveDelegate: FieldSaveDelegate?
-  var existingFields: ListFieldProtocol?
-  var existingFieldIndex: Int?
+//  var existingFields: ListFieldProtocol?
+//  var existingFieldIndex: Int?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    fieldTypes = [.checkBox, .date, .memo, .number, .text]
     typePicker.delegate = self
     typePicker.dataSource = self
     
-    if existingFields != nil {
-      populateFields(with: existingFields!)
-    }
+//    if existingFields != nil {
+//      populateFields(with: existingFields!)
+//    }
   }
   
-  func populateFields(with existing: ListFieldProtocol) {
-    nameFld.text = existing.name
-    valueFld.text = "\(String(describing: existing.value.data))"
-    let typeIndex = fieldTypes.firstIndex(of: existing.type)
-    typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
+  func populateFields(with existing: ItemFieldProtocol) {
+//    nameFld.text = existing.name
+//    valueFld.text = "\(String(describing: existing.value.data))"
+//    let typeIndex = fieldTypes.firstIndex(of: existing.type)
+//    typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
   }
   
   @IBAction func donePressed(sender: UIButton) {
-    let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
-    let newField = ListField(name: nameFld.text!, type: selectedType, value: FieldValue(data: valueFld.text!))
-    
-    if existingFields == nil {
-      saveDelegate?.saveField(newField)
-    } else {
-      saveDelegate?.update(newField, at: existingFieldIndex!)
-    }
+//    let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
+//    let newField = ListField(name: nameFld.text!, type: selectedType, value: FieldValue(data: valueFld.text!))
+//
+//    if existingFields == nil {
+//      saveDelegate?.saveField(newField)
+//    } else {
+//      saveDelegate?.update(newField, at: existingFieldIndex!)
+//    }
     navigationController?.popViewController(animated: true)
   }
   

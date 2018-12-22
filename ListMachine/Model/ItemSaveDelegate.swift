@@ -9,6 +9,6 @@
 import Foundation
 
 protocol ItemSaveDelegate {
-  func saveItem(_ item: Item)
-  func updateItem(_ item: Item, at index: Int)
+  func saveItem(_ item: ItemProtocol)
+  func updateItem(_ item: ItemProtocol, at index: Int)
 }
