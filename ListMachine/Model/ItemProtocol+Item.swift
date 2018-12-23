@@ -14,7 +14,7 @@ protocol ItemProtocol {
   var templateItem: TemplateItem { get set }
   var itemListTitle: String { get }
   func setNewTemplate(_ template: TemplateItem)
-  func setValues(_ values: [FieldID: Any?])
+  func setValues(for field: ItemFieldProtocol)
 }
 
 class Item: ItemProtocol, CustomStringConvertible {
@@ -22,7 +22,11 @@ class Item: ItemProtocol, CustomStringConvertible {
   var itemFields: [ItemFieldProtocol]
   var templateItem: TemplateItem
   var itemListTitle: String {
-    return (itemFields[0].value ?? "NO TITLE") as! String
+    if itemFields.count > 0 {
+      return (itemFields[0].value as? String) ?? "NO TITLE"
+    } else {
+      return "No Title"
+    }
   }
   var description: String {
     get {
@@ -31,15 +35,19 @@ class Item: ItemProtocol, CustomStringConvertible {
   }
   
   init(from template: TemplateItem) {
-    self.itemFields = template.defaultFields
+    self.itemFields = template.defaultFields.count > 0 ? template.defaultFields : [ItemFieldProtocol]()
     self.templateItem = template
   }
   
   func setNewTemplate(_ template: TemplateItem) {
     self.templateItem = template
-    // update item fieldIDs with possible new names and value types
-    var newFields = templateItem.defaultFields
-    for data in itemFields {
+
+    var newFields = [ItemFieldProtocol]()
+    template.defaultFields.forEach { (field) in
+      newFields.append(ItemField(name: field.name, type: field.type, value: "", fieldID: field.fieldID!))
+    }
+    let oldFields = self.itemFields
+    for data in oldFields {
       let target = newFields.firstIndex { (field) -> Bool in
         data.fieldID == field.fieldID
       }
@@ -50,16 +58,17 @@ class Item: ItemProtocol, CustomStringConvertible {
     self.itemFields = newFields
   }
   
-  func setValues(_ payload: [FieldID : Any?]) {
-    for data in payload {
-      let target = itemFields.firstIndex { (field) -> Bool in
-        field.fieldID == data.key
-      }
-      if target == nil {
-        print("invalid fieldID")
-        return
-      }
-      itemFields[target!].value = data.value
-    }
+  func setValues(for field: ItemFieldProtocol) {
+    itemFields[field.fieldID!] = field
+//    for data in payload {
+//      let target = itemFields.firstIndex { (field) -> Bool in
+//        field.fieldID == data.key
+//      }
+//      if target == nil {
+//        print("invalid fieldID")
+//        return
+//      }
+//      itemFields[target!].value = data.value
+//    }
   }
 }

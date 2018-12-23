@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate {
+class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   var itemList: ListProtocol!
@@ -41,7 +41,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    performSegue(withIdentifier: SegueID.showItemFields.rawValue, sender: indexPath)
+    performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: indexPath)
   }
   
   // MARK: Actions
@@ -56,7 +56,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   // MARK: Item Save Delegate
   func saveItem(_ item: ItemProtocol) {
     itemList.add(item: item)
-    itemList.setTemplate(item.templateItem)
     tableView.reloadData()
   }
   
@@ -65,19 +64,26 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     tableView.reloadData()
   }
   
+  // MARK: Template Save Delegate
+  func saveTemplate(_ template: TemplateItem) {
+    itemList.setTemplate(template)
+  }
+  
   // MARK: Segues
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == SegueID.showItemCreator.rawValue {
       let destVC = segue.destination as! ItemCreateEditVC
       destVC.itemSaveDelegate = self
       destVC.itemTemplate = self.itemList.templateItem
-      destVC.item = nil
+      destVC.item = Item(from: itemList.templateItem)
       if let indexPath = (sender as? IndexPath) {
-
+        destVC.item = itemList.listedItems![indexPath.row]
+        destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC
-      dest.itemTemplate = sender as! TemplateItem
+      dest.itemTemplate = self.itemList.templateItem
+      dest.saveDelegate = self
     }
   }
   

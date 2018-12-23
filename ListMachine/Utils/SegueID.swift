@@ -9,5 +9,5 @@
 import Foundation
 
 enum SegueID: String {
-  case showItemFields, showItemEditor, showItemCreator, showItemFieldCreation, showItemFieldEditor, showTemplateEditor
+  case showItemFields, showItemEditor, showItemCreator, showItemFieldCreation, showItemFieldEditor, showTemplateEditor, showFieldValueEntry
 }

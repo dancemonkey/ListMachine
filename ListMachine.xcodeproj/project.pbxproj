@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3921CC04E2000CA1DB /* ItemListVC.swift */; };
 		10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */; };
-		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate.swift */; };
+		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */; };
+		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
 		10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963821CE9F680053808A /* ListProtocol+List.swift */; };
 		10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963A21CE9F990053808A /* TemplateItem.swift */; };
 		10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */; };
@@ -29,7 +30,8 @@
 /* Begin PBXFileReference section */
 		10027E3921CC04E2000CA1DB /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemProtocol+Item.swift"; sourceTree = "<group>"; };
-		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSaveDelegate.swift; sourceTree = "<group>"; };
+		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemSaveDelegate+TemplateSaveDelegate.swift"; sourceTree = "<group>"; };
+		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
 		10D3963821CE9F680053808A /* ListProtocol+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListProtocol+List.swift"; sourceTree = "<group>"; };
 		10D3963A21CE9F990053808A /* TemplateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItem.swift; sourceTree = "<group>"; };
 		10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCreateEditVC.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				10D4A8BF21CABA84008006FF /* ItemCreateEditVC.swift */,
 				10027E3921CC04E2000CA1DB /* ItemListVC.swift */,
 				10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */,
+				10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,7 +119,7 @@
 				10D4A8C221CABBC2008006FF /* ItemFieldProtocol+ItemField.swift */,
 				10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */,
 				10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */,
-				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate.swift */,
+				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */,
 				10D3963821CE9F680053808A /* ListProtocol+List.swift */,
 				10D3963A21CE9F990053808A /* TemplateItem.swift */,
 			);
@@ -205,7 +208,7 @@
 			files = (
 				10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
-				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate.swift in Sources */,
+				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */,
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
@@ -213,6 +216,7 @@
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
 				10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */,
+				10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */,
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,

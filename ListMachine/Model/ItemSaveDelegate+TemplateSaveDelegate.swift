@@ -12,3 +12,7 @@ protocol ItemSaveDelegate {
   func saveItem(_ item: ItemProtocol)
   func updateItem(_ item: ItemProtocol, at index: Int)
 }
+
+protocol TemplateSaveDelegate {
+  func saveTemplate(_ template: TemplateItem)
+}

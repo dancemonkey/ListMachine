@@ -12,6 +12,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
+  var saveDelegate: TemplateSaveDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,7 +45,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   // MARK: Actions
   @IBAction func savePressed(sender: UIButton) {
-    // save back to list
+    saveDelegate?.saveTemplate(itemTemplate)
     navigationController?.popViewController(animated: true)
   }
   

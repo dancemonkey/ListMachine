@@ -1,0 +1,57 @@
+//
+//  ItemValueEditVC.swift
+//  ListMachine
+//
+//  Created by Drew Lanning on 12/23/18.
+//  Copyright © 2018 Drew Lanning. All rights reserved.
+//
+
+import UIKit
+
+class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  
+  @IBOutlet weak var nameFld: UITextField!
+  @IBOutlet weak var typePicker: UIPickerView!
+  @IBOutlet weak var valueFld: UITextField!
+  var currentField: ItemFieldProtocol?
+  var currentFieldID: Int?
+  var saveDelegate: FieldSaveDelegate?
+  
+  private var fieldTypes: [FieldType] = [.checkBox, .date, .memo, .number, .text]
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    typePicker.delegate = self
+    typePicker.dataSource = self
+    
+    if let field = currentField {
+      nameFld.text = field.name
+      valueFld.text = (field.value as? String) ?? ""
+      let typeIndex = fieldTypes.firstIndex(of: field.type)
+      typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
+    }
+  }
+  
+  // MARK: Actions
+  @IBAction func savePressed(sender: UIButton) {
+    // save values back to item
+    let field = ItemField(name: currentField?.name ?? "Unnamed", type: currentField?.type ?? FieldType.noType, value: valueFld.text ?? "", fieldID: currentFieldID ?? 0)
+    saveDelegate?.update(field, at: currentFieldID ?? 0)
+    navigationController?.popViewController(animated: true)
+  }
+  
+  // MARK: Picker functions
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return fieldTypes.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return fieldTypes[row].rawValue
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+}
