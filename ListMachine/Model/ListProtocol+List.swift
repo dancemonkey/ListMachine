@@ -37,7 +37,7 @@ class List: ListProtocol, CustomStringConvertible {
   
   init(name: String) {
     self.name = name
-    templateItem = TemplateItem(name: self.name, with: [ItemField(name: "Name", type: .text, value: nil, fieldID: 0)])
+    templateItem = TemplateItem(name: "Movie Collection")
   }
   
   func setTemplate(_ template: TemplateItem) {

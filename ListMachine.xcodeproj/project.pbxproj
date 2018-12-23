@@ -14,7 +14,7 @@
 		10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963A21CE9F990053808A /* TemplateItem.swift */; };
 		10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */; };
 		10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8A721CAB752008006FF /* AppDelegate.swift */; };
-		10D4A8AA21CAB752008006FF /* ListFieldCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8A921CAB752008006FF /* ListFieldCreationVC.swift */; };
+		10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8A921CAB752008006FF /* TemplateFieldEditVC.swift */; };
 		10D4A8AD21CAB752008006FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D4A8AB21CAB752008006FF /* Main.storyboard */; };
 		10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8AE21CAB752008006FF /* ListMachine.xcdatamodeld */; };
 		10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D4A8B121CAB754008006FF /* Assets.xcassets */; };
@@ -35,7 +35,7 @@
 		10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCreateEditVC.swift; sourceTree = "<group>"; };
 		10D4A8A421CAB752008006FF /* ListMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D4A8A721CAB752008006FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10D4A8A921CAB752008006FF /* ListFieldCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFieldCreationVC.swift; sourceTree = "<group>"; };
+		10D4A8A921CAB752008006FF /* TemplateFieldEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFieldEditVC.swift; sourceTree = "<group>"; };
 		10D4A8AC21CAB752008006FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D4A8AF21CAB752008006FF /* ListMachine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListMachine.xcdatamodel; sourceTree = "<group>"; };
 		10D4A8B121CAB754008006FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		10D4A8BC21CAB75E008006FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				10D4A8A921CAB752008006FF /* ListFieldCreationVC.swift */,
+				10D4A8A921CAB752008006FF /* TemplateFieldEditVC.swift */,
 				10D4A8BF21CABA84008006FF /* ItemCreateEditVC.swift */,
 				10027E3921CC04E2000CA1DB /* ItemListVC.swift */,
 				10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */,
@@ -203,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10D4A8AA21CAB752008006FF /* ListFieldCreationVC.swift in Sources */,
+				10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */,

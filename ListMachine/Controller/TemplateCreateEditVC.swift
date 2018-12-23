@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
@@ -37,6 +37,11 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     return cell!
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // call segue and populate editor with current field
+    performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
+  }
+  
   // MARK: Actions
   @IBAction func savePressed(sender: UIButton) {
     // save back to list
@@ -44,7 +49,30 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   @IBAction func addNewFieldPressed(sender: UIBarButtonItem) {
-    // add the new field
+    performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self)
+  }
+  
+  // MARK: Segues
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == SegueID.showTemplateEditor.rawValue {
+      let dest = segue.destination as! TemplateFieldEditVC
+      dest.saveDelegate = self
+      if let index = (sender as? Int) {
+        dest.currentField = itemTemplate.defaultFields[index]
+        dest.currentFieldIndex = index
+      }
+    }
+  }
+  
+  // MARK: FieldSaveDelegate
+  func saveField(_ field: ItemFieldProtocol) {
+    itemTemplate.add(field: field)
+    tableView.reloadData()
+  }
+  
+  func update(_ field: ItemFieldProtocol, at index: Int) {
+    itemTemplate.update(field: field, at: index)
+    tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
   }
   
 }

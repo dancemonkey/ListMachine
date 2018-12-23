@@ -74,15 +74,13 @@
                     <navigationItem key="navigationItem" id="Lvp-Y0-wnk"/>
                     <connections>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
-                        <segue destination="YGk-zg-QCW" kind="show" identifier="showListFieldCreation" id="1da-Jq-JAE"/>
-                        <segue destination="YGk-zg-QCW" kind="show" identifier="showListFieldEditor" id="YNg-Gl-ude"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047" y="874"/>
         </scene>
-        <!--Title-->
+        <!--Template Edit-->
         <scene sceneID="vfq-YO-GwX">
             <objects>
                 <viewController id="wrc-EG-jgv" customClass="TemplateCreateEditVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
@@ -144,7 +142,7 @@
                         <viewLayoutGuide key="safeArea" id="ePD-BX-NVj"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="afq-HW-at0">
+                    <navigationItem key="navigationItem" title="Template Edit" id="afq-HW-at0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="W6S-6V-QFg">
                             <connections>
                                 <action selector="addNewFieldPressedWithSender:" destination="wrc-EG-jgv" id="vme-6C-Ykc"/>
@@ -154,11 +152,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="EWz-w3-mOs" id="Pgo-1h-cYT"/>
+                        <segue destination="YGk-zg-QCW" kind="show" identifier="showTemplateEditor" id="qJ9-QE-s4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UL0-Yy-b76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150" y="1740"/>
+            <point key="canvasLocation" x="150" y="1638"/>
         </scene>
         <!--List Items-->
         <scene sceneID="x4G-ym-ekC">
@@ -216,16 +215,16 @@
             </objects>
             <point key="canvasLocation" x="150" y="874"/>
         </scene>
-        <!--New List Field-->
+        <!--Field Edit-->
         <scene sceneID="1Cm-yn-RoM">
             <objects>
-                <viewController title="New List Field" id="YGk-zg-QCW" customClass="ListFieldCreationVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Field Edit" id="YGk-zg-QCW" customClass="TemplateFieldEditVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mof-AN-uMY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Hcz-7x-MJX">
-                                <rect key="frame" x="0.0" y="132" width="375" height="423.5"/>
+                                <rect key="frame" x="0.0" y="132" width="375" height="334"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UVC-Ej-TvS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -271,43 +270,16 @@
                                             <constraint firstItem="gAp-e8-0Q9" firstAttribute="leading" secondItem="OBL-PS-D6n" secondAttribute="leading" constant="16" id="z6Z-86-1YD"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TwZ-I2-WHf">
-                                        <rect key="frame" x="0.0" y="350" width="375" height="73.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SR-6X-IPO">
-                                                <rect key="frame" x="16" y="0.0" width="343" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pY-fC-gfG">
-                                                <rect key="frame" x="16" y="28.5" width="343" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="22E-bJ-Jlb"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="2pY-fC-gfG" firstAttribute="leading" secondItem="TwZ-I2-WHf" secondAttribute="leading" constant="16" id="Frl-KE-7CW"/>
-                                            <constraint firstItem="6SR-6X-IPO" firstAttribute="leading" secondItem="TwZ-I2-WHf" secondAttribute="leading" constant="16" id="bIT-qu-x82"/>
-                                            <constraint firstAttribute="trailing" secondItem="2pY-fC-gfG" secondAttribute="trailing" constant="16" id="oGi-M0-mya"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="OBL-PS-D6n" secondAttribute="trailing" id="ACC-J4-hjV"/>
                                     <constraint firstAttribute="trailing" secondItem="UVC-Ej-TvS" secondAttribute="trailing" id="P7N-TQ-kSR"/>
                                     <constraint firstItem="OBL-PS-D6n" firstAttribute="leading" secondItem="Hcz-7x-MJX" secondAttribute="leading" id="Ugc-Kc-JuL"/>
                                     <constraint firstItem="UVC-Ej-TvS" firstAttribute="leading" secondItem="Hcz-7x-MJX" secondAttribute="leading" id="Y3p-yf-ZBH"/>
-                                    <constraint firstAttribute="trailing" secondItem="TwZ-I2-WHf" secondAttribute="trailing" id="m0c-3Q-rUh"/>
-                                    <constraint firstItem="TwZ-I2-WHf" firstAttribute="leading" secondItem="Hcz-7x-MJX" secondAttribute="leading" id="wXG-Ij-XFc"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNo-6y-s3h">
-                                <rect key="frame" x="137.5" y="571.5" width="100" height="45"/>
+                                <rect key="frame" x="137.5" y="482" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="8tA-sQ-j6a"/>
                                     <constraint firstAttribute="height" constant="45" id="w7a-xz-d5K"/>
@@ -331,12 +303,11 @@
                     <connections>
                         <outlet property="nameFld" destination="BQ5-jE-AIB" id="P59-7d-NxF"/>
                         <outlet property="typePicker" destination="gAp-e8-0Q9" id="Qao-5L-Tvd"/>
-                        <outlet property="valueFld" destination="2pY-fC-gfG" id="mEI-QX-GH5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoW-52-fGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2031" y="874"/>
+            <point key="canvasLocation" x="1046" y="1638"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ac8-py-HOc">
@@ -357,7 +328,4 @@
             <point key="canvasLocation" x="149.59999999999999" y="111.99400299850076"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="YNg-Gl-ude"/>
-    </inferredMetricsTieBreakers>
 </document>
