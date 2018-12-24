@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum FieldType: String {
   case text, memo, number, date, checkBox, noType
@@ -16,27 +17,34 @@ protocol ItemFieldProtocol {
   typealias FieldID = Int
   typealias FieldValue = Any
   var name: String { get set }
-  var type: FieldType { get set }
+  var type: String { get set }
   var value: FieldValue? { get set }
-  var fieldID: FieldID? { get set }
+//  var fieldID: FieldID? { get set }
+  var fieldID: RealmOptional<Int> { get }
   func set(value: FieldValue, forType type: FieldType)
   func getValueAndType() -> (value: FieldValue?, type: FieldType?)
 }
 
-class ItemField: ItemFieldProtocol, CustomStringConvertible {
-  var name: String
-  var type: FieldType
-  var value: FieldValue?
-  var fieldID: FieldID?
-  var description: String {
-    return "\(name), \(type)"
+class ItemField: Object, ItemFieldProtocol {
+//  var name: String
+//  var type: FieldType
+//  var value: FieldValue?
+//  var fieldID: FieldID?
+  @objc dynamic var name: String = ""
+  @objc dynamic var type: String = FieldType.noType.rawValue
+  @objc dynamic var value: FieldValue? = ""
+  let fieldID = RealmOptional<Int>()
+  
+  override static func primaryKey() -> String? {
+    return "fieldID"
   }
   
-  init(name: String, type: FieldType, value: FieldValue?, fieldID: FieldID) {
+  convenience init(name: String, type: FieldType, value: FieldValue?, fieldID: FieldID) {
+    self.init()
     self.name = name
-    self.type = type
+    self.type = type.rawValue
     self.value = value
-    self.fieldID = fieldID
+    self.fieldID.value = fieldID
   }
   
   func set(value: FieldValue, forType type: FieldType) {
@@ -44,7 +52,7 @@ class ItemField: ItemFieldProtocol, CustomStringConvertible {
   }
   
   func getValueAndType() -> (value: FieldValue?, type: FieldType?) {
-    return (self.value, self.type)
+    return (self.value, FieldType(rawValue: self.type))
   }
 }
 

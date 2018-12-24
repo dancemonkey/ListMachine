@@ -28,7 +28,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     if let field = currentField {
       nameFld.text = field.name
       valueFld.text = (field.value as? String) ?? ""
-      let typeIndex = fieldTypes.firstIndex(of: field.type)
+      let typeIndex = fieldTypes.firstIndex(of: FieldType(rawValue: field.type)!)
       typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
     }
   }
@@ -36,7 +36,8 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
   // MARK: Actions
   @IBAction func savePressed(sender: UIButton) {
     // save values back to item
-    let field = ItemField(name: currentField?.name ?? "Unnamed", type: currentField?.type ?? FieldType.noType, value: valueFld.text ?? "", fieldID: currentFieldID ?? 0)
+    let type = FieldType(rawValue: currentField?.type ?? "")
+    let field = ItemField(name: currentField?.name ?? "Unnamed", type: type ?? FieldType.noType, value: valueFld.text ?? "", fieldID: currentFieldID ?? 0)
     saveDelegate?.update(field, at: currentFieldID ?? 0)
     navigationController?.popViewController(animated: true)
   }

@@ -7,41 +7,42 @@
 //
 
 import Foundation
+import RealmSwift
 
-class TemplateItem: CustomStringConvertible {
-  typealias FieldID = Int
-  var name: String
-  var defaultFields: [ItemFieldProtocol]
-  private var nextFieldID: FieldID = 0
-  var description: String {
-    return "Template \(name), has \(defaultFields.count) fields, and the next FieldID is \(nextFieldID)."
-  }
+class TemplateItem: Object {
+//  typealias FieldID = Int
+//  var name: String
+//  var defaultFields: [ItemFieldProtocol]
+//  private var nextFieldID: FieldID = 0
+//  var description: String {
+//    return "Template \(name), has \(defaultFields.count) fields, and the next FieldID is \(nextFieldID)."
+//  }
+  @objc dynamic var name: String = ""
+  @objc dynamic var nextFieldID: Int = 0
+  let defaultFields = RealmSwift.List<ItemField>()
   
-  convenience init(name: String) {
-    self.init(name: name, with: [])
-    self.name = name
-  }
+  // MARK: Realm Changes
   
-  init(name: String, with fields: [ItemFieldProtocol]) {
+  convenience init(name: String, with fields: [ItemField]) {
+    self.init()
     self.name = name
-    self.defaultFields = fields
+    self.defaultFields.append(objectsIn: fields)
     setAllFieldIDs()
   }
   
-  func add(field: ItemFieldProtocol) {
+  func add(field: ItemField) {
     defaultFields.append(field)
-    defaultFields[defaultFields.count - 1].fieldID = nextFieldID
+    defaultFields[defaultFields.count - 1].fieldID.value = nextFieldID
     nextFieldID = nextFieldID + 1
   }
   
-  func update(field: ItemFieldProtocol, at index: Int) {
+  func update(field: ItemField, at index: Int) {
     defaultFields[index] = field
-    defaultFields[index].fieldID = index
   }
   
   func setAllFieldIDs() {
     for (index, _) in defaultFields.enumerated() {
-      defaultFields[index].fieldID = index
+      defaultFields[index].fieldID.value = index
       nextFieldID = index + 1
     }
   }

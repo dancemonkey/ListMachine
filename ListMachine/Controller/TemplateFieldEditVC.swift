@@ -28,7 +28,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
   func populateFields(with existing: ItemFieldProtocol) {
     nameFld.text = existing.name
-    let typeIndex = fieldTypes.firstIndex(of: existing.type)
+    let typeIndex = fieldTypes.firstIndex(of: FieldType(rawValue: existing.type)!)
     typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
   }
   

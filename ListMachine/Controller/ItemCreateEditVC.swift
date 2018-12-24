@@ -38,7 +38,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.itemFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
-    cell?.detailTextLabel?.text = "\(itemTemplate.defaultFields[indexPath.row].type.rawValue), \(item?.itemFields[indexPath.row].value ?? "No value entered")"
+    cell?.detailTextLabel?.text = "\(itemTemplate.defaultFields[indexPath.row].type), \(item?.itemFields[indexPath.row].value ?? "No value entered")"
     return cell!
   }
   
@@ -62,13 +62,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     if segue.identifier == SegueID.showFieldValueEntry.rawValue {
       let dest = segue.destination as! FieldValueEditVC
       dest.currentField = item?.itemFields[(sender as! IndexPath).row]
-      dest.currentFieldID = item?.itemFields[(sender as! IndexPath).row].fieldID
+      dest.currentFieldID = item?.itemFields[(sender as! IndexPath).row].fieldID.value
       dest.saveDelegate = self
     }
   }
   
   // MARK: Save Protocol
-  func saveField(_ field: ItemFieldProtocol) {
+  func saveField(_ field: ItemField) {
     guard let _ = item else {
       tableView.reloadData()
       return
@@ -77,7 +77,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     tableView.reloadData()
   }
   
-  func update(_ field: ItemFieldProtocol, at index: Int) {
+  func update(_ field: ItemField, at index: Int) {
     item?.setValues(for: field)
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }

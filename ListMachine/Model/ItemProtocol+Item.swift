@@ -7,20 +7,24 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol ItemProtocol {
   typealias FieldID = Int
-  var itemFields: [ItemFieldProtocol] { get set }
+  var itemFields: RealmSwift.List<ItemField> { get }
   var templateItem: TemplateItem { get set }
   var itemListTitle: String { get }
   func setNewTemplate(_ template: TemplateItem)
-  func setValues(for field: ItemFieldProtocol)
+  func setValues(for field: ItemField)
 }
 
-class Item: ItemProtocol, CustomStringConvertible {
+class Item: Object, ItemProtocol {
+  
   typealias FieldID = Int
-  var itemFields: [ItemFieldProtocol]
-  var templateItem: TemplateItem
+  
+  let itemFields = RealmSwift.List<ItemField>()
+  @objc dynamic var templateItem: TemplateItem = TemplateItem(name: "", with: [])
+  
   var itemListTitle: String {
     if itemFields.count > 0 {
       return (itemFields[0].value as? String) ?? "NO TITLE"
@@ -28,47 +32,36 @@ class Item: ItemProtocol, CustomStringConvertible {
       return "No Title"
     }
   }
-  var description: String {
-    get {
-      return "Item is a template of \(String(describing: templateItem)), and contains these fields: \(itemFields)"
-    }
-  }
   
-  init(from template: TemplateItem) {
-    self.itemFields = template.defaultFields.count > 0 ? template.defaultFields : [ItemFieldProtocol]()
+  convenience init(from template: TemplateItem) {
+    self.init()
+    if template.defaultFields.count > 0 {
+      self.itemFields.append(objectsIn: template.defaultFields)
+    }
     self.templateItem = template
   }
   
   func setNewTemplate(_ template: TemplateItem) {
     self.templateItem = template
 
-    var newFields = [ItemFieldProtocol]()
+    var newFields = [ItemField]()
     template.defaultFields.forEach { (field) in
-      newFields.append(ItemField(name: field.name, type: field.type, value: "", fieldID: field.fieldID!))
+      newFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: "", fieldID: field.fieldID.value!))
     }
     let oldFields = self.itemFields
     for data in oldFields {
       let target = newFields.firstIndex { (field) -> Bool in
-        data.fieldID == field.fieldID
+        data.fieldID.value == field.fieldID.value
       }
       if target != nil {
         newFields[target!].value = data.value
       }
     }
-    self.itemFields = newFields
+    self.itemFields.removeAll()
+    self.itemFields.append(objectsIn: newFields)
   }
   
-  func setValues(for field: ItemFieldProtocol) {
-    itemFields[field.fieldID!] = field
-//    for data in payload {
-//      let target = itemFields.firstIndex { (field) -> Bool in
-//        field.fieldID == data.key
-//      }
-//      if target == nil {
-//        print("invalid fieldID")
-//        return
-//      }
-//      itemFields[target!].value = data.value
-//    }
+  func setValues(for field: ItemField) {
+    itemFields[field.fieldID.value!] = field
   }
 }

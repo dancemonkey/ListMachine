@@ -9,6 +9,6 @@
 import Foundation
 
 protocol FieldSaveDelegate {
-  func saveField(_ field: ItemFieldProtocol)
-  func update(_ field: ItemFieldProtocol, at index: Int)
+  func saveField(_ field: ItemField)
+  func update(_ field: ItemField, at index: Int)
 }

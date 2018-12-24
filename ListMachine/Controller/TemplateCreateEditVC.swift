@@ -34,7 +34,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.templateFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
-    cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type.rawValue
+    cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type
     return cell!
   }
   
@@ -66,12 +66,12 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   // MARK: FieldSaveDelegate
-  func saveField(_ field: ItemFieldProtocol) {
+  func saveField(_ field: ItemField) {
     itemTemplate.add(field: field)
     tableView.reloadData()
   }
   
-  func update(_ field: ItemFieldProtocol, at index: Int) {
+  func update(_ field: ItemField, at index: Int) {
     itemTemplate.update(field: field, at: index)
     tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
   }
