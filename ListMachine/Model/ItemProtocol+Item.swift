@@ -12,10 +12,10 @@ import RealmSwift
 protocol ItemProtocol {
   typealias FieldID = Int
   var itemFields: RealmSwift.List<ItemField> { get }
-  var templateItem: TemplateItem { get set }
+  var templateItem: TemplateItem? { get set }
   var itemListTitle: String { get }
   func setNewTemplate(_ template: TemplateItem)
-  func setValues(for field: ItemField)
+  func setValues(for field: ItemField, at index: Int)
 }
 
 class Item: Object, ItemProtocol {
@@ -23,11 +23,11 @@ class Item: Object, ItemProtocol {
   typealias FieldID = Int
   
   let itemFields = RealmSwift.List<ItemField>()
-  @objc dynamic var templateItem: TemplateItem = TemplateItem(name: "", with: [])
+  @objc dynamic var templateItem: TemplateItem?
   
   var itemListTitle: String {
     if itemFields.count > 0 {
-      return (itemFields[0].value as? String) ?? "NO TITLE"
+      return (itemFields[0].value) ?? "NO TITLE"
     } else {
       return "No Title"
     }
@@ -46,7 +46,7 @@ class Item: Object, ItemProtocol {
 
     var newFields = [ItemField]()
     template.defaultFields.forEach { (field) in
-      newFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: "", fieldID: field.fieldID.value!))
+      newFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: ""))
     }
     let oldFields = self.itemFields
     for data in oldFields {
@@ -61,7 +61,9 @@ class Item: Object, ItemProtocol {
     self.itemFields.append(objectsIn: newFields)
   }
   
-  func setValues(for field: ItemField) {
-    itemFields[field.fieldID.value!] = field
+  func setValues(for field: ItemField, at index: Int) {
+    let id = itemFields[index].fieldID.value
+    itemFields[index] = field
+    itemFields[index].fieldID.value = id
   }
 }

@@ -19,17 +19,12 @@ protocol ItemFieldProtocol {
   var name: String { get set }
   var type: String { get set }
   var value: FieldValue? { get set }
-//  var fieldID: FieldID? { get set }
   var fieldID: RealmOptional<Int> { get }
   func set(value: FieldValue, forType type: FieldType)
   func getValueAndType() -> (value: FieldValue?, type: FieldType?)
 }
 
 class ItemField: Object, ItemFieldProtocol {
-//  var name: String
-//  var type: FieldType
-//  var value: FieldValue?
-//  var fieldID: FieldID?
   @objc dynamic var name: String = ""
   @objc dynamic var type: String = FieldType.noType.rawValue
   @objc dynamic var value: FieldValue? = ""
@@ -39,12 +34,11 @@ class ItemField: Object, ItemFieldProtocol {
     return "fieldID"
   }
   
-  convenience init(name: String, type: FieldType, value: FieldValue?, fieldID: FieldID) {
+  convenience init(name: String, type: FieldType, value: FieldValue?) {
     self.init()
     self.name = name
     self.type = type.rawValue
     self.value = value
-    self.fieldID.value = fieldID
   }
   
   func set(value: FieldValue, forType type: FieldType) {

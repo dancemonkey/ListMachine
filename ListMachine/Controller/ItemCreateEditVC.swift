@@ -69,16 +69,16 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   // MARK: Save Protocol
   func saveField(_ field: ItemField) {
-    guard let _ = item else {
-      tableView.reloadData()
-      return
-    }
-    item?.setValues(for: field)
-    tableView.reloadData()
+//    guard let _ = item else {
+//      tableView.reloadData()
+//      return
+//    }
+//    item?.setValues(for: field, at: <#T##Int#>)
+//    tableView.reloadData()
   }
   
   func update(_ field: ItemField, at index: Int) {
-    item?.setValues(for: field)
+    item?.setValues(for: field, at: index)
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
   

@@ -37,7 +37,9 @@ class TemplateItem: Object {
   }
   
   func update(field: ItemField, at index: Int) {
+    let id = defaultFields[index].fieldID.value
     defaultFields[index] = field
+    defaultFields[index].fieldID.value = id
   }
   
   func setAllFieldIDs() {

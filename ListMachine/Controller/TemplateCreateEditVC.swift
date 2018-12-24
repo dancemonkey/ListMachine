@@ -35,6 +35,9 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.templateFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type
+    print(itemTemplate.defaultFields.forEach({ (field) in
+      print(field.fieldID.value)
+    }))
     return cell!
   }
   

@@ -37,7 +37,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
   @IBAction func savePressed(sender: UIButton) {
     // save values back to item
     let type = FieldType(rawValue: currentField?.type ?? "")
-    let field = ItemField(name: currentField?.name ?? "Unnamed", type: type ?? FieldType.noType, value: valueFld.text ?? "", fieldID: currentFieldID ?? 0)
+    let field = ItemField(name: currentField?.name ?? "Unnamed", type: type ?? FieldType.noType, value: valueFld.text ?? "")
     saveDelegate?.update(field, at: currentFieldID ?? 0)
     navigationController?.popViewController(animated: true)
   }
