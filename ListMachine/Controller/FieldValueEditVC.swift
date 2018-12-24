@@ -27,7 +27,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     
     if let field = currentField {
       nameFld.text = field.name
-      valueFld.text = (field.value as? String) ?? ""
+      valueFld.text = (field.value) ?? ""
       let typeIndex = fieldTypes.firstIndex(of: FieldType(rawValue: field.type)!)
       typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
     }

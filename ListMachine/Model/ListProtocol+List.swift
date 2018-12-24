@@ -37,7 +37,9 @@ class List: ListProtocol, CustomStringConvertible {
   
   init(name: String) {
     self.name = name
-    templateItem = TemplateItem(value: "Movie Collection")
+    
+    // test data, normally when creating list you are asked for a name and the template is given the same name
+    templateItem = TemplateItem(name: "Movie Collection", with: [])
   }
   
   func setTemplate(_ template: TemplateItem) {

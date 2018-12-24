@@ -15,7 +15,7 @@ enum FieldType: String {
 
 protocol ItemFieldProtocol {
   typealias FieldID = Int
-  typealias FieldValue = Any
+  typealias FieldValue = String
   var name: String { get set }
   var type: String { get set }
   var value: FieldValue? { get set }
