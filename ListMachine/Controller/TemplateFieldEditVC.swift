@@ -34,7 +34,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
   @IBAction func donePressed(sender: UIButton) {
     let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
-    let field = ItemField(name: nameFld.text ?? "Unnamed", type: selectedType, value: nil)
+    let field = ItemField(name: nameFld.text ?? "Unnamed", type: selectedType, value: nil, id: nil)
 
     if currentField == nil {
       saveDelegate?.saveField(field)

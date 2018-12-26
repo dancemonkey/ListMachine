@@ -11,6 +11,7 @@
 		10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */; };
 		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */; };
 		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
+		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963821CE9F680053808A /* ListProtocol+List.swift */; };
 		10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963A21CE9F990053808A /* TemplateItem.swift */; };
 		10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */; };
@@ -34,6 +35,7 @@
 		10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemProtocol+Item.swift"; sourceTree = "<group>"; };
 		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemSaveDelegate+TemplateSaveDelegate.swift"; sourceTree = "<group>"; };
 		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
+		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		10D3963821CE9F680053808A /* ListProtocol+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListProtocol+List.swift"; sourceTree = "<group>"; };
 		10D3963A21CE9F990053808A /* TemplateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItem.swift; sourceTree = "<group>"; };
 		10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCreateEditVC.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */,
 				10D3963821CE9F680053808A /* ListProtocol+List.swift */,
 				10D3963A21CE9F990053808A /* TemplateItem.swift */,
+				102097DF21D3B44B0062B367 /* DataStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */,
+				102097E021D3B44B0062B367 /* DataStore.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */,
@@ -437,7 +441,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -453,7 +460,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

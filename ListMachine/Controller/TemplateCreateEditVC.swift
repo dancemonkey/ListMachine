@@ -13,6 +13,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
   var saveDelegate: TemplateSaveDelegate?
+  var store: DataStore?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,9 +36,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.templateFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type
-    print(itemTemplate.defaultFields.forEach({ (field) in
-      print(field.fieldID.value)
-    }))
+    print(itemTemplate.defaultFields[indexPath.row].fieldID.value)
     return cell!
   }
   
@@ -70,12 +69,16 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   // MARK: FieldSaveDelegate
   func saveField(_ field: ItemField) {
-    itemTemplate.add(field: field)
+    store?.save(object: field, andRun: {
+      self.itemTemplate.add(field: field)
+    })
     tableView.reloadData()
   }
   
   func update(_ field: ItemField, at index: Int) {
-    itemTemplate.update(field: field, at: index)
+    store?.save(object: field, andRun: {
+      self.itemTemplate.update(field: field, at: index)
+    })
     tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
   }
   

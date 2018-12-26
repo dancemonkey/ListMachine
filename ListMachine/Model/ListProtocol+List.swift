@@ -7,64 +7,55 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol ListProtocol {
   var name: String { get set }
-  var listedItems: [ItemProtocol]? { get set }
-  var templateItem: TemplateItem! { get set }
-  func add(item: ItemProtocol)
+  var listedItems: RealmSwift.List<Item> { get }
+  var templateItem: TemplateItem? { get set }
+  func add(item: Item)
   func remove(itemAt index: Int)
-  func update(itemAt index: Int, with item: ItemProtocol)
+  func update(itemAt index: Int, with item: Item)
   func setTemplate(_ template: TemplateItem) 
 }
 
-class List: ListProtocol, CustomStringConvertible {
-  var name: String
-  var listedItems: [ItemProtocol]?
-  var templateItem: TemplateItem!
-  var description: String {
-    get {
-      guard let items = listedItems else {
-        return "\(name) has no items."
-      }
-      var message = "\(name) contains these items: \n"
-      for item in items {
-        message = message + "\(item)\n"
-      }
-      return message
-    }
-  }
+class List: Object, ListProtocol {
   
-  init(name: String) {
+  @objc dynamic var name: String = ""
+  let listedItems = RealmSwift.List<Item>()
+  @objc dynamic var templateItem: TemplateItem?
+  @objc dynamic var listID: String = UUID().uuidString
+  
+  convenience init(name: String) {
+    self.init()
     self.name = name
     
     // test data, normally when creating list you are asked for a name and the template is given the same name
     templateItem = TemplateItem(name: "Movie Collection", with: [])
   }
   
+  override static func primaryKey() -> String? {
+    return "listID"
+  }
+  
   func setTemplate(_ template: TemplateItem) {
     self.templateItem = template
-    guard let items = listedItems else {
-      return
-    }
-    for item in items {
+    for item in listedItems {
       item.setNewTemplate(template)
+      print("list function setTemplate setting new templates for each item")
     }
   }
   
-  func add(item: ItemProtocol) {
-    if listedItems == nil {
-      listedItems = [Item]()
-    }
-    listedItems?.append(item)
+  func add(item: Item) {
+    listedItems.append(item)
   }
   
   func remove(itemAt index: Int) {
-    listedItems?.remove(at: index)
+    listedItems.remove(at: index)
   }
   
-  func update(itemAt index: Int, with item: ItemProtocol) {
-    listedItems?[index] = item
+  func update(itemAt index: Int, with item: Item) {
+    listedItems[index] = item
   }
 
 }

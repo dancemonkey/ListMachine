@@ -12,9 +12,10 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
-  var item: ItemProtocol?
+  var item: Item?
   var itemIndex: Int?
   var itemSaveDelegate: ItemSaveDelegate?
+  var store: DataStore?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,6 +40,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.itemFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = "\(itemTemplate.defaultFields[indexPath.row].type), \(item?.itemFields[indexPath.row].value ?? "No value entered")"
+    print(item?.itemFields[indexPath.row].fieldID.value)
     return cell!
   }
   
@@ -49,6 +51,8 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   // MARK: Nav Actions
   
   @IBAction func savePressed(sender: UIButton) {
+    // with realm can probably just save item since I am using primaryKeys?
+    
     if let i = itemIndex {
       itemSaveDelegate?.updateItem(self.item!, at: i)
     } else {
@@ -69,16 +73,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   // MARK: Save Protocol
   func saveField(_ field: ItemField) {
-//    guard let _ = item else {
-//      tableView.reloadData()
-//      return
-//    }
-//    item?.setValues(for: field, at: <#T##Int#>)
-//    tableView.reloadData()
+    // empty, not used 
   }
   
   func update(_ field: ItemField, at index: Int) {
-    item?.setValues(for: field, at: index)
+    store?.save(object: field, andRun: {
+      self.item?.setValues(for: field, at: index)
+    })
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
   

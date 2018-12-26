@@ -10,16 +10,11 @@ import Foundation
 import RealmSwift
 
 class TemplateItem: Object {
-//  typealias FieldID = Int
-//  var name: String
-//  var defaultFields: [ItemFieldProtocol]
-//  private var nextFieldID: FieldID = 0
-//  var description: String {
-//    return "Template \(name), has \(defaultFields.count) fields, and the next FieldID is \(nextFieldID)."
-//  }
+
   @objc dynamic var name: String = ""
   @objc dynamic var nextFieldID: Int = 0
   let defaultFields = RealmSwift.List<ItemField>()
+  @objc dynamic var templateID: String = UUID().uuidString
   
   // MARK: Realm Changes
   
@@ -30,9 +25,14 @@ class TemplateItem: Object {
     setAllFieldIDs()
   }
   
+  override static func primaryKey() -> String? {
+    return "templateID"
+  }
+  
   func add(field: ItemField) {
+    field.fieldID.value = nextFieldID
     defaultFields.append(field)
-    defaultFields[defaultFields.count - 1].fieldID.value = nextFieldID
+//    defaultFields[defaultFields.count - 1].fieldID.value = nextFieldID
     nextFieldID = nextFieldID + 1
   }
   

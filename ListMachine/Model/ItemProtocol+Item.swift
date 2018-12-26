@@ -23,6 +23,7 @@ class Item: Object, ItemProtocol {
   typealias FieldID = Int
   
   let itemFields = RealmSwift.List<ItemField>()
+  @objc dynamic var itemID: String = UUID().uuidString
   @objc dynamic var templateItem: TemplateItem?
   
   var itemListTitle: String {
@@ -31,6 +32,10 @@ class Item: Object, ItemProtocol {
     } else {
       return "No Title"
     }
+  }
+  
+  override static func primaryKey() -> String? {
+    return "itemID"
   }
   
   convenience init(from template: TemplateItem) {
@@ -43,15 +48,18 @@ class Item: Object, ItemProtocol {
   
   func setNewTemplate(_ template: TemplateItem) {
     self.templateItem = template
-
+    
     var newFields = [ItemField]()
+    
     template.defaultFields.forEach { (field) in
-      newFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: ""))
+      newFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: "", id: field.fieldID.value))
     }
+
     let oldFields = self.itemFields
     for data in oldFields {
       let target = newFields.firstIndex { (field) -> Bool in
-        data.fieldID.value == field.fieldID.value
+        print(data.fieldID.value, field.fieldID.value)
+        return data.fieldID.value == field.fieldID.value
       }
       if target != nil {
         newFields[target!].value = data.value

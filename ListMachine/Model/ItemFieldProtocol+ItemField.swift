@@ -29,16 +29,18 @@ class ItemField: Object, ItemFieldProtocol {
   @objc dynamic var type: String = FieldType.noType.rawValue
   @objc dynamic var value: FieldValue? = ""
   let fieldID = RealmOptional<Int>()
+  @objc dynamic var fieldPrimaryKey: String = UUID().uuidString
   
-  override static func primaryKey() -> String? {
-    return "fieldID"
-  }
-  
-  convenience init(name: String, type: FieldType, value: FieldValue?) {
+  convenience init(name: String, type: FieldType, value: FieldValue?, id: Int?) {
     self.init()
     self.name = name
     self.type = type.rawValue
     self.value = value
+    self.fieldID.value = id
+  }
+  
+  override static func primaryKey() -> String? {
+    return "fieldPrimaryKey"
   }
   
   func set(value: FieldValue, forType type: FieldType) {
