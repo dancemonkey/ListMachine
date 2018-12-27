@@ -36,13 +36,23 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.templateFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type
-    print(itemTemplate.defaultFields[indexPath.row].fieldID.value)
     return cell!
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     // call segue and populate editor with current field
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
+  }
+  
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      store?.delete(object: itemTemplate.defaultFields[indexPath.row])
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
   }
   
   // MARK: Actions

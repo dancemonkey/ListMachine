@@ -310,6 +310,11 @@
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
                     <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Sc8-fN-9CA">
+                            <connections>
+                                <action selector="deleteAllPressedWithSender:" destination="S3e-MS-CWW" id="z6C-ZG-TPF"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="7rf-28-oib">
                                 <connections>

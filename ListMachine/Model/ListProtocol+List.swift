@@ -42,7 +42,6 @@ class List: Object, ListProtocol {
     self.templateItem = template
     for item in listedItems {
       item.setNewTemplate(template)
-      print("list function setTemplate setting new templates for each item")
     }
   }
   

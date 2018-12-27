@@ -58,7 +58,6 @@ class Item: Object, ItemProtocol {
     let oldFields = self.itemFields
     for data in oldFields {
       let target = newFields.firstIndex { (field) -> Bool in
-        print(data.fieldID.value, field.fieldID.value)
         return data.fieldID.value == field.fieldID.value
       }
       if target != nil {

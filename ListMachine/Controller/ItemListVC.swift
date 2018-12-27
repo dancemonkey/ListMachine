@@ -25,7 +25,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     itemList = realm?.objects(List.self).first
 //    itemList = List(name: "Movie Collection")
 //    store?.save(object: itemList, andRun: nil)
-    // will probably do this on prior screen eventually
+//    print("list objects in realm = \(realm?.objects(List.self).count)")
     
     self.title = itemList.name
     
@@ -52,6 +52,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: indexPath)
   }
   
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      store?.delete(object: itemList.listedItems[indexPath.row])
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+  }
+  
   // MARK: Actions
   @IBAction func newItemPressed(sender: UIBarButtonItem) {
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: self)
@@ -59,6 +70,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
+  }
+  
+  // TEMP FOR CLEARING ENTIRE DATABASE WHILE DEBUGGING
+  @IBAction func deleteAllPressed(sender: UIBarButtonItem) {
+    try! realm?.write {
+      realm?.deleteAll()
+    }
+    tableView.reloadData()
   }
   
   // MARK: Item Save Delegate
@@ -80,7 +99,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   func saveTemplate(_ template: TemplateItem) {
     store?.save(object: itemList, andRun: {
       self.itemList.setTemplate(template)
-      print("ran save block from list saveTemplate function")
     })
   }
   

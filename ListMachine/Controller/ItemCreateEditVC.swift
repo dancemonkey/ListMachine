@@ -40,7 +40,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.itemFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = "\(itemTemplate.defaultFields[indexPath.row].type), \(item?.itemFields[indexPath.row].value ?? "No value entered")"
-    print(item?.itemFields[indexPath.row].fieldID.value)
     return cell!
   }
   
