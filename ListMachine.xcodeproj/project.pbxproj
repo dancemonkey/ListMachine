@@ -32,6 +32,8 @@
 		10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CC21CABEB1008006FF /* TableCellID.swift */; };
 		10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CE21CAC320008006FF /* SegueID.swift */; };
 		10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */; };
+		10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D021D65722002E9E5C /* FieldItemCell.swift */; };
+		10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */; };
 		A1850574D31A02B5677342E5 /* Pods_ListMachine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		10D4A8CC21CABEB1008006FF /* TableCellID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellID.swift; sourceTree = "<group>"; };
 		10D4A8CE21CAC320008006FF /* SegueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueID.swift; sourceTree = "<group>"; };
 		10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSaveDelegate.swift; sourceTree = "<group>"; };
+		10F5F4D021D65722002E9E5C /* FieldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCell.swift; sourceTree = "<group>"; };
+		10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintValues.swift; sourceTree = "<group>"; };
 		2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListMachine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F668188395EBFA98C2FFC8 /* Pods-ListMachine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListMachine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ListMachine/Pods-ListMachine.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +140,7 @@
 				10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */,
 				10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */,
 				10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */,
+				10F5F4D021D65722002E9E5C /* FieldItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			children = (
 				10D4A8CC21CABEB1008006FF /* TableCellID.swift */,
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
+				10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
+				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
 				10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */,
 				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,
@@ -315,6 +322,7 @@
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
+				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -46,6 +46,29 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customFieldItemCell" rowHeight="75" id="TEl-0Y-D3Q" customClass="FieldItemCell" customModule="ListMachine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="83" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TEl-0Y-D3Q" id="vaJ-Fh-JFD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUN-D1-1XF">
+                                                    <rect key="frame" x="31" y="27" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xUN-D1-1XF" firstAttribute="leading" secondItem="vaJ-Fh-JFD" secondAttribute="leadingMargin" constant="16" id="CVA-g1-pbI"/>
+                                                <constraint firstItem="xUN-D1-1XF" firstAttribute="centerY" secondItem="vaJ-Fh-JFD" secondAttribute="centerY" id="DoB-Mo-HDZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="xUN-D1-1XF" id="6M9-OL-SeO"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKk-mG-d0D">
@@ -79,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="874"/>
+            <point key="canvasLocation" x="1045.5999999999999" y="873.91304347826099"/>
         </scene>
         <!--Enter Field Value-->
         <scene sceneID="BkY-PE-aCt">

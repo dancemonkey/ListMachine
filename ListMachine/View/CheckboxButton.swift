@@ -10,12 +10,17 @@ import UIKit
 
 class CheckboxButton: UIButton {
   
-  func setChecked(_: Bool) {
+  func setChecked(_ checked: Bool) {
     if checked {
       setImage(UIImage(named: "checked"), for: .normal)
     } else {
       setImage(UIImage(named: "unchecked"), for: .normal)
     }
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
+    print("button touched")
   }
   
 }

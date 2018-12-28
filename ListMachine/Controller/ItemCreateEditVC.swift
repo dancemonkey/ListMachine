@@ -37,21 +37,29 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.itemFieldCell.rawValue)
-    cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
-    cell?.detailTextLabel?.text = "\(itemTemplate.defaultFields[indexPath.row].type), \(item?.itemFields[indexPath.row].value ?? "No value entered")"
-    return cell!
+    let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.customFieldItemCell.rawValue) as? FieldItemCell
+    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
+    
+    return cell ?? UITableViewCell()
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: SegueID.showFieldValueEntry.rawValue, sender: indexPath)
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch itemTemplate.defaultFields[indexPath.row].type {
+    case "memo":
+      return 125.0
+    default:
+      return 50.0
+    }
+  }
+  
   // MARK: Nav Actions
   
   @IBAction func savePressed(sender: UIButton) {
-    // with realm can probably just save item since I am using primaryKeys?
-    
+    // NEED TO SAVE BASED ON VALUES IN CELLS NOW
     if let i = itemIndex {
       itemSaveDelegate?.updateItem(self.item!, at: i)
     } else {
