@@ -20,35 +20,47 @@ class FieldItemCell: UITableViewCell {
     case .checkBox:
       valueView = CheckboxButton()
       (valueView as! CheckboxButton).setChecked(Bool(value ?? "false")!)
+      (valueView as! CheckboxButton).isUserInteractionEnabled = true
+      (valueView as! CheckboxButton).addTarget(self, action: #selector(checkboxBtnPressed(_:)), for: .touchDown)
+      self.addSubview(valueView as! CheckboxButton)
     case .date:
       valueView = UIButton() // SUBCLASS THIS
-      (valueView as! UIButton).setTitle(value ?? "Select Date", for: .normal)
+      if value != nil && value != "" {
+        (valueView as! UIButton).setTitle(value!, for: .normal)
+      } else {
+        (valueView as! UIButton).setTitle("Select Date", for: .normal)
+      }
+      (valueView as! UIButton).isUserInteractionEnabled = true
+      (valueView as! UIButton).setTitleColor(.blue, for: .normal)
+      (valueView as! UIButton).setTitleColor(.gray, for: .highlighted)
+      self.addSubview(valueView as! UIButton)
     case .memo:
       valueView = UITextView()
       (valueView as! UITextView).text = value ?? ""
+      self.addSubview(valueView as! UITextView)
     case .text:
       valueView = UITextField()
       (valueView as! UITextField).text = value ?? ""
+      self.addSubview(valueView as! UITextField)
     case .number:
       valueView = UITextField()
       (valueView as! UITextField).text = value ?? ""
       (valueView as! UITextField).keyboardType = .numberPad
+      self.addSubview(valueView as! UITextField)
     default:
       valueView = nil
       valueView?.isHidden = true
     }
     if valueView != nil {
       // using magic numbers for now until I know what the values should be
-      valueView!.backgroundColor = .yellow
       valueView!.isUserInteractionEnabled = true
-      self.addSubview(valueView!)
       
       valueView!.translatesAutoresizingMaskIntoConstraints = false
       title.translatesAutoresizingMaskIntoConstraints = false
       
       let views = ["valueView": valueView!, "title": title]
-      let hFormat = "[title]-[valueView]-16-|"
-      let vFormat = "V:|-[valueView]-|"
+      let hFormat = VFLConstraints(type: type).horizontalVFL  //"[title]-[valueView]-16-|"
+      let vFormat = VFLConstraints(type: type).verticalVFL    //"V:|-[valueView]-|"
       let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
       let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: .alignAllCenterY, metrics: nil, views: views)
       var allConstraints: [NSLayoutConstraint] = []
@@ -73,12 +85,9 @@ class FieldItemCell: UITableViewCell {
     // Configure the view for the selected state
   }
   
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    super.touchesBegan(touches, with: event)
-    if let view = (valueView as? CheckboxButton) {
-      print("touched")
-      view.setChecked(true)
-    }
+  @objc func checkboxBtnPressed(_ sender: CheckboxButton) {
+    print("button pressed")
+    sender.setChecked(true)
   }
   
 }

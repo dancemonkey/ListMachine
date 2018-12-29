@@ -52,7 +52,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     case "memo":
       return 125.0
     default:
-      return 50.0
+      return 61.0
     }
   }
   
