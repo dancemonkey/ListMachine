@@ -19,7 +19,8 @@ class FieldItemCell: UITableViewCell {
     switch type {
     case .checkBox:
       valueView = CheckboxButton()
-      (valueView as! CheckboxButton).setChecked(Bool(value ?? "false")!)
+      let checked: Bool? = Bool(value ?? "false")
+      (valueView as! CheckboxButton).setChecked(checked ?? false)
       (valueView as! CheckboxButton).isUserInteractionEnabled = true
       (valueView as! CheckboxButton).addTarget(self, action: #selector(checkboxBtnPressed(_:)), for: .touchDown)
       self.addSubview(valueView as! CheckboxButton)
@@ -37,56 +38,56 @@ class FieldItemCell: UITableViewCell {
     case .memo:
       valueView = UITextView()
       (valueView as! UITextView).text = value ?? ""
+      (valueView as! UITextView).backgroundColor = .lightGray
       self.addSubview(valueView as! UITextView)
-    case .text:
+    case .text, .number:
       valueView = UITextField()
       (valueView as! UITextField).text = value ?? ""
-      self.addSubview(valueView as! UITextField)
-    case .number:
-      valueView = UITextField()
-      (valueView as! UITextField).text = value ?? ""
-      (valueView as! UITextField).keyboardType = .numberPad
+      (valueView as! UITextField).borderStyle = .roundedRect
+      if type == .number {
+        (valueView as! UITextField).keyboardType = .numberPad
+      }
       self.addSubview(valueView as! UITextField)
     default:
       valueView = nil
       valueView?.isHidden = true
     }
     if valueView != nil {
-      // using magic numbers for now until I know what the values should be
       valueView!.isUserInteractionEnabled = true
-      
-      valueView!.translatesAutoresizingMaskIntoConstraints = false
-      title.translatesAutoresizingMaskIntoConstraints = false
-      
-      let views = ["valueView": valueView!, "title": title]
-      let hFormat = VFLConstraints(type: type).horizontalVFL  //"[title]-[valueView]-16-|"
-      let vFormat = VFLConstraints(type: type).verticalVFL    //"V:|-[valueView]-|"
-      let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
-      let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: .alignAllCenterY, metrics: nil, views: views)
-      var allConstraints: [NSLayoutConstraint] = []
-      allConstraints = allConstraints + hConstraints
-      allConstraints = allConstraints + vConstraints
-      NSLayoutConstraint.activate(allConstraints)
+      setConstraints(for: type)
     }
+  }
+  
+  func setConstraints(for type: FieldType) {
+    valueView!.translatesAutoresizingMaskIntoConstraints = false
+    title.translatesAutoresizingMaskIntoConstraints = false
+    
+    let views: [String: Any] = ["valueView": valueView!, "title": title]
+    let hFormat = VFLConstraints(type: type).horizontalVFL
+    let vFormat = VFLConstraints(type: type).verticalVFL
+    let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
+    let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: [], metrics: nil, views: views)
+    var allConstraints: [NSLayoutConstraint] = []
+    allConstraints = allConstraints + hConstraints
+    allConstraints = allConstraints + vConstraints
+    if type == .memo {
+      let memoTitleConstraint = "|-[valueView]-|"
+      allConstraints = allConstraints + NSLayoutConstraint.constraints(withVisualFormat: memoTitleConstraint, options: [], metrics: nil, views: views)
+    }
+    NSLayoutConstraint.activate(allConstraints)
   }
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    valueView?.isHidden = false
+    valueView?.removeFromSuperview()
+    valueView = nil
   }
   
   override func awakeFromNib() {
     super.awakeFromNib()
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
-  }
-  
   @objc func checkboxBtnPressed(_ sender: CheckboxButton) {
-    print("button pressed")
     sender.setChecked(true)
   }
   

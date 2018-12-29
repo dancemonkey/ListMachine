@@ -14,7 +14,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
   @IBOutlet weak var typePicker: UIPickerView!
   @IBOutlet weak var valueFld: UITextField!
   var currentField: ItemFieldProtocol?
-  var currentFieldID: Int?
+  var currentFieldIdx: Int?
   var saveDelegate: FieldSaveDelegate?
   
   private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .checkBox]
@@ -38,7 +38,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     // save values back to item
     let type = FieldType(rawValue: currentField?.type ?? "")
     let field = ItemField(name: currentField?.name ?? "Unnamed", type: type ?? FieldType.noType, value: valueFld.text ?? "", id: currentField?.fieldID.value)
-    saveDelegate?.update(field, at: currentFieldID ?? 0)
+    saveDelegate?.update(field, at: currentFieldIdx ?? 0)
     navigationController?.popViewController(animated: true)
   }
   

@@ -9,10 +9,6 @@
 import Foundation
 import RealmSwift
 
-enum FieldType: String {
-  case text, memo, number, date, checkBox, noType
-}
-
 protocol ItemFieldProtocol {
   typealias FieldID = Int
   typealias FieldValue = String

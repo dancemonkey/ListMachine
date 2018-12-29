@@ -73,7 +73,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     if segue.identifier == SegueID.showFieldValueEntry.rawValue {
       let dest = segue.destination as! FieldValueEditVC
       dest.currentField = item?.itemFields[(sender as! IndexPath).row]
-      dest.currentFieldID = item?.itemFields[(sender as! IndexPath).row].fieldID.value
+      dest.currentFieldIdx = (sender as! IndexPath).row
       dest.saveDelegate = self
     }
   }

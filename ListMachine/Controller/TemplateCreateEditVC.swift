@@ -89,7 +89,8 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     store?.save(object: field, andRun: {
       self.itemTemplate.update(field: field, at: index)
     })
-    tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
+    tableView.reloadData()
+//    tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
   }
   
 }
