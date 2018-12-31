@@ -18,41 +18,21 @@ class FieldItemCell: UITableViewCell {
     let type = FieldType(rawValue: field.type) ?? .noType
     switch type {
     case .checkBox:
-      valueView = UISwitch()
-      let checked: Bool? = Bool(value ?? "false")
-      (valueView as! UISwitch).isOn = checked ?? false
-      (valueView as! UISwitch).isUserInteractionEnabled = true
-      (valueView as! UISwitch).addTarget(self, action: #selector(switched(_:)), for: .valueChanged)
-      self.addSubview(valueView as! UISwitch)
+      valueView = ItemFieldSwitch(with: field, and: value)
+      (valueView as! ItemFieldSwitch).addTarget(self, action: #selector(switched(_:)), for: .valueChanged)
     case .date:
-      valueView = UIButton() // SUBCLASS THIS
-      if value != nil && value != "" {
-        (valueView as! UIButton).setTitle(value!, for: .normal)
-      } else {
-        (valueView as! UIButton).setTitle("Select Date", for: .normal)
-      }
-      (valueView as! UIButton).isUserInteractionEnabled = true
-      (valueView as! UIButton).setTitleColor(.blue, for: .normal)
-      (valueView as! UIButton).setTitleColor(.gray, for: .highlighted)
-      self.addSubview(valueView as! UIButton)
+      valueView = ItemFieldButton(with: field, and: value)
+      (valueView as! UIButton).addTarget(self, action: #selector(dateButtonPressed(_:)), for: .touchUpInside)
     case .memo:
-      valueView = UITextView()
-      (valueView as! UITextView).text = value ?? ""
-      (valueView as! UITextView).backgroundColor = .lightGray
-      self.addSubview(valueView as! UITextView)
+      valueView = ItemFieldTextView(with: field, and: value)
     case .text, .number:
-      valueView = UITextField()
-      (valueView as! UITextField).text = value ?? ""
-      (valueView as! UITextField).borderStyle = .roundedRect
-      if type == .number {
-        (valueView as! UITextField).keyboardType = .numberPad
-      }
-      self.addSubview(valueView as! UITextField)
+      valueView = ItemFieldTextField(with: field, and: value)
     default:
       valueView = nil
       valueView?.isHidden = true
     }
     if valueView != nil {
+      self.addSubview(valueView!)
       valueView!.isUserInteractionEnabled = true
       setConstraints(for: type)
     }
@@ -89,6 +69,10 @@ class FieldItemCell: UITableViewCell {
   
   @objc func switched(_ sender: UISwitch) {
     // change value in model
+  }
+  
+  @objc func dateButtonPressed(_ sender: UIButton) {
+    // show date picker and save back to model
   }
   
 }
