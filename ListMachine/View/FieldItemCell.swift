@@ -18,12 +18,12 @@ class FieldItemCell: UITableViewCell {
     let type = FieldType(rawValue: field.type) ?? .noType
     switch type {
     case .checkBox:
-      valueView = CheckboxButton()
+      valueView = UISwitch()
       let checked: Bool? = Bool(value ?? "false")
-      (valueView as! CheckboxButton).setChecked(checked ?? false)
-      (valueView as! CheckboxButton).isUserInteractionEnabled = true
-      (valueView as! CheckboxButton).addTarget(self, action: #selector(checkboxBtnPressed(_:)), for: .touchDown)
-      self.addSubview(valueView as! CheckboxButton)
+      (valueView as! UISwitch).isOn = checked ?? false
+      (valueView as! UISwitch).isUserInteractionEnabled = true
+      (valueView as! UISwitch).addTarget(self, action: #selector(switched(_:)), for: .valueChanged)
+      self.addSubview(valueView as! UISwitch)
     case .date:
       valueView = UIButton() // SUBCLASS THIS
       if value != nil && value != "" {
@@ -87,8 +87,8 @@ class FieldItemCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  @objc func checkboxBtnPressed(_ sender: CheckboxButton) {
-    sender.setChecked(true)
+  @objc func switched(_ sender: UISwitch) {
+    // change value in model
   }
   
 }
