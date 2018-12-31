@@ -38,7 +38,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.customFieldItemCell.rawValue) as? FieldItemCell
-    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
+    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value) { value in
+      self.store?.run {
+        self.item?.itemFields[indexPath.row].value = value
+      }
+    }
+    cell?.textViewDelegate = self
+    cell?.textFieldDelegate = self
     
     return cell ?? UITableViewCell()
   }
@@ -60,6 +66,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @IBAction func savePressed(sender: UIButton) {
     // NEED TO SAVE BASED ON VALUES IN CELLS NOW
+    // gather values from cell outlets
     if let i = itemIndex {
       itemSaveDelegate?.updateItem(self.item!, at: i)
     } else {
@@ -89,5 +96,17 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     })
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
+  
+}
+
+extension ItemCreateEditVC: UITextViewDelegate {
+  func textViewDidEndEditing(_ textView: UITextView) {
+    // save contents of text view to item field somehow
+    // how do i know which field?
+    // save via the cell's closure somehow
+  }
+}
+
+extension ItemCreateEditVC: UITextFieldDelegate {
   
 }

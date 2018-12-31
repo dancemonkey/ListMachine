@@ -40,7 +40,13 @@ class DataStore {
   }
   
   func run(closure: () -> ()) {
-    closure()
+    do {
+      try realm?.write {
+        closure()
+      }
+    } catch let error as NSError {
+      print(error)
+    }
   }
   
   func delete(object: Object) {

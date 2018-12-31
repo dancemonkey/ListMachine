@@ -9,6 +9,7 @@
 import UIKit
 
 protocol CustomFieldUIViewProtocol: AnyObject {
+  var save: ((_: String)->())? { get set }
   func configure(with field: ItemField, and value: String?)
   init(with field: ItemField, and value: String?)
 }

@@ -9,24 +9,30 @@
 import UIKit
 
 class FieldItemCell: UITableViewCell {
-  
+
   @IBOutlet weak var title: UILabel!
   var valueView: UIView?
+  var textFieldDelegate: UITextFieldDelegate?
+  var textViewDelegate: UITextViewDelegate?
   
-  func configure(withField field: ItemField, andValue value: String?) {
+  func configure(withField field: ItemField, andValue value: String?, closure save: @escaping (String) -> ()) {
     title.text = field.name
     let type = FieldType(rawValue: field.type) ?? .noType
     switch type {
     case .checkBox:
       valueView = ItemFieldSwitch(with: field, and: value)
       (valueView as! ItemFieldSwitch).addTarget(self, action: #selector(switched(_:)), for: .valueChanged)
+      (valueView as! ItemFieldSwitch).save = save
     case .date:
       valueView = ItemFieldButton(with: field, and: value)
-      (valueView as! UIButton).addTarget(self, action: #selector(dateButtonPressed(_:)), for: .touchUpInside)
+      (valueView as! ItemFieldButton).addTarget(self, action: #selector(dateButtonPressed(_:)), for: .touchUpInside)
+      (valueView as! ItemFieldButton).save = save
     case .memo:
       valueView = ItemFieldTextView(with: field, and: value)
+      (valueView as! ItemFieldTextView).save = save
     case .text, .number:
       valueView = ItemFieldTextField(with: field, and: value)
+      (valueView as! ItemFieldTextField).save = save
     default:
       valueView = nil
       valueView?.isHidden = true
@@ -67,12 +73,13 @@ class FieldItemCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  @objc func switched(_ sender: UISwitch) {
-    // change value in model
+  @objc func switched(_ sender: ItemFieldSwitch) {
+    sender.save!(sender.isOn.description)
   }
   
   @objc func dateButtonPressed(_ sender: UIButton) {
     // show date picker and save back to model
+    // date picker can call existing delegate function to save date to item
   }
   
 }

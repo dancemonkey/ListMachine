@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
   
+  var save: ((String) -> ())?
+
   func configure(with field: ItemField, and value: String?) {
     self.text = value ?? ""
     let type = FieldType(rawValue: field.type) ?? .noType

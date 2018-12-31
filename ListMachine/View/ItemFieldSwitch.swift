@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
 
+  var save: ((String) -> ())?
+  
   internal func configure(with field: ItemField, and value: String?) {
     let checked: Bool? = Bool(value ?? "false")
     self.isOn = checked ?? false

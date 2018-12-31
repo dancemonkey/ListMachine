@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
+  var save: ((String) -> ())?
+
   internal func configure(with field: ItemField, and value: String?) {
     if value != nil && value != "" {
       self.setTitle(value!, for: .normal)

@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
   
+  var save: ((String) -> ())?
+
   internal func configure(with field: ItemField, and value: String?) {
     self.text = value ?? ""
   }
