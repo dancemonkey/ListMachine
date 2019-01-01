@@ -13,6 +13,7 @@
 		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		1029778721D7E6F700945B45 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1029778621D7E6F700945B45 /* FieldType.swift */; };
+		1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */; };
 		104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */; };
 		104C766921DA51510044346D /* ItemFieldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766821DA51510044346D /* ItemFieldButton.swift */; };
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
@@ -51,6 +52,7 @@
 		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		1029778621D7E6F700945B45 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
+		1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCellValueView.swift; sourceTree = "<group>"; };
 		104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldSwitch.swift; sourceTree = "<group>"; };
 		104C766821DA51510044346D /* ItemFieldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldButton.swift; sourceTree = "<group>"; };
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				104C766821DA51510044346D /* ItemFieldButton.swift */,
 				104C766C21DA55080044346D /* ItemFieldTextView.swift */,
 				104C766E21DA58300044346D /* ItemFieldTextField.swift */,
+				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
 				1029778721D7E6F700945B45 /* FieldType.swift in Sources */,
+				1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */,
 				10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */,
 				104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */,
 				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,

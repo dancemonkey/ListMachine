@@ -11,6 +11,9 @@ import UIKit
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
   var save: ((String) -> ())?
+  var reportValue: String {
+    return self.titleLabel?.text ?? ""
+  }
 
   internal func configure(with field: ItemField, and value: String?) {
     if value != nil && value != "" {

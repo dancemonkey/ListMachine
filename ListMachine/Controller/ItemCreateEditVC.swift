@@ -22,6 +22,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     self.title = item?.itemListTitle ?? "Untitled Item"
     
+    let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped(sender:)))
+    self.view.addGestureRecognizer(tap)
+    
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -43,14 +46,11 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.item?.itemFields[indexPath.row].value = value
       }
     }
-    cell?.textViewDelegate = self
-    cell?.textFieldDelegate = self
-    
     return cell ?? UITableViewCell()
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.showFieldValueEntry.rawValue, sender: indexPath)
+    performSegue(withIdentifier: SegueID.showFieldValueEntry.rawValue, sender: indexPath)
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,8 +65,12 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   // MARK: Nav Actions
   
   @IBAction func savePressed(sender: UIButton) {
-    // NEED TO SAVE BASED ON VALUES IN CELLS NOW
-    // gather values from cell outlets
+    store?.run {
+      for (idx, field) in item!.itemFields.enumerated() {
+        let cell = tableView.cellForRow(at: IndexPath(row: idx, section: 0)) as! FieldItemCell
+        field.value = cell.valueView?.getSubviewValue ?? ""
+      }
+    }
     if let i = itemIndex {
       itemSaveDelegate?.updateItem(self.item!, at: i)
     } else {
@@ -97,16 +101,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
   
-}
-
-extension ItemCreateEditVC: UITextViewDelegate {
-  func textViewDidEndEditing(_ textView: UITextView) {
-    // save contents of text view to item field somehow
-    // how do i know which field?
-    // save via the cell's closure somehow
-  }
-}
-
-extension ItemCreateEditVC: UITextFieldDelegate {
+  // MARK: Helper Functions
   
+  @objc func screenTapped(sender: UITapGestureRecognizer) {
+    UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
 }

@@ -11,6 +11,9 @@ import UIKit
 class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
   
   var save: ((String) -> ())?
+  var reportValue: String {
+    return self.text
+  }
 
   internal func configure(with field: ItemField, and value: String?) {
     self.text = value ?? ""
@@ -39,5 +42,4 @@ class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
   override func awakeFromNib() {
     super.awakeFromNib()
   }
-  
 }

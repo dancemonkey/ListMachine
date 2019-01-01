@@ -13,7 +13,7 @@ struct VFLConstraints {
   var horizontalVFL: String {
     switch type {
     case .checkBox:
-      return "|-[title]-[valueView(45@1000)]-16-|"
+      return "|-[title]-[valueView]-16-|"
     case .number, .text, .date:
       return "|-[title]-[valueView]-16-|"
     case .memo:
