@@ -19,6 +19,8 @@
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
+		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
+		10A933DD21DD042F000A70ED /* SegueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueProtocol.swift */; };
 		10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */; };
 		10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */; };
 		10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */; };
@@ -58,6 +60,8 @@
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
+		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
+		10A933DC21DD042F000A70ED /* SegueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueProtocol.swift; sourceTree = "<group>"; };
 		10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEntryCell.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				10027E3921CC04E2000CA1DB /* ItemListVC.swift */,
 				10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */,
 				10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */,
+				10A933DA21DCFF05000A70ED /* DatePickerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				102097DF21D3B44B0062B367 /* DataStore.swift */,
 				1029778621D7E6F700945B45 /* FieldType.swift */,
 				104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */,
+				10A933DC21DD042F000A70ED /* SegueProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,8 +329,10 @@
 			files = (
 				104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */,
 				10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */,
+				10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */,
 				104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */,
 				102097E021D3B44B0062B367 /* DataStore.swift in Sources */,
+				10A933DD21DD042F000A70ED /* SegueProtocol.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,

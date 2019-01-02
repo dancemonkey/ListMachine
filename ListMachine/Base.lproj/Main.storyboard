@@ -95,6 +95,7 @@
                     <connections>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
                         <segue destination="90M-FU-Hxa" kind="show" identifier="showFieldValueEntry" id="t8c-e9-JrK"/>
+                        <segue destination="rad-PH-LNs" kind="show" identifier="showDatePicker" id="vex-8r-JFF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -469,6 +470,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClQ-ke-W21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="111.99400299850076"/>
+        </scene>
+        <!--Selecte Date/Time-->
+        <scene sceneID="zOC-Ol-Eaa">
+            <objects>
+                <viewController title="Selecte Date/Time" id="rad-PH-LNs" customClass="DatePickerVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OMi-L9-yDn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6rw-KT-IYy">
+                                <rect key="frame" x="0.0" y="132" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="Lf6-5o-86T"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="568131048.89917004">
+                                    <!--2019-01-02 14:10:48 +0000-->
+                                </date>
+                            </datePicker>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-2f-pbd">
+                                <rect key="frame" x="93" y="302" width="189" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-YA-vTM">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Include Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlO-yv-uAE">
+                                        <rect key="frame" x="91" y="0.0" width="98" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj">
+                                <rect key="frame" x="137.5" y="349" width="100" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="f4T-4p-wWx"/>
+                                    <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
+                                </constraints>
+                                <state key="normal" title="DONE"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6rw-KT-IYy" firstAttribute="leading" secondItem="NTH-EP-ifL" secondAttribute="leading" id="1nZ-Su-NsO"/>
+                            <constraint firstItem="HEU-2f-pbd" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="82s-GM-5jS"/>
+                            <constraint firstItem="6rw-KT-IYy" firstAttribute="top" secondItem="NTH-EP-ifL" secondAttribute="top" constant="16" id="8vl-0v-hPd"/>
+                            <constraint firstItem="6rw-KT-IYy" firstAttribute="trailing" secondItem="NTH-EP-ifL" secondAttribute="trailing" id="EUt-8t-Dnd"/>
+                            <constraint firstItem="Ics-17-Sqj" firstAttribute="top" secondItem="HEU-2f-pbd" secondAttribute="bottom" constant="16" id="hjd-X7-eix"/>
+                            <constraint firstItem="HEU-2f-pbd" firstAttribute="top" secondItem="6rw-KT-IYy" secondAttribute="bottom" constant="8" id="hoG-6o-W4Z"/>
+                            <constraint firstItem="Ics-17-Sqj" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="qLX-1l-CRa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NTH-EP-ifL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uib-mB-PnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046" y="112"/>
         </scene>
     </scenes>
 </document>

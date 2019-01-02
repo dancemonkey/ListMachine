@@ -14,7 +14,7 @@ class FieldItemCellValueView: UIView {
   var buttonSubview: ItemFieldButton?
   var textView: ItemFieldTextView?
   var textField: ItemFieldTextField?
-  var save: ((String) -> ())?
+//  var save: ((String) -> ())?
   var getSubviewValue: String {
     if switchSubview != nil {
       return switchSubview!.reportValue
@@ -64,21 +64,23 @@ class FieldItemCellValueView: UIView {
     workingView.translatesAutoresizingMaskIntoConstraints = false
     
     let views: [String: Any] = ["workingView": workingView]
-    let hFormat = "|-[workingView]-16-|"
-    var vFormat = "V:|-4@250-[workingView(45@1000)]-4@250-|"
+    let hFormat = "|[workingView]|"
+    var vFormat = "V:|[workingView(45@1000)]|"
     if type == .memo {
-      vFormat = "V:|-4@250-[workingView]-4@250-|"
+      vFormat = "V:|[workingView]|"
     }
     let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
     let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: [], metrics: nil, views: views)
     var allConstraints: [NSLayoutConstraint] = []
     allConstraints = allConstraints + hConstraints
     allConstraints = allConstraints + vConstraints
-//    if type == .memo {
-//      let memoTitleConstraint = "|-[workingView]-|"
-//      allConstraints = allConstraints + NSLayoutConstraint.constraints(withVisualFormat: memoTitleConstraint, options: [], metrics: nil, views: views)
-//    }
     NSLayoutConstraint.activate(allConstraints)
   }
   
+  func configureButtonAction(for segueID: SegueID, and delegate: SegueProtocol) {
+    if buttonSubview != nil {
+      buttonSubview?.segueID = segueID
+      buttonSubview?.segueDelegate = delegate
+    }
+  }
 }

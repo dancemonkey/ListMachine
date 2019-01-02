@@ -41,11 +41,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.customFieldItemCell.rawValue) as? FieldItemCell
-    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value) { value in
-      self.store?.run {
-        self.item?.itemFields[indexPath.row].value = value
-      }
-    }
+    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
+    let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
+    cell?.configureAction(for: type, with: self)
     return cell ?? UITableViewCell()
   }
   
@@ -105,5 +103,15 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @objc func screenTapped(sender: UITapGestureRecognizer) {
     UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
+  
+  @objc func dateSelectTapped(sender: UIButton) {
+    self.performSegue(withIdentifier: SegueID.showDatePicker.rawValue, sender: self)
+  }
+}
+
+extension ItemCreateEditVC: SegueProtocol {
+  func segueRequested(to segue: SegueID?) {
+    self.performSegue(withIdentifier: segue!.rawValue, sender: self)
   }
 }

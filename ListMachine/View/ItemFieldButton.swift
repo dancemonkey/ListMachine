@@ -10,7 +10,13 @@ import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
-  var save: ((String) -> ())?
+//  var save: ((String) -> ())?
+  var segueDelegate: SegueProtocol?
+  var segueID: SegueID? {
+    didSet {
+      self.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+    }
+  }
   var reportValue: String {
     return self.titleLabel?.text ?? ""
   }
@@ -23,6 +29,10 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
     }
     self.setTitleColor(.blue, for: .normal)
     self.setTitleColor(.gray, for: .highlighted)
+  }
+  
+  @objc private func buttonTapped(sender: UIButton) {
+    segueDelegate?.segueRequested(to: self.segueID)
   }
 
 }

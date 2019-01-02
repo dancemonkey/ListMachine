@@ -10,7 +10,7 @@ import UIKit
 
 class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
   
-  var save: ((String) -> ())?
+//  var save: ((String) -> ())?
   var reportValue: String {
     return self.text
   }

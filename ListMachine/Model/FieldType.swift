@@ -11,5 +11,12 @@ import UIKit
 enum FieldType: String {
   case text, memo, number, date, checkBox, noType
   
-  
+  func getSegueID() -> SegueID? {
+    switch self {
+    case .date:
+      return .showDatePicker
+    default:
+      return nil
+    }
+  }
 }
