@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol SegueProtocol {
-  func segueRequested(to segue: SegueID?)
+protocol SegueDelegate {
+  func segueRequested(to segue: SegueID?, sender: Any?)
 }

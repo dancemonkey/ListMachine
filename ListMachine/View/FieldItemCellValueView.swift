@@ -77,7 +77,7 @@ class FieldItemCellValueView: UIView {
     NSLayoutConstraint.activate(allConstraints)
   }
   
-  func configureButtonAction(for segueID: SegueID, and delegate: SegueProtocol) {
+  func configureButtonAction(for segueID: SegueID, and delegate: SegueDelegate) {
     if buttonSubview != nil {
       buttonSubview?.segueID = segueID
       buttonSubview?.segueDelegate = delegate

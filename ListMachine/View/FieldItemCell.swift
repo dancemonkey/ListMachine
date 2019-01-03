@@ -55,7 +55,7 @@ class FieldItemCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  func configureAction(for type: FieldType, with delegate: SegueProtocol) {
+  func configureAction(for type: FieldType, with delegate: SegueDelegate) {
     if let segueID = type.getSegueID() {
       valueView?.configureButtonAction(for: segueID, and: delegate)
     }

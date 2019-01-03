@@ -20,13 +20,16 @@
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
-		10A933DD21DD042F000A70ED /* SegueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueProtocol.swift */; };
+		10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueDelegate.swift */; };
 		10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */; };
 		10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */; };
 		10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */; };
 		10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */; };
 		10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */; };
 		10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */; };
+		10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */; };
+		10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF79A121DE4758006F9F64 /* Stylesheet.swift */; };
+		10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */; };
 		10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963821CE9F680053808A /* ListProtocol+List.swift */; };
 		10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963A21CE9F990053808A /* TemplateItem.swift */; };
 		10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */; };
@@ -61,13 +64,16 @@
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
-		10A933DC21DD042F000A70ED /* SegueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueProtocol.swift; sourceTree = "<group>"; };
+		10A933DC21DD042F000A70ED /* SegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
 		10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSaveDelegate.swift; sourceTree = "<group>"; };
+		10CF79A121DE4758006F9F64 /* Stylesheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderSenderDelegate.swift; sourceTree = "<group>"; };
 		10D3963821CE9F680053808A /* ListProtocol+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListProtocol+List.swift"; sourceTree = "<group>"; };
 		10D3963A21CE9F990053808A /* TemplateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItem.swift; sourceTree = "<group>"; };
 		10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCreateEditVC.swift; sourceTree = "<group>"; };
@@ -102,6 +108,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10CF799E21DE442E006F9F64 /* Protocols + Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */,
+				104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */,
+				10A933DC21DD042F000A70ED /* SegueDelegate.swift */,
+				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */,
+				10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */,
+				10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */,
+			);
+			path = "Protocols + Delegates";
+			sourceTree = "<group>";
+		};
 		10D4A89B21CAB751008006FF = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +142,7 @@
 		10D4A8A621CAB752008006FF /* ListMachine */ = {
 			isa = PBXGroup;
 			children = (
+				10CF799E21DE442E006F9F64 /* Protocols + Delegates */,
 				10D4A8C121CABB9F008006FF /* Utils */,
 				10D4A8BE21CAB779008006FF /* Model */,
 				10D4A8BD21CAB772008006FF /* View */,
@@ -173,15 +193,11 @@
 			isa = PBXGroup;
 			children = (
 				10D4A8C221CABBC2008006FF /* ItemFieldProtocol+ItemField.swift */,
-				10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */,
 				10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */,
-				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */,
 				10D3963821CE9F680053808A /* ListProtocol+List.swift */,
 				10D3963A21CE9F990053808A /* TemplateItem.swift */,
 				102097DF21D3B44B0062B367 /* DataStore.swift */,
 				1029778621D7E6F700945B45 /* FieldType.swift */,
-				104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */,
-				10A933DC21DD042F000A70ED /* SegueProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,6 +208,7 @@
 				10D4A8CC21CABEB1008006FF /* TableCellID.swift */,
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
 				10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */,
+				10CF79A121DE4758006F9F64 /* Stylesheet.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -332,7 +349,7 @@
 				10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */,
 				104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */,
 				102097E021D3B44B0062B367 /* DataStore.swift in Sources */,
-				10A933DD21DD042F000A70ED /* SegueProtocol.swift in Sources */,
+				10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
@@ -342,6 +359,7 @@
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
+				10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */,
 				1029778721D7E6F700945B45 /* FieldType.swift in Sources */,
 				1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */,
 				10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */,
@@ -350,6 +368,7 @@
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
 				10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */,
+				10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */,
 				10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */,
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */,
@@ -358,6 +377,7 @@
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
 				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
+				10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,
 				104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */,
 			);

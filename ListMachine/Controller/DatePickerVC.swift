@@ -9,22 +9,33 @@
 import UIKit
 
 class DatePickerVC: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  
+  @IBOutlet weak var timeSwitch: UISwitch!
+  @IBOutlet weak var datePicker: UIDatePicker!
+  var date: Date?
+  var saveDelegate: DateSaveDelegate?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    guard let existingDate = date else { return }
+    datePicker.setDate(existingDate, animated: true)
+    self.title = "Select Date"
+  }
+  
+  @IBAction func timeSwitchTapped(sender: UISwitch) {
+    defer {
+      datePicker.reloadInputViews()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    if sender.isOn {
+      datePicker.datePickerMode = .dateAndTime
+    } else {
+      datePicker.datePickerMode = .date
     }
-    */
-
+  }
+  
+  @IBAction func doneTapped(sender: UIButton) {
+    saveDelegate?.saveSelectedDate(datePicker.date)
+    navigationController?.popViewController(animated: true)
+  }
 }
+

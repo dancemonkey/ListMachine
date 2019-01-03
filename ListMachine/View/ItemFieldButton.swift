@@ -10,8 +10,7 @@ import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
-//  var save: ((String) -> ())?
-  var segueDelegate: SegueProtocol?
+  var segueDelegate: SegueDelegate?
   var segueID: SegueID? {
     didSet {
       self.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
@@ -32,7 +31,13 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   }
   
   @objc private func buttonTapped(sender: UIButton) {
-    segueDelegate?.segueRequested(to: self.segueID)
+    segueDelegate?.segueRequested(to: self.segueID, sender: self)
   }
+}
 
+extension ItemFieldButton: SegueSenderDelegate {
+  func receivePayload(_ value: Date) {
+    let title = Stylesheet.simpleDateString(fromDate: value)
+    self.setTitle(title, for: .normal)
+  }
 }

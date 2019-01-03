@@ -493,6 +493,9 @@
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-YA-vTM">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="timeSwitchTappedWithSender:" destination="rad-PH-LNs" eventType="valueChanged" id="Yke-3f-win"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Include Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlO-yv-uAE">
                                         <rect key="frame" x="91" y="0.0" width="98" height="31"/>
@@ -509,6 +512,9 @@
                                     <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
                                 </constraints>
                                 <state key="normal" title="DONE"/>
+                                <connections>
+                                    <action selector="doneTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="lxs-Tr-No3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -523,6 +529,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NTH-EP-ifL"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="6rw-KT-IYy" id="58g-dG-GEL"/>
+                        <outlet property="timeSwitch" destination="Qyl-YA-vTM" id="LS5-bK-LQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uib-mB-PnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

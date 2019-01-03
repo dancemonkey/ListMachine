@@ -16,6 +16,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var itemIndex: Int?
   var itemSaveDelegate: ItemSaveDelegate?
   var store: DataStore?
+  weak var senderDelegate: SegueSenderDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -84,13 +85,18 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
       dest.currentField = item?.itemFields[(sender as! IndexPath).row]
       dest.currentFieldIdx = (sender as! IndexPath).row
       dest.saveDelegate = self
+    } else if segue.identifier == SegueID.showDatePicker.rawValue {
+      let dest = segue.destination as! DatePickerVC
+      if let s = sender, let senderButton = s as? ItemFieldButton {
+        dest.date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text)
+        self.senderDelegate = senderButton
+      }
+      dest.saveDelegate = self
     }
   }
   
   // MARK: Save Protocol
-  func saveField(_ field: ItemField) {
-    // empty, not used 
-  }
+  func saveField(_ field: ItemField) { }
   
   func update(_ field: ItemField, at index: Int) {
     store?.save(object: field, andRun: {
@@ -110,8 +116,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
 }
 
-extension ItemCreateEditVC: SegueProtocol {
-  func segueRequested(to segue: SegueID?) {
-    self.performSegue(withIdentifier: segue!.rawValue, sender: self)
+extension ItemCreateEditVC: SegueDelegate {
+  func segueRequested(to segue: SegueID?, sender: Any?) {
+    self.performSegue(withIdentifier: segue!.rawValue, sender: sender)
+  }
+}
+
+extension ItemCreateEditVC: DateSaveDelegate {
+  func saveSelectedDate(_ date: Date) {
+    senderDelegate?.receivePayload(date)
   }
 }
