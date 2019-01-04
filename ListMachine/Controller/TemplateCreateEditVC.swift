@@ -33,7 +33,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.templateFieldCell.rawValue)
+    let cell = tableView.dequeueReusableCell(withIdentifier: CellID.templateFieldCell.rawValue)
     cell?.textLabel?.text = itemTemplate.defaultFields[indexPath.row].name
     cell?.detailTextLabel?.text = itemTemplate.defaultFields[indexPath.row].type
     return cell!

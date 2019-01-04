@@ -25,7 +25,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     itemList = realm?.objects(List.self).first
 //    itemList = List(name: "Movie Collection")
 //    store?.save(object: itemList, andRun: nil)
-//    print("list objects in realm = \(realm?.objects(List.self).count)")
     
     self.title = itemList.name
     
@@ -43,9 +42,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.listItemCell.rawValue)
-    cell?.textLabel?.text = itemList.listedItems[indexPath.row].itemListTitle
-    return cell!
+    let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
+    cell.configure(withItem: itemList.listedItems[indexPath.row])
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    guard let tableViewCell = cell as? ListItemCell else { return }
+    tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -63,9 +67,13 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 75.0
+  }
+  
   // MARK: Actions
   @IBAction func newItemPressed(sender: UIBarButtonItem) {
-    performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: self)
+    performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: nil)
   }
   
   @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
@@ -108,7 +116,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       let destVC = segue.destination as! ItemCreateEditVC
       destVC.itemSaveDelegate = self
       destVC.itemTemplate = self.itemList.templateItem
-      destVC.item = Item(from: itemList.templateItem!)
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.listedItems[indexPath.row]
@@ -120,6 +127,23 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       dest.saveDelegate = self
       dest.store = self.store
     }
+  }
+}
+
+extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return itemList.listedItems[0].itemFields.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath)
+    cell.backgroundColor = .yellow
+    return cell
   }
   
 }

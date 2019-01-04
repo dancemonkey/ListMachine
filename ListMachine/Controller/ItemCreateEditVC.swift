@@ -12,7 +12,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
-  var item: Item?
+  var item: Item? = nil
   var itemIndex: Int?
   var itemSaveDelegate: ItemSaveDelegate?
   var store: DataStore?
@@ -20,6 +20,10 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    if item == nil {
+      item = Item(from: itemTemplate)
+    }
     
     self.title = item?.itemListTitle ?? "Untitled Item"
     
@@ -41,7 +45,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: TableCellID.customFieldItemCell.rawValue) as? FieldItemCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: CellID.customFieldItemCell.rawValue) as? FieldItemCell
     cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
     cell?.configureAction(for: type, with: self)

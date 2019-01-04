@@ -8,9 +8,18 @@
 
 import Foundation
 
-struct VFLConstraints {
+struct ListItemCellConstraints {
+  var horizontal: String {
+    return "|[view]|"
+  }
+  var vertical: String {
+    return "V:|[view]|"
+  }
+}
+
+struct FieldTypeConstraints {
   var type: FieldType
-  var horizontalVFL: String {
+  var horizontal: String {
     switch type {
     case .checkBox:
       return "|-[title]-[valueView]-16-|"
@@ -22,7 +31,7 @@ struct VFLConstraints {
       return "|-[title]-[valueView]-16-|"
     }
   }
-  var verticalVFL: String {
+  var vertical: String {
     switch type {
     case .checkBox, .date, .number, .text:
       return "V:|-4@250-[valueView(45@1000)]-4@250-|"

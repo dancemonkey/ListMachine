@@ -31,8 +31,8 @@ class FieldItemCell: UITableViewCell {
     title.translatesAutoresizingMaskIntoConstraints = false
     
     let views: [String: Any] = ["valueView": valueView!, "title": title]
-    let hFormat = VFLConstraints(type: type).horizontalVFL
-    let vFormat = VFLConstraints(type: type).verticalVFL
+    let hFormat = FieldTypeConstraints(type: type).horizontal
+    let vFormat = FieldTypeConstraints(type: type).vertical
     let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
     let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: [], metrics: nil, views: views)
     var allConstraints: [NSLayoutConstraint] = []

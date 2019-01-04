@@ -41,9 +41,10 @@
 		10D4A8B521CAB754008006FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D4A8B321CAB754008006FF /* LaunchScreen.storyboard */; };
 		10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8BF21CABA84008006FF /* ItemCreateEditVC.swift */; };
 		10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8C221CABBC2008006FF /* ItemFieldProtocol+ItemField.swift */; };
-		10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CC21CABEB1008006FF /* TableCellID.swift */; };
+		10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CC21CABEB1008006FF /* CellID.swift */; };
 		10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CE21CAC320008006FF /* SegueID.swift */; };
 		10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */; };
+		10EB533721DF9DCC00679018 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB533621DF9DCC00679018 /* ListItemCell.swift */; };
 		10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D021D65722002E9E5C /* FieldItemCell.swift */; };
 		10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */; };
 		A1850574D31A02B5677342E5 /* Pods_ListMachine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */; };
@@ -87,9 +88,10 @@
 		10D4A8B621CAB754008006FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10D4A8BF21CABA84008006FF /* ItemCreateEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateEditVC.swift; sourceTree = "<group>"; };
 		10D4A8C221CABBC2008006FF /* ItemFieldProtocol+ItemField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemFieldProtocol+ItemField.swift"; sourceTree = "<group>"; };
-		10D4A8CC21CABEB1008006FF /* TableCellID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellID.swift; sourceTree = "<group>"; };
+		10D4A8CC21CABEB1008006FF /* CellID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellID.swift; sourceTree = "<group>"; };
 		10D4A8CE21CAC320008006FF /* SegueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueID.swift; sourceTree = "<group>"; };
 		10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSaveDelegate.swift; sourceTree = "<group>"; };
+		10EB533621DF9DCC00679018 /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
 		10F5F4D021D65722002E9E5C /* FieldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCell.swift; sourceTree = "<group>"; };
 		10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintValues.swift; sourceTree = "<group>"; };
 		2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListMachine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +187,7 @@
 				104C766C21DA55080044346D /* ItemFieldTextView.swift */,
 				104C766E21DA58300044346D /* ItemFieldTextField.swift */,
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
+				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,7 +208,7 @@
 		10D4A8C121CABB9F008006FF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				10D4A8CC21CABEB1008006FF /* TableCellID.swift */,
+				10D4A8CC21CABEB1008006FF /* CellID.swift */,
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
 				10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */,
 				10CF79A121DE4758006F9F64 /* Stylesheet.swift */,
@@ -353,7 +356,7 @@
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
-				10D4A8CD21CABEB1008006FF /* TableCellID.swift in Sources */,
+				10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */,
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
@@ -376,6 +379,7 @@
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
+				10EB533721DF9DCC00679018 /* ListItemCell.swift in Sources */,
 				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
 				10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,

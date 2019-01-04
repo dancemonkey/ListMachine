@@ -41,9 +41,21 @@ class Item: Object, ItemProtocol {
   convenience init(from template: TemplateItem) {
     self.init()
     if template.defaultFields.count > 0 {
-      self.itemFields.append(objectsIn: template.defaultFields)
+      for field in template.defaultFields {
+        itemFields.append(ItemField(name: field.name, type: FieldType(rawValue: field.type)!, value: nil, id: field.fieldID.value))
+      }
+//      self.itemFields.append(objectsIn: template.defaultFields)
     }
     self.templateItem = template
+  }
+  
+  func clearValues() {
+    let store = DataStore()
+    for field in itemFields {
+      store?.run {
+        field.value = nil
+      }
+    }
   }
   
   func setNewTemplate(_ template: TemplateItem) {
