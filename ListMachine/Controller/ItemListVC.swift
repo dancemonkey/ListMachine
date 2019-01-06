@@ -108,6 +108,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     store?.save(object: itemList, andRun: {
       self.itemList.setTemplate(template)
     })
+    tableView.reloadData()
   }
   
   // MARK: Segues
@@ -137,12 +138,15 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return itemList.listedItems[0].itemFields.count
+    return itemList.listedItems[0].itemFields.count - 1
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath)
-    cell.backgroundColor = .yellow
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
+    let payload = (value: itemList.listedItems[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.listedItems[collectionView.tag].itemFields[indexPath.item + 1].name)
+    cell.configure(withValue: payload.value, andTitle: payload.title)
+
     return cell
   }
   

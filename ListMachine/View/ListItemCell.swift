@@ -10,12 +10,11 @@ import UIKit
 
 class ListItemCell: UITableViewCell {
   
+  @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet private weak var collection: UICollectionView!
   
   func configure(withItem item: Item) {
-//    let label = UILabel()
-//    label.text = item.itemFields[0].value ?? "No Value for \(item.itemFields[0].name)"
-//    self.addSubview(label)
+    titleLbl.text = item.itemListTitle
   }
   
   func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
@@ -27,7 +26,6 @@ class ListItemCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: CellID.listItemCollectionCell.rawValue)
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

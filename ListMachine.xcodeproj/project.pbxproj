@@ -19,6 +19,7 @@
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
+		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
 		10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueDelegate.swift */; };
 		10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */; };
@@ -64,6 +65,7 @@
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
+		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		10A933DC21DD042F000A70ED /* SegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
 		10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				104C766E21DA58300044346D /* ItemFieldTextField.swift */,
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
 				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
+				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
 				10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,
+				1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */,
 				104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
