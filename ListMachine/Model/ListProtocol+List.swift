@@ -29,9 +29,9 @@ class List: Object, ListProtocol {
   convenience init(name: String) {
     self.init()
     self.name = name
-    
-    // test data, normally when creating list you are asked for a name and the template is given the same name
-    templateItem = TemplateItem(name: "Movie Collection", with: [])
+    print(name)
+    print(self.name)
+    templateItem = TemplateItem(name: name, with: [])
   }
   
   override static func primaryKey() -> String? {

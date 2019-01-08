@@ -19,6 +19,10 @@
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
+		106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7421E44D6900F8881F /* MasterListVC.swift */; };
+		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
+		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
+		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
 		10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueDelegate.swift */; };
@@ -65,6 +69,10 @@
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
+		106C3D7421E44D6900F8881F /* MasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListVC.swift; sourceTree = "<group>"; };
+		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
+		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
+		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		10A933DC21DD042F000A70ED /* SegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 				10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */,
 				10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */,
 				10A933DA21DCFF05000A70ED /* DatePickerVC.swift */,
+				106C3D7421E44D6900F8881F /* MasterListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +200,7 @@
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
 				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
 				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
+				106C3D7621E44F3400F8881F /* MasterListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +225,8 @@
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
 				10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */,
 				10CF79A121DE4758006F9F64 /* Stylesheet.swift */,
+				106C3D7821E4504100F8881F /* PopupFactory.swift */,
+				106C3D7A21E45E7700F8881F /* SortDescriptors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -360,11 +372,13 @@
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */,
+				106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */,
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
+				106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */,
 				10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */,
 				1029778721D7E6F700945B45 /* FieldType.swift in Sources */,
 				1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */,
@@ -372,6 +386,7 @@
 				104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */,
 				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
+				106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
 				10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */,
 				10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */,
@@ -383,6 +398,7 @@
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
 				10EB533721DF9DCC00679018 /* ListItemCell.swift in Sources */,
+				106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */,
 				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
 				10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,

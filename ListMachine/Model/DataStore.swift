@@ -26,6 +26,10 @@ class DataStore {
     return self.realm
   }
   
+  func getAllLists() -> Results<List>? {
+    return realm?.objects(List.self).sorted(byKeyPath: "name", ascending: true)
+  }
+  
   func save(object: Object, andRun closure: (() -> ())?) {
     do {
       try realm?.write {

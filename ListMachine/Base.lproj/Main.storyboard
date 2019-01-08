@@ -398,11 +398,6 @@
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
                     <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Sc8-fN-9CA">
-                            <connections>
-                                <action selector="deleteAllPressedWithSender:" destination="S3e-MS-CWW" id="z6C-ZG-TPF"/>
-                            </connections>
-                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="7rf-28-oib">
                                 <connections>
@@ -520,6 +515,64 @@
             </objects>
             <point key="canvasLocation" x="1046" y="1638"/>
         </scene>
+        <!--Master ListVC-->
+        <scene sceneID="O4d-Zd-pB2">
+            <objects>
+                <viewController id="OnU-yQ-hKP" customClass="MasterListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wj1-zo-tVc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DNW-wl-HBB">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="masterListCell" textLabel="KMk-X3-c9h" style="IBUITableViewCellStyleDefault" id="3aa-OZ-Q9F" customClass="MasterListCell" customModule="ListMachine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3aa-OZ-Q9F" id="9Ab-Lx-Jfv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KMk-X3-c9h">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TzM-cj-xd4" firstAttribute="bottom" secondItem="DNW-wl-HBB" secondAttribute="bottom" id="1oB-Wp-FYH"/>
+                            <constraint firstItem="DNW-wl-HBB" firstAttribute="leading" secondItem="TzM-cj-xd4" secondAttribute="leading" id="3ja-ky-A5K"/>
+                            <constraint firstItem="TzM-cj-xd4" firstAttribute="trailing" secondItem="DNW-wl-HBB" secondAttribute="trailing" id="AUq-Hi-kKK"/>
+                            <constraint firstItem="DNW-wl-HBB" firstAttribute="top" secondItem="TzM-cj-xd4" secondAttribute="top" id="Yj5-cJ-rWM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TzM-cj-xd4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ayR-JT-jVn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tSr-0B-pmh">
+                            <connections>
+                                <action selector="newListPressedWithSender:" destination="OnU-yQ-hKP" id="tC0-at-Z3P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newListBtn" destination="tSr-0B-pmh" id="eLC-aM-x2B"/>
+                        <outlet property="tableView" destination="DNW-wl-HBB" id="bp3-Xl-or4"/>
+                        <segue destination="S3e-MS-CWW" kind="show" identifier="showListView" id="mAI-gn-E9d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KtK-R9-0J2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726" y="874"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ac8-py-HOc">
             <objects>
@@ -531,7 +584,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="S3e-MS-CWW" kind="relationship" relationship="rootViewController" id="HYG-gh-P7W"/>
+                        <segue destination="OnU-yQ-hKP" kind="relationship" relationship="rootViewController" id="kMW-yu-d0J"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClQ-ke-W21" userLabel="First Responder" sceneMemberID="firstResponder"/>

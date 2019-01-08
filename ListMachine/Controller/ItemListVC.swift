@@ -13,18 +13,13 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBOutlet weak var tableView: UITableView!
   var itemList: List!
-  var realm: Realm?
+//  var realm: Realm?
   var store: DataStore?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
-    self.realm = store?.getRealm()
-    
-    // TEST DATA, LIST ITSELF WILL BE CREATED FROM PRIOR SCREEN AND NAMED BEFORE ENTRY
-    itemList = realm?.objects(List.self).first
-//    itemList = List(name: "Movie Collection")
-//    store?.save(object: itemList, andRun: nil)
+//    self.realm = store?.getRealm()
     
     self.title = itemList.name
     
@@ -78,14 +73,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
-  }
-  
-  // TEMP FOR CLEARING ENTIRE DATABASE WHILE DEBUGGING
-  @IBAction func deleteAllPressed(sender: UIBarButtonItem) {
-    try! realm?.write {
-      realm?.deleteAll()
-    }
-    tableView.reloadData()
   }
   
   // MARK: Item Save Delegate
