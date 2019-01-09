@@ -18,7 +18,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.title = itemTemplate.name + " Template"
+    self.title = "Edit " + itemTemplate.name + " Template"
     tableView.delegate = self
     tableView.dataSource = self
   }

@@ -32,6 +32,10 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     tableView.delegate = self
     tableView.dataSource = self
+    
+    let notificationCenter = NotificationCenter.default
+    notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
   
   // MARK: Tableview Methods
@@ -109,11 +113,25 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
   
-  // MARK: Helper Functions
+  // MARK: Keyboard management
+  @objc func adjustForKeyboard(notification: Notification) {
+    let userInfo = notification.userInfo!
+    let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+    
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      tableView.contentInset = UIEdgeInsets.zero
+    } else {
+      tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    }
+    tableView.scrollIndicatorInsets = tableView.contentInset
+  }
   
   @objc func screenTapped(sender: UITapGestureRecognizer) {
     UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
   }
+  
+  // MARK: Helper Functions
   
   @objc func dateSelectTapped(sender: UIButton) {
     self.performSegue(withIdentifier: SegueID.showDatePicker.rawValue, sender: self)

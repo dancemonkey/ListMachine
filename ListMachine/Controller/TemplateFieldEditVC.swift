@@ -21,9 +21,14 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     typePicker.delegate = self
     typePicker.dataSource = self
     
+    let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped(sender:)))
+    self.view.addGestureRecognizer(tap)
+    
     if currentField != nil {
       populateFields(with: currentField!)
     }
+    
+    addDoneAccessory(to: nameFld)
   }
   
   func populateFields(with existing: ItemFieldProtocol) {
@@ -55,6 +60,23 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
+  }
+  
+  // MARK: Helper Functions
+  
+  @objc func screenTapped(sender: UITapGestureRecognizer) {
+    UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
+  
+  func addDoneAccessory(to textField: UITextField?) {
+    let toolbar: UIToolbar = UIToolbar()
+    toolbar.sizeToFit()
+    var items = [UIBarButtonItem]()
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(textField?.endEditing))
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    items.append(contentsOf: [spacer, doneButton])
+    toolbar.setItems(items, animated: false)
+    textField?.inputAccessoryView = toolbar
   }
 }
 

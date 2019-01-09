@@ -23,6 +23,11 @@ class FieldItemCell: UITableViewCell {
       self.addSubview(valueView!)
       valueView!.isUserInteractionEnabled = true
       setConstraints(for: type)
+      if type == .text {
+        addDoneAccessory(to: valueView!.textField)
+      } else if type == .memo {
+        addDoneAccessory(to: valueView!.textView)
+      }
     }
   }
   
@@ -59,5 +64,27 @@ class FieldItemCell: UITableViewCell {
     if let segueID = type.getSegueID() {
       valueView?.configureButtonAction(for: segueID, and: delegate)
     }
+  }
+  
+  func addDoneAccessory(to textField: UITextField?) {
+    let toolbar: UIToolbar = UIToolbar()
+    toolbar.sizeToFit()
+    var items = [UIBarButtonItem]()
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(textField?.endEditing))
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    items.append(contentsOf: [spacer, doneButton])
+    toolbar.setItems(items, animated: false)
+    textField?.inputAccessoryView = toolbar
+  }
+  
+  func addDoneAccessory(to textView: UITextView?) {
+    let toolbar: UIToolbar = UIToolbar()
+    toolbar.sizeToFit()
+    var items = [UIBarButtonItem]()
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(textView?.endEditing))
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    items.append(contentsOf: [spacer, doneButton])
+    toolbar.setItems(items, animated: false)
+    textView?.inputAccessoryView = toolbar
   }
 }
