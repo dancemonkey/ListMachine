@@ -72,7 +72,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let toolbar: UIToolbar = UIToolbar()
     toolbar.sizeToFit()
     var items = [UIBarButtonItem]()
-    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(textField?.endEditing))
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: textField, action: #selector(textField?.endEditing))
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     items.append(contentsOf: [spacer, doneButton])
     toolbar.setItems(items, animated: false)
