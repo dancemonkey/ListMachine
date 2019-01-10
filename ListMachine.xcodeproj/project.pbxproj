@@ -13,6 +13,7 @@
 		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		1029778721D7E6F700945B45 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1029778621D7E6F700945B45 /* FieldType.swift */; };
+		1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */; };
 		1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */; };
 		104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */; };
 		104C766921DA51510044346D /* ItemFieldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766821DA51510044346D /* ItemFieldButton.swift */; };
@@ -63,6 +64,7 @@
 		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		1029778621D7E6F700945B45 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
+		1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DraggableCell Protocol + Extension.swift"; sourceTree = "<group>"; };
 		1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCellValueView.swift; sourceTree = "<group>"; };
 		104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldSwitch.swift; sourceTree = "<group>"; };
 		104C766821DA51510044346D /* ItemFieldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldButton.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */,
 				10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */,
 				10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */,
+				1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */,
 			);
 			path = "Protocols + Delegates";
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */,
 				102097E021D3B44B0062B367 /* DataStore.swift in Sources */,
 				10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */,
+				1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,

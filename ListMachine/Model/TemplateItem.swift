@@ -32,14 +32,23 @@ class TemplateItem: Object {
   func add(field: ItemField) {
     field.fieldID.value = nextFieldID
     defaultFields.append(field)
-//    defaultFields[defaultFields.count - 1].fieldID.value = nextFieldID
     nextFieldID = nextFieldID + 1
+  }
+  
+  func insert(field: ItemField, at index: Int) {
+    defaultFields.insert(field, at: index)
   }
   
   func update(field: ItemField, at index: Int) {
     let id = defaultFields[index].fieldID.value
     defaultFields[index] = field
     defaultFields[index].fieldID.value = id
+  }
+  
+  func removeField(at index: Int) -> ItemField {
+    let field = defaultFields[index]
+    defaultFields.remove(at: index)
+    return field
   }
   
   func setAllFieldIDs() {
