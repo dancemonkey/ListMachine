@@ -29,8 +29,6 @@ class List: Object, ListProtocol {
   convenience init(name: String) {
     self.init()
     self.name = name
-    print(name)
-    print(self.name)
     templateItem = TemplateItem(name: name, with: [])
   }
   
@@ -55,6 +53,10 @@ class List: Object, ListProtocol {
   
   func update(itemAt index: Int, with item: Item) {
     listedItems[index] = item
+  }
+  
+  func getListSorted(by sortKey: String) -> Results<Item> {
+    return listedItems.sorted(byKeyPath: sortKey)
   }
 
 }

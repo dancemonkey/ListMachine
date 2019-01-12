@@ -13,13 +13,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBOutlet weak var tableView: UITableView!
   var itemList: List!
-//  var realm: Realm?
   var store: DataStore?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
-//    self.realm = store?.getRealm()
     
     self.title = itemList.name
     
@@ -73,6 +71,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
+  }
+  
+  @IBAction func sortPressed(sender: UIBarButtonItem) {
+    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField) in
+      print("sorting by field: \(sortField)")
+    }), animated: true, completion: nil)
   }
   
   // MARK: Item Save Delegate

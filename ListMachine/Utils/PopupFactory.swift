@@ -37,4 +37,20 @@ class PopupFactory {
     return controller
   }
   
+  static func sortListPopup(for item: TemplateItem, completion: @escaping (String) -> ()) -> UIAlertController {
+    let controller = UIAlertController(title: "Sort by...", message: nil, preferredStyle: .actionSheet)
+    for field in item.defaultFields {
+      let action = UIAlertAction(title: field.name, style: .default) { (action) in
+        // sort by selected field title
+        completion(action.title!)
+      }
+      controller.addAction(action)
+    }
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+      controller.dismiss(animated: true, completion: nil)
+    }
+    controller.addAction(cancel)
+    return controller
+  }
+  
 }
