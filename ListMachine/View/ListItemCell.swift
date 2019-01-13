@@ -11,7 +11,7 @@ import UIKit
 class ListItemCell: UITableViewCell {
   
   @IBOutlet weak var titleLbl: UILabel!
-  @IBOutlet private weak var collection: UICollectionView!
+  @IBOutlet weak var collection: UICollectionView!
   
   func configure(withItem item: Item) {
     titleLbl.text = item.itemListTitle
@@ -30,8 +30,10 @@ class ListItemCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
   }
 }
 

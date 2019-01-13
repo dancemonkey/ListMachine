@@ -14,6 +14,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var tableView: UITableView!
   var itemList: List!
   var store: DataStore?
+  var sortKey: Int?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,10 +37,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
-    cell.configure(withItem: itemList.listedItems[indexPath.row])
+//    if sortKey == nil {
+//      cell.configure(withItem: itemList.listedItems[indexPath.row])
+//    } else {
+//      cell.configure(withItem: itemList.getListSorted(by: sortKey!)[indexPath.row])
+//    }
+    cell.configure(withItem: itemList.getListSorted(by: sortKey)[indexPath.row])
     return cell
   }
-  
+
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
     tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
@@ -55,7 +61,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      store?.delete(object: itemList.listedItems[indexPath.row])
+      store?.delete(object: itemList.getListSorted(by: sortKey)[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
@@ -74,8 +80,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   @IBAction func sortPressed(sender: UIBarButtonItem) {
-    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField) in
+    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField, fieldIndex) in
       print("sorting by field: \(sortField)")
+      self.sortKey = fieldIndex
+      self.tableView.reloadData()
     }), animated: true, completion: nil)
   }
   
@@ -110,7 +118,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.itemTemplate = self.itemList.templateItem
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
-        destVC.item = itemList.listedItems[indexPath.row]
+        destVC.item = itemList.getListSorted(by: sortKey)[indexPath.row]
         destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
@@ -133,9 +141,9 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
-    let payload = (value: itemList.listedItems[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.listedItems[collectionView.tag].itemFields[indexPath.item + 1].name)
+    
+    let payload = (value: itemList.getListSorted(by: sortKey)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.getListSorted(by: sortKey)[collectionView.tag].itemFields[indexPath.item + 1].name)
     cell.configure(withValue: payload.value, andTitle: payload.title)
 
     return cell

@@ -18,7 +18,7 @@ protocol ItemProtocol {
   func setValues(for field: ItemField, at index: Int)
 }
 
-@dynamicMemberLookup
+//@dynamicMemberLookup
 class Item: Object, ItemProtocol {
   
   typealias FieldID = Int
@@ -39,13 +39,13 @@ class Item: Object, ItemProtocol {
     return "itemID"
   }
   
-  subscript(dynamicMember member: String) -> String {
-    var properties: [String: String] = [:]
-    for field in itemFields {
-      properties[field.name] = "\(field.fieldID.value)"
-    }
-    return properties[member, default: ""]
-  }
+//  subscript(dynamicMember member: String) -> String {
+//    var properties: [String: String] = [:]
+//    for field in itemFields {
+//      properties[field.name] = "\(field.fieldID.value)"
+//    }
+//    return properties[member, default: ""]
+//  }
   
   convenience init(from template: TemplateItem) {
     self.init()

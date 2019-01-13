@@ -55,8 +55,13 @@ class List: Object, ListProtocol {
     listedItems[index] = item
   }
   
-  func getListSorted(by sortKey: String) -> Results<Item> {
-    return listedItems.sorted(byKeyPath: sortKey)
+  func getListSorted(by fieldIndex: Int?) -> Array<Item> {
+    if let index = fieldIndex {
+      return Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
+        return itemOne.itemFields[index].value! < itemTwo.itemFields[index].value!
+      })
+    }
+    return Array(listedItems)
   }
 
 }
