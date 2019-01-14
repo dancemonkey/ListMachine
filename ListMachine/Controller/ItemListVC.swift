@@ -12,9 +12,13 @@ import RealmSwift
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var sortSelect: UISegmentedControl!
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?
+  var filterString: String?
+  var isSearching = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,8 +26,26 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     self.title = itemList.name
     
+    setupSortSelect()
+    
     tableView.delegate = self
     tableView.dataSource = self
+    searchBar.delegate = self
+  }
+  
+  // MARK: Helper Methods
+  func setupSortSelect() {
+    sortSelect.removeAllSegments()
+    for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
+      sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
+    }
+    sortSelect.selectedSegmentIndex = 0 // THIS SHOULD BE PULLED FROM REALM/REMEMBERED FROM PRIOR
+    sortList(by: sortSelect.selectedSegmentIndex)
+  }
+  
+  func sortList(by sortKey: Int) {
+    self.sortKey = sortKey
+    tableView.reloadData()
   }
   
   // MARK: Tableview Methods
@@ -37,11 +59,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
-//    if sortKey == nil {
-//      cell.configure(withItem: itemList.listedItems[indexPath.row])
-//    } else {
-//      cell.configure(withItem: itemList.getListSorted(by: sortKey!)[indexPath.row])
-//    }
     cell.configure(withItem: itemList.getListSorted(by: sortKey)[indexPath.row])
     return cell
   }
@@ -79,12 +96,22 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   
-  @IBAction func sortPressed(sender: UIBarButtonItem) {
-    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField, fieldIndex) in
-      print("sorting by field: \(sortField)")
-      self.sortKey = fieldIndex
-      self.tableView.reloadData()
-    }), animated: true, completion: nil)
+//  @IBAction func sortPressed(sender: UIBarButtonItem) {
+//    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField, fieldIndex) in
+//      print("sorting by field: \(sortField)")
+//      self.sortKey = fieldIndex
+//      self.tableView.reloadData()
+//    }), animated: true, completion: nil)
+//  }
+
+//  @IBAction func filterPressed(sender: UIBarButtonItem) {
+//    self.present(PopupFactory.filterOptionsPopup(for: itemList.templateItem!, completion: { (_, _) in
+//      print("launched filter options popup")
+//    }), animated: true, completion: nil)
+//  }
+  
+  @IBAction func sortSelected(sender: UISegmentedControl) {
+    sortList(by: sender.selectedSegmentIndex)
   }
   
   // MARK: Item Save Delegate
@@ -107,6 +134,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     store?.save(object: itemList, andRun: {
       self.itemList.setTemplate(template)
     })
+    setupSortSelect()
     tableView.reloadData()
   }
   
@@ -131,7 +159,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 }
 
 extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
-  
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -147,6 +174,50 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
     cell.configure(withValue: payload.value, andTitle: payload.title)
 
     return cell
+  }
+}
+
+extension ItemListVC: UISearchBarDelegate {
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    isSearching = true
+  }
+  
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    isSearching = false
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    isSearching = false
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    isSearching = false
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText.count == 0 {
+      searchBar.resignFirstResponder()
+      isSearching = false
+    } else {
+      guard let template = itemList.templateItem else { return }
+      var filterText = ""
+      for (index, field) in template.defaultFields.enumerated() {
+        filterText = filterText + buildSearchStringFor(field: field, lookingFor: searchText)
+        if index < template.defaultFields.count - 1 {
+          filterText = filterText + " OR "
+        }
+      }
+      filterString = filterText
+    }
+  }
+  
+  func buildSearchStringFor(field: ItemField, lookingFor string: String) -> String {
+    let predicateString = "\(field.name) = '\(string)'"
+    return predicateString
   }
   
 }

@@ -306,18 +306,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgN-eh-qLV">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Sort" id="wVt-BY-Nd1">
-                                        <connections>
-                                            <action selector="sortPressedWithSender:" destination="S3e-MS-CWW" id="wxD-RZ-Ypg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
-                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
+                                <rect key="frame" x="0.0" y="199" width="375" height="468"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -397,14 +387,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter list..." translatesAutoresizingMaskIntoConstraints="NO" id="Z3f-aC-1tV">
+                                <rect key="frame" x="0.0" y="116" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-GR-U3O">
+                                <rect key="frame" x="0.0" y="172" width="375" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="HjS-2Q-JvD"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortSelectedWithSender:" destination="S3e-MS-CWW" eventType="valueChanged" id="nyz-Pi-Muf"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="dgN-eh-qLV" secondAttribute="bottom" id="4Ik-pf-lES"/>
-                            <constraint firstItem="dgN-eh-qLV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="4el-dU-Go4"/>
-                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="8bp-EK-BrX"/>
-                            <constraint firstItem="dgN-eh-qLV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="JOJ-9q-OVe"/>
-                            <constraint firstItem="dgN-eh-qLV" firstAttribute="top" secondItem="vky-wT-JT5" secondAttribute="bottom" id="NVY-lC-fvB"/>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" id="6Gh-SL-jZd"/>
+                            <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
+                            <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
+                            <constraint firstItem="Z6B-GR-U3O" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="OPB-dQ-hOs"/>
+                            <constraint firstItem="Z3f-aC-1tV" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="TDx-o7-glH"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="UgU-sT-gUt"/>
+                            <constraint firstItem="Z3f-aC-1tV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="dtQ-7s-0pl"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="Z6B-GR-U3O" secondAttribute="trailing" id="fQw-WT-urY"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="nEh-Vb-gaJ"/>
                         </constraints>
@@ -425,6 +435,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Z3f-aC-1tV" id="rkq-n9-P8J"/>
+                        <outlet property="sortSelect" destination="Z6B-GR-U3O" id="g8L-fh-U9b"/>
                         <outlet property="tableView" destination="vky-wT-JT5" id="Dz2-lt-l5T"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showItemCreator" id="JJT-2k-qGj"/>
                         <segue destination="wrc-EG-jgv" kind="show" identifier="showTemplateEditor" id="74f-C1-Bp1"/>

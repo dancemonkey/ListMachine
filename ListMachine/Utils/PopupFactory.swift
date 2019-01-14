@@ -37,20 +37,40 @@ class PopupFactory {
     return controller
   }
   
-  static func sortListPopup(for item: TemplateItem, completion: @escaping (String, Int) -> ()) -> UIAlertController {
-    let controller = UIAlertController(title: "Sort by...", message: nil, preferredStyle: .actionSheet)
-    for (index, field) in item.defaultFields.enumerated() {
-      let action = UIAlertAction(title: field.name, style: .default) { (action) in
-        // sort by selected field title
-        completion(action.title!, index)
-      }
-      controller.addAction(action)
-    }
-    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-      controller.dismiss(animated: true, completion: nil)
-    }
-    controller.addAction(cancel)
-    return controller
-  }
+//  static func sortListPopup(for item: TemplateItem, completion: @escaping (String, Int) -> ()) -> UIAlertController {
+//    let controller = UIAlertController(title: "Sort by...", message: nil, preferredStyle: .actionSheet)
+//    for (index, field) in item.defaultFields.enumerated() {
+//      let action = UIAlertAction(title: field.name, style: .default) { (action) in
+//        // sort by selected field title
+//        completion(action.title!, index)
+//      }
+//      controller.addAction(action)
+//    }
+//    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+//      controller.dismiss(animated: true, completion: nil)
+//    }
+//    controller.addAction(cancel)
+//    return controller
+//  }
+
+//  static func filterOptionsPopup(for item: TemplateItem, completion: @escaping (String, Int) -> ()) -> UIAlertController {
+//    let controller = UIAlertController(title: "Filter Options", message: nil, preferredStyle: .actionSheet)
+//    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+//      controller.dismiss(animated: true, completion: nil)
+//    }
+//    let createFilter = UIAlertAction(title: "Create Filter", style: .default) { (action) in
+//      // launch filter builder VC
+//      print(action.title)
+//    }
+//    let clearFilter = UIAlertAction(title: "Clear Filter", style: .destructive) { (action) in
+//      // clear existing filter
+//      print(action.title)
+//    }
+//    controller.addAction(cancel)
+//    controller.addAction(createFilter)
+//    controller.addAction(clearFilter)
+//    
+//    return controller
+//  }
   
 }
