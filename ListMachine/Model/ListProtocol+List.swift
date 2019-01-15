@@ -25,11 +25,13 @@ class List: Object, ListProtocol {
   let listedItems = RealmSwift.List<Item>()
   @objc dynamic var templateItem: TemplateItem?
   @objc dynamic var listID: String = UUID().uuidString
+  let sortKey = RealmOptional<Int>()
   
   convenience init(name: String) {
     self.init()
     self.name = name
     templateItem = TemplateItem(name: name, with: [])
+    sortKey.value = nil
   }
   
   override static func primaryKey() -> String? {
@@ -57,11 +59,18 @@ class List: Object, ListProtocol {
   
   func getListSorted(by fieldIndex: Int?) -> Array<Item> {
     if let index = fieldIndex {
+      setSortKey(to: index)
       return Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
         return itemOne.itemFields[index].value! < itemTwo.itemFields[index].value!
       })
     }
     return Array(listedItems)
+  }
+  
+  func setSortKey(to index: Int) {
+    DataStore()?.run {
+      self.sortKey.value = index
+    }
   }
 
 }

@@ -39,14 +39,6 @@ class Item: Object, ItemProtocol {
     return "itemID"
   }
   
-//  subscript(dynamicMember member: String) -> String {
-//    var properties: [String: String] = [:]
-//    for field in itemFields {
-//      properties[field.name] = "\(field.fieldID.value)"
-//    }
-//    return properties[member, default: ""]
-//  }
-  
   convenience init(from template: TemplateItem) {
     self.init()
     if template.defaultFields.count > 0 {

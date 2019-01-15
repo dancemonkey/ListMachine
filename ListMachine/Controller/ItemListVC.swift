@@ -36,11 +36,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   // MARK: Helper Methods
   func setupSortSelect() {
     sortSelect.removeAllSegments()
+    guard itemList.templateItem!.defaultFields.count > 1 else { return }
     for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
       sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
     }
-    sortSelect.selectedSegmentIndex = 0 // THIS SHOULD BE PULLED FROM REALM/REMEMBERED FROM PRIOR
-    sortList(by: sortSelect.selectedSegmentIndex)
+    if itemList.sortKey.value != nil {
+      sortList(by: itemList.sortKey.value!)
+      sortSelect.selectedSegmentIndex = itemList.sortKey.value!
+    } else {
+      sortSelect.selectedSegmentIndex = 0
+      sortList(by: sortSelect.selectedSegmentIndex)
+    }
   }
   
   func sortList(by sortKey: Int) {
@@ -95,20 +101,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
-  
-//  @IBAction func sortPressed(sender: UIBarButtonItem) {
-//    self.present(PopupFactory.sortListPopup(for: itemList.templateItem!, completion: { (sortField, fieldIndex) in
-//      print("sorting by field: \(sortField)")
-//      self.sortKey = fieldIndex
-//      self.tableView.reloadData()
-//    }), animated: true, completion: nil)
-//  }
-
-//  @IBAction func filterPressed(sender: UIBarButtonItem) {
-//    self.present(PopupFactory.filterOptionsPopup(for: itemList.templateItem!, completion: { (_, _) in
-//      print("launched filter options popup")
-//    }), animated: true, completion: nil)
-//  }
   
   @IBAction func sortSelected(sender: UISegmentedControl) {
     sortList(by: sender.selectedSegmentIndex)
