@@ -17,7 +17,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?
-  var filterString: String?
+  var filterString: String = "" {
+    didSet {
+      print("filterString set, reloading table")
+      tableView.reloadData()
+    }
+  }
   var isSearching = false
 
   override func viewDidLoad() {
@@ -60,12 +65,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return itemList.listedItems.count
+    return itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString).count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
-    cell.configure(withItem: itemList.getListSorted(by: sortKey)[indexPath.row])
+    cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
     return cell
   }
 
@@ -84,7 +89,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      store?.delete(object: itemList.getListSorted(by: sortKey)[indexPath.row])
+      store?.delete(object: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
@@ -138,7 +143,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.itemTemplate = self.itemList.templateItem
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
-        destVC.item = itemList.getListSorted(by: sortKey)[indexPath.row]
+        destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
         destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
@@ -162,7 +167,7 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
     
-    let payload = (value: itemList.getListSorted(by: sortKey)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.getListSorted(by: sortKey)[collectionView.tag].itemFields[indexPath.item + 1].name)
+    let payload = (value: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].name)
     cell.configure(withValue: payload.value, andTitle: payload.title)
 
     return cell
@@ -171,39 +176,35 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
 extension ItemListVC: UISearchBarDelegate {
   
+  func stopSearching() {
+    searchBar.resignFirstResponder()
+    isSearching = false
+    filterString = searchBar.text ?? ""
+    tableView.reloadData()
+  }
+  
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     isSearching = true
   }
   
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    isSearching = false
+    stopSearching()
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    isSearching = false
+    stopSearching()
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    isSearching = false
+    stopSearching()
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     if searchText.count == 0 {
-      searchBar.resignFirstResponder()
-      isSearching = false
+      stopSearching()
     } else {
-      guard let template = itemList.templateItem else { return }
-      var filterText = ""
-      for (index, field) in template.defaultFields.enumerated() {
-        filterText = filterText + buildSearchStringFor(field: field, lookingFor: searchText)
-        if index < template.defaultFields.count - 1 {
-          filterText = filterText + " OR "
-        }
-      }
-      filterString = filterText
+      filterString = searchText
+      print(filterString)
     }
   }
   

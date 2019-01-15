@@ -57,14 +57,24 @@ class List: Object, ListProtocol {
     listedItems[index] = item
   }
   
-  func getListSorted(by fieldIndex: Int?) -> Array<Item> {
-    if let index = fieldIndex {
-      setSortKey(to: index)
-      return Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
-        return itemOne.itemFields[index].value! < itemTwo.itemFields[index].value!
-      })
+  func getListSorted(by fieldIndex: Int, andFilteredBy filterText: String?) -> Array<Item> {
+    var results: Array<Item>
+    
+    setSortKey(to: fieldIndex)
+    results = Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
+      return itemOne.itemFields[fieldIndex].value! < itemTwo.itemFields[fieldIndex].value!
+    })
+    
+    if let filter = filterText, filter != "" {
+      results = results.filter { (item) -> Bool in
+        for field in item.itemFields {
+          let value = field.value ?? ""
+          if value.lowercased().contains(filter.lowercased()) { return true }
+        }
+        return false
+      }
     }
-    return Array(listedItems)
+    return results
   }
   
   func setSortKey(to index: Int) {
@@ -72,5 +82,5 @@ class List: Object, ListProtocol {
       self.sortKey.value = index
     }
   }
-
+  
 }
