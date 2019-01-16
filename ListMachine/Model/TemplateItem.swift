@@ -57,4 +57,10 @@ class TemplateItem: Object {
       nextFieldID = index + 1
     }
   }
+  
+  func moveField(from sourceIndex: Int, to destinationIndex: Int) {
+    let field = defaultFields[sourceIndex]
+    defaultFields.remove(at: sourceIndex)
+    defaultFields.insert(field, at: destinationIndex)
+  }
 }

@@ -57,10 +57,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //    if editingStyle == .delete {
-    //      store?.delete(object: itemTemplate.defaultFields[indexPath.row])
-    //      tableView.deleteRows(at: [indexPath], with: .fade)
-    //    }
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -106,7 +102,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
       self.itemTemplate.update(field: field, at: index)
     })
     tableView.reloadData()
-    //    tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .fade)
   }
 }
 
@@ -147,10 +142,11 @@ extension TemplateCreateEditVC: DraggableCell {
       snapshot!.center = center
       if indexPath != nil && !(indexPath! == sourceIndexPath!) {
         tableView.moveRow(at: sourceIndexPath!, to: indexPath!)
-        
         //        isUserDrivenUpate = true
         store?.run {
-          self.itemTemplate.insert(field: itemTemplate.removeField(at: sourceIndexPath!.row), at: indexPath!.row)
+//          let movingField = itemTemplate.removeField(at: sourceIndexPath!.row)
+//          self.itemTemplate.insert(field: movingField, at: indexPath!.row)
+          self.itemTemplate.moveField(from: sourceIndexPath!.row, to: indexPath!.row)
         }
         //        isUserDrivenUpate = false
         sourceIndexPath = indexPath

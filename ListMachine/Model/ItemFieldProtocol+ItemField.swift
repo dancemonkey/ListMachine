@@ -25,7 +25,7 @@ class ItemField: Object, ItemFieldProtocol {
   @objc dynamic var type: String = FieldType.noType.rawValue
   @objc dynamic var value: FieldValue? = ""
   let fieldID = RealmOptional<Int>()
-  @objc dynamic var fieldPrimaryKey: String = UUID().uuidString
+  @objc dynamic var fieldPrimaryKey: String = ""
   
   convenience init(name: String, type: FieldType, value: FieldValue?, id: Int?) {
     self.init()
@@ -33,6 +33,8 @@ class ItemField: Object, ItemFieldProtocol {
     self.type = type.rawValue
     self.value = value
     self.fieldID.value = id
+    fieldPrimaryKey = UUID().uuidString
+    print("created field: \(fieldPrimaryKey)")
   }
   
   override static func primaryKey() -> String? {

@@ -120,9 +120,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func updateItem(_ item: Item, at index: Int) {
-    store?.save(object: item, andRun: {
-      self.itemList.update(itemAt: index, with: item)
-    })
+    store?.save(object: item, andRun: nil)
     tableView.reloadData()
   }
   
@@ -145,6 +143,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
         destVC.itemIndex = indexPath.row
+        print("selected row: \(indexPath.row)")
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC

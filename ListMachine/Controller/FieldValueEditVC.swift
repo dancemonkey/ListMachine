@@ -31,6 +31,8 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
       let typeIndex = fieldTypes.firstIndex(of: FieldType(rawValue: field.type)!)
       typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
     }
+    
+    print("current field index = \(self.currentFieldIdx)")
   }
   
   // MARK: Actions
@@ -39,6 +41,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     let type = FieldType(rawValue: currentField?.type ?? "")
     let field = ItemField(name: currentField?.name ?? "Unnamed", type: type ?? FieldType.noType, value: valueFld.text ?? "", id: currentField?.fieldID.value)
     saveDelegate?.update(field, at: currentFieldIdx ?? 0)
+    print("updating field at: \(currentFieldIdx)")
     navigationController?.popViewController(animated: true)
   }
   

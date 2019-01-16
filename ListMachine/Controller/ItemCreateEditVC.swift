@@ -73,9 +73,12 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @IBAction func savePressed(sender: UIButton) {
     store?.run {
-      for (idx, field) in item!.itemFields.enumerated() {
-        let cell = tableView.cellForRow(at: IndexPath(row: idx, section: 0)) as! FieldItemCell
-        field.value = cell.valueView?.getSubviewValue ?? ""
+      for (idx, indexPath) in tableView.indexPathsForVisibleRows!.enumerated() {
+        let cell = tableView.cellForRow(at: indexPath) as! FieldItemCell
+        let field = item!.itemFields[idx]
+        print("saving field: \(field.fieldPrimaryKey)")
+        field.value = cell.valueView?.getSubviewValue
+        item!.setValues(for: field, at: idx)
       }
     }
     if let i = itemIndex {
@@ -107,9 +110,12 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   func saveField(_ field: ItemField) { }
   
   func update(_ field: ItemField, at index: Int) {
-    store?.save(object: field, andRun: {
+//    store?.save(object: field, andRun: {
+//      self.item?.setValues(for: field, at: index)
+//    })
+    store?.run {
       self.item?.setValues(for: field, at: index)
-    })
+    }
     tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
   
