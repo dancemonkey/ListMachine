@@ -11,7 +11,7 @@ import UIKit
 class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   @IBOutlet weak var nameFld: UITextField!
   @IBOutlet weak var typePicker: UIPickerView!
-  private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .checkBox]
+  private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .dateAndTime, .checkBox]
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
   var currentFieldIndex: Int?

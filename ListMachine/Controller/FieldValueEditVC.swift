@@ -17,7 +17,7 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
   var currentFieldIdx: Int?
   var saveDelegate: FieldSaveDelegate?
   
-  private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .checkBox]
+  private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .dateAndTime, .checkBox]
   
   override func viewDidLoad() {
     super.viewDidLoad()

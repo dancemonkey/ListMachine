@@ -9,7 +9,11 @@
 import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
-
+  
+  enum DateFormat {
+    case simpleDate, dateAndTime
+  }
+  
   var segueDelegate: SegueDelegate?
   var segueID: SegueID? {
     didSet {
@@ -19,13 +23,23 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   var reportValue: String {
     return self.titleLabel?.text ?? ""
   }
-
+  var format: DateFormat?
+  
   internal func configure(with field: ItemField, and value: String?) {
-    if value != nil && value != "" {
-      self.setTitle(value!, for: .normal)
-    } else {
+    guard value != nil && value != "" else {
       self.setTitle("Select Date", for: .normal)
+      return
     }
+    
+    switch FieldType(rawValue: field.type)! {
+    case .dateAndTime:
+      self.format = DateFormat.dateAndTime
+    case .date:
+      self.format = DateFormat.simpleDate
+    default: break
+    }
+    
+    self.setTitle(value!, for: .normal)
     self.setTitleColor(.blue, for: .normal)
     self.setTitleColor(.gray, for: .highlighted)
   }
@@ -37,7 +51,18 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
 extension ItemFieldButton: SegueSenderDelegate {
   func receivePayload(_ value: Date) {
-    let title = Stylesheet.simpleDateString(fromDate: value)
-    self.setTitle(title, for: .normal)
+    guard let format = self.format else {
+      let title = Stylesheet.simpleDateString(fromDate: value)
+      self.setTitle(title, for: .normal)
+      return
+    }
+    switch format {
+    case .dateAndTime:
+      let title = Stylesheet.dateAndTimeString(from: value)
+      self.setTitle(title, for: .normal)
+    case .simpleDate:
+      let title = Stylesheet.simpleDateString(fromDate: value)
+      self.setTitle(title, for: .normal)
+    }
   }
 }

@@ -17,28 +17,21 @@ class DatePickerVC: UIViewController {
     case plusWeek = 3
   }
   
-  @IBOutlet weak var timeSwitch: UISwitch!
   @IBOutlet weak var datePicker: UIDatePicker!
   var date: Date?
   var saveDelegate: DateSaveDelegate?
+  var mode: UIDatePicker.Mode?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard let existingDate = date else { return }
-    datePicker.setDate(existingDate, animated: true)
+    setDateMode(to: mode!)
+    datePicker.setDate(date ?? Date(), animated: true)
     self.title = "Select Date"
   }
   
-//  @IBAction func timeSwitchTapped(sender: UISwitch) {
-//    defer {
-//      datePicker.reloadInputViews()
-//    }
-//    if sender.isOn {
-//      datePicker.datePickerMode = .dateAndTime
-//    } else {
-//      datePicker.datePickerMode = .date
-//    }
-//  }
+  private func setDateMode(to mode: UIDatePicker.Mode) {
+    datePicker.datePickerMode = mode
+  }
   
   @IBAction func doneTapped(sender: UIButton) {
     saveDelegate?.saveSelectedDate(datePicker.date)

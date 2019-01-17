@@ -76,7 +76,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
       for (idx, indexPath) in tableView.indexPathsForVisibleRows!.enumerated() {
         let cell = tableView.cellForRow(at: indexPath) as! FieldItemCell
         let field = item!.itemFields[idx]
-        print("saving field: \(field.fieldPrimaryKey)")
         field.value = cell.valueView?.getSubviewValue
         item!.setValues(for: field, at: idx)
       }
@@ -99,7 +98,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     } else if segue.identifier == SegueID.showDatePicker.rawValue {
       let dest = segue.destination as! DatePickerVC
       if let s = sender, let senderButton = s as? ItemFieldButton {
-        dest.date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text)
+        switch senderButton.format! {
+        case .dateAndTime:
+          dest.date = Stylesheet.dateAndTime(from: senderButton.titleLabel?.text)
+          dest.mode = .dateAndTime
+        case .simpleDate:
+          dest.date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text)
+          dest.mode = .date
+        }
         self.senderDelegate = senderButton
       }
       dest.saveDelegate = self
@@ -110,9 +116,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   func saveField(_ field: ItemField) { }
   
   func update(_ field: ItemField, at index: Int) {
-//    store?.save(object: field, andRun: {
-//      self.item?.setValues(for: field, at: index)
-//    })
     store?.run {
       self.item?.setValues(for: field, at: index)
     }

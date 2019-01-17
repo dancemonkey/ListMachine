@@ -34,7 +34,7 @@ class FieldItemCellValueView: UIView {
     case .checkBox:
       switchSubview = ItemFieldSwitch(with: field, and: value)
       self.addSubview(switchSubview!)
-    case .date:
+    case .date, .dateAndTime:
       buttonSubview = ItemFieldButton(with: field, and: value)
       self.addSubview(buttonSubview!)
     case .memo:

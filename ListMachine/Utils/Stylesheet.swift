@@ -28,4 +28,22 @@ struct Stylesheet {
     return simpleDateFormatter.date(from: s)
   }
   
+  static private var dateAndTimeFormatter: DateFormatter {
+    get {
+      let formatter = DateFormatter()
+      formatter.dateFormat = "MM/dd/yyyy, h:mm a"
+      return formatter
+    }
+  }
+  
+  static func dateAndTimeString(from date: Date?) -> String? {
+    guard let d = date else { return nil }
+    return dateAndTimeFormatter.string(from: d)
+  }
+  
+  static func dateAndTime(from string: String?) -> Date? {
+    guard let s = string else { return nil }
+    return dateAndTimeFormatter.date(from: s)
+  }
+  
 }

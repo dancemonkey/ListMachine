@@ -34,7 +34,6 @@ class ItemField: Object, ItemFieldProtocol {
     self.value = value
     self.fieldID.value = id
     fieldPrimaryKey = UUID().uuidString
-    print("created field: \(fieldPrimaryKey)")
   }
   
   override static func primaryKey() -> String? {
