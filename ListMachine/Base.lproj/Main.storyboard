@@ -643,25 +643,44 @@
                                     <!--2019-01-02 14:10:48 +0000-->
                                 </date>
                             </datePicker>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-2f-pbd">
-                                <rect key="frame" x="93" y="302" width="189" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dvp-5v-Mff">
+                                <rect key="frame" x="8" y="302" width="359" height="45"/>
                                 <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-YA-vTM">
-                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60B-nv-Rgg">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="45"/>
+                                        <state key="normal" title="Today"/>
                                         <connections>
-                                            <action selector="timeSwitchTappedWithSender:" destination="rad-PH-LNs" eventType="valueChanged" id="Yke-3f-win"/>
+                                            <action selector="shortcutDateBtnTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="Nhx-Lf-WfM"/>
                                         </connections>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Include Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlO-yv-uAE">
-                                        <rect key="frame" x="91" y="0.0" width="98" height="31"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlO-yo-1be">
+                                        <rect key="frame" x="94" y="0.0" width="77.5" height="45"/>
+                                        <state key="normal" title="Tomorrow"/>
+                                        <connections>
+                                            <action selector="shortcutDateBtnTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="swZ-qg-pn2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l53-rJ-Vv4">
+                                        <rect key="frame" x="187.5" y="0.0" width="78" height="45"/>
+                                        <state key="normal" title="+1 day"/>
+                                        <connections>
+                                            <action selector="shortcutDateBtnTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="Zms-jR-5LT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6g-2a-4yU">
+                                        <rect key="frame" x="281.5" y="0.0" width="77.5" height="45"/>
+                                        <state key="normal" title="+1 Week"/>
+                                        <connections>
+                                            <action selector="shortcutDateBtnTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="zaP-tW-41d"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4U3-zU-k5g"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj">
-                                <rect key="frame" x="137.5" y="349" width="100" height="45"/>
+                                <rect key="frame" x="137.5" y="363" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="f4T-4p-wWx"/>
                                     <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
@@ -675,18 +694,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="leading" secondItem="NTH-EP-ifL" secondAttribute="leading" id="1nZ-Su-NsO"/>
-                            <constraint firstItem="HEU-2f-pbd" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="82s-GM-5jS"/>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="top" secondItem="NTH-EP-ifL" secondAttribute="top" constant="16" id="8vl-0v-hPd"/>
+                            <constraint firstItem="Ics-17-Sqj" firstAttribute="top" secondItem="dvp-5v-Mff" secondAttribute="bottom" constant="16" id="Afh-PL-EX1"/>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="trailing" secondItem="NTH-EP-ifL" secondAttribute="trailing" id="EUt-8t-Dnd"/>
-                            <constraint firstItem="Ics-17-Sqj" firstAttribute="top" secondItem="HEU-2f-pbd" secondAttribute="bottom" constant="16" id="hjd-X7-eix"/>
-                            <constraint firstItem="HEU-2f-pbd" firstAttribute="top" secondItem="6rw-KT-IYy" secondAttribute="bottom" constant="8" id="hoG-6o-W4Z"/>
+                            <constraint firstItem="dvp-5v-Mff" firstAttribute="top" secondItem="6rw-KT-IYy" secondAttribute="bottom" constant="8" id="Rnl-so-aTc"/>
+                            <constraint firstItem="NTH-EP-ifL" firstAttribute="trailing" secondItem="dvp-5v-Mff" secondAttribute="trailing" constant="8" id="dVD-D8-zXt"/>
                             <constraint firstItem="Ics-17-Sqj" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="qLX-1l-CRa"/>
+                            <constraint firstItem="dvp-5v-Mff" firstAttribute="leading" secondItem="NTH-EP-ifL" secondAttribute="leading" constant="8" id="tl1-zC-JN8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NTH-EP-ifL"/>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="6rw-KT-IYy" id="58g-dG-GEL"/>
-                        <outlet property="timeSwitch" destination="Qyl-YA-vTM" id="LS5-bK-LQa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uib-mB-PnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
