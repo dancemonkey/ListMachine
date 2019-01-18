@@ -14,7 +14,6 @@ class FieldItemCellValueView: UIView {
   var buttonSubview: ItemFieldButton?
   var textView: ItemFieldTextView?
   var textField: ItemFieldTextField?
-//  var save: ((String) -> ())?
   var getSubviewValue: String {
     if switchSubview != nil {
       return switchSubview!.reportValue
@@ -62,7 +61,6 @@ class FieldItemCellValueView: UIView {
     }
     
     workingView.translatesAutoresizingMaskIntoConstraints = false
-    
     let views: [String: Any] = ["workingView": workingView]
     let hFormat = "|[workingView]|"
     var vFormat = "V:|[workingView(45@1000)]|"

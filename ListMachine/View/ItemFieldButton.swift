@@ -26,22 +26,22 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   var format: DateFormat?
   
   internal func configure(with field: ItemField, and value: String?) {
+    defer {
+      switch FieldType(rawValue: field.type)! {
+      case .dateAndTime:
+        self.format = DateFormat.dateAndTime
+      case .date:
+        self.format = DateFormat.simpleDate
+      default: break
+      }
+      self.setTitleColor(.blue, for: .normal)
+      self.setTitleColor(.gray, for: .highlighted)
+    }
     guard value != nil && value != "" else {
       self.setTitle("Select Date", for: .normal)
       return
     }
-    
-    switch FieldType(rawValue: field.type)! {
-    case .dateAndTime:
-      self.format = DateFormat.dateAndTime
-    case .date:
-      self.format = DateFormat.simpleDate
-    default: break
-    }
-    
     self.setTitle(value!, for: .normal)
-    self.setTitleColor(.blue, for: .normal)
-    self.setTitleColor(.gray, for: .highlighted)
   }
   
   @objc private func buttonTapped(sender: UIButton) {
@@ -53,16 +53,22 @@ extension ItemFieldButton: SegueSenderDelegate {
   func receivePayload(_ value: Date) {
     guard let format = self.format else {
       let title = Stylesheet.simpleDateString(fromDate: value)
-      self.setTitle(title, for: .normal)
+      self.setTitle(title ?? "Select Date", for: .normal)
       return
     }
     switch format {
     case .dateAndTime:
-      let title = Stylesheet.dateAndTimeString(from: value)
-      self.setTitle(title, for: .normal)
+      if let title = Stylesheet.dateAndTimeString(from: value) {
+        self.setTitle(title, for: .normal)
+      } else if let title = Stylesheet.simpleDateString(fromDate: value) {
+        self.setTitle(title, for: .normal)
+      }
     case .simpleDate:
-      let title = Stylesheet.simpleDateString(fromDate: value)
-      self.setTitle(title, for: .normal)
+      if let title = Stylesheet.simpleDateString(fromDate: value) {
+        self.setTitle(title, for: .normal)
+      } else if let title = Stylesheet.dateAndTimeString(from: value) {
+        self.setTitle(title, for: .normal)
+      }
     }
   }
 }

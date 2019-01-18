@@ -23,7 +23,7 @@ struct FieldTypeConstraints {
     switch type {
     case .checkBox:
       return "|-[title]-[valueView]-16-|"
-    case .number, .text, .date:
+    case .number, .text, .date, .dateAndTime:
       return "|-[title]-[valueView]-16-|"
     case .memo:
       return "|-[title]"
@@ -33,7 +33,7 @@ struct FieldTypeConstraints {
   }
   var vertical: String {
     switch type {
-    case .checkBox, .date, .number, .text:
+    case .checkBox, .date, .number, .text, .dateAndTime:
       return "V:|-4@250-[valueView(45@1000)]-4@250-|"
     case .memo:
       return "V:|-[title]-[valueView]-|"

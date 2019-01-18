@@ -19,7 +19,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var sortKey: Int?
   var filterString: String = "" {
     didSet {
-      print("filterString set, reloading table")
       tableView.reloadData()
     }
   }
@@ -143,7 +142,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
         destVC.itemIndex = indexPath.row
-        print("selected row: \(indexPath.row)")
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC

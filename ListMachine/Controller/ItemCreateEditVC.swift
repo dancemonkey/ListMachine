@@ -53,7 +53,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
     cell?.configureAction(for: type, with: self)
-    return cell ?? UITableViewCell()
+    return cell!
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,10 +100,18 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
       if let s = sender, let senderButton = s as? ItemFieldButton {
         switch senderButton.format! {
         case .dateAndTime:
-          dest.date = Stylesheet.dateAndTime(from: senderButton.titleLabel?.text)
+          if let date = Stylesheet.dateAndTime(from: senderButton.titleLabel?.text) {
+            dest.date = date
+          } else if let date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text) {
+            dest.date = date
+          }
           dest.mode = .dateAndTime
         case .simpleDate:
-          dest.date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text)
+          if let date = Stylesheet.simpleDate(fromString: senderButton.titleLabel?.text) {
+            dest.date = date
+          } else if let date = Stylesheet.dateAndTime(from: senderButton.titleLabel?.text) {
+            dest.date = date
+          }
           dest.mode = .date
         }
         self.senderDelegate = senderButton
