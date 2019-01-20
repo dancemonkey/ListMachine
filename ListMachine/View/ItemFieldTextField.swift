@@ -10,7 +10,6 @@ import UIKit
 
 class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
   
-//  var save: ((String) -> ())?
   var reportValue: String {
     return self.text ?? ""
   }
@@ -19,7 +18,7 @@ class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
     self.text = value ?? ""
     let type = FieldType(rawValue: field.type) ?? .noType
     if type == .number {
-      self.keyboardType = .numberPad
+      self.keyboardType = .decimalPad
     }
   }
   
