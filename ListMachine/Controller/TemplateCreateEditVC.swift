@@ -68,12 +68,12 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   // MARK: Actions
-  @IBAction func savePressed(sender: UIButton) {
-    saveDelegate?.saveTemplate(itemTemplate)
-    navigationController?.popViewController(animated: true)
-  }
+//  @IBAction func savePressed(sender: UIButton) {
+//    saveDelegate?.saveTemplate(itemTemplate)
+//    navigationController?.popViewController(animated: true)
+//  }
   
-  @IBAction func addNewFieldPressed(sender: UIBarButtonItem) {
+  @IBAction func addNewFieldPressed(sender: NewItemButton) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self)
   }
   
@@ -94,6 +94,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     store?.save(object: field, andRun: {
       self.itemTemplate.add(field: field)
     })
+    saveDelegate?.saveTemplate(itemTemplate)
     tableView.reloadData()
   }
   
@@ -101,6 +102,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     store?.save(object: field, andRun: {
       self.itemTemplate.update(field: field, at: index)
     })
+    saveDelegate?.saveTemplate(itemTemplate)
     tableView.reloadData()
   }
 }
@@ -142,15 +144,12 @@ extension TemplateCreateEditVC: DraggableCell {
       snapshot!.center = center
       if indexPath != nil && !(indexPath! == sourceIndexPath!) {
         tableView.moveRow(at: sourceIndexPath!, to: indexPath!)
-        //        isUserDrivenUpate = true
         store?.run {
-//          let movingField = itemTemplate.removeField(at: sourceIndexPath!.row)
-//          self.itemTemplate.insert(field: movingField, at: indexPath!.row)
           self.itemTemplate.moveField(from: sourceIndexPath!.row, to: indexPath!.row)
         }
-        //        isUserDrivenUpate = false
         sourceIndexPath = indexPath
       }
+      saveDelegate?.saveTemplate(itemTemplate)
     default:
       let cell = tableView.cellForRow(at: sourceIndexPath!)
       cell?.isHidden = false

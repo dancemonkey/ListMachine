@@ -228,7 +228,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWz-w3-mOs">
-                                <rect key="frame" x="0.0" y="116" width="375" height="414"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="templateFieldCell" textLabel="peg-Rp-W6f" detailTextLabel="Mh9-Gt-aFa" style="IBUITableViewCellStyleSubtitle" id="lwn-qU-B3n">
@@ -257,38 +257,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5g-sc-Z3L">
-                                <rect key="frame" x="137.5" y="546" width="100" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euX-GF-kPL" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
+                                <rect key="frame" x="282" y="574" width="77" height="77"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="J15-9G-f2F"/>
-                                    <constraint firstAttribute="height" constant="45" id="PXj-X5-T4E"/>
+                                    <constraint firstAttribute="width" constant="77" id="2sY-ZA-dcG"/>
+                                    <constraint firstAttribute="height" constant="77" id="fpt-uj-8S0"/>
                                 </constraints>
-                                <state key="normal" title="SAVE"/>
+                                <state key="normal" image="+ New Button"/>
                                 <connections>
-                                    <action selector="savePressedWithSender:" destination="wrc-EG-jgv" eventType="touchUpInside" id="8ER-Fw-Hjb"/>
+                                    <action selector="addNewFieldPressedWithSender:" destination="wrc-EG-jgv" eventType="touchUpInside" id="3Ez-TT-aZA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="I5g-sc-Z3L" firstAttribute="centerX" secondItem="naj-30-P9q" secondAttribute="centerX" id="5ko-R3-BUL"/>
-                            <constraint firstItem="EWz-w3-mOs" firstAttribute="leading" secondItem="ePD-BX-NVj" secondAttribute="leading" id="CsM-Lo-xQ4"/>
-                            <constraint firstItem="I5g-sc-Z3L" firstAttribute="top" secondItem="EWz-w3-mOs" secondAttribute="bottom" constant="16" id="SK1-aN-dNw"/>
-                            <constraint firstItem="EWz-w3-mOs" firstAttribute="top" secondItem="ePD-BX-NVj" secondAttribute="top" id="XsN-Yf-hhB"/>
-                            <constraint firstItem="ePD-BX-NVj" firstAttribute="bottom" secondItem="I5g-sc-Z3L" secondAttribute="bottom" constant="32" id="Z4S-UU-8WU"/>
-                            <constraint firstItem="ePD-BX-NVj" firstAttribute="trailing" secondItem="EWz-w3-mOs" secondAttribute="trailing" id="oXM-Eq-M3a"/>
+                            <constraint firstItem="ePD-BX-NVj" firstAttribute="trailing" secondItem="euX-GF-kPL" secondAttribute="trailing" constant="16" id="2bc-AP-JUX"/>
+                            <constraint firstItem="EWz-w3-mOs" firstAttribute="top" secondItem="ePD-BX-NVj" secondAttribute="top" id="74O-XZ-HZw"/>
+                            <constraint firstAttribute="trailing" secondItem="EWz-w3-mOs" secondAttribute="trailing" id="Nk0-Xd-gX9"/>
+                            <constraint firstItem="ePD-BX-NVj" firstAttribute="bottom" secondItem="EWz-w3-mOs" secondAttribute="bottom" id="jP8-lK-xAE"/>
+                            <constraint firstItem="ePD-BX-NVj" firstAttribute="bottom" secondItem="euX-GF-kPL" secondAttribute="bottom" constant="16" id="jjV-2i-2rn"/>
+                            <constraint firstItem="EWz-w3-mOs" firstAttribute="leading" secondItem="naj-30-P9q" secondAttribute="leading" id="pQF-KW-4cA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ePD-BX-NVj"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Template Edit" id="afq-HW-at0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W6S-6V-QFg">
-                            <connections>
-                                <action selector="addNewFieldPressedWithSender:" destination="wrc-EG-jgv" id="vme-6C-Ykc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Template Edit" id="afq-HW-at0"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="EWz-w3-mOs" id="Pgo-1h-cYT"/>
                         <segue destination="YGk-zg-QCW" kind="show" identifier="showTemplateEditor" id="qJ9-QE-s4c"/>
@@ -296,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UL0-Yy-b76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150" y="1638"/>
+            <point key="canvasLocation" x="149.59999999999999" y="1637.6311844077961"/>
         </scene>
         <!--List Items-->
         <scene sceneID="x4G-ym-ekC">
@@ -455,7 +449,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sok-ii-E4L">
-                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-bs-9TO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -713,4 +707,7 @@
             <point key="canvasLocation" x="1046" y="112"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="+ New Button" width="77" height="77"/>
+    </resources>
 </document>
