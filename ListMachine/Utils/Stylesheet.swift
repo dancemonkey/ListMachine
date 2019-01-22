@@ -39,7 +39,7 @@ struct Stylesheet {
   }
   
   // MARK: Fonts
-  static var systemFontName: String = "Montserrat"
+  static var systemFontName: String = "Montserrat-Regular"
   static var systemFontBoldName: String = "Montserrat-Bold"
   static var userFontName: String = "Open Sans"
   
