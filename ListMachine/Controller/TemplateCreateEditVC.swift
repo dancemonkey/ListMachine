@@ -20,7 +20,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Edit " + itemTemplate.name + " Template"
+    self.title = itemTemplate.name + " Template"
     tableView.delegate = self
     tableView.dataSource = self
     longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressStarted(sender:)))
@@ -68,10 +68,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   // MARK: Actions
-//  @IBAction func savePressed(sender: UIButton) {
-//    saveDelegate?.saveTemplate(itemTemplate)
-//    navigationController?.popViewController(animated: true)
-//  }
   
   @IBAction func addNewFieldPressed(sender: NewItemButton) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self)

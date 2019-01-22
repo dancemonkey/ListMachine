@@ -26,6 +26,8 @@
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32221F74FF5005C6F40 /* NewItemButton.swift */; };
+		10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32521F7531C005C6F40 /* SaveButton.swift */; };
+		10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
 		10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueDelegate.swift */; };
 		10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */; };
@@ -78,6 +80,8 @@
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		10A8C32221F74FF5005C6F40 /* NewItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemButton.swift; sourceTree = "<group>"; };
+		10A8C32521F7531C005C6F40 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Pulsate Extension.swift"; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		10A933DC21DD042F000A70ED /* SegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
 		10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryCell.swift; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10A8C32421F75301005C6F40 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
+				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		10CF799E21DE442E006F9F64 /* Protocols + Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,7 @@
 		10D4A8BD21CAB772008006FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10A8C32421F75301005C6F40 /* Buttons */,
 				10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */,
 				10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */,
 				10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */,
@@ -206,7 +220,6 @@
 				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
 				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
 				106C3D7621E44F3400F8881F /* MasterListCell.swift */,
-				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +246,7 @@
 				10CF79A121DE4758006F9F64 /* Stylesheet.swift */,
 				106C3D7821E4504100F8881F /* PopupFactory.swift */,
 				106C3D7A21E45E7700F8881F /* SortDescriptors.swift */,
+				10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -376,12 +390,14 @@
 				10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */,
 				1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
+				10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */,
 				106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */,
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
+				10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */,
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,

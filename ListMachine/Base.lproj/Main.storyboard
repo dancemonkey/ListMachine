@@ -68,7 +68,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKk-mG-d0D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKk-mG-d0D" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="590" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="F3x-It-5dU"/>
@@ -187,7 +187,7 @@
                                     <constraint firstItem="O99-Qi-3UU" firstAttribute="leading" secondItem="U2V-52-rrm" secondAttribute="leading" id="seV-fa-6R2"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TO-Gk-Ckz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TO-Gk-Ckz" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="579.5" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Oid-b1-ZTJ"/>
@@ -487,7 +487,7 @@
                                                     <constraint firstAttribute="height" constant="216" id="U2r-Gp-aA1"/>
                                                 </constraints>
                                             </pickerView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNo-6y-s3h">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNo-6y-s3h" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
                                                 <rect key="frame" x="137.5" y="366" width="100" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="6Lc-DP-w4d"/>
@@ -544,7 +544,7 @@
             </objects>
             <point key="canvasLocation" x="1045.5999999999999" y="1637.6311844077961"/>
         </scene>
-        <!--Master ListVC-->
+        <!--Your Lists-->
         <scene sceneID="O4d-Zd-pB2">
             <objects>
                 <viewController id="OnU-yQ-hKP" customClass="MasterListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
@@ -585,7 +585,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TzM-cj-xd4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ayR-JT-jVn">
+                    <navigationItem key="navigationItem" title="Your Lists" id="ayR-JT-jVn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tSr-0B-pmh">
                             <connections>
                                 <action selector="newListPressedWithSender:" destination="OnU-yQ-hKP" id="tC0-at-Z3P"/>
@@ -673,13 +673,13 @@
                                     <constraint firstAttribute="height" constant="45" id="4U3-zU-k5g"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="363" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="f4T-4p-wWx"/>
                                     <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
                                 </constraints>
-                                <state key="normal" title="DONE"/>
+                                <state key="normal" title="SAVE"/>
                                 <connections>
                                     <action selector="doneTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="lxs-Tr-No3"/>
                                 </connections>
