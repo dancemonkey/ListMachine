@@ -620,10 +620,10 @@
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="111.99400299850076"/>
         </scene>
-        <!--Selecte Date/Time-->
+        <!--Select Date/Time-->
         <scene sceneID="zOC-Ol-Eaa">
             <objects>
-                <viewController title="Selecte Date/Time" id="rad-PH-LNs" customClass="DatePickerVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Select Date/Time" id="rad-PH-LNs" customClass="DatePickerVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OMi-L9-yDn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

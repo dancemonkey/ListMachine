@@ -14,9 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    let navBarAppearance = UINavigationBar.appearance()
+    navBarAppearance.tintColor = Stylesheet.getColor(for: .black)
+    navBarAppearance.barTintColor = Stylesheet.getColor(for: .white)
+    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(for: .black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
     return true
   }
 

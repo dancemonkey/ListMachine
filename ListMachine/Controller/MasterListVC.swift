@@ -20,7 +20,6 @@ class MasterListVC: UIViewController {
     self.store = DataStore()
     tableView.delegate = self
     tableView.dataSource = self
-    // Do any additional setup after loading the view.
   }
   
   @IBAction func newListPressed(sender: UIBarButtonItem) {

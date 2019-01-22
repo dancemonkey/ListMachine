@@ -28,6 +28,7 @@
 		10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32221F74FF5005C6F40 /* NewItemButton.swift */; };
 		10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32521F7531C005C6F40 /* SaveButton.swift */; };
 		10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */; };
+		10A8C32C21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
 		10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DC21DD042F000A70ED /* SegueDelegate.swift */; };
 		10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */; };
@@ -82,6 +83,7 @@
 		10A8C32221F74FF5005C6F40 /* NewItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemButton.swift; sourceTree = "<group>"; };
 		10A8C32521F7531C005C6F40 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Pulsate Extension.swift"; sourceTree = "<group>"; };
+		10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC Nav Item Style Extensions.swift"; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		10A933DC21DD042F000A70ED /* SegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
 		10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryCell.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				106C3D7821E4504100F8881F /* PopupFactory.swift */,
 				106C3D7A21E45E7700F8881F /* SortDescriptors.swift */,
 				10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */,
+				10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */,
 				104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */,
 				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,
+				10A8C32C21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift in Sources */,
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
