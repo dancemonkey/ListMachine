@@ -11,7 +11,6 @@ import RealmSwift
 
 class MasterListVC: UIViewController {
   
-  @IBOutlet weak var newListBtn: UIBarButtonItem!
   @IBOutlet weak var tableView: UITableView!
   var store: DataStore?
   
@@ -22,7 +21,7 @@ class MasterListVC: UIViewController {
     tableView.dataSource = self
   }
   
-  @IBAction func newListPressed(sender: UIBarButtonItem) {
+  @IBAction func newListPressed(sender: NewItemButton) {
     let popup = PopupFactory.newListNamePopup { [unowned self] in
       self.tableView.reloadData()
     }
@@ -70,9 +69,5 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       tableView.reloadData()
     }
   }
-  
-//  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//
-//  }
   
 }

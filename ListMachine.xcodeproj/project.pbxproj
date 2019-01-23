@@ -13,6 +13,8 @@
 		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		1029778721D7E6F700945B45 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1029778621D7E6F700945B45 /* FieldType.swift */; };
+		102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */; };
+		102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449421F8A095009BAFA7 /* ImageFactory.swift */; };
 		1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */; };
 		1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */; };
 		104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */; };
@@ -70,6 +72,8 @@
 		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		1029778621D7E6F700945B45 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
+		102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanFieldBtn.swift; sourceTree = "<group>"; };
+		102B449421F8A095009BAFA7 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DraggableCell Protocol + Extension.swift"; sourceTree = "<group>"; };
 		1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCellValueView.swift; sourceTree = "<group>"; };
 		104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldSwitch.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			children = (
 				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
 				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
+				102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				10A8C32D21F76407005C6F40 /* Fonts */,
 				10D4A8CC21CABEB1008006FF /* CellID.swift */,
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
+				102B449421F8A095009BAFA7 /* ImageFactory.swift */,
 				10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */,
 				10CF79A121DE4758006F9F64 /* Stylesheet.swift */,
 				106C3D7821E4504100F8881F /* PopupFactory.swift */,
@@ -409,6 +415,7 @@
 				10A933DD21DD042F000A70ED /* SegueDelegate.swift in Sources */,
 				1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */,
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
+				102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */,
 				10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
@@ -439,6 +446,7 @@
 				10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */,
 				104C766921DA51510044346D /* ItemFieldButton.swift in Sources */,
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
+				102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
 				10EB533721DF9DCC00679018 /* ListItemCell.swift in Sources */,

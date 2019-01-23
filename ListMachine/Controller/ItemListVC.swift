@@ -75,7 +75,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
-    tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+    tableViewCell.setCollectionViewDataSourceDelegate(delegate: self, forRow: indexPath.row)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -152,7 +152,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
 }
 
-extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -164,8 +164,11 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
     
+    let type: FieldType = FieldType(rawValue: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.row + 1].type) ?? .noType
     let payload = (value: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].name)
-    cell.configure(withValue: payload.value, andTitle: payload.title)
+    cell.configure(withValue: payload.value, andTitle: payload.title, forType: type) {
+      print("button tapped, running closure")
+    }
 
     return cell
   }

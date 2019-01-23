@@ -12,9 +12,28 @@ class ListItemCollectionCell: UICollectionViewCell {
   
   @IBOutlet weak var valueLbl: UILabel!
   @IBOutlet weak var fieldTitleLbl: UILabel!
+  @IBOutlet weak var booleanBtn: BooleanFieldBtn!
+  var closure: (() -> ())?
   
-  func configure(withValue value: String, andTitle title: String) {
-    valueLbl.text = value
+  func configure(withValue value: String, andTitle title: String, forType type: FieldType, runOnTap closure: (() -> ())?) {
+    if type == .checkBox {
+      valueLbl.isHidden = true
+      booleanBtn.isHidden = false
+      booleanBtn.configure(as: Bool(value) ?? false)
+    } else {
+      booleanBtn.isHidden = true
+      valueLbl.isHidden = false
+      valueLbl.text = value
+    }
     fieldTitleLbl.text = title
+    self.closure = closure
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  @IBAction func buttonTapped(sender: BooleanFieldBtn) {
+    closure?()
   }
 }

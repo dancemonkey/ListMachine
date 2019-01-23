@@ -17,11 +17,13 @@ class ListItemCell: UITableViewCell {
     titleLbl.text = item.itemListTitle
   }
   
-  func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
-    collection.delegate = dataSourceDelegate
-    collection.dataSource = dataSourceDelegate
+  func setCollectionViewDataSourceDelegate(delegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
+    collection.delegate = delegate
+    collection.dataSource = delegate
     collection.tag = row
     collection.reloadData()
+//    let layout = collection.collectionViewLayout as! UICollectionViewFlowLayout
+//    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
   }
   
   override func awakeFromNib() {

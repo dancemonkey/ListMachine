@@ -98,7 +98,7 @@ struct Stylesheet {
   static private var simpleDateFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.dateFormat = "EEEE, MMM d"
+      formatter.dateFormat = "E, MMM d"
       return formatter
     }
   }
@@ -116,7 +116,7 @@ struct Stylesheet {
   static private var dateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.dateFormat = "EEEE, MMM d, h:mm a"
+      formatter.dateFormat = "E, MMM d, h:mm a"
       return formatter
     }
   }
