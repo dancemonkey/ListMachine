@@ -98,11 +98,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   // MARK: Actions
-  @IBAction func newItemPressed(sender: UIBarButtonItem) {
+  @IBAction func newItemPressed(sender: NewItemButton) {
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: nil)
   }
   
-  @IBAction func editTemplatePressed(sender: UIBarButtonItem) {
+  @IBAction func editTemplatePressed(sender: EditTemplateButton) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   

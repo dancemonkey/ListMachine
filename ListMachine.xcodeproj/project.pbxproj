@@ -11,6 +11,7 @@
 		10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */; };
 		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */; };
 		10032F5621CFD5770075DD80 /* FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */; };
+		100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		1029778721D7E6F700945B45 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1029778621D7E6F700945B45 /* FieldType.swift */; };
 		102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */; };
@@ -70,6 +71,7 @@
 		10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemProtocol+Item.swift"; sourceTree = "<group>"; };
 		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemSaveDelegate+TemplateSaveDelegate.swift"; sourceTree = "<group>"; };
 		10032F5521CFD5770075DD80 /* FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueEditVC.swift; sourceTree = "<group>"; };
+		100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTemplateButton.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		1029778621D7E6F700945B45 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
 		102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanFieldBtn.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
 				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
 				102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */,
+				100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */,
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
+				100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
 				106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */,
 				10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */,

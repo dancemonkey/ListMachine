@@ -408,6 +408,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDR-zx-l2f" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
+                                <rect key="frame" x="282" y="574" width="77" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="La8-Ul-nOR"/>
+                                    <constraint firstAttribute="width" constant="77" id="hlJ-Cp-uLC"/>
+                                </constraints>
+                                <state key="normal" image="+ New Button"/>
+                                <connections>
+                                    <action selector="newItemPressedWithSender:" destination="S3e-MS-CWW" eventType="touchUpInside" id="izj-OY-iHM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2M-WM-DTu" customClass="EditTemplateButton" customModule="ListMachine" customModuleProvider="target">
+                                <rect key="frame" x="32" y="606" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="7hK-ak-ENM"/>
+                                    <constraint firstAttribute="height" constant="45" id="JEY-Mu-gqV"/>
+                                </constraints>
+                                <state key="normal" image="editTemplateButton"/>
+                                <connections>
+                                    <action selector="editTemplatePressedWithSender:" destination="S3e-MS-CWW" eventType="touchUpInside" id="oTs-BV-3ek"/>
+                                </connections>
+                            </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter list..." translatesAutoresizingMaskIntoConstraints="NO" id="Z3f-aC-1tV">
                                 <rect key="frame" x="0.0" y="116" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -428,12 +450,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="p2M-WM-DTu" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" constant="32" id="2jM-7A-m7t"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="p2M-WM-DTu" secondAttribute="bottom" constant="16" id="61Z-zy-L2T"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" id="6Gh-SL-jZd"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="pDR-zx-l2f" secondAttribute="bottom" constant="16" id="KBT-vW-hmi"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="OPB-dQ-hOs"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="TDx-o7-glH"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="UgU-sT-gUt"/>
+                            <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="pDR-zx-l2f" secondAttribute="trailing" constant="16" id="YmF-0H-9CL"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="dtQ-7s-0pl"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="Z6B-GR-U3O" secondAttribute="trailing" id="fQw-WT-urY"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
@@ -441,20 +467,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="7rf-28-oib">
-                                <connections>
-                                    <action selector="newItemPressedWithSender:" destination="S3e-MS-CWW" id="zCK-tn-WXs"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="Lk7-1X-AkC">
-                                <connections>
-                                    <action selector="editTemplatePressedWithSender:" destination="S3e-MS-CWW" id="Pvz-XI-vlh"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk"/>
                     <connections>
                         <outlet property="searchBar" destination="Z3f-aC-1tV" id="rkq-n9-P8J"/>
                         <outlet property="sortSelect" destination="Z6B-GR-U3O" id="g8L-fh-U9b"/>
@@ -748,6 +761,7 @@
     </scenes>
     <resources>
         <image name="+ New Button" width="77" height="77"/>
+        <image name="editTemplateButton" width="100" height="100"/>
         <image name="falseImage" width="60" height="60"/>
     </resources>
 </document>
