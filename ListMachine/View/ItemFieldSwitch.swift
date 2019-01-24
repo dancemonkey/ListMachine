@@ -10,7 +10,6 @@ import UIKit
 
 class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
 
-//  var save: ((String) -> ())?
   var reportValue: String {
     return self.isOn.description
   }

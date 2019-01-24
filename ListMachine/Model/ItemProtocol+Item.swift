@@ -18,7 +18,6 @@ protocol ItemProtocol {
   func setValues(for field: ItemField, at index: Int)
 }
 
-//@dynamicMemberLookup
 class Item: Object, ItemProtocol {
   
   typealias FieldID = Int

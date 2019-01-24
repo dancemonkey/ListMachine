@@ -165,11 +165,22 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
     
     let type: FieldType = FieldType(rawValue: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.row + 1].type) ?? .noType
-    let payload = (value: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set", title: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].name)
+    let value = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set"
+    let title = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].name
+    let field = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1]
+    let payload = (value: value, title: title)
     cell.configure(withValue: payload.value, andTitle: payload.title, forType: type) {
-      print("button tapped, running closure")
+      if type == FieldType.checkBox {
+        self.store?.run {
+          do {
+            try field.flipBoolean()
+          } catch {
+            print(error)
+          }
+        }
+        self.tableView.reloadData()
+      }
     }
-
     return cell
   }
 }

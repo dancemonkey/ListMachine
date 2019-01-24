@@ -20,6 +20,11 @@ protocol ItemFieldProtocol {
   func getValueAndType() -> (value: FieldValue?, type: FieldType?)
 }
 
+enum CheckboxSetError: Error {
+  case notCheckboxType
+  case nonBooleanValue
+}
+
 class ItemField: Object, ItemFieldProtocol {
   @objc dynamic var name: String = ""
   @objc dynamic var type: String = FieldType.noType.rawValue
@@ -42,6 +47,17 @@ class ItemField: Object, ItemFieldProtocol {
   
   func set(value: FieldValue, forType type: FieldType) {
     self.value = value
+  }
+  
+  func flipBoolean() throws {
+    guard let fieldType = FieldType(rawValue: self.type), fieldType == .checkBox else {
+      throw CheckboxSetError.notCheckboxType
+    }
+    if let boolValue = Bool(self.value ?? "") {
+      self.value = (!boolValue).description
+    } else {
+      throw CheckboxSetError.nonBooleanValue
+    }
   }
   
   func getValueAndType() -> (value: FieldValue?, type: FieldType?) {

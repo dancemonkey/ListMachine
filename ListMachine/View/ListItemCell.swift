@@ -22,8 +22,6 @@ class ListItemCell: UITableViewCell {
     collection.dataSource = delegate
     collection.tag = row
     collection.reloadData()
-//    let layout = collection.collectionViewLayout as! UICollectionViewFlowLayout
-//    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
   }
   
   override func awakeFromNib() {
