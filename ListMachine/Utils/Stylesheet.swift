@@ -9,7 +9,7 @@
 import UIKit
 
 enum UserContentFeature {
-  case mainListCell, itemListCellTitle, itemListCellData, fieldListCell, userInput
+  case mainListCell, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput
 }
 
 enum SystemContentFeature {
@@ -23,7 +23,7 @@ enum ColorCategory {
 struct Stylesheet {
   
   // MARK: Colors
-  static func getColor(for category: ColorCategory) -> UIColor {
+  static func getColor(_ category: ColorCategory) -> UIColor {
     switch category {
     case .accent:
       return UIColor.init(red: 122/255, green: 59/255, blue: 105/255, alpha: 1.0)
@@ -39,24 +39,38 @@ struct Stylesheet {
   }
   
   // MARK: Fonts
-  static var systemFontName: String = "Montserrat-Regular"
-  static var systemFontBoldName: String = "Montserrat-Bold"
-  static var userFontName: String = "Open Sans"
+
+  enum Fonts: String {
+    case systemFontName = "Montserrat-Regular",
+    systemFontBoldName = "Montserrat-Bold",
+    userFontName = "OpenSans-Regular",
+    userFontEmphasisName = "OpenSans-Italic",
+    userFontBoldName = "OpenSans-Semibold"
+  }
   
   static func uiElementFont(for feature: SystemContentFeature) -> UIFont {
     let size = getSize(for: feature)
     let fontName: String
     if feature == .navigationHeading {
-      fontName = systemFontBoldName
+      fontName = Fonts.systemFontBoldName.rawValue
     } else {
-      fontName = systemFontName
+      fontName = Fonts.systemFontName.rawValue
     }
     return UIFont(name: fontName, size: size) ?? UIFont.systemFont(ofSize: size)
   }
   
   static func userContentFont(for feature: UserContentFeature) -> UIFont {
     let size = getSize(for: feature)
-    return UIFont(name: userFontName, size: size) ?? UIFont.systemFont(ofSize: size)
+    let fontName: String
+    switch feature {
+    case .itemCollectionCellTitle:
+      fontName = Fonts.userFontEmphasisName.rawValue
+    case .itemListCellTitle:
+      fontName = Fonts.userFontBoldName.rawValue
+    default:
+      fontName = Fonts.userFontName.rawValue
+    }
+    return UIFont(name: fontName, size: size) ?? UIFont.systemFont(ofSize: size)
   }
   
   private static func getSize(for feature: UserContentFeature) -> CGFloat {
@@ -65,8 +79,10 @@ struct Stylesheet {
       return 20.0
     case .itemListCellTitle:
       return 18.0
-    case .itemListCellData:
-      return 14.0
+    case .itemCollectionCellData:
+      return 12.0
+    case .itemCollectionCellTitle:
+      return 10.0
     case .fieldListCell:
       return 20.0
     case .userInput:

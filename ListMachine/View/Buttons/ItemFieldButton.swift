@@ -38,7 +38,7 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
       self.setTitleColor(.gray, for: .highlighted)
     }
     guard value != nil && value != "" else {
-      self.setTitle("Select Date", for: .normal)
+      self.setTitle("No Date", for: .normal)
       return
     }
     self.setTitle(value!, for: .normal)
@@ -53,7 +53,7 @@ extension ItemFieldButton: SegueSenderDelegate {
   func receivePayload(_ value: Date) {
     guard let format = self.format else {
       let title = Stylesheet.simpleDateString(fromDate: value)
-      self.setTitle(title ?? "Select Date", for: .normal)
+      self.setTitle(title ?? "No Date", for: .normal)
       return
     }
     switch format {

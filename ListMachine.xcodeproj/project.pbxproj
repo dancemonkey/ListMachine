@@ -60,6 +60,11 @@
 		10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8CE21CAC320008006FF /* SegueID.swift */; };
 		10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */; };
 		10EB533721DF9DCC00679018 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB533621DF9DCC00679018 /* ListItemCell.swift */; };
+		10EDC61521FB524900D1E4A2 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61421FB524900D1E4A2 /* OpenSans-Regular.ttf */; };
+		10EDC61721FB525C00D1E4A2 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61621FB525C00D1E4A2 /* OpenSans-Italic.ttf */; };
+		10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */; };
+		10EDC61B21FB53CC00D1E4A2 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */; };
+		10EDC61D21FB5B8B00D1E4A2 /* UserEntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */; };
 		10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D021D65722002E9E5C /* FieldItemCell.swift */; };
 		10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */; };
 		A1850574D31A02B5677342E5 /* Pods_ListMachine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */; };
@@ -122,6 +127,11 @@
 		10D4A8CE21CAC320008006FF /* SegueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueID.swift; sourceTree = "<group>"; };
 		10D4A8D221CAC9BA008006FF /* FieldSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSaveDelegate.swift; sourceTree = "<group>"; };
 		10EB533621DF9DCC00679018 /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
+		10EDC61421FB524900D1E4A2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		10EDC61621FB525C00D1E4A2 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntryField.swift; sourceTree = "<group>"; };
 		10F5F4D021D65722002E9E5C /* FieldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCell.swift; sourceTree = "<group>"; };
 		10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintValues.swift; sourceTree = "<group>"; };
 		2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListMachine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +153,8 @@
 		10A8C32421F75301005C6F40 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				104C766821DA51510044346D /* ItemFieldButton.swift */,
+				10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */,
 				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
 				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
 				102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */,
@@ -155,6 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				10A8C32E21F7643D005C6F40 /* Montserrat-Bold.ttf */,
+				10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */,
+				10EDC61421FB524900D1E4A2 /* OpenSans-Regular.ttf */,
+				10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */,
+				10EDC61621FB525C00D1E4A2 /* OpenSans-Italic.ttf */,
 				10A8C32F21F76449005C6F40 /* Montserrat-Regular.ttf */,
 			);
 			path = Fonts;
@@ -227,22 +243,13 @@
 		10D4A8BD21CAB772008006FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10EDC61321FB4ADA00D1E4A2 /* Cells */,
 				10A8C32421F75301005C6F40 /* Buttons */,
-				10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */,
-				10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */,
-				10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */,
-				10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */,
-				10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */,
-				10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */,
-				10F5F4D021D65722002E9E5C /* FieldItemCell.swift */,
 				104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */,
-				104C766821DA51510044346D /* ItemFieldButton.swift */,
 				104C766C21DA55080044346D /* ItemFieldTextView.swift */,
 				104C766E21DA58300044346D /* ItemFieldTextField.swift */,
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
-				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
-				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
-				106C3D7621E44F3400F8881F /* MasterListCell.swift */,
+				10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +282,22 @@
 				10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		10EDC61321FB4ADA00D1E4A2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				106C3D7621E44F3400F8881F /* MasterListCell.swift */,
+				10EB533621DF9DCC00679018 /* ListItemCell.swift */,
+				10F5F4D021D65722002E9E5C /* FieldItemCell.swift */,
+				10B09D4021D511DF00C1FC2B /* TextEntryCell.swift */,
+				10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */,
+				10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */,
+				10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */,
+				10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */,
+				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C2DFBEA439A9E18DC485DFE9 /* Frameworks */ = {
@@ -358,7 +381,11 @@
 				10D4A8B521CAB754008006FF /* LaunchScreen.storyboard in Resources */,
 				10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */,
 				10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */,
+				10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */,
+				10EDC61B21FB53CC00D1E4A2 /* OpenSans-Bold.ttf in Resources */,
+				10EDC61521FB524900D1E4A2 /* OpenSans-Regular.ttf in Resources */,
 				10D4A8AD21CAB752008006FF /* Main.storyboard in Resources */,
+				10EDC61721FB525C00D1E4A2 /* OpenSans-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +485,7 @@
 				10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */,
 				10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */,
 				10D4A8D321CAC9BA008006FF /* FieldSaveDelegate.swift in Sources */,
+				10EDC61D21FB5B8B00D1E4A2 /* UserEntryField.swift in Sources */,
 				1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */,
 				104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */,
 			);

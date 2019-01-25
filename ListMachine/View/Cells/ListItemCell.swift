@@ -15,6 +15,7 @@ class ListItemCell: UITableViewCell {
   
   func configure(withItem item: Item) {
     titleLbl.text = item.itemListTitle
+    styleViews()
   }
   
   func setCollectionViewDataSourceDelegate(delegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
@@ -22,6 +23,12 @@ class ListItemCell: UITableViewCell {
     collection.dataSource = delegate
     collection.tag = row
     collection.reloadData()
+  }
+  
+  func styleViews() {
+    titleLbl.font = Stylesheet.userContentFont(for: .itemListCellTitle)
+    titleLbl.textColor = Stylesheet.getColor(.primary)
+    self.backgroundColor = .clear
   }
   
   override func awakeFromNib() {

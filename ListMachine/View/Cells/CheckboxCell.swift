@@ -1,5 +1,5 @@
 //
-//  DateEntryCell.swift
+//  CheckboxCell.swift
 //  ListMachine
 //
 //  Created by Drew Lanning on 12/27/18.
@@ -8,23 +8,21 @@
 
 import UIKit
 
-class DateEntryCell: UITableViewCell {
+class CheckboxCell: UITableViewCell {
   
   @IBOutlet weak var title: UILabel!
-  @IBOutlet weak var dateBtn: UIButton!
+  @IBOutlet weak var checkBtn: CheckboxButton!
   
   func configure(with field: ItemField) {
     self.title.text = field.name
-    self.dateBtn.setTitle(field.value ?? "Select Date", for: .normal)
+    checkBtn.setChecked(Bool(field.value ?? "false")!)
+    styleViews()
   }
   
-  @IBAction func dateButtnPressed(sender: UIButton) {
-    // set saveDate delegate as self
-    // show date select screen
-    // upon return save selected date as dateBtn title
-    print("going to select a date yay!")
+  func styleViews() {
+    self.backgroundColor = .clear
   }
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code

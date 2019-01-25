@@ -20,6 +20,9 @@ class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
     if type == .number {
       self.keyboardType = .decimalPad
     }
+    backgroundColor = .clear
+    textColor = Stylesheet.getColor(.black)
+    borderStyle = .roundedRect
   }
   
   convenience init() {

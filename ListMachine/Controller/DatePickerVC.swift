@@ -27,6 +27,13 @@ class DatePickerVC: UIViewController {
     setDateMode(to: mode!)
     datePicker.setDate(date ?? Date(), animated: true)
     self.title = "Select Date"
+    
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    datePicker.tintColor = Stylesheet.getColor(.primary)
   }
   
   private func setDateMode(to mode: UIDatePicker.Mode) {

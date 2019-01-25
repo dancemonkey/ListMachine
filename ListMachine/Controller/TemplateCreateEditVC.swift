@@ -25,6 +25,13 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     tableView.dataSource = self
     longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressStarted(sender:)))
     view.addGestureRecognizer(longPress!)
+    
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    tableView.backgroundColor = .clear
   }
   
   // MARK: Tableview Methods

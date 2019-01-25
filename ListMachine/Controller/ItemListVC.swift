@@ -35,6 +35,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     tableView.delegate = self
     tableView.dataSource = self
     searchBar.delegate = self
+    
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    tableView.backgroundColor = .clear
+    searchBar.tintColor = Stylesheet.getColor(.primary)
   }
   
   // MARK: Helper Methods

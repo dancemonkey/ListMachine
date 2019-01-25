@@ -36,6 +36,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let notificationCenter = NotificationCenter.default
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    tableView.backgroundColor = .clear
   }
   
   // MARK: Tableview Methods

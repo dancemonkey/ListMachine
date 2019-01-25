@@ -19,6 +19,12 @@ class MasterListVC: UIViewController {
     self.store = DataStore()
     tableView.delegate = self
     tableView.dataSource = self
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    tableView.backgroundColor = .clear
   }
   
   @IBAction func newListPressed(sender: NewItemButton) {
@@ -51,7 +57,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.masterListCell.rawValue) as! MasterListCell
-    cell.textLabel?.text = store?.getAllLists()?[indexPath.row].name
+    cell.configure(with: store?.getAllLists()?[indexPath.row])
     return cell
   }
   

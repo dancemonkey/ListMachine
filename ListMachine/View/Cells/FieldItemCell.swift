@@ -12,8 +12,6 @@ class FieldItemCell: UITableViewCell {
 
   @IBOutlet weak var title: UILabel!
   var valueView: FieldItemCellValueView?
-  var textFieldDelegate: UITextFieldDelegate?
-  var textViewDelegate: UITextViewDelegate?
   
   func configure(withField field: ItemField, andValue value: String?) {
     title.text = field.name
@@ -29,6 +27,11 @@ class FieldItemCell: UITableViewCell {
         addDoneAccessory(to: valueView!.textView)
       }
     }
+    styleViews()
+  }
+  
+  func styleViews() {
+    self.backgroundColor = .clear
   }
   
   func setConstraints(for type: FieldType) {

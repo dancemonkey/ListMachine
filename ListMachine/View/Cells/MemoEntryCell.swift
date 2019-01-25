@@ -16,6 +16,11 @@ class MemoEntryCell: UITableViewCell {
   func configure(with field: ItemField) {
     self.title.text = field.name
     self.textField.text = field.value ?? ""
+    styleViews()
+  }
+  
+  func styleViews() {
+    self.backgroundColor = .clear
   }
   
   override func awakeFromNib() {

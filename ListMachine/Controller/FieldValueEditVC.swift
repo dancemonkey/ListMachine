@@ -31,6 +31,12 @@ class FieldValueEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
       let typeIndex = fieldTypes.firstIndex(of: FieldType(rawValue: field.type)!)
       typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
     }
+    
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
   }
   
   // MARK: Actions

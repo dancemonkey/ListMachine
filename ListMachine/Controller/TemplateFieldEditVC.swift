@@ -9,7 +9,7 @@
 import UIKit
 
 class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-  @IBOutlet weak var nameFld: UITextField!
+  @IBOutlet weak var nameFld: UserEntryField!
   @IBOutlet weak var typePicker: UIPickerView!
   private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .dateAndTime, .checkBox]
   var saveDelegate: FieldSaveDelegate?
@@ -27,8 +27,15 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     if currentField != nil {
       populateFields(with: currentField!)
     }
-    
+  
     addDoneAccessory(to: nameFld)
+    styleViews()
+  }
+  
+  func styleViews() {
+    view.backgroundColor = Stylesheet.getColor(.white)
+    typePicker.backgroundColor = .clear
+    typePicker.tintColor = Stylesheet.getColor(.primary)
   }
   
   func populateFields(with existing: ItemFieldProtocol) {

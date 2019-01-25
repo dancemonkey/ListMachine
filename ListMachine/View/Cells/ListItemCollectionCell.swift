@@ -27,6 +27,15 @@ class ListItemCollectionCell: UICollectionViewCell {
     }
     fieldTitleLbl.text = title
     self.closure = closure
+    styleViews()
+  }
+  
+  func styleViews() {
+    valueLbl.textColor = Stylesheet.getColor(.primary)
+    valueLbl.font = Stylesheet.userContentFont(for: .itemCollectionCellData)
+    fieldTitleLbl.font = Stylesheet.userContentFont(for: .itemCollectionCellTitle)
+    fieldTitleLbl.textColor = Stylesheet.getColor(.primary)
+    backgroundColor = .clear
   }
   
   override func awakeFromNib() {

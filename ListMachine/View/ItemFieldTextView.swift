@@ -17,6 +17,8 @@ class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
 
   internal func configure(with field: ItemField, and value: String?) {
     self.text = value ?? ""
+    backgroundColor = .clear
+    textColor = Stylesheet.getColor(.black)
   }
   
   convenience init() {

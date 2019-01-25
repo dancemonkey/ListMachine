@@ -1,5 +1,5 @@
 //
-//  TextEntryCell.swift
+//  NumberEntryCell.swift
 //  ListMachine
 //
 //  Created by Drew Lanning on 12/27/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextEntryCell: UITableViewCell {
+class NumberEntryCell: UITableViewCell {
   
   @IBOutlet weak var title: UILabel!
   @IBOutlet weak var textField: UITextField!
@@ -16,10 +16,17 @@ class TextEntryCell: UITableViewCell {
   func configure(with field: ItemField) {
     self.title.text = field.name
     self.textField.text = field.value ?? ""
+    textField.keyboardType = .numberPad
+    styleViews()
+  }
+  
+  func styleViews() {
+    self.backgroundColor = .clear
   }
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    // Initialization code
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

@@ -48,6 +48,10 @@ class FieldItemCellValueView: UIView {
     setConstraints(for: type)
   }
   
+  func styleViews() {
+    self.backgroundColor = .clear
+  }
+  
   func setConstraints(for type: FieldType) {
     var workingView: UIView
     if switchSubview != nil {
