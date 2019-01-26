@@ -34,7 +34,8 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
         self.format = DateFormat.simpleDate
       default: break
       }
-      self.setTitleColor(.blue, for: .normal)
+      self.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
+      self.titleLabel?.font = Stylesheet.userContentFont(for: .userInput)
       self.setTitleColor(.gray, for: .highlighted)
     }
     guard value != nil && value != "" else {
@@ -42,6 +43,7 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
       return
     }
     self.setTitle(value!, for: .normal)
+    self.contentHorizontalAlignment = .left
   }
   
   @objc private func buttonTapped(sender: UIButton) {

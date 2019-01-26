@@ -32,6 +32,8 @@ class FieldItemCell: UITableViewCell {
   
   func styleViews() {
     self.backgroundColor = .clear
+    title.font = Stylesheet.userContentFont(for: .itemEntryFieldTitle)
+    title.textColor = Stylesheet.getColor(.primary)
   }
   
   func setConstraints(for type: FieldType) {
@@ -41,15 +43,16 @@ class FieldItemCell: UITableViewCell {
     let views: [String: Any] = ["valueView": valueView!, "title": title]
     let hFormat = FieldTypeConstraints(type: type).horizontal
     let vFormat = FieldTypeConstraints(type: type).vertical
+    let titleHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[title]-|", options: [], metrics: nil, views: views)
     let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat, options: .alignAllCenterY, metrics: nil, views: views)
     let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: [], metrics: nil, views: views)
     var allConstraints: [NSLayoutConstraint] = []
-    allConstraints = allConstraints + hConstraints
-    allConstraints = allConstraints + vConstraints
-    if type == .memo {
-      let memoTitleConstraint = "|-[valueView]-|"
-      allConstraints = allConstraints + NSLayoutConstraint.constraints(withVisualFormat: memoTitleConstraint, options: [], metrics: nil, views: views)
-    }
+    allConstraints = allConstraints + titleHConstraints + hConstraints + vConstraints
+//    allConstraints = allConstraints + vConstraints
+//    if type == .memo {
+//      let memoTitleConstraint = "|-[valueView]-|"
+//      allConstraints = allConstraints + NSLayoutConstraint.constraints(withVisualFormat: memoTitleConstraint, options: [], metrics: nil, views: views)
+//    }
     NSLayoutConstraint.activate(allConstraints)
   }
   

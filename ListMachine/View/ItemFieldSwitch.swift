@@ -9,6 +9,10 @@
 import UIKit
 
 class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 
   var reportValue: String {
     return self.isOn.description
@@ -17,6 +21,7 @@ class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
   internal func configure(with field: ItemField, and value: String?) {
     let checked: Bool? = Bool(value ?? "false")
     self.isOn = checked ?? false
+    self.onTintColor = Stylesheet.getColor(.primary)
   }
 
 }

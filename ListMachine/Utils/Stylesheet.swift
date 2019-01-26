@@ -9,7 +9,7 @@
 import UIKit
 
 enum UserContentFeature {
-  case mainListCell, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput
+  case mainListCell, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput, itemEntryFieldTitle
 }
 
 enum SystemContentFeature {
@@ -87,6 +87,8 @@ struct Stylesheet {
       return 20.0
     case .userInput:
       return 16.0
+    case .itemEntryFieldTitle:
+      return 14.0
     }
   }
   

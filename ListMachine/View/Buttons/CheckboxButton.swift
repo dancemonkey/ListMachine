@@ -10,6 +10,10 @@ import UIKit
 
 class CheckboxButton: UIButton {
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
   func setChecked(_ checked: Bool) {
     if checked {
       setImage(UIImage(named: "checked"), for: .normal)
