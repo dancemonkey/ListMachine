@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
+class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
@@ -45,6 +45,10 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     tableView.backgroundColor = .clear
   }
   
+  func setDelegate(forField field: ItemField) {
+    
+  }
+  
   // MARK: Tableview Methods
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,14 +61,22 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.customFieldItemCell.rawValue) as? FieldItemCell
-    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
+    cell?.fieldSave = { [unowned self] value in
+      print("running top closure")
+      self.store?.run {
+        let field = self.item?.itemFields[indexPath.row]
+        field?.set(value: value, forType: type)
+        self.item?.setValues(for: field!, at: indexPath.row)
+      }
+      self.save()
+    }
+    cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     cell?.configureAction(for: type, with: self)
     return cell!
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: SegueID.showFieldValueEntry.rawValue, sender: indexPath)
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -74,25 +86,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     default:
       return 90.0
     }
-  }
-  
-  // MARK: Nav Actions
-  
-  @IBAction func savePressed(sender: UIButton) {
-    store?.run {
-      for (idx, indexPath) in tableView.indexPathsForVisibleRows!.enumerated() {
-        let cell = tableView.cellForRow(at: indexPath) as! FieldItemCell
-        let field = item!.itemFields[idx]
-        field.value = cell.valueView?.getSubviewValue
-        item!.setValues(for: field, at: idx)
-      }
-    }
-    if let i = itemIndex {
-      itemSaveDelegate?.updateItem(self.item!, at: i)
-    } else {
-      itemSaveDelegate?.saveItem(item!)
-    }
-    navigationController?.popViewController(animated: true)
   }
   
   // MARK: Segues
@@ -127,16 +120,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
   }
   
-  // MARK: Save Protocol
-  func saveField(_ field: ItemField) { }
-  
-  func update(_ field: ItemField, at index: Int) {
-    store?.run {
-      self.item?.setValues(for: field, at: index)
-    }
-    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-  }
-  
   // MARK: Keyboard management
   @objc func adjustForKeyboard(notification: Notification) {
     let userInfo = notification.userInfo!
@@ -159,6 +142,26 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @objc func dateSelectTapped(sender: UIButton) {
     self.performSegue(withIdentifier: SegueID.showDatePicker.rawValue, sender: self)
+  }
+  
+  func save() {
+    if let i = itemIndex {
+      itemSaveDelegate?.updateItem(self.item!, at: i)
+    } else {
+      itemSaveDelegate?.saveItem(item!)
+    }
+  }
+  
+}
+
+extension ItemCreateEditVC: FieldSaveDelegate {
+  func saveField(_ field: ItemField) { }
+  
+  func update(_ field: ItemField, at index: Int) {
+    store?.run {
+      self.item?.setValues(for: field, at: index)
+    }
+    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
   }
 }
 

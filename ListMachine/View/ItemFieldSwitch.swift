@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
   
+  var fieldSave: ((_: String) -> ())? = nil
+
   override func awakeFromNib() {
     super.awakeFromNib()
   }

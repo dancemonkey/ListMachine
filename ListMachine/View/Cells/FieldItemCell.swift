@@ -12,12 +12,19 @@ class FieldItemCell: UITableViewCell {
 
   @IBOutlet weak var title: UILabel!
   var valueView: FieldItemCellValueView?
+  var fieldSave: ((_: String) -> ())? {
+    didSet {
+      print("closure set in FieldItemCell: \(fieldSave)")
+    }
+  }
   
   func configure(withField field: ItemField, andValue value: String?) {
     title.text = field.name
     let type = FieldType(rawValue: field.type) ?? .noType
     valueView = FieldItemCellValueView(as: field, with: value)
     if valueView != nil {
+      valueView?.fieldSave = self.fieldSave
+      valueView?.assignSaveAction(for: type)
       self.addSubview(valueView!)
       valueView!.isUserInteractionEnabled = true
       setConstraints(for: type)
@@ -48,11 +55,6 @@ class FieldItemCell: UITableViewCell {
     let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat, options: [], metrics: nil, views: views)
     var allConstraints: [NSLayoutConstraint] = []
     allConstraints = allConstraints + titleHConstraints + hConstraints + vConstraints
-//    allConstraints = allConstraints + vConstraints
-//    if type == .memo {
-//      let memoTitleConstraint = "|-[valueView]-|"
-//      allConstraints = allConstraints + NSLayoutConstraint.constraints(withVisualFormat: memoTitleConstraint, options: [], metrics: nil, views: views)
-//    }
     NSLayoutConstraint.activate(allConstraints)
   }
   

@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
   
+  var fieldSave: ((_: String) -> ())?
+
   var reportValue: String {
     return self.text ?? ""
   }
@@ -45,6 +47,11 @@ class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+  }
+  
+  override func resignFirstResponder() -> Bool {
+    fieldSave?(self.text ?? "")
+    return super.resignFirstResponder()
   }
 
 }

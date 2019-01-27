@@ -25,7 +25,12 @@ class FieldItemCellValueView: UIView {
       return textField!.reportValue
     }
   }
-  
+  var fieldSave: ((_: String) -> ())? {
+    didSet {
+      print("closure set in FieldItemCellValueView")
+    }
+  }
+
   convenience init?(as field: ItemField, with value: String?) {
     self.init()
     let type = FieldType(rawValue: field.type) ?? .noType
@@ -48,8 +53,40 @@ class FieldItemCellValueView: UIView {
     setConstraints(for: type)
   }
   
+  func assignSaveAction(for type: FieldType) {
+    switch type {
+    case .checkBox:
+      switchSubview?.addTarget(self, action: #selector(saveField), for: .valueChanged)
+    case .date, .dateAndTime:
+      buttonSubview?.fieldSave = self.fieldSave
+    case .memo:
+      textView?.fieldSave = self.fieldSave
+    case .number, .text:
+      textField?.fieldSave = self.fieldSave
+    case .noType:
+      print("no type for this field we're screwed")
+    }
+  }
+  
   func styleViews() {
     self.backgroundColor = .clear
+  }
+  
+  @objc func saveField() {
+    let workingView: CustomFieldUIViewProtocol
+    if switchSubview != nil {
+      workingView = switchSubview!
+    } else if buttonSubview != nil {
+      workingView = buttonSubview!
+    } else if textView != nil {
+      workingView = textView!
+    } else {
+      workingView = textField!
+    }
+    if let save = fieldSave {
+      save(workingView.reportValue)
+      print("value saved from valueView")
+    }
   }
   
   func setConstraints(for type: FieldType) {

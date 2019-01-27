@@ -10,6 +10,12 @@ import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   
+  var fieldSave: ((_: String) -> ())? {
+    didSet {
+      print("closure set in ItemFieldButton")
+    }
+  }
+
   enum DateFormat {
     case simpleDate, dateAndTime
   }
@@ -53,6 +59,9 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 
 extension ItemFieldButton: SegueSenderDelegate {
   func receivePayload(_ value: Date) {
+    defer {
+      fieldSave?(self.reportValue)
+    }
     guard let format = self.format else {
       let title = Stylesheet.simpleDateString(fromDate: value)
       self.setTitle(title ?? "No Date", for: .normal)

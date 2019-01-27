@@ -62,7 +62,7 @@ class List: Object, ListProtocol {
     
     setSortKey(to: fieldIndex)
     results = Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
-      return itemOne.itemFields[fieldIndex].value! < itemTwo.itemFields[fieldIndex].value!
+      return itemOne.itemFields[fieldIndex].value ?? "" < itemTwo.itemFields[fieldIndex].value ?? ""
     })
     
     if let filter = filterText, filter != "" {
