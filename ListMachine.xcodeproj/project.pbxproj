@@ -42,6 +42,7 @@
 		10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */; };
 		10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */; };
 		10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */; };
+		10BBF9DC21FDE85000C08278 /* TemplateFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */; };
 		10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */; };
 		10CF79A221DE4758006F9F64 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF79A121DE4758006F9F64 /* Stylesheet.swift */; };
 		10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */; };
@@ -107,6 +108,7 @@
 		10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFieldCell.swift; sourceTree = "<group>"; };
 		10CF799F21DE446B006F9F64 /* DateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSaveDelegate.swift; sourceTree = "<group>"; };
 		10CF79A121DE4758006F9F64 /* Stylesheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		10CF79A321DE4CF5006F9F64 /* SenderSenderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderSenderDelegate.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */,
 				10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */,
 				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
+				10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */,
 				10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */,
+				10BBF9DC21FDE85000C08278 /* TemplateFieldCell.swift in Sources */,
 				104C766921DA51510044346D /* ItemFieldButton.swift in Sources */,
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
 				102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */,

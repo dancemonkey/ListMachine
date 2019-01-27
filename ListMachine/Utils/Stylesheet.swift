@@ -9,7 +9,7 @@
 import UIKit
 
 enum UserContentFeature {
-  case mainListCell, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput, itemEntryFieldTitle
+  case mainListCell, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput, itemEntryFieldTitle, templateFieldListTitle, templateFieldListType
 }
 
 enum SystemContentFeature {
@@ -63,9 +63,9 @@ struct Stylesheet {
     let size = getSize(for: feature)
     let fontName: String
     switch feature {
-    case .itemCollectionCellTitle:
+    case .itemCollectionCellTitle, .templateFieldListType:
       fontName = Fonts.userFontEmphasisName.rawValue
-    case .itemListCellTitle:
+    case .itemListCellTitle, .templateFieldListTitle:
       fontName = Fonts.userFontBoldName.rawValue
     default:
       fontName = Fonts.userFontName.rawValue
@@ -89,6 +89,10 @@ struct Stylesheet {
       return 16.0
     case .itemEntryFieldTitle:
       return 14.0
+    case .templateFieldListType:
+      return 14.0
+    case .templateFieldListTitle:
+      return 16.0
     }
   }
   

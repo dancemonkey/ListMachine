@@ -19,18 +19,6 @@ struct ListItemCellConstraints {
 
 struct FieldTypeConstraints {
   var type: FieldType
-//  var horizontal: String {
-//    switch type {
-//    case .checkBox:
-//      return "|-[title]-[valueView]-16-|"
-//    case .number, .text, .date, .dateAndTime:
-//      return "|-[title]-[valueView]-16-|"
-//    case .memo:
-//      return "|-[title]"
-//    default:
-//      return "|-[title]-[valueView]-16-|"
-//    }
-//  }
   
   var horizontal: String {
     switch type {
@@ -51,15 +39,4 @@ struct FieldTypeConstraints {
       return "V:|-8-[title]-8-[valueView(45)]-8-|"
     }
   }
-  
-//  var vertical: String {
-//    switch type {
-//    case .checkBox, .date, .number, .text, .dateAndTime:
-//      return "V:|-4@250-[valueView(45@1000)]-4@250-|"
-//    case .memo:
-//      return "V:|-[title]-[valueView]-|"
-//    default:
-//      return "V:[valueView(45)]"
-//    }
-//  }
 }
