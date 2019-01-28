@@ -56,7 +56,8 @@ class FieldItemCellValueView: UIView {
   func assignSaveAction(for type: FieldType) {
     switch type {
     case .checkBox:
-      switchSubview?.addTarget(self, action: #selector(saveField), for: .valueChanged)
+//      switchSubview?.addTarget(self, action: #selector(saveField), for: .valueChanged)
+      switchSubview?.fieldSave = self.fieldSave
     case .date, .dateAndTime:
       buttonSubview?.fieldSave = self.fieldSave
     case .memo:

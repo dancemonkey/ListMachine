@@ -24,6 +24,13 @@ class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
     let checked: Bool? = Bool(value ?? "false")
     self.isOn = checked ?? false
     self.onTintColor = Stylesheet.getColor(.primary)
+    self.addTarget(self, action: #selector(saveField), for: .valueChanged)
+  }
+  
+  @objc func saveField() {
+    if let save = fieldSave {
+      save(reportValue)
+    }
   }
 
 }
