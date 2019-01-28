@@ -10,6 +10,10 @@ import UIKit
 
 class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
+  enum EditState {
+    case newItem, editingExistingItem
+  }
+  
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
@@ -17,12 +21,16 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var itemSaveDelegate: ItemSaveDelegate?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
+  var state: EditState = .newItem
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     if item == nil {
       item = Item(from: itemTemplate)
+      state = .newItem
+    } else {
+      state = .editingExistingItem
     }
     
     self.title = item?.itemListTitle ?? "Untitled Item"
@@ -63,7 +71,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.customFieldItemCell.rawValue) as? FieldItemCell
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
     cell?.fieldSave = { [unowned self] value in
-      print("running top closure")
       self.store?.run {
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
@@ -145,11 +152,17 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   func save() {
-    if let i = itemIndex {
-      itemSaveDelegate?.updateItem(self.item!, at: i)
-    } else {
+    if self.state == .newItem {
       itemSaveDelegate?.saveItem(item!)
+      self.state = .editingExistingItem
+    } else if self.state == .editingExistingItem, let i = itemIndex {
+      itemSaveDelegate?.updateItem(self.item!)
     }
+//    if let i = itemIndex {
+//      itemSaveDelegate?.updateItem(self.item!, at: i)
+//    } else {
+//      itemSaveDelegate?.saveItem(item!)
+//    }
   }
   
 }

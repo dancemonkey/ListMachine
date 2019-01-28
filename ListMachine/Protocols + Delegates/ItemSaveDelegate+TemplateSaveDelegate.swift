@@ -10,7 +10,7 @@ import Foundation
 
 protocol ItemSaveDelegate {
   func saveItem(_ item: Item)
-  func updateItem(_ item: Item, at index: Int)
+  func updateItem(_ item: Item)
 }
 
 protocol TemplateSaveDelegate {

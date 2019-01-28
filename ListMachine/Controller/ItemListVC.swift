@@ -126,7 +126,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     tableView.reloadData()
   }
   
-  func updateItem(_ item: Item, at index: Int) {
+  func updateItem(_ item: Item) {
     store?.save(object: item, andRun: nil)
     tableView.reloadData()
   }
