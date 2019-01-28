@@ -13,7 +13,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var sortSelect: UISegmentedControl!
+  @IBOutlet weak var sortSelect: SortSelectControl!
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?

@@ -26,6 +26,7 @@
 		1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */; };
 		1067438821FF40AC0084F1EF /* FieldDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067438721FF40AC0084F1EF /* FieldDatePicker.swift */; };
 		1067438A21FF42980084F1EF /* FieldTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067438921FF42980084F1EF /* FieldTypePicker.swift */; };
+		1067438C21FF44AD0084F1EF /* SortSelectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067438B21FF44AD0084F1EF /* SortSelectControl.swift */; };
 		106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7421E44D6900F8881F /* MasterListVC.swift */; };
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
@@ -96,6 +97,7 @@
 		1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		1067438721FF40AC0084F1EF /* FieldDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDatePicker.swift; sourceTree = "<group>"; };
 		1067438921FF42980084F1EF /* FieldTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTypePicker.swift; sourceTree = "<group>"; };
+		1067438B21FF44AD0084F1EF /* SortSelectControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSelectControl.swift; sourceTree = "<group>"; };
 		106C3D7421E44D6900F8881F /* MasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListVC.swift; sourceTree = "<group>"; };
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				104C766E21DA58300044346D /* ItemFieldTextField.swift */,
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
 				10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */,
+				1067438B21FF44AD0084F1EF /* SortSelectControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */,
 				10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
+				1067438C21FF44AD0084F1EF /* SortSelectControl.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */,
 				106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */,

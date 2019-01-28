@@ -288,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
-                                <rect key="frame" x="0.0" y="199" width="375" height="468"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -422,7 +422,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-GR-U3O">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-GR-U3O" customClass="SortSelectControl" customModule="ListMachine" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="172" width="375" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="HjS-2Q-JvD"/>
@@ -440,7 +440,7 @@
                         <constraints>
                             <constraint firstItem="p2M-WM-DTu" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" constant="32" id="2jM-7A-m7t"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="p2M-WM-DTu" secondAttribute="bottom" constant="16" id="61Z-zy-L2T"/>
-                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" id="6Gh-SL-jZd"/>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" constant="4" id="6Gh-SL-jZd"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="pDR-zx-l2f" secondAttribute="bottom" constant="16" id="KBT-vW-hmi"/>
