@@ -13,7 +13,7 @@ enum UserContentFeature {
 }
 
 enum SystemContentFeature {
-  case buttonLabel, navigationHeading, alertTitle, alertMessage, fieldLabel, pickerItem, segmentItem
+  case buttonLabel, smallNavigationHeading, navigationHeading, alertTitle, alertMessage, fieldLabel, pickerItem, segmentItem
 }
 
 enum ColorCategory {
@@ -43,6 +43,7 @@ struct Stylesheet {
   enum Fonts: String {
     case systemFontName = "Montserrat-Regular",
     systemFontBoldName = "Montserrat-Bold",
+    systemFontSemiboldName = "Montserrat-SemiBold",
     userFontName = "OpenSans-Regular",
     userFontEmphasisName = "OpenSans-Italic",
     userFontBoldName = "OpenSans-Semibold"
@@ -53,6 +54,8 @@ struct Stylesheet {
     let fontName: String
     if feature == .navigationHeading {
       fontName = Fonts.systemFontBoldName.rawValue
+    } else if feature == .smallNavigationHeading {
+      fontName = Fonts.systemFontSemiboldName.rawValue
     } else {
       fontName = Fonts.systemFontName.rawValue
     }
@@ -102,6 +105,8 @@ struct Stylesheet {
       return 17.0
     case .navigationHeading:
       return 34.0
+    case .smallNavigationHeading:
+      return 17.0
     case .alertTitle:
       return 18.0
     case .alertMessage:

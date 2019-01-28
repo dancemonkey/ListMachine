@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-72-Fou">
-                                <rect key="frame" x="0.0" y="116" width="375" height="458"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customFieldItemCell" rowHeight="75" id="TEl-0Y-D3Q" customClass="FieldItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -44,26 +44,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKk-mG-d0D" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="590" width="100" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="F3x-It-5dU"/>
-                                    <constraint firstAttribute="width" constant="100" id="hIh-4a-04h"/>
-                                </constraints>
-                                <state key="normal" title="SAVE"/>
-                                <connections>
-                                    <action selector="savePressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d9w-F1-Wwk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Pew-72-Fou" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Gw-5V-oVv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AKk-mG-d0D" secondAttribute="bottom" constant="32" id="B6O-sN-3XK"/>
-                            <constraint firstItem="AKk-mG-d0D" firstAttribute="top" secondItem="Pew-72-Fou" secondAttribute="bottom" constant="16" id="IXU-GZ-S99"/>
                             <constraint firstItem="Pew-72-Fou" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SU6-k6-dVX"/>
-                            <constraint firstItem="AKk-mG-d0D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VnN-6P-EIH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pew-72-Fou" secondAttribute="trailing" id="ciA-O0-x5o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pew-72-Fou" secondAttribute="bottom" id="qgf-wq-0P2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.tintColor = Stylesheet.getColor(.black)
     navBarAppearance.barTintColor = Stylesheet.getColor(.white)
-    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
+    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
     navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
     UINavigationBar.appearance().clipsToBounds = true
     

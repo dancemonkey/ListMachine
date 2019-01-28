@@ -23,6 +23,7 @@
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
+		1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */; };
 		106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7421E44D6900F8881F /* MasterListVC.swift */; };
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
@@ -90,6 +91,7 @@
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
+		1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		106C3D7421E44D6900F8881F /* MasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListVC.swift; sourceTree = "<group>"; };
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				10A8C32E21F7643D005C6F40 /* Montserrat-Bold.ttf */,
 				10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */,
+				1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */,
 				10EDC61421FB524900D1E4A2 /* OpenSans-Regular.ttf */,
 				10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */,
 				10EDC61621FB525C00D1E4A2 /* OpenSans-Italic.ttf */,
@@ -387,6 +390,7 @@
 				10D4A8B521CAB754008006FF /* LaunchScreen.storyboard in Resources */,
 				10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */,
 				10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */,
+				1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */,
 				10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */,
 				10EDC61B21FB53CC00D1E4A2 /* OpenSans-Bold.ttf in Resources */,
 				10EDC61521FB524900D1E4A2 /* OpenSans-Regular.ttf in Resources */,
