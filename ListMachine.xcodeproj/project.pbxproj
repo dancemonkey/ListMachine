@@ -24,6 +24,8 @@
 		104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766C21DA55080044346D /* ItemFieldTextView.swift */; };
 		104C766F21DA58300044346D /* ItemFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766E21DA58300044346D /* ItemFieldTextField.swift */; };
 		1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */; };
+		1067438821FF40AC0084F1EF /* FieldDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067438721FF40AC0084F1EF /* FieldDatePicker.swift */; };
+		1067438A21FF42980084F1EF /* FieldTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067438921FF42980084F1EF /* FieldTypePicker.swift */; };
 		106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7421E44D6900F8881F /* MasterListVC.swift */; };
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
@@ -92,6 +94,8 @@
 		104C766C21DA55080044346D /* ItemFieldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextView.swift; sourceTree = "<group>"; };
 		104C766E21DA58300044346D /* ItemFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldTextField.swift; sourceTree = "<group>"; };
 		1067438421FF3EA70084F1EF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		1067438721FF40AC0084F1EF /* FieldDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDatePicker.swift; sourceTree = "<group>"; };
+		1067438921FF42980084F1EF /* FieldTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTypePicker.swift; sourceTree = "<group>"; };
 		106C3D7421E44D6900F8881F /* MasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListVC.swift; sourceTree = "<group>"; };
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1067438621FF40700084F1EF /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1067438721FF40AC0084F1EF /* FieldDatePicker.swift */,
+				1067438921FF42980084F1EF /* FieldTypePicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
 		10A8C32421F75301005C6F40 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +263,7 @@
 		10D4A8BD21CAB772008006FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1067438621FF40700084F1EF /* Pickers */,
 				10EDC61321FB4ADA00D1E4A2 /* Cells */,
 				10A8C32421F75301005C6F40 /* Buttons */,
 				104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */,
@@ -485,6 +499,8 @@
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */,
 				10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */,
+				1067438A21FF42980084F1EF /* FieldTypePicker.swift in Sources */,
+				1067438821FF40AC0084F1EF /* FieldDatePicker.swift in Sources */,
 				10BBF9DC21FDE85000C08278 /* TemplateFieldCell.swift in Sources */,
 				104C766921DA51510044346D /* ItemFieldButton.swift in Sources */,
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,

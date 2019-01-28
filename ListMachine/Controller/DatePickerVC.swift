@@ -17,7 +17,7 @@ class DatePickerVC: UIViewController {
     case plusWeek = 3
   }
   
-  @IBOutlet weak var datePicker: UIDatePicker!
+  @IBOutlet weak var datePicker: FieldDatePicker!
   var date: Date?
   var saveDelegate: DateSaveDelegate?
   var mode: UIDatePicker.Mode?
@@ -33,7 +33,6 @@ class DatePickerVC: UIViewController {
   
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
-    datePicker.tintColor = Stylesheet.getColor(.primary)
   }
   
   private func setDateMode(to mode: UIDatePicker.Mode) {
@@ -60,5 +59,9 @@ class DatePickerVC: UIViewController {
       datePicker.setDate(Calendar.current.date(byAdding: .day, value: 7, to: currentPickerValue) ?? Date(), animated: true)
     }
   }
+}
+
+extension DatePickerVC: UIPickerViewDelegate {
+
 }
 
