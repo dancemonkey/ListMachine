@@ -13,6 +13,7 @@ class SortSelectControl: UISegmentedControl {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.tintColor = Stylesheet.getColor(.primary)
+    self.setTitleTextAttributes([NSAttributedString.Key.font : Stylesheet.uiElementFont(for: .segmentItem)], for: .normal)
   }
 
 }
