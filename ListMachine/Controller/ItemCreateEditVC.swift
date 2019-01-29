@@ -17,7 +17,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
-  var itemIndex: Int?
+//  var itemIndex: Int?
   var itemSaveDelegate: ItemSaveDelegate?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
@@ -155,14 +155,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     if self.state == .newItem {
       itemSaveDelegate?.saveItem(item!)
       self.state = .editingExistingItem
-    } else if self.state == .editingExistingItem, let i = itemIndex {
+    } else if self.state == .editingExistingItem {
       itemSaveDelegate?.updateItem(self.item!)
     }
-//    if let i = itemIndex {
-//      itemSaveDelegate?.updateItem(self.item!, at: i)
-//    } else {
-//      itemSaveDelegate?.saveItem(item!)
-//    }
   }
   
 }

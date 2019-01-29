@@ -565,7 +565,9 @@
                         <viewLayoutGuide key="safeArea" id="KJs-ov-ipH"/>
                     </view>
                     <connections>
+                        <outlet property="dataTypeLbl" destination="OiC-pk-1q3" id="ZHm-dm-cPZ"/>
                         <outlet property="nameFld" destination="BQ5-jE-AIB" id="P59-7d-NxF"/>
+                        <outlet property="titleLbl" destination="ZSR-Hj-LFU" id="qqn-me-mX3"/>
                         <outlet property="typePicker" destination="gAp-e8-0Q9" id="Qao-5L-Tvd"/>
                     </connections>
                 </viewController>

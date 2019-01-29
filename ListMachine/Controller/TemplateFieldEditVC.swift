@@ -11,6 +11,8 @@ import UIKit
 class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   @IBOutlet weak var nameFld: UserEntryField!
   @IBOutlet weak var typePicker: FieldTypePicker!
+  @IBOutlet weak var titleLbl: UILabel!
+  @IBOutlet weak var dataTypeLbl: UILabel!
   private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .dateAndTime, .checkBox]
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
@@ -34,6 +36,10 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
+    titleLbl.textColor = Stylesheet.getColor(.primary)
+    dataTypeLbl.textColor = Stylesheet.getColor(.primary)
+    titleLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
+    dataTypeLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
   }
   
   func populateFields(with existing: ItemFieldProtocol) {
@@ -60,7 +66,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return fieldTypes[row].rawValue.capitalized
+    return fieldTypes[row].getTitle()
   }
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -68,7 +74,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   }
   
   func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-    let title = fieldTypes[row].rawValue.capitalized
+    let title = fieldTypes[row].getTitle()
     let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor : Stylesheet.getColor(.primary)])
     return attributedTitle
   }

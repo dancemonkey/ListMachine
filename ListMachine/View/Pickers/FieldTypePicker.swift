@@ -13,7 +13,7 @@ class FieldTypePicker: UIPickerView {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.backgroundColor = .clear
-    self.setValue(Stylesheet.getColor(.primary), forKey: "textColor")
+    self.setValue(Stylesheet.getColor(.black), forKey: "textColor")
   }
   
 }

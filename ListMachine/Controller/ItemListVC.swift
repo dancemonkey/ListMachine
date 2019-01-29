@@ -149,7 +149,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
-        destVC.itemIndex = indexPath.row
+//        destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC

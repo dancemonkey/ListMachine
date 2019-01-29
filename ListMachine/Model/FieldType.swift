@@ -19,4 +19,17 @@ enum FieldType: String {
       return nil
     }
   }
+  
+  func getTitle() -> String {
+    switch self {
+    case .text, .memo, .number, .date:
+      return self.rawValue.capitalized
+    case .dateAndTime:
+      return "Date and Time"
+    case .checkBox:
+      return "Check Box"
+    default:
+      return "No Type"
+    }
+  }
 }
