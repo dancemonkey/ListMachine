@@ -36,7 +36,11 @@ class ItemField: Object, ItemFieldProtocol {
     self.init()
     self.name = name
     self.type = type.rawValue
-    self.value = value
+    if type == .checkBox {
+      self.value = "false"
+    } else {
+      self.value = value
+    }
     self.fieldID.value = id
     fieldPrimaryKey = UUID().uuidString
   }
