@@ -52,7 +52,7 @@ class DatePickerVC: UIViewController {
     case .today:
       datePicker.setDate(today, animated: true)
     case .tomorrow:
-      datePicker.setDate(Calendar.current.date(byAdding: .day, value: 1, to: currentPickerValue) ?? Date(), animated: true)
+      datePicker.setDate(Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date(), animated: true)
     case .plusDay:
       datePicker.setDate(Calendar.current.date(byAdding: .day, value: 1, to: currentPickerValue) ?? Date(), animated: true)
     case .plusWeek:
