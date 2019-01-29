@@ -15,7 +15,7 @@ class TemplateFieldCell: UITableViewCell {
   
   func configure(with field: ItemField) {
     self.titleLbl.text = field.name
-    self.typeLbl.text = field.type
+    self.typeLbl.text = (FieldType(rawValue: field.type) ?? FieldType.noType).getTitle()
     styleViews()
   }
   
