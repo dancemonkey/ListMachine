@@ -10,6 +10,8 @@ import UIKit
 
 class DatePickerVC: UIViewController {
   
+  @IBOutlet var shortcutButtons: [UIButton]!
+  
   enum ShortcutDate: Int {
     case today = 0
     case tomorrow = 1
@@ -33,6 +35,9 @@ class DatePickerVC: UIViewController {
   
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
+    for button in shortcutButtons {
+      button.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
+    }
   }
   
   private func setDateMode(to mode: UIDatePicker.Mode) {

@@ -749,6 +749,10 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="6rw-KT-IYy" id="58g-dG-GEL"/>
+                        <outletCollection property="shortcutButtons" destination="60B-nv-Rgg" collectionClass="NSMutableArray" id="18Z-oY-FAr"/>
+                        <outletCollection property="shortcutButtons" destination="SlO-yo-1be" collectionClass="NSMutableArray" id="IpG-OF-9BL"/>
+                        <outletCollection property="shortcutButtons" destination="l53-rJ-Vv4" collectionClass="NSMutableArray" id="DhG-uQ-hw9"/>
+                        <outletCollection property="shortcutButtons" destination="w6g-2a-4yU" collectionClass="NSMutableArray" id="sJo-pG-eXr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uib-mB-PnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
