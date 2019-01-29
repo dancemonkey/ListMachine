@@ -23,7 +23,12 @@ class ListItemCollectionCell: UICollectionViewCell {
     } else {
       booleanBtn.isHidden = true
       valueLbl.isHidden = false
-      valueLbl.text = value
+      if type == .dateAndTime {
+        let date = Stylesheet.dateAndTime(from: value)
+        valueLbl.text = Stylesheet.labelDateAndTimeString(from: date) ?? "No date"
+      } else {
+        valueLbl.text = value
+      }
     }
     fieldTitleLbl.text = title
     self.closure = closure

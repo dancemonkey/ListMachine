@@ -160,14 +160,14 @@ struct Stylesheet {
     return dateAndTimeFormatter.string(from: d)
   }
   
+  static func labelDateAndTimeString(from date: Date?) -> String? {
+    guard let d = date else { return nil }
+    return labelDateAndTimeFormatter.string(from: d)
+  }
+  
   static func dateAndTime(from string: String?) -> Date? {
     guard let s = string else { return nil }
     return dateAndTimeFormatter.date(from: s)
-  }
-  
-  static func labelDateAndTimeString(from date: Date?) -> String? {
-    guard let d = date else { return nil }
-    return labelDateAndTimeString(from: d)
   }
     
 }
