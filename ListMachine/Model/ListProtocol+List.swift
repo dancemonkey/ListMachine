@@ -53,6 +53,21 @@ class List: Object, ListProtocol {
     listedItems.remove(at: index)
   }
   
+  func removeAllItems() {
+    if let template = templateItem {
+      for field in template.defaultFields {
+        DataStore()?.delete(object: field)
+      }
+      DataStore()?.delete(object: template)
+    }
+    for item in listedItems {
+      for field in item.itemFields {
+        DataStore()?.delete(object: field)
+      }
+      DataStore()?.delete(object: item)
+    }
+  }
+  
   func update(itemAt index: Int, with item: Item) {
     listedItems[index] = item
   }
