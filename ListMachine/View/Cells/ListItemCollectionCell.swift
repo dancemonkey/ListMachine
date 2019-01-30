@@ -27,10 +27,10 @@ class ListItemCollectionCell: UICollectionViewCell {
         let date = Stylesheet.dateAndTime(from: value)
         valueLbl.text = Stylesheet.labelDateAndTimeString(from: date) ?? "No date"
       } else {
-        valueLbl.text = value
+        valueLbl.text = value != "" ? value : " "
       }
     }
-    fieldTitleLbl.text = title
+    fieldTitleLbl.text = title != "" ? title : " "
     self.closure = closure
     styleViews()
   }
