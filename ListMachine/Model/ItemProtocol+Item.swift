@@ -84,4 +84,10 @@ class Item: Object, ItemProtocol {
     itemFields[index] = field
     itemFields[index].fieldID.value = id
   }
+  
+  func prepareForDelete() {
+    for field in itemFields {
+      DataStore()?.delete(object: field)
+    }
+  }
 }

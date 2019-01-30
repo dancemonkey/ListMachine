@@ -129,7 +129,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      store?.delete(object: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
+      let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
+      item.prepareForDelete()
+      store?.delete(object: item)
+//      store?.delete(object: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
