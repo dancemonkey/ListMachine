@@ -302,24 +302,24 @@
                                                     <rect key="frame" x="16" y="29" width="326" height="52"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="U3e-UA-HhS">
-                                                        <size key="itemSize" width="125" height="25"/>
+                                                        <size key="itemSize" width="125" height="45"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="listItemCollectionCell" id="vyh-6G-bkE" customClass="ListItemCollectionCell" customModule="ListMachine" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="3.5" width="100" height="45"/>
+                                                            <rect key="frame" x="0.0" y="1" width="100" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tep-LK-k0Y">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NeS-kM-At0" userLabel="Main Collection Stack">
-                                                                                <rect key="frame" x="0.0" y="5.5" width="70.5" height="34.5"/>
+                                                                                <rect key="frame" x="0.0" y="8" width="70.5" height="34.5"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k6-n5-LcA" customClass="BooleanFieldBtn" customModule="ListMachine" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="4.5" width="25" height="25"/>
@@ -371,7 +371,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="tep-LK-k0Y" secondAttribute="trailing" id="U3e-tO-Y0v"/>
                                                                 <constraint firstAttribute="bottom" secondItem="tep-LK-k0Y" secondAttribute="bottom" id="xcr-OD-Zja"/>
                                                             </constraints>
-                                                            <size key="customSize" width="100" height="45"/>
+                                                            <size key="customSize" width="100" height="50"/>
                                                             <connections>
                                                                 <outlet property="booleanBtn" destination="4k6-n5-LcA" id="kb2-MA-1cH"/>
                                                                 <outlet property="fieldTitleLbl" destination="afg-2N-dKi" id="pv5-ZL-p8Q"/>
@@ -427,6 +427,9 @@
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Z3f-aC-1tV">
                                 <rect key="frame" x="0.0" y="116" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="hhk-hd-gSB"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-GR-U3O" customClass="SortSelectControl" customModule="ListMachine" customModuleProvider="target">
@@ -462,10 +465,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk"/>
+                    <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="6AW-Rk-2km">
+                                <connections>
+                                    <action selector="searchPressedWithSender:" destination="S3e-MS-CWW" id="tW8-IU-dY2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="iur-3E-5pc">
+                                <connections>
+                                    <action selector="sortPressedWithSender:" destination="S3e-MS-CWW" id="WCH-nF-lUi"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Z3f-aC-1tV" id="rkq-n9-P8J"/>
+                        <outlet property="searchBarHeight" destination="hhk-hd-gSB" id="WUe-TJ-95B"/>
+                        <outlet property="searchBtn" destination="6AW-Rk-2km" id="j45-K5-frT"/>
+                        <outlet property="sortBtn" destination="iur-3E-5pc" id="IUS-br-Pdq"/>
                         <outlet property="sortSelect" destination="Z6B-GR-U3O" id="g8L-fh-U9b"/>
+                        <outlet property="sortSelectHeight" destination="HjS-2Q-JvD" id="9PD-1u-zGW"/>
                         <outlet property="tableView" destination="vky-wT-JT5" id="Dz2-lt-l5T"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showItemCreator" id="JJT-2k-qGj"/>
                         <segue destination="wrc-EG-jgv" kind="show" identifier="showTemplateEditor" id="74f-C1-Bp1"/>
