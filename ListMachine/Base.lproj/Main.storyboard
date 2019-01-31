@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ItemCreateEditVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-72-Fou">
-                                <rect key="frame" x="0.0" y="140" width="375" height="638"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customFieldItemCell" rowHeight="75" id="TEl-0Y-D3Q" customClass="FieldItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -166,11 +166,11 @@
             <objects>
                 <viewController title="List Items" id="S3e-MS-CWW" customClass="ItemListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bmv-tX-6e6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
-                                <rect key="frame" x="0.0" y="227" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="227" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -286,7 +286,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDR-zx-l2f" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="282" y="685" width="77" height="77"/>
+                                <rect key="frame" x="282" y="636" width="77" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="La8-Ul-nOR"/>
                                     <constraint firstAttribute="width" constant="77" id="hlJ-Cp-uLC"/>
@@ -297,7 +297,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2M-WM-DTu" customClass="EditTemplateButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="32" y="717" width="45" height="45"/>
+                                <rect key="frame" x="32" y="668" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="7hK-ak-ENM"/>
                                     <constraint firstAttribute="height" constant="45" id="JEY-Mu-gqV"/>
@@ -489,11 +489,11 @@
             <objects>
                 <viewController id="OnU-yQ-hKP" customClass="MasterListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wj1-zo-tVc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DNW-wl-HBB">
-                                <rect key="frame" x="0.0" y="140" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="masterListCell" rowHeight="55" id="3aa-OZ-Q9F" customClass="MasterListCell" customModule="ListMachine" customModuleProvider="target">
@@ -521,40 +521,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R92-mc-FeS">
-                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
-                                <items/>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grl-1G-4JJ" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="274" y="711" width="77" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="77" id="akh-qS-Zwt"/>
-                                    <constraint firstAttribute="height" constant="77" id="urv-qZ-hNl"/>
-                                </constraints>
-                                <state key="normal" image="+ New Button"/>
-                                <connections>
-                                    <action selector="newListPressedWithSender:" destination="OnU-yQ-hKP" eventType="touchUpInside" id="8rf-cy-nCM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DNW-wl-HBB" firstAttribute="leading" secondItem="TzM-cj-xd4" secondAttribute="leading" id="3ja-ky-A5K"/>
                             <constraint firstItem="TzM-cj-xd4" firstAttribute="trailing" secondItem="DNW-wl-HBB" secondAttribute="trailing" id="AUq-Hi-kKK"/>
-                            <constraint firstItem="R92-mc-FeS" firstAttribute="top" secondItem="grl-1G-4JJ" secondAttribute="bottom" constant="-25" id="B8I-Sk-QvC"/>
+                            <constraint firstItem="TzM-cj-xd4" firstAttribute="bottom" secondItem="DNW-wl-HBB" secondAttribute="bottom" id="RAT-P6-Cfg"/>
                             <constraint firstItem="DNW-wl-HBB" firstAttribute="top" secondItem="TzM-cj-xd4" secondAttribute="top" id="Yj5-cJ-rWM"/>
-                            <constraint firstAttribute="bottom" secondItem="R92-mc-FeS" secondAttribute="bottom" id="aFT-9n-tcI"/>
-                            <constraint firstItem="R92-mc-FeS" firstAttribute="leading" secondItem="TzM-cj-xd4" secondAttribute="leading" id="dgC-ef-Rjs"/>
-                            <constraint firstItem="TzM-cj-xd4" firstAttribute="trailing" secondItem="grl-1G-4JJ" secondAttribute="trailing" constant="24" id="rUe-6f-Dnt"/>
-                            <constraint firstItem="R92-mc-FeS" firstAttribute="trailing" secondItem="TzM-cj-xd4" secondAttribute="trailing" id="wLX-1y-zOY"/>
-                            <constraint firstItem="R92-mc-FeS" firstAttribute="top" secondItem="DNW-wl-HBB" secondAttribute="bottom" id="x5c-7R-yAf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TzM-cj-xd4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Lists" id="ayR-JT-jVn"/>
                     <connections>
                         <outlet property="tableView" destination="DNW-wl-HBB" id="bp3-Xl-or4"/>
-                        <outlet property="toolBar" destination="R92-mc-FeS" id="KyH-wL-GkE"/>
                         <segue destination="S3e-MS-CWW" kind="show" identifier="showListView" id="mAI-gn-E9d"/>
                     </connections>
                 </viewController>
@@ -565,8 +544,9 @@
         <!--Navigation Controller-->
         <scene sceneID="ac8-py-HOc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yvv-1q-mzt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="yvv-1q-mzt" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="JKP-qC-3ML">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -578,6 +558,10 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="xTF-RX-XE5">
+                        <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="OnU-yQ-hKP" kind="relationship" relationship="rootViewController" id="kMW-yu-d0J"/>
                     </connections>
@@ -591,7 +575,7 @@
             <objects>
                 <viewController title="Select Date/Time" id="rad-PH-LNs" customClass="DatePickerVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OMi-L9-yDn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6rw-KT-IYy" customClass="FieldDatePicker" customModule="ListMachine" customModuleProvider="target">

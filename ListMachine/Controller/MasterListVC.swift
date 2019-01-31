@@ -12,7 +12,7 @@ import RealmSwift
 class MasterListVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var toolBar: UIToolbar!
+  var newButton: UIButton!
   var store: DataStore?
   
   override func viewDidLoad() {
@@ -26,12 +26,18 @@ class MasterListVC: UIViewController {
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
-    toolBar.backgroundColor = Stylesheet.getColor(.secondary)
-    toolBar.barTintColor = Stylesheet.getColor(.secondary)
-    toolBar.isTranslucent = false
+    setupNewButton()
+    setupToolbar(with: newButton, and: nil)
   }
   
-  @IBAction func newListPressed(sender: NewItemButton) {
+  func setupNewButton() {
+    newButton = NewItemButton()
+    newButton.setImage(UIImage(named: "+ New Button"), for: .normal)
+    newButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newButton.addTarget(self, action: #selector(newListPressed(sender:)), for: .touchUpInside)
+  }
+    
+  @objc func newListPressed(sender: NewItemButton) {
     let popup = PopupFactory.newListNamePopup { [unowned self] in
       self.tableView.reloadData()
     }
