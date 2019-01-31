@@ -41,7 +41,6 @@ class ListItemCollectionCell: UICollectionViewCell {
     fieldTitleLbl.font = Stylesheet.userContentFont(for: .itemCollectionCellTitle)
     fieldTitleLbl.textColor = Stylesheet.getColor(.primary).withAlphaComponent(0.8)
     backgroundColor = .clear
-    selectionStyle = .none
   }
   
   override func awakeFromNib() {

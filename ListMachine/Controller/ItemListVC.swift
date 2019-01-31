@@ -47,6 +47,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     styleViews()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if itemList.templateItem!.defaultFields.count <= 1 {
+      sortBtn.isEnabled = false
+    } else {
+      sortBtn.isEnabled = true
+    }
+  }
+  
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
@@ -59,7 +68,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   // MARK: Helper Methods
   func setupSortSelect() {
     sortSelect.removeAllSegments()
-    guard itemList.templateItem!.defaultFields.count > 1 else { return }
+    guard itemList.templateItem!.defaultFields.count > 1 else {
+      return
+    }
     for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
       sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
     }
@@ -90,6 +101,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func showSortSelect() {
+    guard itemList.templateItem!.defaultFields.count > 1 else { return }
     sortSelectHeight.constant = revealedSortHeight
     sortSelect.alpha = 1.0
   }
@@ -132,7 +144,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
       item.prepareForDelete()
       store?.delete(object: item)
-//      store?.delete(object: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }

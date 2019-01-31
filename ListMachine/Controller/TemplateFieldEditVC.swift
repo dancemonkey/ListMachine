@@ -28,6 +28,9 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     if currentField != nil {
       populateFields(with: currentField!)
+      self.title = currentField!.name
+    } else {
+      self.title = "New Field"
     }
   
     addDoneAccessory(to: nameFld)
