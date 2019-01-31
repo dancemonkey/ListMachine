@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum FieldType: String {
+enum FieldType: String, CaseIterable {
   case text, memo, number, date, dateAndTime, checkBox, noType
   
   func getSegueID() -> SegueID? {

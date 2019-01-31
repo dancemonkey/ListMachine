@@ -13,7 +13,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBOutlet weak var typePicker: FieldTypePicker!
   @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var dataTypeLbl: UILabel!
-  private var fieldTypes: [FieldType] = [.text, .memo, .number, .date, .dateAndTime, .checkBox]
+  private var fieldTypes: [FieldType]! //= [.text, .memo, .number, .date, .dateAndTime, .checkBox]
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
   var currentFieldIndex: Int?
@@ -22,6 +22,8 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     super.viewDidLoad()
     typePicker.delegate = self
     typePicker.dataSource = self
+    fieldTypes = FieldType.allCases
+    fieldTypes.removeLast()
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped(sender:)))
     self.view.addGestureRecognizer(tap)
