@@ -18,6 +18,7 @@
 		102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449421F8A095009BAFA7 /* ImageFactory.swift */; };
 		1036F0F121E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */; };
 		1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */; };
+		104A2729220340A2002489FB /* StatusBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A2728220340A2002489FB /* StatusBarExtension.swift */; };
 		104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */; };
 		104C766921DA51510044346D /* ItemFieldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766821DA51510044346D /* ItemFieldButton.swift */; };
 		104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */; };
@@ -89,6 +90,7 @@
 		102B449421F8A095009BAFA7 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		1036F0F021E7DEC900C5BB06 /* DraggableCell Protocol + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DraggableCell Protocol + Extension.swift"; sourceTree = "<group>"; };
 		1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCellValueView.swift; sourceTree = "<group>"; };
+		104A2728220340A2002489FB /* StatusBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtension.swift; sourceTree = "<group>"; };
 		104C766621DA4FFE0044346D /* ItemFieldSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldSwitch.swift; sourceTree = "<group>"; };
 		104C766821DA51510044346D /* ItemFieldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldButton.swift; sourceTree = "<group>"; };
 		104C766A21DA519F0044346D /* CustomFieldUIViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldUIViewProtocol.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */,
 				10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */,
 				10BBF9DD21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift */,
+				104A2728220340A2002489FB /* StatusBarExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
 				10D4A8CD21CABEB1008006FF /* CellID.swift in Sources */,
 				106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */,
+				104A2729220340A2002489FB /* StatusBarExtension.swift in Sources */,
 				10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */,
 				10D3963B21CE9F990053808A /* TemplateItem.swift in Sources */,
 				10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */,

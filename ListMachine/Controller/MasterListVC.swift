@@ -12,6 +12,7 @@ import RealmSwift
 class MasterListVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var toolBar: UIToolbar!
   var store: DataStore?
   
   override func viewDidLoad() {
@@ -25,6 +26,9 @@ class MasterListVC: UIViewController {
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
+    toolBar.backgroundColor = Stylesheet.getColor(.secondary)
+    toolBar.barTintColor = Stylesheet.getColor(.secondary)
+    toolBar.isTranslucent = false
   }
   
   @IBAction func newListPressed(sender: NewItemButton) {

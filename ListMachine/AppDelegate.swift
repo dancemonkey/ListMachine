@@ -16,10 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     let navBarAppearance = UINavigationBar.appearance()
-    navBarAppearance.tintColor = Stylesheet.getColor(.black)
-    navBarAppearance.barTintColor = Stylesheet.getColor(.white)
-    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
-    navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
+    enum Theme {
+      case white, color
+    }
+    var theme = Theme.color
+    switch theme {
+    case .white:
+      navBarAppearance.tintColor = Stylesheet.getColor(.black)
+      navBarAppearance.barTintColor = Stylesheet.getColor(.white)
+      navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
+      navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
+    case .color:
+      navBarAppearance.isTranslucent = false
+      navBarAppearance.tintColor = Stylesheet.getColor(.white)
+      navBarAppearance.barTintColor = Stylesheet.getColor(.secondary)
+      navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
+      navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
+      UIApplication.shared.statusBarView?.backgroundColor = Stylesheet.getColor(.secondary)
+    }
+    
     UINavigationBar.appearance().clipsToBounds = true
     
     return true
