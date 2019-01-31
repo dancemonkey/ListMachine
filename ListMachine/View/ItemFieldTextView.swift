@@ -20,6 +20,7 @@ class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
     self.text = value ?? ""
     backgroundColor = .clear
     textColor = Stylesheet.getColor(.black)
+    font = Stylesheet.uiElementFont(for: .textField)
   }
   
   convenience init() {

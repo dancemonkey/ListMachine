@@ -41,6 +41,7 @@ class FieldItemCell: UITableViewCell {
     self.backgroundColor = .clear
     title.font = Stylesheet.userContentFont(for: .itemEntryFieldTitle)
     title.textColor = Stylesheet.getColor(.primary)
+    selectionStyle = .none
   }
   
   func setConstraints(for type: FieldType) {

@@ -29,6 +29,7 @@ class ListItemCell: UITableViewCell {
     titleLbl.font = Stylesheet.userContentFont(for: .itemListCellTitle)
     titleLbl.textColor = Stylesheet.getColor(.primary)
     self.backgroundColor = .clear
+    selectionStyle = .none
   }
   
   override func awakeFromNib() {

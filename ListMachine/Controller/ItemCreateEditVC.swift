@@ -17,7 +17,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   @IBOutlet weak var tableView: UITableView!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
-//  var itemIndex: Int?
   var itemSaveDelegate: ItemSaveDelegate?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?

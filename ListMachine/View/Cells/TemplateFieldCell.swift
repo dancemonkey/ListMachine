@@ -26,6 +26,7 @@ class TemplateFieldCell: UITableViewCell {
     typeLbl.textColor = Stylesheet.getColor(.primary)
     self.backgroundColor = .clear
     self.contentView.backgroundColor = .clear
+    selectionStyle = .none
   }
   
   override func awakeFromNib() {

@@ -21,6 +21,7 @@ class CheckboxCell: UITableViewCell {
   
   func styleViews() {
     self.backgroundColor = .clear
+    selectionStyle = .none
   }
 
   override func awakeFromNib() {

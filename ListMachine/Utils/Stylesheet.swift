@@ -13,7 +13,7 @@ enum UserContentFeature {
 }
 
 enum SystemContentFeature {
-  case buttonLabel, smallNavigationHeading, navigationHeading, alertTitle, alertMessage, fieldLabel, pickerItem, segmentItem
+  case buttonLabel, smallNavigationHeading, navigationHeading, alertTitle, alertMessage, fieldLabel, pickerItem, segmentItem, textField
 }
 
 enum ColorCategory {
@@ -117,6 +117,8 @@ struct Stylesheet {
       return 13.0
     case .fieldLabel:
       return 13.0
+    case .textField:
+      return 14.0
     }
   }
   

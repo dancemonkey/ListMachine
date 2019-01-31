@@ -14,6 +14,7 @@ class PopupFactory {
     let controller = UIAlertController(title: "Name your list", message: nil, preferredStyle: .alert)
     controller.addTextField { (nameField) in
       nameField.placeholder = "Enter list name"
+      nameField.font = Stylesheet.uiElementFont(for: .textField)
       let heightConstraint = NSLayoutConstraint(item: nameField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 35.0)
       nameField.addConstraint(heightConstraint)
     }

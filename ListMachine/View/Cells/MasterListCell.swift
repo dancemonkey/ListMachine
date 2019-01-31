@@ -21,6 +21,7 @@ class MasterListCell: UITableViewCell {
     listNameLbl.font = Stylesheet.userContentFont(for: .mainListCell)
     listNameLbl.textColor = Stylesheet.getColor(.primary)
     backgroundColor = .clear
+    selectionStyle = .none
   }
   
   func configure(with list: List?) {

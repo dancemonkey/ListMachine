@@ -21,6 +21,7 @@ class DateEntryCell: UITableViewCell {
   
   func styleViews() {
     self.backgroundColor = .clear
+    selectionStyle = .none
   }
   
   @IBAction func dateButtnPressed(sender: UIButton) {
