@@ -96,12 +96,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   // MARK: Segues
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == SegueID.showFieldValueEntry.rawValue {
-      let dest = segue.destination as! FieldValueEditVC
-      dest.currentField = item?.itemFields[(sender as! IndexPath).row]
-      dest.currentFieldIdx = (sender as! IndexPath).row
-      dest.saveDelegate = self
-    } else if segue.identifier == SegueID.showDatePicker.rawValue {
+    //    if segue.identifier == SegueID.showFieldValueEntry.rawValue {
+    //      let dest = segue.destination as! FieldValueEditVC
+    //      dest.currentField = item?.itemFields[(sender as! IndexPath).row]
+    //      dest.currentFieldIdx = (sender as! IndexPath).row
+    //      dest.saveDelegate = self
+    //    } else
+    if segue.identifier == SegueID.showDatePicker.rawValue {
       let dest = segue.destination as! DatePickerVC
       if let s = sender, let senderButton = s as? ItemFieldButton {
         switch senderButton.format! {
