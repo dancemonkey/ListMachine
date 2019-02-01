@@ -13,7 +13,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBOutlet weak var typePicker: FieldTypePicker!
   @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var dataTypeLbl: UILabel!
-  private var fieldTypes: [FieldType]! //= [.text, .memo, .number, .date, .dateAndTime, .checkBox]
+  private var fieldTypes: [FieldType]!
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
   var currentFieldIndex: Int?
@@ -45,6 +45,9 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     dataTypeLbl.textColor = Stylesheet.getColor(.primary)
     titleLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
     dataTypeLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
+    nameFld.closure = { [weak self] in
+      self?.saveField()
+    }
   }
   
   func populateFields(with existing: ItemFieldProtocol) {
@@ -53,16 +56,15 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     typePicker.selectRow(typeIndex ?? 0, inComponent: 0, animated: true)
   }
   
-  @IBAction func donePressed(sender: UIButton) {
+  func saveField() {
     let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
     let field = ItemField(name: nameFld.text ?? "Unnamed", type: selectedType, value: nil, id: nil)
-
+    
     if currentField == nil {
       saveDelegate?.saveField(field)
     } else {
       saveDelegate?.update(field, at: currentFieldIndex!)
     }
-    navigationController?.popViewController(animated: true)
   }
   
   // MARK: Picker functions
@@ -84,8 +86,11 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     return attributedTitle
   }
   
-  // MARK: Helper Functions
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    saveField()
+  }
   
+  // MARK: Helper Functions
   @objc func screenTapped(sender: UITapGestureRecognizer) {
     UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
   }
@@ -101,4 +106,3 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     textField?.inputAccessoryView = toolbar
   }
 }
-

@@ -11,6 +11,7 @@ import UIKit
 class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
+  var newFieldBtn: NewItemButton!
   var itemTemplate: TemplateItem!
   var saveDelegate: TemplateSaveDelegate?
   var store: DataStore?
@@ -26,12 +27,21 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressStarted(sender:)))
     view.addGestureRecognizer(longPress!)
     
+    setupNewButton()
     styleViews()
+  }
+  
+  func setupNewButton() {
+    newFieldBtn = NewItemButton()
+    newFieldBtn.setImage(UIImage(named: "+ New Button"), for: .normal)
+    newFieldBtn.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newFieldBtn.addTarget(self, action: #selector(addNewFieldPressed(sender:)), for: .touchUpInside)
   }
   
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
+    setupToolbar(with: newFieldBtn, and: nil)
   }
   
   // MARK: Tableview Methods
@@ -75,7 +85,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   // MARK: Actions
   
-  @IBAction func addNewFieldPressed(sender: NewItemButton) {
+  @objc func addNewFieldPressed(sender: NewItemButton) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self)
   }
   

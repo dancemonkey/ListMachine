@@ -19,6 +19,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
   @IBOutlet weak var sortSelectHeight: NSLayoutConstraint!
   
+  var newItemButton: NewItemButton!
+  var editTemplateButton: EditTemplateButton!
+  
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?
@@ -44,7 +47,20 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     tableView.dataSource = self
     searchBar.delegate = self
     
+    setupButtons()
     styleViews()
+  }
+  
+  func setupButtons() {
+    newItemButton = NewItemButton()
+    newItemButton.setImage(UIImage(named: "+ New Button"), for: .normal)
+    newItemButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newItemButton.addTarget(self, action: #selector(newItemPressed(sender:)), for: .touchUpInside)
+    
+    editTemplateButton = EditTemplateButton()
+    editTemplateButton.setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
+    editTemplateButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +73,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func styleViews() {
+    setupToolbar(with: newItemButton, and: editTemplateButton)
     view.backgroundColor = Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
     searchBar.tintColor = Stylesheet.getColor(.primary)
@@ -153,11 +170,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   // MARK: Actions
-  @IBAction func newItemPressed(sender: NewItemButton) {
+  @objc func newItemPressed(sender: NewItemButton) {
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: nil)
   }
   
-  @IBAction func editTemplatePressed(sender: EditTemplateButton) {
+  @objc func editTemplatePressed(sender: EditTemplateButton) {
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   

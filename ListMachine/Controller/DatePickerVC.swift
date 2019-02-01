@@ -38,6 +38,7 @@ class DatePickerVC: UIViewController {
     for button in shortcutButtons {
       button.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
     }
+    setupToolbar(with: nil, and: nil)
   }
   
   private func setDateMode(to mode: UIDatePicker.Mode) {

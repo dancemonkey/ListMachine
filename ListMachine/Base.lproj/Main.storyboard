@@ -126,25 +126,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euX-GF-kPL" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="282" y="685" width="77" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="77" id="2sY-ZA-dcG"/>
-                                    <constraint firstAttribute="height" constant="77" id="fpt-uj-8S0"/>
-                                </constraints>
-                                <state key="normal" image="+ New Button"/>
-                                <connections>
-                                    <action selector="addNewFieldPressedWithSender:" destination="wrc-EG-jgv" eventType="touchUpInside" id="3Ez-TT-aZA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ePD-BX-NVj" firstAttribute="trailing" secondItem="euX-GF-kPL" secondAttribute="trailing" constant="16" id="2bc-AP-JUX"/>
                             <constraint firstItem="EWz-w3-mOs" firstAttribute="top" secondItem="ePD-BX-NVj" secondAttribute="top" id="74O-XZ-HZw"/>
                             <constraint firstAttribute="trailing" secondItem="EWz-w3-mOs" secondAttribute="trailing" id="Nk0-Xd-gX9"/>
                             <constraint firstItem="ePD-BX-NVj" firstAttribute="bottom" secondItem="EWz-w3-mOs" secondAttribute="bottom" id="jP8-lK-xAE"/>
-                            <constraint firstItem="ePD-BX-NVj" firstAttribute="bottom" secondItem="euX-GF-kPL" secondAttribute="bottom" constant="16" id="jjV-2i-2rn"/>
                             <constraint firstItem="EWz-w3-mOs" firstAttribute="leading" secondItem="naj-30-P9q" secondAttribute="leading" id="pQF-KW-4cA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ePD-BX-NVj"/>
@@ -285,28 +272,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDR-zx-l2f" customClass="NewItemButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="282" y="636" width="77" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="La8-Ul-nOR"/>
-                                    <constraint firstAttribute="width" constant="77" id="hlJ-Cp-uLC"/>
-                                </constraints>
-                                <state key="normal" image="+ New Button"/>
-                                <connections>
-                                    <action selector="newItemPressedWithSender:" destination="S3e-MS-CWW" eventType="touchUpInside" id="izj-OY-iHM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2M-WM-DTu" customClass="EditTemplateButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="32" y="668" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="7hK-ak-ENM"/>
-                                    <constraint firstAttribute="height" constant="45" id="JEY-Mu-gqV"/>
-                                </constraints>
-                                <state key="normal" image="editTemplateButton"/>
-                                <connections>
-                                    <action selector="editTemplatePressedWithSender:" destination="S3e-MS-CWW" eventType="touchUpInside" id="oTs-BV-3ek"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Z3f-aC-1tV">
                                 <rect key="frame" x="0.0" y="140" width="375" height="56"/>
                                 <constraints>
@@ -330,16 +295,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="p2M-WM-DTu" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" constant="32" id="2jM-7A-m7t"/>
-                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="p2M-WM-DTu" secondAttribute="bottom" constant="16" id="61Z-zy-L2T"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" constant="4" id="6Gh-SL-jZd"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
-                            <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="pDR-zx-l2f" secondAttribute="bottom" constant="16" id="KBT-vW-hmi"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="OPB-dQ-hOs"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="TDx-o7-glH"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="UgU-sT-gUt"/>
-                            <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="pDR-zx-l2f" secondAttribute="trailing" constant="16" id="YmF-0H-9CL"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="dtQ-7s-0pl"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="Z6B-GR-U3O" secondAttribute="trailing" id="fQw-WT-urY"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
@@ -431,9 +392,6 @@
                                                     <constraint firstAttribute="width" constant="100" id="Rs4-GJ-ma4"/>
                                                 </constraints>
                                                 <state key="normal" title="SAVE"/>
-                                                <connections>
-                                                    <action selector="donePressedWithSender:" destination="YGk-zg-QCW" eventType="touchUpInside" id="7rp-HJ-hg8"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -662,8 +620,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="+ New Button" width="77" height="77"/>
-        <image name="editTemplateButton" width="100" height="100"/>
         <image name="falseImage" width="60" height="60"/>
     </resources>
 </document>
