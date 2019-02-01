@@ -78,8 +78,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     tableView.backgroundColor = .clear
     searchBar.tintColor = Stylesheet.getColor(.primary)
     searchBar.showsCancelButton = true
-    hideSearchBar()
-    hideSortSelect()
+    searchBarHeight.constant = 0.0
+    searchBar.alpha = 0.0
+    sortSelectHeight.constant = 0.0
+    sortSelect.alpha = 0.0
   }
   
   // MARK: Helper Methods
@@ -107,26 +109,38 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func showSearchBar() {
-    searchBarHeight.constant = revealedSearchHeight
-    searchBar.alpha = 1.0
+    self.searchBarHeight.constant = self.revealedSearchHeight
+    UIView.animate(withDuration: 0.3) {
+      self.view.layoutIfNeeded()
+      self.searchBar.alpha = 1.0
+    }
   }
   
   func hideSearchBar() {
-    searchBarHeight.constant = 0
-    searchBar.alpha = 0.0
-    searchBar.text = ""
-    stopSearching()
+    self.searchBarHeight.constant = 0
+    UIView.animate(withDuration: 0.3) {
+      self.view.layoutIfNeeded()
+      self.searchBar.alpha = 0.0
+      self.searchBar.text = ""
+      self.stopSearching()
+    }
   }
   
   func showSortSelect() {
     guard itemList.templateItem!.defaultFields.count > 1 else { return }
     sortSelectHeight.constant = revealedSortHeight
-    sortSelect.alpha = 1.0
+    UIView.animate(withDuration: 0.3) {
+      self.view.layoutIfNeeded()
+      self.sortSelect.alpha = 1.0
+    }
   }
   
   func hideSortSelect() {
     sortSelectHeight.constant = 0
-    sortSelect.alpha = 0.0
+    UIView.animate(withDuration: 0.3) {
+      self.view.layoutIfNeeded()
+      self.sortSelect.alpha = 0.0
+    }
   }
   
   // MARK: Tableview Methods

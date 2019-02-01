@@ -21,6 +21,7 @@ class ItemFieldTextView: UITextView, CustomFieldUIViewProtocol {
     backgroundColor = .clear
     textColor = Stylesheet.getColor(.black)
     font = Stylesheet.uiElementFont(for: .textField)
+    self.autocapitalizationType = .sentences
   }
   
   convenience init() {

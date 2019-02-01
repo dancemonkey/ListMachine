@@ -28,7 +28,7 @@ class Item: Object, ItemProtocol {
   
   var itemListTitle: String {
     if itemFields.count > 0 {
-      return (itemFields[0].value) ?? "NO TITLE"
+      return (itemFields[0].value) ?? "No title"
     } else {
       return "No Title"
     }

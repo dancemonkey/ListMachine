@@ -26,6 +26,7 @@ class ItemFieldTextField: UITextField, CustomFieldUIViewProtocol {
     textColor = Stylesheet.getColor(.black)
     borderStyle = .roundedRect
     font = Stylesheet.uiElementFont(for: .textField)
+    self.autocapitalizationType = .sentences
   }
   
   convenience init() {
