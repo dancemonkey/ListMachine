@@ -15,6 +15,10 @@ class MasterListVC: UIViewController {
   var newButton: UIButton!
   var store: DataStore?
   
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
@@ -38,10 +42,11 @@ class MasterListVC: UIViewController {
   }
     
   @objc func newListPressed(sender: NewItemButton) {
-    let popup = PopupFactory.newListNamePopup { [unowned self] in
-      self.tableView.reloadData()
+    let popup = PopupFactory.newListNamePopup { [weak self] in
+      self?.tableView.reloadData()
     }
-    self.present(popup, animated: true, completion: nil)
+    self.view.window?.rootViewController?.present(popup, animated: false, completion: nil)
+//    self.present(popup, animated: true, completion: nil)
   }
   
   // MARK: Segues

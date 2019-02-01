@@ -98,6 +98,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       sortSelect.selectedSegmentIndex = 0
       sortList(by: sortSelect.selectedSegmentIndex)
     }
+    sortSelect.tintColor = Stylesheet.getColor(.secondary)
   }
   
   func sortList(by sortKey: Int) {

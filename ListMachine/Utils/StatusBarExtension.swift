@@ -15,3 +15,9 @@ extension UIApplication {
   }
   
 }
+
+extension UINavigationController {
+  override open var preferredStatusBarStyle : UIStatusBarStyle {
+    return topViewController?.preferredStatusBarStyle ?? .default
+  }
+}

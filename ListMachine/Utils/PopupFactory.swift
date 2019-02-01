@@ -10,8 +10,8 @@ import UIKit
 
 class PopupFactory {
   
-  static func newListNamePopup(completion: @escaping () -> ()) -> UIAlertController {
-    let controller = UIAlertController(title: "Name your list", message: nil, preferredStyle: .alert)
+  static func newListNamePopup(completion: @escaping () -> ()) -> NewListNameAlert {
+    let controller = NewListNameAlert(title: "Name your list", message: nil, preferredStyle: .alert)
     controller.addTextField { (nameField) in
       nameField.placeholder = "Enter list name"
       nameField.font = Stylesheet.uiElementFont(for: .textField)
@@ -34,6 +34,9 @@ class PopupFactory {
     
     controller.addAction(doneAction)
     controller.addAction(cancelAction)
+    controller.modalPresentationStyle = .overFullScreen
+    controller.modalPresentationCapturesStatusBarAppearance = true
+    controller.setNeedsStatusBarAppearanceUpdate()
     
     return controller
   }
