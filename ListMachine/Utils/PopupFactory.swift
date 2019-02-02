@@ -32,7 +32,7 @@ class PopupFactory {
     // styling
     doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
     doneAction.titleLabel?.textColor = Stylesheet.getColor(.black)
-    controller.view.backgroundColor = Stylesheet.getColor(.white)
+    controller.alertView.backgroundColor = Stylesheet.getColor(.white)
     controller.alertTitle.font = Stylesheet.uiElementFont(for: .alertTitle)
     controller.alertTitle.textColor = Stylesheet.getColor(.black)
     for field in controller.textFields {
