@@ -11,6 +11,9 @@ import UIKit
 class DatePickerVC: UIViewController {
   
   @IBOutlet var shortcutButtons: [UIButton]!
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   enum ShortcutDate: Int {
     case today = 0

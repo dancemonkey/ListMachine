@@ -18,6 +18,9 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   var snapshot: UIView?
   var sourceIndexPath: IndexPath? = nil
   var longPress: UILongPressGestureRecognizer?
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()

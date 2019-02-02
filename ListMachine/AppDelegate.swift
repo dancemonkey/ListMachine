@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     enum Theme {
       case white, color
     }
+    
+//    navigationController?.navigationBar.prefersLargeTitles = true
+//    navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: Settings().colorTheme[.primary] as Any]
+//    navigationController?.navigationBar.tintColor = Settings().colorTheme[.navElement]
+//    UINavigationBar.appearance().barTintColor = Settings().colorTheme[.accent1]
+//    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Settings().colorTheme[.navElement]!]
+//    navigationController?.navigationBar.barTintColor = Settings().colorTheme[.background]
+    
     var theme = Theme.color
     switch theme {
     case .white:
@@ -30,12 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       navBarAppearance.isTranslucent = false
       navBarAppearance.tintColor = Stylesheet.getColor(.white)
       navBarAppearance.barTintColor = Stylesheet.getColor(.secondary)
+//      navBarAppearance.backgroundColor = Stylesheet.getColor(.secondary)
       navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
       navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
-      UIApplication.shared.statusBarView?.backgroundColor = Stylesheet.getColor(.secondary)
+//      UIApplication.shared.statusBarView?.backgroundColor = Stylesheet.getColor(.secondary)
     }
     
-    UINavigationBar.appearance().clipsToBounds = true
+    UINavigationBar.appearance().clipsToBounds = false
     
     return true
   }

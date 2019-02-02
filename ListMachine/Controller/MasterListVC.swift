@@ -14,7 +14,6 @@ class MasterListVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var newButton: UIButton!
   var store: DataStore?
-  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -29,7 +28,7 @@ class MasterListVC: UIViewController {
   
   func styleViews() {
     view.backgroundColor = Stylesheet.getColor(.white)
-    tableView.backgroundColor = .clear
+    tableView.backgroundColor = Stylesheet.getColor(.white)
     setupNewButton()
     setupToolbar(with: newButton, and: nil)
   }
@@ -45,8 +44,8 @@ class MasterListVC: UIViewController {
     let popup = PopupFactory.newListNamePopup { [weak self] in
       self?.tableView.reloadData()
     }
-    self.view.window?.rootViewController?.present(popup, animated: false, completion: nil)
-//    self.present(popup, animated: true, completion: nil)
+//    self.view.window?.rootViewController?.present(popup, animated: false, completion: nil)
+    self.present(popup, animated: true, completion: nil)
   }
   
   // MARK: Segues

@@ -21,6 +21,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
   var state: EditState = .newItem
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()

@@ -18,6 +18,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
   @IBOutlet weak var sortSelectHeight: NSLayoutConstraint!
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   var newItemButton: NewItemButton!
   var editTemplateButton: EditTemplateButton!

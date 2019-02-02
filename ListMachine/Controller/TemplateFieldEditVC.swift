@@ -17,6 +17,9 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
   var currentFieldIndex: Int?
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
