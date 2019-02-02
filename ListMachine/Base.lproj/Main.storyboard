@@ -310,12 +310,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="6AW-Rk-2km">
+                            <barButtonItem image="search" id="6AW-Rk-2km">
                                 <connections>
                                     <action selector="searchPressedWithSender:" destination="S3e-MS-CWW" id="tW8-IU-dY2"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="organize" id="iur-3E-5pc">
+                            <barButtonItem image="sort" id="iur-3E-5pc">
                                 <connections>
                                     <action selector="sortPressedWithSender:" destination="S3e-MS-CWW" id="WCH-nF-lUi"/>
                                 </connections>
@@ -611,5 +611,7 @@
     </scenes>
     <resources>
         <image name="falseImage" width="60" height="60"/>
+        <image name="search" width="25" height="25"/>
+        <image name="sort" width="25" height="25"/>
     </resources>
 </document>
