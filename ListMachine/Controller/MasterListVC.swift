@@ -41,10 +41,9 @@ class MasterListVC: UIViewController {
   }
     
   @objc func newListPressed(sender: NewItemButton) {
-    let popup = PopupFactory.newListNamePopup { [weak self] in
+    let popup = PopupFactory.newPmAlert { [weak self] in
       self?.tableView.reloadData()
     }
-//    self.view.window?.rootViewController?.present(popup, animated: false, completion: nil)
     self.present(popup, animated: true, completion: nil)
   }
   
