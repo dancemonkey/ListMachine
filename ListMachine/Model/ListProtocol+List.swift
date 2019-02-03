@@ -45,6 +45,12 @@ class List: Object, ListProtocol {
     }
   }
   
+  func updateTemplate() {
+    for item in listedItems {
+      item.setNewTemplate(self.templateItem!)
+    }
+  }
+  
   func add(item: Item) {
     listedItems.append(item)
   }

@@ -55,14 +55,6 @@ class DataStore {
     }
   }
   
-  func delete(list: List) {
-    
-  }
-  
-  func delete(item: Item) {
-    
-  }
-  
   func delete(object: Object) {
     do {
       try realm?.write {

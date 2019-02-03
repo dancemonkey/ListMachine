@@ -13,6 +13,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   @IBOutlet weak var tableView: UITableView!
   var newFieldBtn: NewItemButton!
   var itemTemplate: TemplateItem!
+  var list: List!
   var saveDelegate: TemplateSaveDelegate?
   var store: DataStore?
   var snapshot: UIView?
@@ -81,6 +82,10 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
       self.store?.delete(object: self.itemTemplate.defaultFields[indexPath.row])
+      self.saveDelegate?.saveTemplate(self.itemTemplate)
+//      self.store?.run {
+//        self.list.updateTemplate()
+//      }
       self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     return [delete]
@@ -97,6 +102,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateFieldEditVC
       dest.saveDelegate = self
+      dest.currentFieldIndex = itemTemplate.defaultFields.count
       if let index = (sender as? Int) {
         dest.currentField = itemTemplate.defaultFields[index]
         dest.currentFieldIndex = index

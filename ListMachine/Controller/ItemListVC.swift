@@ -254,6 +254,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       dest.itemTemplate = self.itemList.templateItem
       dest.saveDelegate = self
       dest.store = self.store
+      dest.list = self.itemList
     }
   }
 }

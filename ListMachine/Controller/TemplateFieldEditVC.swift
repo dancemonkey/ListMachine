@@ -9,6 +9,9 @@
 import UIKit
 
 class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  enum EditState {
+    case newField, editingExistingField
+  }
   @IBOutlet weak var nameFld: UserEntryField!
   @IBOutlet weak var typePicker: FieldTypePicker!
   @IBOutlet weak var titleLbl: UILabel!
@@ -17,6 +20,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
   var currentFieldIndex: Int?
+  var state: EditState = .newField
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -34,8 +38,10 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     if currentField != nil {
       populateFields(with: currentField!)
       self.title = currentField!.name
+      state = .editingExistingField
     } else {
       self.title = "New Field"
+      state = .newField
     }
   
     addDoneAccessory(to: nameFld)
@@ -63,11 +69,18 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let selectedType = fieldTypes[typePicker.selectedRow(inComponent: 0)]
     let field = ItemField(name: nameFld.text ?? "Unnamed", type: selectedType, value: nil, id: nil)
     
-    if currentField == nil {
+    switch state {
+    case .newField:
       saveDelegate?.saveField(field)
-    } else {
+      state = .editingExistingField
+    case .editingExistingField:
       saveDelegate?.update(field, at: currentFieldIndex!)
     }
+//    if currentField == nil {
+//      saveDelegate?.saveField(field)
+//    } else {
+//      saveDelegate?.update(field, at: currentFieldIndex!)
+//    }
   }
   
   // MARK: Picker functions
