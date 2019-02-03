@@ -25,11 +25,7 @@ class FieldItemCellValueView: UIView {
       return textField!.reportValue
     }
   }
-  var fieldSave: ((_: String) -> ())? {
-    didSet {
-      print("closure set in FieldItemCellValueView")
-    }
-  }
+  var fieldSave: ((_: String) -> ())?
 
   convenience init?(as field: ItemField, with value: String?) {
     self.init()
@@ -85,7 +81,6 @@ class FieldItemCellValueView: UIView {
     }
     if let save = fieldSave {
       save(workingView.reportValue)
-      print("value saved from valueView")
     }
   }
   

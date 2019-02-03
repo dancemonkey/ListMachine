@@ -28,21 +28,28 @@ class PopupFactory {
       completion()
       controller.dismiss(animated: true, completion: nil)
     })
+    let cancelAction = PMAlertAction(title: "Cancel", style: .cancel) {
+      controller.dismiss(animated: true, completion: nil)
+    }
     
     // styling
-    doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
-    doneAction.titleLabel?.textColor = Stylesheet.getColor(.black)
     controller.alertView.backgroundColor = Stylesheet.getColor(.white)
     controller.alertTitle.font = Stylesheet.uiElementFont(for: .alertTitle)
     controller.alertTitle.textColor = Stylesheet.getColor(.black)
     for field in controller.textFields {
-      field.font = Stylesheet.uiElementFont(for: .textField)
-      field.textColor = Stylesheet.getColor(.black)
+      field.font = Stylesheet.userContentFont(for: .userInput)
+      field.textColor = Stylesheet.getColor(.primary)
     }
+    controller.gravityDismissAnimation = false
+    controller.dismissWithBackgroudTouch = true
+    controller.view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
+    cancelAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
+    doneAction.setTitleColor(Stylesheet.getColor(.black), for: .normal)
+    
     controller.addAction(doneAction)
-    controller.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: {
-      controller.dismiss(animated: true, completion: nil)
-    }))
+    controller.addAction(cancelAction)
+    
     return controller
   }
   

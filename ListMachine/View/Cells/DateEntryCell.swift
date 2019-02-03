@@ -28,7 +28,6 @@ class DateEntryCell: UITableViewCell {
     // set saveDate delegate as self
     // show date select screen
     // upon return save selected date as dateBtn title
-    print("going to select a date yay!")
   }
   
   override func awakeFromNib() {

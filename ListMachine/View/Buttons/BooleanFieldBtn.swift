@@ -16,9 +16,6 @@ class BooleanFieldBtn: UIButton {
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesEnded(touches, with: event)
-    if isTouchInside {
-      print("running closure")
-    }
   }
 
 }

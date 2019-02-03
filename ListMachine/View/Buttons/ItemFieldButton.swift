@@ -10,11 +10,7 @@ import UIKit
 
 class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   
-  var fieldSave: ((_: String) -> ())? {
-    didSet {
-      print("closure set in ItemFieldButton")
-    }
-  }
+  var fieldSave: ((_: String) -> ())?
 
   enum DateFormat {
     case simpleDate, dateAndTime

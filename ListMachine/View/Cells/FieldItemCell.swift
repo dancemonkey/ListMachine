@@ -12,11 +12,7 @@ class FieldItemCell: UITableViewCell {
 
   @IBOutlet weak var title: UILabel!
   var valueView: FieldItemCellValueView?
-  var fieldSave: ((_: String) -> ())? {
-    didSet {
-      print("closure set in FieldItemCell: \(fieldSave)")
-    }
-  }
+  var fieldSave: ((_: String) -> ())?
   
   func configure(withField field: ItemField, andValue value: String?) {
     title.text = field.name
