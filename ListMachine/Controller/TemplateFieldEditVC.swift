@@ -76,11 +76,6 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     case .editingExistingField:
       saveDelegate?.update(field, at: currentFieldIndex!)
     }
-//    if currentField == nil {
-//      saveDelegate?.saveField(field)
-//    } else {
-//      saveDelegate?.update(field, at: currentFieldIndex!)
-//    }
   }
   
   // MARK: Picker functions

@@ -116,9 +116,9 @@ struct Stylesheet {
     case .segmentItem:
       return 13.0
     case .fieldLabel:
-      return 13.0
+      return 16.0
     case .textField:
-      return 14.0
+      return 16.0
     case .barButtonItemLabel:
       return 18.0
     }
