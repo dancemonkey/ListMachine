@@ -11,6 +11,7 @@ import UIKit
 class MasterListCell: UITableViewCell {
   
   @IBOutlet weak var listNameLbl: UILabel!
+  @IBOutlet weak var listInfoLbl: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -20,12 +21,15 @@ class MasterListCell: UITableViewCell {
   func styleViews() {
     listNameLbl.font = Stylesheet.userContentFont(for: .mainListCell)
     listNameLbl.textColor = Stylesheet.getColor(.primary)
+    listInfoLbl.font = Stylesheet.userContentFont(for: .mainListInfo)
+    listInfoLbl.textColor = Stylesheet.getColor(.primary)
     backgroundColor = .clear
     selectionStyle = .none
   }
   
   func configure(with list: List?) {
-    listNameLbl.text = list?.name ?? "No List"
+    listNameLbl.text = list!.name
+    listInfoLbl.text = "\(list!.listedItems.count)" + " items"
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

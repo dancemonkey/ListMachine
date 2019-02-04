@@ -451,19 +451,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJD-7k-kYD">
-                                                    <rect key="frame" x="16" y="17" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-Af-fPP">
+                                                    <rect key="frame" x="15.999999999999996" y="7.3333333333333321" width="41.666666666666657" height="40.666666666666671"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJD-7k-kYD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVh-4Z-RYP">
+                                                            <rect key="frame" x="0.0" y="20.333333333333336" width="41.666666666666664" height="20.333333333333336"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vJD-7k-kYD" firstAttribute="leading" secondItem="9Ab-Lx-Jfv" secondAttribute="leading" constant="16" id="9pH-5x-gBr"/>
-                                                <constraint firstItem="vJD-7k-kYD" firstAttribute="centerY" secondItem="9Ab-Lx-Jfv" secondAttribute="centerY" id="ISy-Ks-rwk"/>
+                                                <constraint firstItem="EKu-Af-fPP" firstAttribute="leading" secondItem="9Ab-Lx-Jfv" secondAttribute="leading" constant="16" id="dzm-u4-Tas"/>
+                                                <constraint firstItem="EKu-Af-fPP" firstAttribute="centerY" secondItem="9Ab-Lx-Jfv" secondAttribute="centerY" id="oJF-k8-3ET"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="listInfoLbl" destination="TVh-4Z-RYP" id="NDY-gw-f6T"/>
                                             <outlet property="listNameLbl" destination="vJD-7k-kYD" id="4rd-bw-tcw"/>
                                         </connections>
                                     </tableViewCell>

@@ -18,6 +18,7 @@ class PopupFactory {
       nameField?.font = Stylesheet.uiElementFont(for: .textField)
       let heightConstraint = NSLayoutConstraint(item: nameField!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 35.0)
       nameField?.addConstraint(heightConstraint)
+      nameField?.becomeFirstResponder()
     }
     let doneAction = PMAlertAction(title: "DONE", style: .default, action: {
       guard let text = controller.textFields[0].text else {
