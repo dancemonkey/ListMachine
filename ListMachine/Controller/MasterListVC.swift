@@ -53,6 +53,7 @@ class MasterListVC: UIViewController {
       let row = (sender as! IndexPath).row
       let dest = segue.destination as! ItemListVC
       dest.itemList = store?.getAllLists()?[row]
+      dest.masterListDelegate = self
     }
   }
   
@@ -89,5 +90,10 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       tableView.reloadData()
     }
   }
-  
+}
+
+extension MasterListVC: MasterListUpdate {
+  func updateMasterList() {
+    self.tableView.reloadData()
+  }
 }

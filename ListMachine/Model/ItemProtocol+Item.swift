@@ -25,6 +25,10 @@ class Item: Object, ItemProtocol {
   let itemFields = RealmSwift.List<ItemField>()
   @objc dynamic var itemID: String = UUID().uuidString
   @objc dynamic var templateItem: TemplateItem?
+  @objc private dynamic var _lastUpdate: Date?
+  var lastUpdated: Date? {
+    return _lastUpdate
+  }
   
   var itemListTitle: String {
     if itemFields.count > 0 {
@@ -46,6 +50,11 @@ class Item: Object, ItemProtocol {
       }
     }
     self.templateItem = template
+    setLastUpdated()
+  }
+  
+  private func setLastUpdated() {
+    _lastUpdate = Date()
   }
   
   func clearValues() {
@@ -55,6 +64,7 @@ class Item: Object, ItemProtocol {
         field.value = nil
       }
     }
+    setLastUpdated()
   }
   
   func setNewTemplate(_ template: TemplateItem) {
@@ -77,12 +87,14 @@ class Item: Object, ItemProtocol {
     }
     self.itemFields.removeAll()
     self.itemFields.append(objectsIn: newFields)
+    setLastUpdated()
   }
   
   func setValues(for field: ItemField, at index: Int) {
     let id = itemFields[index].fieldID.value
     itemFields[index] = field
     itemFields[index].fieldID.value = id
+    setLastUpdated()
   }
   
   func prepareForDelete() {

@@ -34,6 +34,7 @@
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		1093BDC02203B9DB0015FB7A /* ViewControllerToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */; };
+		10A7BAD22208766C0076EF17 /* MasterListUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */; };
 		10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32221F74FF5005C6F40 /* NewItemButton.swift */; };
 		10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32521F7531C005C6F40 /* SaveButton.swift */; };
 		10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */; };
@@ -108,6 +109,7 @@
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerToolbarExtension.swift; sourceTree = "<group>"; };
+		10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListUpdateProtocol.swift; sourceTree = "<group>"; };
 		10A8C32221F74FF5005C6F40 /* NewItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemButton.swift; sourceTree = "<group>"; };
 		10A8C32521F7531C005C6F40 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Pulsate Extension.swift"; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				10BBF9DD21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift */,
 				104A2728220340A2002489FB /* StatusBarExtension.swift */,
 				1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */,
+				10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				10B09D4121D511DF00C1FC2B /* TextEntryCell.swift in Sources */,
 				10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */,
 				100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */,
+				10A7BAD22208766C0076EF17 /* MasterListUpdateProtocol.swift in Sources */,
 				10D4A8B021CAB752008006FF /* ListMachine.xcdatamodeld in Sources */,
 				106C3D7521E44D6900F8881F /* MasterListVC.swift in Sources */,
 				10CF79A421DE4CF5006F9F64 /* SenderSenderDelegate.swift in Sources */,
@@ -683,7 +687,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -699,7 +706,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

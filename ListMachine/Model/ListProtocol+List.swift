@@ -25,6 +25,10 @@ class List: Object, ListProtocol {
   let listedItems = RealmSwift.List<Item>()
   @objc dynamic var templateItem: TemplateItem?
   @objc dynamic var listID: String = UUID().uuidString
+  @objc private dynamic var _lastUpdate: Date?
+  var lastUpdated: Date? {
+    return _lastUpdate ?? nil
+  }
   let sortKey = RealmOptional<Int>()
   
   convenience init(name: String) {
@@ -32,10 +36,15 @@ class List: Object, ListProtocol {
     self.name = name
     templateItem = TemplateItem(name: name, with: [])
     sortKey.value = nil
+    setLastUpdated()
   }
   
   override static func primaryKey() -> String? {
     return "listID"
+  }
+  
+  private func setLastUpdated() {
+    _lastUpdate = Date()
   }
   
   func setTemplate(_ template: TemplateItem) {
@@ -43,20 +52,24 @@ class List: Object, ListProtocol {
     for item in listedItems {
       item.setNewTemplate(template)
     }
+    setLastUpdated()
   }
   
   func updateTemplate() {
     for item in listedItems {
       item.setNewTemplate(self.templateItem!)
     }
+    setLastUpdated()
   }
   
   func add(item: Item) {
     listedItems.append(item)
+    setLastUpdated()
   }
   
   func remove(itemAt index: Int) {
     listedItems.remove(at: index)
+    setLastUpdated()
   }
   
   func removeAllItems() {
@@ -72,10 +85,12 @@ class List: Object, ListProtocol {
       }
       DataStore()?.delete(object: item)
     }
+    setLastUpdated()
   }
   
   func update(itemAt index: Int, with item: Item) {
     listedItems[index] = item
+    setLastUpdated()
   }
   
   func getListSorted(by fieldIndex: Int, andFilteredBy filterText: String?) -> Array<Item> {

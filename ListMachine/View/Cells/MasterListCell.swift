@@ -29,7 +29,7 @@ class MasterListCell: UITableViewCell {
   
   func configure(with list: List?) {
     listNameLbl.text = list!.name
-    listInfoLbl.text = "\(list!.listedItems.count)" + " items"
+    listInfoLbl.text = "\(list!.listedItems.count)" + " items, lastUpdated \(list!.lastUpdated!)"
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

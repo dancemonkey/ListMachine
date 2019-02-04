@@ -43,7 +43,7 @@ class PopupFactory {
     }
     controller.gravityDismissAnimation = false
     controller.dismissWithBackgroudTouch = true
-    controller.view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
     cancelAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
     doneAction.setTitleColor(Stylesheet.getColor(.black), for: .normal)

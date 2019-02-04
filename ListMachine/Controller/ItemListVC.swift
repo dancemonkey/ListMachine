@@ -34,6 +34,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   }
   var isSearching = false
+  var masterListDelegate: MasterListUpdate?
   
   let revealedSortHeight: CGFloat = 27.0
   let revealedSearchHeight: CGFloat = 56.0
@@ -180,6 +181,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       item.prepareForDelete()
       store?.delete(object: item)
       tableView.deleteRows(at: [indexPath], with: .fade)
+      masterListDelegate?.updateMasterList()
     }
   }
   
@@ -222,11 +224,13 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.itemList.add(item: item)
     })
     tableView.reloadData()
+    masterListDelegate?.updateMasterList()
   }
   
   func updateItem(_ item: Item) {
     store?.save(object: item, andRun: nil)
     tableView.reloadData()
+    masterListDelegate?.updateMasterList()
   }
   
   // MARK: Template Save Delegate
@@ -236,6 +240,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     })
     setupSortSelect()
     tableView.reloadData()
+    masterListDelegate?.updateMasterList()
   }
   
   // MARK: Segues
