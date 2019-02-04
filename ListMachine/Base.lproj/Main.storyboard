@@ -54,15 +54,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="YMr-ya-lTX"/>
-                        <barButtonItem title="Item" style="plain" id="gMg-Yf-Ksi"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="R2W-Rw-Eum"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Lvp-Y0-wnk"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="lastUpdatedBtn" destination="gMg-Yf-Ksi" id="AeE-el-UmR"/>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
                         <segue destination="rad-PH-LNs" kind="show" identifier="showDatePicker" id="vex-8r-JFF"/>
                     </connections>
@@ -160,7 +155,7 @@
             <objects>
                 <viewController title="List Items" id="S3e-MS-CWW" customClass="ItemListVC" customModule="ListMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bmv-tX-6e6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
@@ -256,17 +251,28 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUY-cq-8vx">
-                                                    <rect key="frame" x="16" y="4" width="39" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FLP-lG-Awe">
+                                                    <rect key="frame" x="16" y="4" width="78" height="17"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUY-cq-8vx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="39" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT6-1y-uU5">
+                                                            <rect key="frame" x="47" y="0.0" width="31" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NWv-1a-9I6" firstAttribute="top" secondItem="aUY-cq-8vx" secondAttribute="bottom" constant="8" id="DqU-cR-R9h"/>
-                                                <constraint firstItem="aUY-cq-8vx" firstAttribute="leading" secondItem="8oN-yt-jSp" secondAttribute="leading" constant="16" id="Xmg-NI-Zwe"/>
-                                                <constraint firstItem="aUY-cq-8vx" firstAttribute="top" secondItem="8oN-yt-jSp" secondAttribute="top" constant="4" id="lzU-bJ-mZW"/>
+                                                <constraint firstItem="NWv-1a-9I6" firstAttribute="top" secondItem="FLP-lG-Awe" secondAttribute="bottom" constant="8" id="Eho-3d-R1w"/>
+                                                <constraint firstItem="FLP-lG-Awe" firstAttribute="top" secondItem="8oN-yt-jSp" secondAttribute="top" constant="4" id="UJL-Hg-P7e"/>
+                                                <constraint firstItem="FLP-lG-Awe" firstAttribute="leading" secondItem="8oN-yt-jSp" secondAttribute="leading" constant="16" id="lgS-dC-wr7"/>
                                                 <constraint firstAttribute="bottom" secondItem="NWv-1a-9I6" secondAttribute="bottom" constant="4" id="tD2-fW-3AW"/>
                                                 <constraint firstAttribute="trailing" secondItem="NWv-1a-9I6" secondAttribute="trailing" id="tVP-MI-DZL"/>
                                                 <constraint firstItem="NWv-1a-9I6" firstAttribute="leading" secondItem="8oN-yt-jSp" secondAttribute="leading" constant="16" id="wtd-46-QSN"/>
@@ -274,6 +280,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collection" destination="NWv-1a-9I6" id="nHh-9t-Qbo"/>
+                                            <outlet property="lastUpdatedLbl" destination="PT6-1y-uU5" id="R0w-2C-I4E"/>
                                             <outlet property="titleLbl" destination="aUY-cq-8vx" id="bZ9-U0-XLN"/>
                                         </connections>
                                     </tableViewCell>
@@ -315,6 +322,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="List Items" id="sl6-hw-LOk">
                         <rightBarButtonItems>
                             <barButtonItem image="search" id="6AW-Rk-2km">
@@ -329,6 +337,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="Z3f-aC-1tV" id="rkq-n9-P8J"/>
                         <outlet property="searchBarHeight" destination="hhk-hd-gSB" id="WUe-TJ-95B"/>

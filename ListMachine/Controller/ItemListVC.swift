@@ -228,7 +228,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func updateItem(_ item: Item) {
-    store?.save(object: item, andRun: nil)
+    store?.save(object: item) {
+      self.itemList!.setLastUpdated()
+    }
     tableView.reloadData()
     masterListDelegate?.updateMasterList()
   }

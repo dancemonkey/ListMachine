@@ -43,7 +43,7 @@ class List: Object, ListProtocol {
     return "listID"
   }
   
-  private func setLastUpdated() {
+  func setLastUpdated() {
     _lastUpdate = Date()
   }
   

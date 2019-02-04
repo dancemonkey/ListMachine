@@ -15,7 +15,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var lastUpdatedBtn: UIBarButtonItem!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
   var itemSaveDelegate: ItemSaveDelegate?
@@ -37,7 +36,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
   
     self.title = item?.itemListTitle ?? "Untitled Item"
-    updateLastUpdatedLable()
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped(sender:)))
     self.view.addGestureRecognizer(tap)
@@ -50,11 +48,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     
     styleViews()
-  }
-  
-  private func updateLastUpdatedLable() {
-    let update: String = item?.lastUpdated != nil ? "\(item!.lastUpdated!)" : "No date"
-    self.lastUpdatedBtn.title = update
   }
   
   func styleViews() {
@@ -162,7 +155,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     } else if self.state == .editingExistingItem {
       itemSaveDelegate?.updateItem(self.item!)
     }
-    updateLastUpdatedLable()
   }
   
 }
