@@ -41,7 +41,7 @@ class MasterListVC: UIViewController {
   }
     
   @objc func newListPressed(sender: NewItemButton) {
-    let popup = PopupFactory.newPmAlert { [weak self] in
+    let popup = PopupFactory.newList { [weak self] in
       self?.tableView.reloadData()
     }
     self.present(popup, animated: true, completion: nil)
@@ -83,13 +83,22 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     return true
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      store?.delete(list: store!.getAllLists()![indexPath.row])
-//      store!.getAllLists()![indexPath.row].removeAllItems()
-//      store?.delete(object: store!.getAllLists()![indexPath.row])
-      tableView.reloadData()
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+      self.store?.delete(list: self.store!.getAllLists()![indexPath.row])
+      self.tableView.reloadData()
     }
+    let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+      // show popup to edit list title, maybe a button to clear all items
+      print("editing title yay!")
+      let controller = PopupFactory.editTitle(of: self.store!.getAllLists()![indexPath.row]) {
+        [weak self] in
+        self?.tableView.reloadData()
+      }
+      self.present(controller, animated: true, completion: nil)
+    }
+    
+    return [edit, delete]
   }
 }
 
