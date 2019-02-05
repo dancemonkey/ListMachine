@@ -85,8 +85,9 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      store!.getAllLists()![indexPath.row].removeAllItems()
-      store?.delete(object: store!.getAllLists()![indexPath.row])
+      store?.delete(list: store!.getAllLists()![indexPath.row])
+//      store!.getAllLists()![indexPath.row].removeAllItems()
+//      store?.delete(object: store!.getAllLists()![indexPath.row])
       tableView.reloadData()
     }
   }

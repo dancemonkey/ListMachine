@@ -55,6 +55,17 @@ class DataStore {
     }
   }
   
+  func delete(list: List) {
+    list.removeAllItems()
+    do {
+      try realm?.write {
+        realm?.delete(list)
+      }
+    } catch let error as NSError {
+      print(error)
+    }
+  }
+  
   func delete(object: Object) {
     do {
       try realm?.write {

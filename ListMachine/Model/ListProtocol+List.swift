@@ -85,7 +85,9 @@ class List: Object, ListProtocol {
       }
       DataStore()?.delete(object: item)
     }
-    setLastUpdated()
+    DataStore()?.run {
+      setLastUpdated()
+    }
   }
   
   func update(itemAt index: Int, with item: Item) {
