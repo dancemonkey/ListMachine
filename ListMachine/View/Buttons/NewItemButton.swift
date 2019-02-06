@@ -19,5 +19,10 @@ class NewItemButton: UIButton {
     super.touchesEnded(touches, with: event)
     pulsateOut()
   }
+  
+  func setImageAndFrame() {
+    setImage(UIImage(named: "+ New Button Alt"), for: .normal)
+    frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+  }
 
 }

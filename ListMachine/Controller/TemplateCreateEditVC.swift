@@ -37,8 +37,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   func setupNewButton() {
     newFieldBtn = NewItemButton()
-    newFieldBtn.setImage(UIImage(named: "+ New Button"), for: .normal)
-    newFieldBtn.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newFieldBtn.setImageAndFrame()
     newFieldBtn.addTarget(self, action: #selector(addNewFieldPressed(sender:)), for: .touchUpInside)
   }
   
@@ -64,7 +63,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // call segue and populate editor with current field
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
   }
   
@@ -83,9 +81,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
       self.store?.delete(object: self.itemTemplate.defaultFields[indexPath.row])
       self.saveDelegate?.saveTemplate(self.itemTemplate)
-//      self.store?.run {
-//        self.list.updateTemplate()
-//      }
       self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     return [delete]

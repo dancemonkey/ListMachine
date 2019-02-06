@@ -12,7 +12,7 @@ import RealmSwift
 class MasterListVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  var newButton: UIButton!
+  var newButton: NewItemButton!
   var store: DataStore?
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -35,8 +35,7 @@ class MasterListVC: UIViewController {
   
   func setupNewButton() {
     newButton = NewItemButton()
-    newButton.setImage(UIImage(named: "+ New Button"), for: .normal)
-    newButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newButton.setImageAndFrame()
     newButton.addTarget(self, action: #selector(newListPressed(sender:)), for: .touchUpInside)
   }
     

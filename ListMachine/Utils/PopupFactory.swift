@@ -11,6 +11,8 @@ import PMAlertController
 
 class PopupFactory {
   
+  // TODO: consolidate these two functions, DRY
+  
   static func newList(completion: @escaping () -> ()) -> PMAlertController {
     let controller = PMAlertController(title: "Name your list", description: "", image: nil, style: .alert)
     controller.addTextField { (nameField) in
@@ -46,7 +48,7 @@ class PopupFactory {
     controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
     cancelAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
-    doneAction.setTitleColor(Stylesheet.getColor(.black), for: .normal)
+    doneAction.setTitleColor(Stylesheet.getColor(.primary), for: .normal)
     
     controller.addAction(doneAction)
     controller.addAction(cancelAction)
@@ -91,7 +93,7 @@ class PopupFactory {
     controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     doneAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
     cancelAction.titleLabel?.font = Stylesheet.uiElementFont(for: .buttonLabel)
-    doneAction.setTitleColor(Stylesheet.getColor(.black), for: .normal)
+    doneAction.setTitleColor(Stylesheet.getColor(.primary), for: .normal)
     
     controller.addAction(doneAction)
     controller.addAction(cancelAction)

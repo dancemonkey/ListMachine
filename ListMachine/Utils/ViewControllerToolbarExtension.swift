@@ -23,8 +23,8 @@ extension UIViewController {
     var items: [UIBarButtonItem] = []
     if let button1 = newItemButton {
       let item = UIBarButtonItem(customView: button1)
-      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 44.0)
-      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 44.0)
+      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 35.0)
+      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 35.0)
       itemWidth?.isActive = true
       itemHeight?.isActive = true
       let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

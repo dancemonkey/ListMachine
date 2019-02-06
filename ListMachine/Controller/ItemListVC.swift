@@ -57,8 +57,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func setupButtons() {
     newItemButton = NewItemButton()
-    newItemButton.setImage(UIImage(named: "+ New Button"), for: .normal)
-    newItemButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    newItemButton.setImageAndFrame()
     newItemButton.addTarget(self, action: #selector(newItemPressed(sender:)), for: .touchUpInside)
     
     editTemplateButton = EditTemplateButton()
