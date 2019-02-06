@@ -12,10 +12,11 @@ class MasterListCell: UITableViewCell {
   
   @IBOutlet weak var listNameLbl: UILabel!
   @IBOutlet weak var listInfoLbl: UILabel!
+  @IBOutlet weak var lastUpdatedLbl: LastUpdatedLabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    styleViews()
+//    styleViews()
   }
   
   func styleViews() {
@@ -29,7 +30,9 @@ class MasterListCell: UITableViewCell {
   
   func configure(with list: List?) {
     listNameLbl.text = list!.name
-    listInfoLbl.text = "\(list!.listedItems.count)" + " items, lastUpdated \(list!.lastUpdated!)"
+    listInfoLbl.text = "\(list!.listedItems.count) items"
+    lastUpdatedLbl.setLastUpdated(with: list?.lastUpdated)
+    styleViews()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

@@ -57,6 +57,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     nameFld.closure = { [weak self] in
       self?.saveField()
     }
+    nameFld.becomeFirstResponder()
   }
   
   func populateFields(with existing: ItemFieldProtocol) {

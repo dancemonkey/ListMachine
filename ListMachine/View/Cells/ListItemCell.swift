@@ -11,12 +11,12 @@ import UIKit
 class ListItemCell: UITableViewCell {
   
   @IBOutlet weak var titleLbl: UILabel!
-  @IBOutlet weak var lastUpdatedLbl: UILabel!
+  @IBOutlet weak var lastUpdatedLbl: LastUpdatedLabel!
   @IBOutlet weak var collection: UICollectionView!
   
   func configure(withItem item: Item) {
     titleLbl.text = item.itemListTitle
-    lastUpdatedLbl.text = "\(item.lastUpdated!)"
+    lastUpdatedLbl.setLastUpdated(with: item.lastUpdated)
     styleViews()
   }
   

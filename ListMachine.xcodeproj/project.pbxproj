@@ -34,6 +34,7 @@
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		1093BDC02203B9DB0015FB7A /* ViewControllerToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */; };
+		1096E73E220B24E200478026 /* LastUpdatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1096E73D220B24E200478026 /* LastUpdatedLabel.swift */; };
 		10A7BAD22208766C0076EF17 /* MasterListUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */; };
 		10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32221F74FF5005C6F40 /* NewItemButton.swift */; };
 		10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32521F7531C005C6F40 /* SaveButton.swift */; };
@@ -109,6 +110,7 @@
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerToolbarExtension.swift; sourceTree = "<group>"; };
+		1096E73D220B24E200478026 /* LastUpdatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdatedLabel.swift; sourceTree = "<group>"; };
 		10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListUpdateProtocol.swift; sourceTree = "<group>"; };
 		10A8C32221F74FF5005C6F40 /* NewItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemButton.swift; sourceTree = "<group>"; };
 		10A8C32521F7531C005C6F40 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				1046364321DC097400BEFCA7 /* FieldItemCellValueView.swift */,
 				10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */,
 				1067438B21FF44AD0084F1EF /* SortSelectControl.swift */,
+				1096E73D220B24E200478026 /* LastUpdatedLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				104C766921DA51510044346D /* ItemFieldButton.swift in Sources */,
 				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
 				102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */,
+				1096E73E220B24E200478026 /* LastUpdatedLabel.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,
 				10BBF9DE21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift in Sources */,
 				10D4A8CF21CAC320008006FF /* SegueID.swift in Sources */,
