@@ -21,7 +21,7 @@ class NewItemButton: UIButton {
   }
   
   func setImageAndFrame() {
-    setImage(UIImage(named: "+ New Button Alt"), for: .normal)
+    setImage(UIImage(named: "+ New Button"), for: .normal)
     frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
   }
 

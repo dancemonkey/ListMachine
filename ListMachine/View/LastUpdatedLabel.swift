@@ -12,7 +12,7 @@ class LastUpdatedLabel: UILabel {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    textColor = Stylesheet.getColor(.primary).withAlphaComponent(0.8)
+    textColor = Stylesheet.getColor(.black).withAlphaComponent(0.6)
     font = Stylesheet.userContentFont(for: .itemCollectionCellTitle)
   }
 

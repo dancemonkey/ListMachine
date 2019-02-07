@@ -17,9 +17,9 @@ extension UIViewController {
   }
 
   func setupToolbar(with newItemButton: UIButton?, and secondButton: UIButton?) {
-    toolBar.backgroundColor = Stylesheet.getColor(.secondary)
-    toolBar.barTintColor = Stylesheet.getColor(.secondary)
-    toolBar.isTranslucent = false
+    toolBar.backgroundColor = Stylesheet.getColor(.white)
+    toolBar.barTintColor = Stylesheet.getColor(.white)
+    toolBar.isTranslucent = true
     var items: [UIBarButtonItem] = []
     if let button1 = newItemButton {
       let item = UIBarButtonItem(customView: button1)
@@ -33,8 +33,8 @@ extension UIViewController {
     }
     if let button2 = secondButton {
       let item = UIBarButtonItem(customView: button2)
-      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 44.0)
-      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 44.0)
+      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 35.0)
+      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 35.0)
       itemWidth?.isActive = true
       itemHeight?.isActive = true
       items.insert(item, at: 0)

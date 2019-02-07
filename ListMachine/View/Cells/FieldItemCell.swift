@@ -36,7 +36,7 @@ class FieldItemCell: UITableViewCell {
   func styleViews() {
     self.backgroundColor = .clear
     title.font = Stylesheet.userContentFont(for: .itemEntryFieldTitle)
-    title.textColor = Stylesheet.getColor(.primary)
+    title.textColor = Stylesheet.getColor(.black)
     selectionStyle = .none
   }
   

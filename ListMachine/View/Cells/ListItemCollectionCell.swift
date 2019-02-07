@@ -36,10 +36,10 @@ class ListItemCollectionCell: UICollectionViewCell {
   }
   
   func styleViews() {
-    valueLbl.textColor = Stylesheet.getColor(.primary)
+    valueLbl.textColor = Stylesheet.getColor(.black)
     valueLbl.font = Stylesheet.userContentFont(for: .itemCollectionCellData)
     fieldTitleLbl.font = Stylesheet.userContentFont(for: .itemCollectionCellTitle)
-    fieldTitleLbl.textColor = Stylesheet.getColor(.primary).withAlphaComponent(0.8)
+    fieldTitleLbl.textColor = Stylesheet.getColor(.black).withAlphaComponent(0.6)
     backgroundColor = .clear
   }
   

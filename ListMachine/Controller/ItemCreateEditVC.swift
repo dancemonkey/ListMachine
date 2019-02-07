@@ -51,7 +51,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   func styleViews() {
-    view.backgroundColor = Stylesheet.getColor(.white)
+    view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
   }
   

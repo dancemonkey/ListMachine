@@ -77,7 +77,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func styleViews() {
     setupToolbar(with: newItemButton, and: editTemplateButton)
-    view.backgroundColor = Stylesheet.getColor(.white)
+    view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
     searchBar.tintColor = Stylesheet.getColor(.primary)
     searchBar.showsCancelButton = true

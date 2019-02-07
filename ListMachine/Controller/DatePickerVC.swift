@@ -37,7 +37,7 @@ class DatePickerVC: UIViewController {
   }
   
   func styleViews() {
-    view.backgroundColor = Stylesheet.getColor(.white)
+    view.backgroundColor = .white //Stylesheet.getColor(.white)
     for button in shortcutButtons {
       button.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
     }

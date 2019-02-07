@@ -49,9 +49,9 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   }
   
   func styleViews() {
-    view.backgroundColor = Stylesheet.getColor(.white)
-    titleLbl.textColor = Stylesheet.getColor(.primary)
-    dataTypeLbl.textColor = Stylesheet.getColor(.primary)
+    view.backgroundColor = .white //Stylesheet.getColor(.white)
+    titleLbl.textColor = Stylesheet.getColor(.black)
+    dataTypeLbl.textColor = Stylesheet.getColor(.black)
     titleLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
     dataTypeLbl.font = Stylesheet.uiElementFont(for: .fieldLabel)
     nameFld.closure = { [weak self] in

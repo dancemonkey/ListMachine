@@ -29,6 +29,7 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   
   internal func configure(with field: ItemField, and value: String?) {
     defer {
+      self.contentHorizontalAlignment = .left
       switch FieldType(rawValue: field.type)! {
       case .dateAndTime:
         self.format = DateFormat.dateAndTime
@@ -45,7 +46,6 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
       return
     }
     self.setTitle(value!, for: .normal)
-    self.contentHorizontalAlignment = .left
   }
   
   @objc private func buttonTapped(sender: UIButton) {

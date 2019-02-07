@@ -27,8 +27,8 @@ class MasterListVC: UIViewController {
   }
   
   func styleViews() {
-    view.backgroundColor = Stylesheet.getColor(.white)
-    tableView.backgroundColor = Stylesheet.getColor(.white)
+    view.backgroundColor = .white //Stylesheet.getColor(.white)
+    tableView.backgroundColor = .white //Stylesheet.getColor(.white)
     setupNewButton()
     setupToolbar(with: newButton, and: nil)
   }

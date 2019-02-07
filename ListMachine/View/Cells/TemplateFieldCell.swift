@@ -22,8 +22,8 @@ class TemplateFieldCell: UITableViewCell {
   func styleViews() {
     titleLbl.font = Stylesheet.userContentFont(for: .templateFieldListTitle)
     typeLbl.font = Stylesheet.userContentFont(for: .templateFieldListType)
-    titleLbl.textColor = Stylesheet.getColor(.primary)
-    typeLbl.textColor = Stylesheet.getColor(.primary)
+    titleLbl.textColor = Stylesheet.getColor(.black)
+    typeLbl.textColor = Stylesheet.getColor(.black)
     self.backgroundColor = .clear
     self.contentView.backgroundColor = .clear
     selectionStyle = .none
