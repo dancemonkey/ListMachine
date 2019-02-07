@@ -79,7 +79,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     setupToolbar(with: newItemButton, and: editTemplateButton)
     view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
-    searchBar.tintColor = Stylesheet.getColor(.primary)
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
@@ -103,7 +102,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       sortSelect.selectedSegmentIndex = 0
       sortList(by: sortSelect.selectedSegmentIndex)
     }
-    sortSelect.tintColor = Stylesheet.getColor(.secondary)
+//    sortSelect.tintColor = Stylesheet.getColor(.black)
   }
   
   func sortList(by sortKey: Int) {
