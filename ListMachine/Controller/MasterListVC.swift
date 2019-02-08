@@ -40,9 +40,12 @@ class MasterListVC: UIViewController {
   }
     
   @objc func newListPressed(sender: NewItemButton) {
-    let popup = PopupFactory.newList { [weak self] in
+    let popup = PopupFactory.listTitleAlert(completion: { [weak self] in
       self?.tableView.reloadData()
-    }
+    }, forList: nil)
+//    let popup = PopupFactory.newList { [weak self] in
+//      self?.tableView.reloadData()
+//    }
     self.present(popup, animated: true, completion: nil)
   }
   
@@ -88,12 +91,13 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       self.tableView.reloadData()
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-      // show popup to edit list title, maybe a button to clear all items
-      print("editing title yay!")
-      let controller = PopupFactory.editTitle(of: self.store!.getAllLists()![indexPath.row]) {
-        [weak self] in
+      let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
-      }
+      }, forList: self.store!.getAllLists()![indexPath.row])
+//      let controller = PopupFactory.editTitle(of: self.store!.getAllLists()![indexPath.row]) {
+//        [weak self] in
+//        self?.tableView.reloadData()
+//      }
       self.present(controller, animated: true, completion: nil)
     }
     
