@@ -200,12 +200,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   @IBAction func sortSelected(sender: SortSelectControl) {
-    print("sort: sorting")
     sortList(by: sender.selectedSegmentIndex)
   }
   
   @objc func changeSortDirection(sender: SortSelectControl) {
-    print("sort: changing direction")
     ascending = !ascending
     tableView.reloadData()
   }

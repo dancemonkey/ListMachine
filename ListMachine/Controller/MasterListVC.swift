@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ViewAnimator
 
 class MasterListVC: UIViewController {
   
@@ -26,9 +27,14 @@ class MasterListVC: UIViewController {
     styleViews()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
+  }
+  
   func styleViews() {
-    view.backgroundColor = .white //Stylesheet.getColor(.white)
-    tableView.backgroundColor = .white //Stylesheet.getColor(.white)
+    view.backgroundColor = .white
+    tableView.backgroundColor = .white
     setupNewButton()
     setupToolbar(with: newButton, and: nil)
   }
@@ -43,9 +49,6 @@ class MasterListVC: UIViewController {
     let popup = PopupFactory.listTitleAlert(completion: { [weak self] in
       self?.tableView.reloadData()
     }, forList: nil)
-//    let popup = PopupFactory.newList { [weak self] in
-//      self?.tableView.reloadData()
-//    }
     self.present(popup, animated: true, completion: nil)
   }
   
@@ -94,10 +97,6 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
       }, forList: self.store!.getAllLists()![indexPath.row])
-//      let controller = PopupFactory.editTitle(of: self.store!.getAllLists()![indexPath.row]) {
-//        [weak self] in
-//        self?.tableView.reloadData()
-//      }
       self.present(controller, animated: true, completion: nil)
     }
     
