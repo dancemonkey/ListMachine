@@ -28,6 +28,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?
+//  var previousSortKey: Int?
   var filterString: String = "" {
     didSet {
       tableView.reloadData()
@@ -35,6 +36,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   var isSearching = false
   var masterListDelegate: MasterListUpdate?
+  var ascending: Bool = true
   
   let revealedSortHeight: CGFloat = 27.0
   let revealedSearchHeight: CGFloat = 56.0
@@ -92,6 +94,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     guard itemList.templateItem!.defaultFields.count > 1 else {
       return
     }
+    sortSelect.addTarget(self, action: #selector(changeSortDirection(sender:)), for: .touchDown)
     for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
       sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
     }
@@ -102,11 +105,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       sortSelect.selectedSegmentIndex = 0
       sortList(by: sortSelect.selectedSegmentIndex)
     }
-//    sortSelect.tintColor = Stylesheet.getColor(.black)
   }
   
   func sortList(by sortKey: Int) {
     self.sortKey = sortKey
+//    self.previousSortKey = sortKey
     tableView.reloadData()
   }
   
@@ -151,12 +154,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString).count
+    return itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending).count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
-    cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row])
+    cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row])
     return cell
   }
 
@@ -175,7 +178,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
+      let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
       item.prepareForDelete()
       store?.delete(object: item)
       tableView.deleteRows(at: [indexPath], with: .fade)
@@ -196,8 +199,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   
-  @IBAction func sortSelected(sender: UISegmentedControl) {
+  @IBAction func sortSelected(sender: SortSelectControl) {
+    print("sort: sorting")
     sortList(by: sender.selectedSegmentIndex)
+  }
+  
+  @objc func changeSortDirection(sender: SortSelectControl) {
+    print("sort: changing direction")
+    ascending = !ascending
+    tableView.reloadData()
   }
   
   @IBAction func searchPressed(sender: UIBarButtonItem!) {
@@ -251,7 +261,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.itemTemplate = self.itemList.templateItem
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
-        destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[indexPath.row]
+        destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
 //        destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
@@ -275,11 +285,11 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID.listItemCollectionCell.rawValue, for: indexPath) as! ListItemCollectionCell
-    
-    let type: FieldType = FieldType(rawValue: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.row + 1].type) ?? .noType
-    let value = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].value ?? "No value set"
-    let title = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1].name
-    let field = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString)[collectionView.tag].itemFields[indexPath.item + 1]
+    let item: Item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[collectionView.tag]
+    let type: FieldType = FieldType(rawValue: item.itemFields[indexPath.row + 1].type) ?? .noType
+    let value = item.itemFields[indexPath.item + 1].value ?? "No value set"
+    let title = item.itemFields[indexPath.item + 1].name
+    let field = item.itemFields[indexPath.item + 1]
     let payload = (value: value, title: title)
     cell.configure(withValue: payload.value, andTitle: payload.title, forType: type) {
       if type == FieldType.checkBox {

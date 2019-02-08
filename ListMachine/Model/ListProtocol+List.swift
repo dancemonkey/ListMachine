@@ -95,13 +95,20 @@ class List: Object, ListProtocol {
     setLastUpdated()
   }
   
-  func getListSorted(by fieldIndex: Int, andFilteredBy filterText: String?) -> Array<Item> {
+  func getListSorted(by fieldIndex: Int, andFilteredBy filterText: String?, ascending: Bool) -> Array<Item> {
     var results: Array<Item>
     
     setSortKey(to: fieldIndex)
-    results = Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
-      return itemOne.itemFields[fieldIndex].value ?? "" < itemTwo.itemFields[fieldIndex].value ?? ""
-    })
+    if ascending {
+      results = Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
+        return itemOne.itemFields[fieldIndex].value ?? "" < itemTwo.itemFields[fieldIndex].value ?? ""
+      })
+    } else {
+      results = Array(listedItems).sorted(by: { (itemOne, itemTwo) -> Bool in
+        return itemOne.itemFields[fieldIndex].value ?? "" > itemTwo.itemFields[fieldIndex].value ?? ""
+      })
+    }
+    
     
     if let filter = filterText, filter != "" {
       results = results.filter { (item) -> Bool in

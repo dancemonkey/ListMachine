@@ -304,7 +304,7 @@
                                     <segment title="Second"/>
                                 </segments>
                                 <connections>
-                                    <action selector="sortSelectedWithSender:" destination="S3e-MS-CWW" eventType="valueChanged" id="nyz-Pi-Muf"/>
+                                    <action selector="sortSelectedWithSender:" destination="S3e-MS-CWW" eventType="valueChanged" id="pis-mg-9rC"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
