@@ -26,6 +26,8 @@ class MasterListVC: UIViewController {
     tableView.dataSource = self
     styleViews()
     
+    // testing csv exports
+    let builder = ExportBuilder(for: store!.getAllLists()![0])
   }
   
   override func viewDidLayoutSubviews() {
