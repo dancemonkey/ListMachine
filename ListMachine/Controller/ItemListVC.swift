@@ -195,7 +195,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       let popup = builder.share(text: builder.getListText() ?? "")
       self?.present(popup, animated: true, completion: nil)
     }
-    share.backgroundColor = Stylesheet.getColor(.accent)
+    share.backgroundColor = Stylesheet.getColor(.primary)
     return [share, delete]
   }
   
