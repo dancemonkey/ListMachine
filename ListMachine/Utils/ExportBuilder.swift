@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ExportBuilder {
   enum Object {
@@ -15,30 +16,70 @@ class ExportBuilder {
   
   var objectType: Object = .unassigned
   var path: URL
+  var list: List?
+  var item: Item?
   
-  init(for list: List) {
+  init?(with list: List?) {
+    guard let list = list else { return nil }
     self.objectType = .list
-    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(list.listID)
-    var listText: String = buildHeadings(for: list)
-    for item in list.listedItems {
-      listText.append(buildItem(item: item))
-    }
+    self.list = list
+    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(list.listID + ".csv")
     
     // TODO: put text into sharesheet for export
     // TODO: finish item-only export code
     // TODO: write share sheet into MasterList as table swipe action
     // TODO: add share button on item view (and list view? redundant?)
-    
-    print(listText)
   }
   
-  init(for item: Item) {
+  init(with item: Item) {
     self.objectType = .item
-    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(item.itemID)
+    self.item = item
+    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(item.itemID + ".csv")
+  }
+  
+  func getListText() -> String? {
+    guard let list = self.list else { return nil }
+    return buildListFile(for: list)
+  }
+  
+  func getItemText() -> String? {
+    guard let item = self.item else { return nil }
+    return buildItem(item: item)
+  }
+  
+  func share(text: String) -> UIActivityViewController {
+    do {
+      try text.write(to: self.path, atomically: true, encoding: .utf8)
+    } catch {
+      print("failed to write text to path")
+    }
+    let popup = UIActivityViewController(activityItems: [path], applicationActivities: [])
+    popup.excludedActivityTypes = [
+      UIActivity.ActivityType.assignToContact,
+      UIActivity.ActivityType.saveToCameraRoll,
+      UIActivity.ActivityType.postToVimeo,
+      UIActivity.ActivityType.postToWeibo,
+      UIActivity.ActivityType.postToFlickr,
+      UIActivity.ActivityType.postToTwitter,
+      UIActivity.ActivityType.postToFacebook,
+      UIActivity.ActivityType.postToTencentWeibo,
+      UIActivity.ActivityType.openInIBooks
+    ]
+    return popup
   }
   
   private func buildItem(item: Item) -> String {
     var csv: String = ""
+    if objectType == .item {
+      for (idx, field) in item.templateItem!.defaultFields.enumerated() {
+        csv.append("\"\(field.name)\"")
+        if idx < item.templateItem!.defaultFields.count - 1 {
+          csv.append(",")
+        } else {
+          csv.append("\n")
+        }
+      }
+    }
     for (idx, field) in item.itemFields.enumerated() {
       let value = field.value ?? ""
       csv.append("\"\(value)\"")
@@ -60,6 +101,14 @@ class ExportBuilder {
       } else {
         csvText.append("\n")
       }
+    }
+    return csvText
+  }
+  
+  private func buildListFile(for list: List) -> String {
+    var csvText: String = buildHeadings(for: list)
+    for item in list.listedItems {
+      csvText.append(buildItem(item: item))
     }
     return csvText
   }

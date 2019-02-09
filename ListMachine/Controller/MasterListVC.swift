@@ -25,9 +25,6 @@ class MasterListVC: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     styleViews()
-    
-    // testing csv exports
-    let builder = ExportBuilder(for: store!.getAllLists()![0])
   }
   
   override func viewDidLayoutSubviews() {
@@ -96,18 +93,23 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
       self.store?.delete(list: self.store!.getAllLists()![indexPath.row])
       self.tableView.reloadData()
     }
-    let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+    let edit = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
       }, forList: self.store!.getAllLists()![indexPath.row])
       self.present(controller, animated: true, completion: nil)
     }
-    
-    return [edit, delete]
+    let share = UITableViewRowAction(style: .normal, title: "Share") { [weak self] (_, indexPath) in
+      guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
+      let popup = builder.share(text: builder.getListText() ?? "")
+      self?.present(popup, animated: true, completion: nil)
+    }
+    share.backgroundColor = Stylesheet.getColor(.accent)
+    return [share, edit, delete]
   }
 }
 

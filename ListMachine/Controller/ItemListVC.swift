@@ -182,14 +182,21 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     return true
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+      let item = self.itemList.getListSorted(by: self.sortKey ?? 0, andFilteredBy: self.filterString, ascending: self.ascending)[indexPath.row]
       item.prepareForDelete()
-      store?.delete(object: item)
+      self.store?.delete(object: item)
       tableView.deleteRows(at: [indexPath], with: .fade)
-      masterListDelegate?.updateMasterList()
+      self.masterListDelegate?.updateMasterList()
     }
+    let share = UITableViewRowAction(style: .default, title: "Share") { [weak self] (_, indexPath) in
+      guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
+      let popup = builder.share(text: builder.getListText() ?? "")
+      self?.present(popup, animated: true, completion: nil)
+    }
+    share.backgroundColor = Stylesheet.getColor(.accent)
+    return [share, delete]
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -229,7 +236,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       showSortSelect()
     }
   }
-  
+    
   // MARK: Item Save Delegate
   func saveItem(_ item: Item) {
     store?.save(object: item, andRun: {

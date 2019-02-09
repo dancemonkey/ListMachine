@@ -51,19 +51,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     styleViews()
   }
   
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-//    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
-  }
-  
   func styleViews() {
     view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
   }
   
-  func setDelegate(forField field: ItemField) {
-    
-  }
+//  func setDelegate(forField field: ItemField) {
+//
+//  }
   
   // MARK: Tableview Methods
   
