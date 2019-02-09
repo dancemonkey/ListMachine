@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.isTranslucent = false
     navBarAppearance.tintColor = Stylesheet.getColor(.white)
-    navBarAppearance.barTintColor = Stylesheet.getColor(.primary)
+    navBarAppearance.barTintColor = Stylesheet.getColor(.accent)
     navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
     navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
     UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font : Stylesheet.uiElementFont(for: .barButtonItemLabel)], for: .normal)

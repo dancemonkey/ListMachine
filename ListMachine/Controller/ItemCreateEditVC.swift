@@ -56,9 +56,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     tableView.backgroundColor = .clear
   }
   
-//  func setDelegate(forField field: ItemField) {
-//
-//  }
+  // MARK: Actions
+  
+  @IBAction func sharePressed(sender: UIBarButtonItem!) {
+    guard let builder = ExportBuilder(with: item) else { return }
+    let popup = builder.share(text: builder.getItemText() ?? "")
+    self.present(popup, animated: true, completion: nil)
+  }
   
   // MARK: Tableview Methods
   

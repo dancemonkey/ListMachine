@@ -236,6 +236,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       showSortSelect()
     }
   }
+  
+  @IBAction func sharePressed(sender: UIBarButtonItem!) {
+    guard let builder = ExportBuilder(with: itemList) else { return }
+    let popup = builder.share(text: builder.getListText() ?? "")
+    self.present(popup, animated: true, completion: nil)
+  }
     
   // MARK: Item Save Delegate
   func saveItem(_ item: Item) {

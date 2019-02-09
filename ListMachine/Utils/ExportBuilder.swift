@@ -31,7 +31,8 @@ class ExportBuilder {
     // TODO: add share button on item view (and list view? redundant?)
   }
   
-  init(with item: Item) {
+  init?(with item: Item?) {
+    guard let item = item else { return nil }
     self.objectType = .item
     self.item = item
     self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(item.itemID + ".csv")

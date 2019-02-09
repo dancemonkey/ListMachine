@@ -55,7 +55,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Lvp-Y0-wnk"/>
+                    <navigationItem key="navigationItem" id="Lvp-Y0-wnk">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Share" id="Y2U-Ep-Bhy">
+                            <connections>
+                                <action selector="sharePressedWithSender:" destination="BYZ-38-t0r" id="Qr3-j5-LvO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
@@ -159,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
-                                <rect key="frame" x="0.0" y="231" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="227" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -310,7 +316,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" constant="4" id="6Gh-SL-jZd"/>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" id="6Gh-SL-jZd"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
                             <constraint firstItem="Z6B-GR-U3O" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" constant="4" id="OPB-dQ-hOs"/>
@@ -334,6 +340,11 @@
                             <barButtonItem image="sort" id="iur-3E-5pc">
                                 <connections>
                                     <action selector="sortPressedWithSender:" destination="S3e-MS-CWW" id="WCH-nF-lUi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="Share" id="gLj-jl-WuK">
+                                <connections>
+                                    <action selector="sharePressedWithSender:" destination="S3e-MS-CWW" id="xXO-6M-mt0"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -657,6 +668,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Share" width="19" height="24"/>
         <image name="falseImage" width="60" height="60"/>
         <image name="search" width="25" height="25"/>
         <image name="sort" width="25" height="25"/>
