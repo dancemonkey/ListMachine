@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
@@ -33,6 +34,11 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     setupNewButton()
     styleViews()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
   }
   
   func setupNewButton() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ViewAnimator
 
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
@@ -55,6 +56,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     setupButtons()
     styleViews()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
   }
   
   func setupButtons() {

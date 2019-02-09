@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import ViewAnimator
 
 class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
@@ -48,6 +49,11 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     
     styleViews()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+//    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
   }
   
   func styleViews() {
