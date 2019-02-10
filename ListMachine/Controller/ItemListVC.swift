@@ -191,8 +191,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.masterListDelegate?.updateMasterList()
     }
     let share = UITableViewRowAction(style: .default, title: "Share") { [weak self] (_, indexPath) in
-      guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
-      let popup = builder.share(text: builder.getListText() ?? "")
+      guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
+      guard let builder = ExportBuilder(with: item) else { return }
+      let popup = builder.share(text: builder.getItemText() ?? "")
       self?.present(popup, animated: true, completion: nil)
     }
     share.backgroundColor = Stylesheet.getColor(.primary)

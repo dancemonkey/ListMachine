@@ -23,19 +23,16 @@ class ExportBuilder {
     guard let list = list else { return nil }
     self.objectType = .list
     self.list = list
-    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(list.listID + ".csv")
-    
-    // TODO: put text into sharesheet for export
-    // TODO: finish item-only export code
-    // TODO: write share sheet into MasterList as table swipe action
-    // TODO: add share button on item view (and list view? redundant?)
+    let filename: String = "\(list.name) - \(list.listedItems.count) items"
+    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename + ".csv")
   }
   
   init?(with item: Item?) {
     guard let item = item else { return nil }
     self.objectType = .item
     self.item = item
-    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(item.itemID + ".csv")
+    let filename: String = "\(item.itemListTitle) item"
+    self.path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename + ".csv")
   }
   
   func getListText() -> String? {
