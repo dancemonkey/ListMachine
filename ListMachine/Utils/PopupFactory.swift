@@ -30,6 +30,7 @@ class PopupFactory {
       nameField.becomeFirstResponder()
     }
     let done = UIAlertAction(title: "DONE", style: .default) { (action) in
+      controller.view.successFeedback()
       guard let text = controller.textFields?[0].text, text.isEmpty == false else {
         controller.dismiss(animated: true, completion: nil)
         return

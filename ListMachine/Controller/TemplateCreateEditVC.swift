@@ -69,6 +69,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.view.tapFeedback()
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
   }
   
@@ -88,6 +89,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
       self.store?.delete(object: self.itemTemplate.defaultFields[indexPath.row])
       self.saveDelegate?.saveTemplate(self.itemTemplate)
       self.tableView.deleteRows(at: [indexPath], with: .fade)
+      self.view.successFeedback()
     }
     return [delete]
   }

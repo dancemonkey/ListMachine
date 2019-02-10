@@ -13,6 +13,7 @@
 		10032F5621CFD5770075DD80 /* _FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* _FieldValueEditVC.swift */; };
 		100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
+		10246BBC221069D800CDDDE8 /* HapticViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */; };
 		1029778721D7E6F700945B45 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1029778621D7E6F700945B45 /* FieldType.swift */; };
 		102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */; };
 		102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B449421F8A095009BAFA7 /* ImageFactory.swift */; };
@@ -90,6 +91,7 @@
 		10032F5521CFD5770075DD80 /* _FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _FieldValueEditVC.swift; sourceTree = "<group>"; };
 		100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTemplateButton.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewControllerExtension.swift; sourceTree = "<group>"; };
 		1029778621D7E6F700945B45 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
 		102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanFieldBtn.swift; sourceTree = "<group>"; };
 		102B449421F8A095009BAFA7 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */,
 				10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */,
 				10C82035220F1B4C00784A78 /* ExportBuilder.swift */,
+				10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
+				10246BBC221069D800CDDDE8 /* HapticViewControllerExtension.swift in Sources */,
 				10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */,
 				10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */,
 				10032F5621CFD5770075DD80 /* _FieldValueEditVC.swift in Sources */,

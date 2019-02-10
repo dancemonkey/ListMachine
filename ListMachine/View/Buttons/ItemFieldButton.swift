@@ -49,6 +49,7 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   }
   
   @objc private func buttonTapped(sender: UIButton) {
+    tapFeedback()
     segueDelegate?.segueRequested(to: self.segueID, sender: self)
   }
 }

@@ -85,6 +85,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.view.tapFeedback()
     performSegue(withIdentifier: SegueID.showListView.rawValue, sender: indexPath)
   }
   
@@ -96,17 +97,20 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
       self.store?.delete(list: self.store!.getAllLists()![indexPath.row])
       self.tableView.reloadData()
+      self.view.tapFeedback()
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
       }, forList: self.store!.getAllLists()![indexPath.row])
       self.present(controller, animated: true, completion: nil)
+      self.view.tapFeedback()
     }
     let share = UITableViewRowAction(style: .normal, title: "Share") { [weak self] (_, indexPath) in
       guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
       let popup = builder.share(text: builder.getListText() ?? "")
       self?.present(popup, animated: true, completion: nil)
+      self?.view.tapFeedback()
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
     return [share, edit, delete]

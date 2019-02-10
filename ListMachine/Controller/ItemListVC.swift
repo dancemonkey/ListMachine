@@ -175,6 +175,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.view.tapFeedback()
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: indexPath)
   }
   
@@ -189,11 +190,13 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.store?.delete(object: item)
       tableView.deleteRows(at: [indexPath], with: .fade)
       self.masterListDelegate?.updateMasterList()
+      self.view.successFeedback()
     }
     let share = UITableViewRowAction(style: .default, title: "Share") { [weak self] (_, indexPath) in
       guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
       guard let builder = ExportBuilder(with: item) else { return }
       let popup = builder.share(text: builder.getItemText() ?? "")
+      self?.view.tapFeedback()
       self?.present(popup, animated: true, completion: nil)
     }
     share.backgroundColor = Stylesheet.getColor(.primary)

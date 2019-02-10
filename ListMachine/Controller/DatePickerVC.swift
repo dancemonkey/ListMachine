@@ -50,6 +50,7 @@ class DatePickerVC: UIViewController {
   
   @IBAction func doneTapped(sender: UIButton) {
     saveDelegate?.saveSelectedDate(datePicker.date)
+    view.successFeedback()
     navigationController?.popViewController(animated: true)
   }
   
