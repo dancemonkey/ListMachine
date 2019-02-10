@@ -130,7 +130,8 @@ struct Stylesheet {
   static private var labelDateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.dateFormat = "MM/dd/yy, h:mm a"
+//      formatter.dateFormat = "MM/dd/yy, h:mm a"
+      formatter.setLocalizedDateFormatFromTemplate("MM/dd/yy, h:mm a")
       return formatter
     }
   }
@@ -138,13 +139,15 @@ struct Stylesheet {
   static private var simpleDateFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.dateFormat = "E, MMM d, yyyy"
+      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy")
+//      formatter.dateFormat = "E, MMM d, yyyy"
       return formatter
     }
   }
   
   static func simpleDateString(fromDate date: Date?) -> String? {
     guard let d = date else { return nil }
+//    return DateFormatter.localizedString(from: d, dateStyle: .short, timeStyle: .none)
     return simpleDateFormatter.string(from: d)
   }
   
@@ -156,18 +159,21 @@ struct Stylesheet {
   static private var dateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.dateFormat = "E, MMM d, yyyy, h:mm a"
+      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy, h:mm a")
+//      formatter.dateFormat = "E, MMM d, yyyy, h:mm a"
       return formatter
     }
   }
   
   static func dateAndTimeString(from date: Date?) -> String? {
     guard let d = date else { return nil }
+//    return DateFormatter.localizedString(from: d, dateStyle: .medium, timeStyle: .full)
     return dateAndTimeFormatter.string(from: d)
   }
   
   static func labelDateAndTimeString(from date: Date?) -> String? {
     guard let d = date else { return nil }
+//    return DateFormatter.localizedString(from: d, dateStyle: .medium, timeStyle: .short)
     return labelDateAndTimeFormatter.string(from: d)
   }
   
