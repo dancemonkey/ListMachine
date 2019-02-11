@@ -23,6 +23,7 @@ class DatePickerVC: UIViewController {
   }
   
   @IBOutlet weak var datePicker: FieldDatePicker!
+  @IBOutlet weak var clearButton: UIButton!
   var date: Date?
   var saveDelegate: DateSaveDelegate?
   var mode: UIDatePicker.Mode?
@@ -30,7 +31,10 @@ class DatePickerVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setDateMode(to: mode!)
-    datePicker.setDate(date ?? Date(), animated: true)
+    if self.date == nil {
+      self.date = Date()
+    }
+    datePicker.setDate(date!, animated: true)
     self.title = "Select Date"
     
     styleViews()
@@ -42,6 +46,7 @@ class DatePickerVC: UIViewController {
       button.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
     }
     setupToolbar(with: nil, and: nil)
+    clearButton.tintColor = Stylesheet.getColor(.primary)
   }
   
   private func setDateMode(to mode: UIDatePicker.Mode) {
@@ -50,6 +55,12 @@ class DatePickerVC: UIViewController {
   
   @IBAction func doneTapped(sender: UIButton) {
     saveDelegate?.saveSelectedDate(datePicker.date)
+    view.successFeedback()
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction func clearTapped(sender: UIButton) {
+    saveDelegate?.saveSelectedDate(nil)
     view.successFeedback()
     navigationController?.popViewController(animated: true)
   }

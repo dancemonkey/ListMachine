@@ -182,7 +182,7 @@ extension ItemCreateEditVC: SegueDelegate {
 }
 
 extension ItemCreateEditVC: DateSaveDelegate {
-  func saveSelectedDate(_ date: Date) {
+  func saveSelectedDate(_ date: Date?) {
     senderDelegate?.receivePayload(date)
   }
 }

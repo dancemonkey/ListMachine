@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SegueSenderDelegate: AnyObject {
-  func receivePayload(_ value: Date) 
+  func receivePayload(_ value: Date?) 
 }

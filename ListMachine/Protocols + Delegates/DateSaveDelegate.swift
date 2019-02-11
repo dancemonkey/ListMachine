@@ -10,5 +10,5 @@ import Foundation
 
 protocol DateSaveDelegate {
   var senderDelegate: SegueSenderDelegate? { get set }
-  func saveSelectedDate(_ date: Date)
+  func saveSelectedDate(_ date: Date?)
 }

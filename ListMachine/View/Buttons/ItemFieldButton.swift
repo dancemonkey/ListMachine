@@ -55,11 +55,11 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
 }
 
 extension ItemFieldButton: SegueSenderDelegate {
-  func receivePayload(_ value: Date) {
+  func receivePayload(_ value: Date?) {
     defer {
       fieldSave?(self.reportValue)
     }
-    guard let format = self.format else {
+    guard let format = self.format, value != nil else {
       let title = Stylesheet.simpleDateString(fromDate: value)
       self.setTitle(title ?? "No Date", for: .normal)
       return

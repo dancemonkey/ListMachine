@@ -52,11 +52,12 @@ struct Stylesheet {
   static func uiElementFont(for feature: SystemContentFeature) -> UIFont {
     let size = getSize(for: feature)
     let fontName: String
-    if feature == .navigationHeading {
+    switch feature {
+    case .navigationHeading:
       fontName = Fonts.systemFontBoldName.rawValue
-    } else if feature == .smallNavigationHeading {
+    case .smallNavigationHeading, .fieldLabel:
       fontName = Fonts.systemFontSemiboldName.rawValue
-    } else {
+    default:
       fontName = Fonts.systemFontName.rawValue
     }
     return UIFont(name: fontName, size: size) ?? UIFont.systemFont(ofSize: size)
@@ -68,7 +69,7 @@ struct Stylesheet {
     switch feature {
     case .itemCollectionCellTitle, .templateFieldListType, .mainListInfo:
       fontName = Fonts.userFontEmphasisName.rawValue
-    case .itemListCellTitle, .templateFieldListTitle:
+    case .itemListCellTitle, .templateFieldListTitle, .itemEntryFieldTitle:
       fontName = Fonts.userFontBoldName.rawValue
     default:
       fontName = Fonts.userFontName.rawValue
@@ -130,7 +131,6 @@ struct Stylesheet {
   static private var labelDateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-//      formatter.dateFormat = "MM/dd/yy, h:mm a"
       formatter.setLocalizedDateFormatFromTemplate("MM/dd/yy, h:mm a")
       return formatter
     }
@@ -140,14 +140,12 @@ struct Stylesheet {
     get {
       let formatter = DateFormatter()
       formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy")
-//      formatter.dateFormat = "E, MMM d, yyyy"
       return formatter
     }
   }
   
   static func simpleDateString(fromDate date: Date?) -> String? {
     guard let d = date else { return nil }
-//    return DateFormatter.localizedString(from: d, dateStyle: .short, timeStyle: .none)
     return simpleDateFormatter.string(from: d)
   }
   
@@ -160,20 +158,17 @@ struct Stylesheet {
     get {
       let formatter = DateFormatter()
       formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy, h:mm a")
-//      formatter.dateFormat = "E, MMM d, yyyy, h:mm a"
       return formatter
     }
   }
   
   static func dateAndTimeString(from date: Date?) -> String? {
     guard let d = date else { return nil }
-//    return DateFormatter.localizedString(from: d, dateStyle: .medium, timeStyle: .full)
     return dateAndTimeFormatter.string(from: d)
   }
   
   static func labelDateAndTimeString(from date: Date?) -> String? {
     guard let d = date else { return nil }
-//    return DateFormatter.localizedString(from: d, dateStyle: .medium, timeStyle: .short)
     return labelDateAndTimeFormatter.string(from: d)
   }
   

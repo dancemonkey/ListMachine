@@ -593,7 +593,7 @@
                                     <!--2019-01-02 14:10:48 +0000-->
                                 </date>
                             </datePicker>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dvp-5v-Mff">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dvp-5v-Mff" userLabel="Date Shortcuts">
                                 <rect key="frame" x="8" y="326" width="359" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60B-nv-Rgg">
@@ -629,32 +629,51 @@
                                     <constraint firstAttribute="height" constant="45" id="4U3-zU-k5g"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="137.66666666666666" y="387" width="100" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="f4T-4p-wWx"/>
-                                    <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
-                                </constraints>
-                                <state key="normal" title="SAVE"/>
-                                <connections>
-                                    <action selector="doneTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="lxs-Tr-No3"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="lcy-DX-QEZ" userLabel="Save and Cancel">
+                                <rect key="frame" x="66" y="387" width="243" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNh-eZ-aox">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="We0-cU-vpL"/>
+                                            <constraint firstAttribute="height" constant="45" id="mnx-gS-nui"/>
+                                        </constraints>
+                                        <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="clearTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="XTI-be-pXc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-17-Sqj" customClass="SaveButton" customModule="ListMachine" customModuleProvider="target">
+                                        <rect key="frame" x="143" y="0.0" width="100" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="f4T-4p-wWx"/>
+                                            <constraint firstAttribute="width" constant="100" id="zTi-bo-fvo"/>
+                                        </constraints>
+                                        <state key="normal" title="SAVE"/>
+                                        <connections>
+                                            <action selector="doneTappedWithSender:" destination="rad-PH-LNs" eventType="touchUpInside" id="lxs-Tr-No3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="leading" secondItem="NTH-EP-ifL" secondAttribute="leading" id="1nZ-Su-NsO"/>
+                            <constraint firstItem="lcy-DX-QEZ" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="6vv-P3-BH2"/>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="top" secondItem="NTH-EP-ifL" secondAttribute="top" constant="16" id="8vl-0v-hPd"/>
-                            <constraint firstItem="Ics-17-Sqj" firstAttribute="top" secondItem="dvp-5v-Mff" secondAttribute="bottom" constant="16" id="Afh-PL-EX1"/>
                             <constraint firstItem="6rw-KT-IYy" firstAttribute="trailing" secondItem="NTH-EP-ifL" secondAttribute="trailing" id="EUt-8t-Dnd"/>
                             <constraint firstItem="dvp-5v-Mff" firstAttribute="top" secondItem="6rw-KT-IYy" secondAttribute="bottom" constant="8" id="Rnl-so-aTc"/>
+                            <constraint firstItem="lcy-DX-QEZ" firstAttribute="top" secondItem="dvp-5v-Mff" secondAttribute="bottom" constant="16" id="WzY-bb-0Bz"/>
                             <constraint firstItem="NTH-EP-ifL" firstAttribute="trailing" secondItem="dvp-5v-Mff" secondAttribute="trailing" constant="8" id="dVD-D8-zXt"/>
-                            <constraint firstItem="Ics-17-Sqj" firstAttribute="centerX" secondItem="OMi-L9-yDn" secondAttribute="centerX" id="qLX-1l-CRa"/>
                             <constraint firstItem="dvp-5v-Mff" firstAttribute="leading" secondItem="NTH-EP-ifL" secondAttribute="leading" constant="8" id="tl1-zC-JN8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NTH-EP-ifL"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="clearButton" destination="MNh-eZ-aox" id="QGS-WI-Bo8"/>
                         <outlet property="datePicker" destination="6rw-KT-IYy" id="58g-dG-GEL"/>
                         <outletCollection property="shortcutButtons" destination="60B-nv-Rgg" collectionClass="NSMutableArray" id="18Z-oY-FAr"/>
                         <outletCollection property="shortcutButtons" destination="SlO-yo-1be" collectionClass="NSMutableArray" id="IpG-OF-9BL"/>
