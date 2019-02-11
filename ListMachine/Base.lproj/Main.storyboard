@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vky-wT-JT5">
-                                <rect key="frame" x="0.0" y="223" width="375" height="506"/>
+                                <rect key="frame" x="0.0" y="196" width="375" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
@@ -300,30 +300,14 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-GR-U3O" customClass="SortSelectControl" customModule="ListMachine" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="196" width="375" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="HjS-2Q-JvD"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="sortSelectedWithSender:" destination="S3e-MS-CWW" eventType="valueChanged" id="pis-mg-9rC"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z6B-GR-U3O" secondAttribute="bottom" id="6Gh-SL-jZd"/>
-                            <constraint firstItem="Z6B-GR-U3O" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="7dO-Ta-USj"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="Hg2-Nx-AIG"/>
-                            <constraint firstItem="Z6B-GR-U3O" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="OPB-dQ-hOs"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="top" secondItem="8y0-c6-beS" secondAttribute="top" id="TDx-o7-glH"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="UgU-sT-gUt"/>
+                            <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="XOp-0S-hqR"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="dtQ-7s-0pl"/>
-                            <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="Z6B-GR-U3O" secondAttribute="trailing" id="fQw-WT-urY"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="nEh-Vb-gaJ"/>
                         </constraints>
@@ -355,8 +339,6 @@
                         <outlet property="searchBarHeight" destination="hhk-hd-gSB" id="WUe-TJ-95B"/>
                         <outlet property="searchBtn" destination="6AW-Rk-2km" id="j45-K5-frT"/>
                         <outlet property="sortBtn" destination="iur-3E-5pc" id="IUS-br-Pdq"/>
-                        <outlet property="sortSelect" destination="Z6B-GR-U3O" id="g8L-fh-U9b"/>
-                        <outlet property="sortSelectHeight" destination="HjS-2Q-JvD" id="9PD-1u-zGW"/>
                         <outlet property="tableView" destination="vky-wT-JT5" id="Dz2-lt-l5T"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showItemCreator" id="JJT-2k-qGj"/>
                         <segue destination="wrc-EG-jgv" kind="show" identifier="showTemplateEditor" id="74f-C1-Bp1"/>

@@ -14,7 +14,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var sortSelect: SortSelectControl!
+//  @IBOutlet weak var sortSelect: SortSelectControl!
   @IBOutlet weak var searchBtn: UIBarButtonItem!
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
@@ -29,7 +29,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var itemList: List!
   var store: DataStore?
   var sortKey: Int?
-//  var previousSortKey: Int?
   var filterString: String = "" {
     didSet {
       tableView.reloadData()
@@ -48,7 +47,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     self.title = itemList.name
     
-    setupSortSelect()
+    setupSort()
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -90,32 +89,38 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
-    sortSelectHeight.constant = 0.0
-    sortSelect.alpha = 0.0
+//    sortSelectHeight.constant = 0.0
+//    sortSelect.alpha = 0.0
   }
   
   // MARK: Helper Methods
-  func setupSortSelect() {
-    sortSelect.removeAllSegments()
-    guard itemList.templateItem!.defaultFields.count > 1 else {
-      return
-    }
-    sortSelect.addTarget(self, action: #selector(changeSortDirection(sender:)), for: .touchDown)
-    for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
-      sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
-    }
-    if itemList.sortKey.value != nil {
-      sortList(by: itemList.sortKey.value!)
-      sortSelect.selectedSegmentIndex = itemList.sortKey.value!
+  func setupSort() {
+//    sortSelect.removeAllSegments()
+//    sortSelect.addTarget(self, action: #selector(changeSortDirection(sender:)), for: .touchDown)
+//    for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
+//      sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
+//    }
+    print("starting sortKey: \(self.sortKey)")
+    self.sortKey = itemList.sortKey.value
+    self.ascending = itemList.sortAscending
+    print("after reading from itemList.sortKey: \(self.sortKey)")
+    if sortKey != nil {
+      print("sorting by self.sortKey")
+      sortList(by: sortKey!)
+//      sortSelect.selectedSegmentIndex = itemList.sortKey.value!
     } else {
-      sortSelect.selectedSegmentIndex = 0
-      sortList(by: sortSelect.selectedSegmentIndex)
+      print("sorting by 0")
+//      sortSelect.selectedSegmentIndex = 0
+      sortList(by: 0)
     }
   }
   
   func sortList(by sortKey: Int) {
     self.sortKey = sortKey
-//    self.previousSortKey = sortKey
+    store?.run {
+      self.itemList.sortKey.value = self.sortKey
+      self.itemList.sortAscending = self.ascending
+    }
     tableView.reloadData()
   }
   
@@ -137,22 +142,22 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   }
   
-  func showSortSelect() {
-    guard itemList.templateItem!.defaultFields.count > 1 else { return }
-    sortSelectHeight.constant = revealedSortHeight
-    UIView.animate(withDuration: 0.3) {
-      self.view.layoutIfNeeded()
-      self.sortSelect.alpha = 1.0
-    }
-  }
-  
-  func hideSortSelect() {
-    sortSelectHeight.constant = 0
-    UIView.animate(withDuration: 0.3) {
-      self.view.layoutIfNeeded()
-      self.sortSelect.alpha = 0.0
-    }
-  }
+//  func showSortSelect() {
+//    guard itemList.templateItem!.defaultFields.count > 1 else { return }
+//    sortSelectHeight.constant = revealedSortHeight
+//    UIView.animate(withDuration: 0.3) {
+//      self.view.layoutIfNeeded()
+////      self.sortSelect.alpha = 1.0
+//    }
+//  }
+//
+//  func hideSortSelect() {
+//    sortSelectHeight.constant = 0
+//    UIView.animate(withDuration: 0.3) {
+//      self.view.layoutIfNeeded()
+////      self.sortSelect.alpha = 0.0
+//    }
+//  }
   
   // MARK: Tableview Methods
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -234,11 +239,27 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   @IBAction func sortPressed(sender: UIBarButtonItem!) {
-    if sortSelectHeight.constant == revealedSortHeight {
-      hideSortSelect()
-    } else if sortSelectHeight.constant == 0 {
-      showSortSelect()
+    guard itemList.templateItem!.defaultFields.count > 1 else {
+      return
     }
+    // MARK: TESTING ACTION SHEET SETUP
+    var fieldTitles: [String] = []
+    for field in itemList.templateItem!.defaultFields {
+      fieldTitles.append(field.name)
+    }
+    let popup = PopupFactory.sortActionSheet(with: fieldTitles) { (fieldIndex) in
+      if self.sortKey! == fieldIndex {
+        self.ascending = !self.ascending
+      }
+      self.sortList(by: fieldIndex)
+      print("sorting by: \(fieldIndex)")
+    }
+    self.present(popup, animated: true, completion: nil)
+//    if sortSelectHeight.constant == revealedSortHeight {
+//      hideSortSelect()
+//    } else if sortSelectHeight.constant == 0 {
+//      showSortSelect()
+//    }
   }
   
   @IBAction func sharePressed(sender: UIBarButtonItem!) {
@@ -269,7 +290,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     store?.save(object: itemList, andRun: {
       self.itemList.setTemplate(template)
     })
-    setupSortSelect()
+    setupSort()
     tableView.reloadData()
     masterListDelegate?.updateMasterList()
   }
@@ -283,7 +304,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
-//        destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC

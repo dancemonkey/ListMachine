@@ -30,6 +30,7 @@ class List: Object, ListProtocol {
     return _lastUpdate ?? nil
   }
   let sortKey = RealmOptional<Int>()
+  @objc dynamic var sortAscending: Bool = true
   
   convenience init(name: String) {
     self.init()

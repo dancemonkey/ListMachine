@@ -10,6 +10,20 @@ import UIKit
 
 class PopupFactory {
   
+  static func sortActionSheet(with fields: [String], completion: @escaping (Int) -> ()) -> UIAlertController {
+    let controller = UIAlertController(title: "Sort by:", message: nil, preferredStyle: .actionSheet)
+    for (idx, field) in fields.enumerated() {
+      let action = UIAlertAction(title: field, style: .default) { (action) in
+        completion(idx)
+      }
+      controller.addAction(action)
+    }
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    controller.addAction(cancel)
+    controller.view.tintColor = Stylesheet.getColor(.primary)
+    return controller
+  }
+  
   static func listTitleAlert(completion: @escaping () -> (), forList: List?) -> UIAlertController {
     let title: String
     let nameFieldText: String
