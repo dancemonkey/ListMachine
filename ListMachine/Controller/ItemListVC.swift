@@ -14,7 +14,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
-//  @IBOutlet weak var sortSelect: SortSelectControl!
   @IBOutlet weak var searchBtn: UIBarButtonItem!
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
@@ -37,10 +36,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var isSearching = false
   var masterListDelegate: MasterListUpdate?
   var ascending: Bool = true
+  var animationShown: Bool = false
   
   let revealedSortHeight: CGFloat = 27.0
   let revealedSearchHeight: CGFloat = 56.0
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
@@ -57,9 +57,16 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     styleViews()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+  }
+  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
+    if !animationShown {
+      UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.1, duration: 0.1, options: .curveEaseOut, completion: nil)
+      animationShown = true
+    }
   }
   
   func setupButtons() {
@@ -89,28 +96,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
-//    sortSelectHeight.constant = 0.0
-//    sortSelect.alpha = 0.0
   }
   
   // MARK: Helper Methods
   func setupSort() {
-//    sortSelect.removeAllSegments()
-//    sortSelect.addTarget(self, action: #selector(changeSortDirection(sender:)), for: .touchDown)
-//    for (index, field) in itemList.templateItem!.defaultFields.enumerated() {
-//      sortSelect.insertSegment(withTitle: field.name, at: index, animated: true)
-//    }
-    print("starting sortKey: \(self.sortKey)")
     self.sortKey = itemList.sortKey.value
     self.ascending = itemList.sortAscending
-    print("after reading from itemList.sortKey: \(self.sortKey)")
     if sortKey != nil {
       print("sorting by self.sortKey")
       sortList(by: sortKey!)
-//      sortSelect.selectedSegmentIndex = itemList.sortKey.value!
     } else {
       print("sorting by 0")
-//      sortSelect.selectedSegmentIndex = 0
       sortList(by: 0)
     }
   }
@@ -142,23 +138,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   }
   
-//  func showSortSelect() {
-//    guard itemList.templateItem!.defaultFields.count > 1 else { return }
-//    sortSelectHeight.constant = revealedSortHeight
-//    UIView.animate(withDuration: 0.3) {
-//      self.view.layoutIfNeeded()
-////      self.sortSelect.alpha = 1.0
-//    }
-//  }
-//
-//  func hideSortSelect() {
-//    sortSelectHeight.constant = 0
-//    UIView.animate(withDuration: 0.3) {
-//      self.view.layoutIfNeeded()
-////      self.sortSelect.alpha = 0.0
-//    }
-//  }
-  
   // MARK: Tableview Methods
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -173,14 +152,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row])
     return cell
   }
-
+  
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
     tableViewCell.setCollectionViewDataSourceDelegate(delegate: self, forRow: indexPath.row)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.view.tapFeedback()
+    tableView.tapFeedback()
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: indexPath)
   }
   
@@ -205,7 +184,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self?.present(popup, animated: true, completion: nil)
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
-    return [share, delete]
+    return [delete, share]
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -242,7 +221,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     guard itemList.templateItem!.defaultFields.count > 1 else {
       return
     }
-    // MARK: TESTING ACTION SHEET SETUP
     var fieldTitles: [String] = []
     for field in itemList.templateItem!.defaultFields {
       fieldTitles.append(field.name)
@@ -252,14 +230,8 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         self.ascending = !self.ascending
       }
       self.sortList(by: fieldIndex)
-      print("sorting by: \(fieldIndex)")
     }
     self.present(popup, animated: true, completion: nil)
-//    if sortSelectHeight.constant == revealedSortHeight {
-//      hideSortSelect()
-//    } else if sortSelectHeight.constant == 0 {
-//      showSortSelect()
-//    }
   }
   
   @IBAction func sharePressed(sender: UIBarButtonItem!) {
@@ -267,7 +239,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let popup = builder.share(text: builder.getListText() ?? "")
     self.present(popup, animated: true, completion: nil)
   }
-    
+  
   // MARK: Item Save Delegate
   func saveItem(_ item: Item) {
     store?.save(object: item, andRun: {
@@ -386,5 +358,4 @@ extension ItemListVC: UISearchBarDelegate {
     let predicateString = "\(field.name) = '\(string)'"
     return predicateString
   }
-  
 }

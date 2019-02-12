@@ -15,6 +15,7 @@ class MasterListVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var newButton: NewItemButton!
   var store: DataStore?
+  var animationShown: Bool = false
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -29,7 +30,10 @@ class MasterListVC: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50)])
+    if !animationShown {
+      UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.1, duration: 0.1, options: .curveEaseOut, completion: nil)
+      animationShown = true
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -48,11 +52,11 @@ class MasterListVC: UIViewController {
     newButton.setImageAndFrame()
     newButton.addTarget(self, action: #selector(newListPressed(sender:)), for: .touchUpInside)
   }
-    
+  
   @objc func newListPressed(sender: NewItemButton) {
     let popup = PopupFactory.listTitleAlert(completion: { [weak self] in
       self?.tableView.reloadData()
-    }, forList: nil)
+      }, forList: nil)
     self.present(popup, animated: true, completion: nil)
   }
   
@@ -85,7 +89,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.view.tapFeedback()
+    tableView.tapFeedback()
     performSegue(withIdentifier: SegueID.showListView.rawValue, sender: indexPath)
   }
   
@@ -102,7 +106,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
-      }, forList: self.store!.getAllLists()![indexPath.row])
+        }, forList: self.store!.getAllLists()![indexPath.row])
       self.present(controller, animated: true, completion: nil)
       self.view.tapFeedback()
     }
@@ -113,7 +117,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       self?.view.tapFeedback()
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
-    return [share, edit, delete]
+    return [delete, edit, share]
   }
 }
 
