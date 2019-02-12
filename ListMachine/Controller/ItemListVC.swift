@@ -12,6 +12,7 @@ import ViewAnimator
 
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
+  // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var searchBtn: UIBarButtonItem!
@@ -38,9 +39,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var ascending: Bool = true
   var animationShown: Bool = false
   
-  let revealedSortHeight: CGFloat = 27.0
   let revealedSearchHeight: CGFloat = 56.0
   
+  // MARK: View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
@@ -57,27 +58,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     styleViews()
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     if !animationShown {
       UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.1, duration: 0.1, options: .curveEaseOut, completion: nil)
       animationShown = true
     }
-  }
-  
-  func setupButtons() {
-    newItemButton = NewItemButton()
-    newItemButton.setImageAndFrame()
-    newItemButton.addTarget(self, action: #selector(newItemPressed(sender:)), for: .touchUpInside)
-    
-    editTemplateButton = EditTemplateButton()
-    editTemplateButton.setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
-    editTemplateButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
-    editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +75,18 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   }
   
+  // MARK: Setup and styling
+  func setupButtons() {
+    newItemButton = NewItemButton()
+    newItemButton.setImageAndFrame()
+    newItemButton.addTarget(self, action: #selector(newItemPressed(sender:)), for: .touchUpInside)
+    
+    editTemplateButton = EditTemplateButton()
+    editTemplateButton.setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
+    editTemplateButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
+  }
+  
   func styleViews() {
     setupToolbar(with: newItemButton, and: editTemplateButton)
     view.backgroundColor = .white //Stylesheet.getColor(.white)
@@ -98,7 +96,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.alpha = 0.0
   }
   
-  // MARK: Helper Methods
   func setupSort() {
     self.sortKey = itemList.sortKey.value
     self.ascending = itemList.sortAscending
@@ -225,7 +222,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     for field in itemList.templateItem!.defaultFields {
       fieldTitles.append(field.name)
     }
-    let popup = PopupFactory.sortActionSheet(with: fieldTitles) { (fieldIndex) in
+    let popup: UIAlertController = PopupFactory.sortActionSheet(with: fieldTitles, sortedBy: self.sortKey, ascending: self.ascending) { (fieldIndex) in
       if self.sortKey! == fieldIndex {
         self.ascending = !self.ascending
       }

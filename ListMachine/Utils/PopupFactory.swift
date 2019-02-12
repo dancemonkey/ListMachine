@@ -10,11 +10,15 @@ import UIKit
 
 class PopupFactory {
   
-  static func sortActionSheet(with fields: [String], completion: @escaping (Int) -> ()) -> UIAlertController {
+  static func sortActionSheet(with fields: [String], sortedBy sortIndex: Int?, ascending: Bool, completion: @escaping (Int) -> ()) -> UIAlertController {
     let controller = UIAlertController(title: "Sort by:", message: nil, preferredStyle: .actionSheet)
     for (idx, field) in fields.enumerated() {
       let action = UIAlertAction(title: field, style: .default) { (action) in
         completion(idx)
+      }
+      if let sort = sortIndex, sort == idx {
+        let image = ascending ? UIImage(named: "Ascending") : UIImage(named: "Descending")
+        action.setValue(image, forKey: "image")
       }
       controller.addAction(action)
     }
