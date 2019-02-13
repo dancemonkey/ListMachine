@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
     UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font : Stylesheet.uiElementFont(for: .barButtonItemLabel)], for: .normal)
     UINavigationBar.appearance().clipsToBounds = false
+    
+    let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
+      if (oldSchemaVersion < 1) {
+        migration.enumerateObjects(ofType: List.className(), { (_, newObject) in
+          newObject!["creation"] = "\(Date())"
+        })
+      }
+    })
+    Realm.Configuration.defaultConfiguration = config
     
     return true
   }

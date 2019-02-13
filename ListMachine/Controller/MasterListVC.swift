@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import ViewAnimator
 
 class MasterListVC: UIViewController {
   
@@ -26,14 +25,6 @@ class MasterListVC: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     styleViews()
-  }
-  
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    if !animationShown {
-      UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.1, duration: 0.1, options: .curveEaseOut, completion: nil)
-      animationShown = true
-    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -118,6 +109,13 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
     return [delete, edit, share]
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    cell.alpha = 0
+    UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), options: .curveEaseOut, animations: {
+      cell.alpha = 1
+    }, completion: nil)
   }
 }
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import ViewAnimator
 
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
@@ -58,14 +57,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     styleViews()
   }
   
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    if !animationShown {
-      UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.1, duration: 0.1, options: .curveEaseOut, completion: nil)
-      animationShown = true
-    }
-  }
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     if itemList.templateItem!.defaultFields.count <= 1 {
@@ -94,6 +85,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
+    for cell in tableView.visibleCells {
+      cell.alpha = 0
+    }
   }
   
   func setupSort() {
@@ -152,6 +146,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
+    cell.alpha = 0
+    UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), options: .curveEaseOut, animations: {
+      cell.alpha = 1
+    }, completion: nil)
     tableViewCell.setCollectionViewDataSourceDelegate(delegate: self, forRow: indexPath.row)
   }
   

@@ -29,6 +29,7 @@ class List: Object, ListProtocol {
   var lastUpdated: Date? {
     return _lastUpdate ?? nil
   }
+  @objc dynamic var creation: Date!
   let sortKey = RealmOptional<Int>()
   @objc dynamic var sortAscending: Bool = true
   
@@ -38,6 +39,7 @@ class List: Object, ListProtocol {
     templateItem = TemplateItem(name: name, with: [])
     sortKey.value = nil
     setLastUpdated()
+    self.creation = Date()
   }
   
   override static func primaryKey() -> String? {
