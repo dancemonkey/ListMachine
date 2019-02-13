@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
       if (oldSchemaVersion < 1) {
         migration.enumerateObjects(ofType: List.className(), { (_, newObject) in
-          newObject!["creation"] = "\(Date())"
+          newObject!["creation"] = Date()
         })
       }
     })

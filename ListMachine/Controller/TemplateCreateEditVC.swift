@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ViewAnimator
 
 class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
@@ -34,11 +33,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     setupNewButton()
     styleViews()
-  }
-  
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    UIView.animate(views: tableView.visibleCells, animations: [AnimationType.from(direction: .bottom, offset: 50.0)])
   }
   
   func setupNewButton() {
@@ -71,6 +65,13 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.view.tapFeedback()
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    cell.alpha = 0
+    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
+      cell.alpha = 1
+    }, completion: nil)
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

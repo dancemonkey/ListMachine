@@ -25,6 +25,7 @@ class PopupFactory {
     let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     controller.addAction(cancel)
     controller.view.tintColor = Stylesheet.getColor(.primary)
+    
     return controller
   }
   

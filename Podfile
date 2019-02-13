@@ -7,5 +7,4 @@ target 'ListMachine' do
 
   # Pods for ListMachine
   pod 'RealmSwift'
-  pod 'ViewAnimator'
 end

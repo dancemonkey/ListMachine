@@ -113,7 +113,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     cell.alpha = 0
-    UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), options: .curveEaseOut, animations: {
+    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
       cell.alpha = 1
     }, completion: nil)
   }

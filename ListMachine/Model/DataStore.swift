@@ -29,7 +29,7 @@ class DataStore {
   func getAllLists() -> Results<List>? {
     // add keypath parameter to master list can be sorted
     // - name, last modified, created
-    return realm?.objects(List.self).sorted(byKeyPath: "name", ascending: true)
+    return realm?.objects(List.self).sorted(byKeyPath: "creation", ascending: true)
   }
   
   func save(object: Object, andRun closure: (() -> ())?) {
