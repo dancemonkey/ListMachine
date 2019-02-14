@@ -14,7 +14,7 @@ class MasterListVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var newButton: NewItemButton!
   var store: DataStore?
-  var animationShown: Bool = false
+//  var animationShown: Bool = false
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -112,10 +112,10 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    cell.alpha = 0
-    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
-      cell.alpha = 1
-    }, completion: nil)
+//    cell.alpha = 0
+//    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
+//      cell.alpha = 1
+//    }, completion: nil)
   }
 }
 

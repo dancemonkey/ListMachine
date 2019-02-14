@@ -47,6 +47,7 @@ class PopupFactory {
       let heightConstraint = NSLayoutConstraint(item: nameField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 35.0)
       nameField.addConstraint(heightConstraint)
       nameField.becomeFirstResponder()
+      nameField.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
     }
     let done = UIAlertAction(title: "DONE", style: .default) { (action) in
       controller.view.successFeedback()

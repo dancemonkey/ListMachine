@@ -19,6 +19,7 @@ class UserEntryField: UITextField {
     textColor = Stylesheet.getColor(.black)
     self.font = Stylesheet.userContentFont(for: .userInput)
     self.autocapitalizationType = .sentences
+    self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
   }
   
   override func resignFirstResponder() -> Bool {
