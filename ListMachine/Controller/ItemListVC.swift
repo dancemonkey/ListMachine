@@ -80,14 +80,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func styleViews() {
     setupToolbar(with: newItemButton, and: editTemplateButton)
-    view.backgroundColor = .white //Stylesheet.getColor(.white)
-    tableView.backgroundColor = .clear
+    view.backgroundColor = .white
+    tableView.backgroundColor = .white
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
-    for cell in tableView.visibleCells {
-      cell.alpha = 0
-    }
   }
   
   func setupSort() {

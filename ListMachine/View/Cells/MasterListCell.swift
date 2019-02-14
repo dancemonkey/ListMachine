@@ -16,7 +16,6 @@ class MasterListCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-//    styleViews()
   }
   
   func styleViews() {

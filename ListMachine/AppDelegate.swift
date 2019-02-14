@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     let navBarAppearance = UINavigationBar.appearance()
-    navBarAppearance.isTranslucent = false
+    navBarAppearance.isTranslucent = true
     navBarAppearance.tintColor = Stylesheet.getColor(.white)
     navBarAppearance.barTintColor = Stylesheet.getColor(.accent)
     navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
