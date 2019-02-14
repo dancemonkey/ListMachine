@@ -10,6 +10,17 @@ import UIKit
 
 class PopupFactory {
   
+  static func confirmationRequest(action: @escaping () -> ()) -> UIAlertController {
+    let controller = UIAlertController(title: "Are you sure?", message: "This cannot be undone.", preferredStyle: .alert)
+    let confirm = UIAlertAction(title: "Do it", style: .destructive) { (_) in
+      action()
+    }
+    let cancel = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
+    controller.addAction(confirm)
+    controller.addAction(cancel)
+    return controller
+  }
+  
   static func sortActionSheet(with fields: [String], sortedBy sortIndex: Int?, ascending: Bool, completion: @escaping (Int) -> ()) -> UIAlertController {
     let controller = UIAlertController(title: "Sort by:", message: nil, preferredStyle: .actionSheet)
     for (idx, field) in fields.enumerated() {

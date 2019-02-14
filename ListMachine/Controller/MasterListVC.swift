@@ -90,9 +90,12 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
-      self.store?.delete(list: self.store!.getAllLists()![indexPath.row])
-      self.tableView.reloadData()
-      self.view.tapFeedback()
+      let confirmation = PopupFactory.confirmationRequest(action: { [weak self] in
+        self?.store?.delete(list: (self?.store!.getAllLists()![indexPath.row])!)
+        self?.tableView.reloadData()
+        self?.view.tapFeedback()
+      })
+      self.present(confirmation, animated: true, completion: nil)
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
