@@ -244,11 +244,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     masterListDelegate?.updateMasterList()
   }
   
-  func updateItem(_ item: Item) {
+  func updateItem(_ item: Item, at row: Int) {
     store?.save(object: item) {
       self.itemList!.setLastUpdated()
     }
-    tableView.reloadData()
+    tableView.reloadRows(at: [IndexPath(item: row, section: 0)], with: .fade)
     masterListDelegate?.updateMasterList()
   }
   
@@ -271,6 +271,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       destVC.store = self.store
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
+        destVC.itemIndex = indexPath.row
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC
@@ -308,7 +309,7 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
             print(error)
           }
         }
-        self.tableView.reloadData()
+        self.tableView.reloadRows(at: [IndexPath(item: collectionView.tag, section: 0)], with: .fade)
       }
     }
     return cell

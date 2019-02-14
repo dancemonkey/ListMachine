@@ -32,12 +32,6 @@ class ListItemCell: UITableViewCell {
     titleLbl.textColor = Stylesheet.getColor(.black)
     self.backgroundColor = .clear
     selectionStyle = .none
-    
-    // temp adding top border
-//    let border = CALayer()
-//    border.frame = CGRect(x: 0, y: 0, width: collection.layer.frame.width, height: 0.5)
-//    border.backgroundColor = Stylesheet.getColor(.accent).withAlphaComponent(0.3).cgColor //UIColor.black.withAlphaComponent(0.2).cgColor
-//    collection.layer.addSublayer(border)
   }
   
   override func awakeFromNib() {

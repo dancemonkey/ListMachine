@@ -19,6 +19,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var itemTemplate: TemplateItem!
   var item: Item? = nil
   var itemSaveDelegate: ItemSaveDelegate?
+  var itemIndex: Int?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
   var state: EditState = .newItem
@@ -158,7 +159,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
       itemSaveDelegate?.saveItem(item!)
       self.state = .editingExistingItem
     } else if self.state == .editingExistingItem {
-      itemSaveDelegate?.updateItem(self.item!)
+      itemSaveDelegate?.updateItem(self.item!, at: itemIndex ?? 0)
     }
   }
   
