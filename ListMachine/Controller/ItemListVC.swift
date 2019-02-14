@@ -36,7 +36,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var isSearching = false
   var masterListDelegate: MasterListUpdate?
   var ascending: Bool = true
-  var animationShown: Bool = false
+//  var animationShown: Bool = false
   
   let revealedSearchHeight: CGFloat = 56.0
   
@@ -146,10 +146,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
-    cell.alpha = 0
-    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
-      cell.alpha = 1
-    }, completion: nil)
+//    cell.alpha = 0
+//    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
+//      cell.alpha = 1
+//    }, completion: nil)
     tableViewCell.setCollectionViewDataSourceDelegate(delegate: self, forRow: indexPath.row)
   }
   
