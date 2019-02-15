@@ -25,6 +25,7 @@ class MasterListVC: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     styleViews()
+    
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -106,19 +107,14 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     }
     let share = UITableViewRowAction(style: .normal, title: "Share") { [weak self] (_, indexPath) in
       guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
-      let popup = builder.share(text: builder.getListText() ?? "")
-      self?.present(popup, animated: true, completion: nil)
-      self?.view.tapFeedback()
+      DispatchQueue.main.async {
+        let popup = builder.share(text: builder.getListText() ?? "")
+        self?.present(popup, animated: true, completion: nil)
+        self?.view.tapFeedback()
+      }
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
     return [delete, edit, share]
-  }
-  
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//    cell.alpha = 0
-//    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
-//      cell.alpha = 1
-//    }, completion: nil)
   }
 }
 

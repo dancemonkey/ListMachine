@@ -143,10 +143,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let tableViewCell = cell as? ListItemCell else { return }
-//    cell.alpha = 0
-//    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
-//      cell.alpha = 1
-//    }, completion: nil)
     tableViewCell.setCollectionViewDataSourceDelegate(delegate: self, forRow: indexPath.row)
   }
   
@@ -170,10 +166,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     let share = UITableViewRowAction(style: .default, title: "Share") { [weak self] (_, indexPath) in
       guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
-      guard let builder = ExportBuilder(with: item) else { return }
-      let popup = builder.share(text: builder.getItemText() ?? "")
-      self?.view.tapFeedback()
-      self?.present(popup, animated: true, completion: nil)
+      DispatchQueue.main.async {
+        guard let builder = ExportBuilder(with: item) else { return }
+        let popup = builder.share(text: builder.getItemText() ?? "")
+        self?.view.tapFeedback()
+        self?.present(popup, animated: true, completion: nil)
+      }
     }
     share.backgroundColor = Stylesheet.getColor(.primary)
     return [delete, share]
@@ -227,9 +225,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   @IBAction func sharePressed(sender: UIBarButtonItem!) {
-    guard let builder = ExportBuilder(with: itemList) else { return }
-    let popup = builder.share(text: builder.getListText() ?? "")
-    self.present(popup, animated: true, completion: nil)
+    DispatchQueue.main.async {
+      guard let builder = ExportBuilder(with: self.itemList) else { return }
+      let popup = builder.share(text: builder.getListText() ?? "")
+      self.present(popup, animated: true, completion: nil)
+    }
   }
   
   // MARK: Item Save Delegate
