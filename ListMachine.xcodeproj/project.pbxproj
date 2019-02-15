@@ -78,6 +78,8 @@
 		10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */; };
 		10EDC61B21FB53CC00D1E4A2 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */; };
 		10EDC61D21FB5B8B00D1E4A2 /* UserEntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */; };
+		10F3DEF22217065000DAB9D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3DEF12217065000DAB9D1 /* Constants.swift */; };
+		10F3DEF422170AEA00DAB9D1 /* DateIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3DEF322170AEA00DAB9D1 /* DateIntervalExtension.swift */; };
 		10F5F4D121D65722002E9E5C /* FieldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D021D65722002E9E5C /* FieldItemCell.swift */; };
 		10F5F4D321D65BA1002E9E5C /* ConstraintValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */; };
 		A1850574D31A02B5677342E5 /* Pods_ListMachine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */; };
@@ -158,6 +160,8 @@
 		10EDC61821FB52AE00D1E4A2 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		10EDC61A21FB53CC00D1E4A2 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		10EDC61C21FB5B8B00D1E4A2 /* UserEntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntryField.swift; sourceTree = "<group>"; };
+		10F3DEF12217065000DAB9D1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		10F3DEF322170AEA00DAB9D1 /* DateIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIntervalExtension.swift; sourceTree = "<group>"; };
 		10F5F4D021D65722002E9E5C /* FieldItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItemCell.swift; sourceTree = "<group>"; };
 		10F5F4D221D65BA1002E9E5C /* ConstraintValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintValues.swift; sourceTree = "<group>"; };
 		2BC105C01E5A5CF6EBC82746 /* Pods_ListMachine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListMachine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +330,8 @@
 				10A7BAD12208766C0076EF17 /* MasterListUpdateProtocol.swift */,
 				10C82035220F1B4C00784A78 /* ExportBuilder.swift */,
 				10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */,
+				10F3DEF12217065000DAB9D1 /* Constants.swift */,
+				10F3DEF322170AEA00DAB9D1 /* DateIntervalExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -523,7 +529,9 @@
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
 				10246BBC221069D800CDDDE8 /* HapticViewControllerExtension.swift in Sources */,
 				10D3963921CE9F680053808A /* ListProtocol+List.swift in Sources */,
+				10F3DEF422170AEA00DAB9D1 /* DateIntervalExtension.swift in Sources */,
 				10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */,
+				10F3DEF22217065000DAB9D1 /* Constants.swift in Sources */,
 				10032F5621CFD5770075DD80 /* _FieldValueEditVC.swift in Sources */,
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */,
@@ -697,7 +705,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -713,7 +724,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import StoreKit
 
 class MasterListVC: UIViewController {
   
@@ -25,11 +26,27 @@ class MasterListVC: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     styleViews()
-    
+    checkReviewKey()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+  }
+  
+  func checkReviewKey() {
+    let defaults = UserDefaults()
+    if let reviewRequest = defaults.object(forKey: UserDefaultKeys.reviewRequested.rawValue) as? Bool {
+      guard reviewRequest == false else { return }
+      let lastDate = defaults.value(forKey: UserDefaultKeys.reviewRequestedDate.rawValue) as! Date
+      if Date().interval(ofComponent: .day, fromDate: lastDate) > ReviewRequestInterval.firstRequest.rawValue {
+        SKStoreReviewController.requestReview()
+        defaults.set(true, forKey: UserDefaultKeys.reviewRequested.rawValue)
+        defaults.set(Date(), forKey: UserDefaultKeys.reviewRequestedDate.rawValue)
+      }
+    } else {
+      defaults.set(Date(), forKey: UserDefaultKeys.reviewRequestedDate.rawValue)
+      defaults.set(false, forKey: UserDefaultKeys.reviewRequested.rawValue)
+    }
   }
   
   func styleViews() {
