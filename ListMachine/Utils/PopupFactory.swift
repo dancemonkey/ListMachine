@@ -81,6 +81,9 @@ class PopupFactory {
     }
     
     controller.view.tintColor = Stylesheet.getColor(.primary)
+//    controller.view.hero.id = HeroIDs.listEditPopup.rawValue
+    controller.view.hero.modifiers = [.scale(0)]
+//    controller.hero.isEnabled = true
     controller.addAction(done)
     controller.addAction(cancel)
     return controller

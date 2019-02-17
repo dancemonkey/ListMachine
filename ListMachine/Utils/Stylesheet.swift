@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 enum UserContentFeature {
   case mainListCell, mainListInfo, itemListCellTitle, itemCollectionCellData, itemCollectionCellTitle, fieldListCell, userInput, itemEntryFieldTitle, templateFieldListTitle, templateFieldListType
@@ -21,6 +22,15 @@ enum ColorCategory {
 }
 
 struct Stylesheet {
+  
+  // MARK: Hero
+  static func cellHeroModifiers(for row: Int) -> [HeroModifier] {
+    return [.duration(0.125 * Double(row)), .fade]//.scale(0.0), .fade]
+  }
+  
+  static func viewControllerTransitionModifiers() -> [HeroModifier] {
+    return [.duration(0.01)]
+  }
   
   // MARK: Colors
   static func getColor(_ category: ColorCategory) -> UIColor {

@@ -9,6 +9,11 @@
 import UIKit
 import RealmSwift
 
+struct ItemListHeroIDs {
+  var navTitle: String
+  var tableView: String
+}
+
 class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemSaveDelegate, TemplateSaveDelegate {
   
   // MARK: Properties
@@ -17,7 +22,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var searchBtn: UIBarButtonItem!
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
-  @IBOutlet weak var sortSelectHeight: NSLayoutConstraint!
+  @IBOutlet weak var hiddenNavTitleLbl: UILabel!
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -36,7 +41,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var isSearching = false
   var masterListDelegate: MasterListUpdate?
   var ascending: Bool = true
-//  var animationShown: Bool = false
+  var heroIDs: ItemListHeroIDs?
   
   let revealedSearchHeight: CGFloat = 56.0
   
@@ -55,6 +60,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     setupButtons()
     styleViews()
+    setupHero()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -87,14 +93,19 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.alpha = 0.0
   }
   
+  func setupHero() {
+    if let IDs = heroIDs {
+      hiddenNavTitleLbl.hero.id = IDs.navTitle
+      tableView.hero.id = IDs.tableView
+    }
+  }
+  
   func setupSort() {
     self.sortKey = itemList.sortKey.value
     self.ascending = itemList.sortAscending
     if sortKey != nil {
-      print("sorting by self.sortKey")
       sortList(by: sortKey!)
     } else {
-      print("sorting by 0")
       sortList(by: 0)
     }
   }
@@ -138,6 +149,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
     cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row])
+//    cell.hero.modifiers = Stylesheet.cellHeroModifiers(for: indexPath.row)
     return cell
   }
   

@@ -9,13 +9,13 @@
 import UIKit
 import RealmSwift
 import StoreKit
+import Hero
 
 class MasterListVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   var newButton: NewItemButton!
   var store: DataStore?
-//  var animationShown: Bool = false
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -59,6 +59,7 @@ class MasterListVC: UIViewController {
   func setupNewButton() {
     newButton = NewItemButton()
     newButton.setImageAndFrame()
+    newButton.hero.id = HeroIDs.listEditPopup.rawValue
     newButton.addTarget(self, action: #selector(newListPressed(sender:)), for: .touchUpInside)
   }
   
@@ -75,6 +76,7 @@ class MasterListVC: UIViewController {
       let row = (sender as! IndexPath).row
       let dest = segue.destination as! ItemListVC
       dest.itemList = store?.getAllLists()?[row]
+      dest.heroIDs = ItemListHeroIDs(navTitle: "\(HeroIDs.navTitle.rawValue)\(row)", tableView: "\(HeroIDs.tableCell.rawValue)\(row)")
       dest.masterListDelegate = self
     }
   }
@@ -94,6 +96,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.masterListCell.rawValue) as! MasterListCell
     cell.configure(with: store?.getAllLists()?[indexPath.row])
+    cell.setHeroId(for: indexPath.row)
     return cell
   }
   
@@ -119,8 +122,8 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
       let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
         self?.tableView.reloadData()
         }, forList: self.store!.getAllLists()![indexPath.row])
-      self.present(controller, animated: true, completion: nil)
       self.view.tapFeedback()
+      self.present(controller, animated: true, completion: nil)
     }
     let share = UITableViewRowAction(style: .normal, title: "Share") { [weak self] (_, indexPath) in
       guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }

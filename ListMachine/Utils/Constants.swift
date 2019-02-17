@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Hero
 
 enum UserDefaultKeys: String {
   case reviewRequestedDate
@@ -14,5 +15,16 @@ enum UserDefaultKeys: String {
 }
 
 enum ReviewRequestInterval: Int {
-  case firstRequest = 10
+  case firstRequest = 5
+}
+
+enum HeroIDs: String {
+  case listEditPopup
+  case editTemplateButton
+  case newItemButton
+  case navTitle
+  case templateNameField
+  case templateTypePicker
+  case hiddenFieldTypeLabel
+  case tableCell
 }

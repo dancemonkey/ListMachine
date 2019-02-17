@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct TemplateEditHeroIDs {
+  var nameField: String
+  var hiddenTypeLabel: String
+}
+
 class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   enum EditState {
     case newField, editingExistingField
@@ -16,6 +21,8 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   @IBOutlet weak var typePicker: FieldTypePicker!
   @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var dataTypeLbl: UILabel!
+  @IBOutlet weak var hiddenTypeLabel: UILabel!
+  @IBOutlet weak var hiddenTitleLabel: UILabel!
   private var fieldTypes: [FieldType]!
   var saveDelegate: FieldSaveDelegate?
   var currentField: ItemFieldProtocol?
@@ -24,6 +31,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
+  var heroIDs: TemplateEditHeroIDs?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,6 +54,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
     addDoneAccessory(to: nameFld)
     styleViews()
+    setupHero()
   }
   
   func styleViews() {
@@ -58,6 +67,13 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
       self?.saveField()
     }
     nameFld.becomeFirstResponder()
+  }
+  
+  func setupHero() {
+    if let IDs = self.heroIDs {
+      hiddenTitleLabel.hero.id = IDs.nameField
+      hiddenTypeLabel.hero.id = IDs.hiddenTypeLabel
+    }
   }
   
   func populateFields(with existing: ItemFieldProtocol) {

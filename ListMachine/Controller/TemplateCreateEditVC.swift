@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
@@ -31,6 +32,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressStarted(sender:)))
     view.addGestureRecognizer(longPress!)
     
+    setupHero()
     setupNewButton()
     styleViews()
   }
@@ -47,6 +49,13 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     setupToolbar(with: newFieldBtn, and: nil)
   }
   
+  func setupHero() {
+    self.hero.isEnabled = true
+    tableView.hero.isEnabled = true
+//    tableView.hero.modifiers = [.cascade]
+    tableView.hero.id = HeroIDs.editTemplateButton.rawValue
+  }
+  
   // MARK: Tableview Methods
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -59,19 +68,13 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.templateFieldCell.rawValue) as! TemplateFieldCell
     cell.configure(with: itemTemplate.defaultFields[indexPath.row])
+    cell.setupHero(for: indexPath.row)
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.view.tapFeedback()
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: indexPath.row)
-  }
-  
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    cell.alpha = 0
-    UIView.animate(withDuration: 0.3, delay: 0.03 * Double(indexPath.row), options: .curveEaseOut, animations: {
-      cell.alpha = 1
-    }, completion: nil)
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -110,6 +113,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
       if let index = (sender as? Int) {
         dest.currentField = itemTemplate.defaultFields[index]
         dest.currentFieldIndex = index
+        dest.heroIDs = TemplateEditHeroIDs(nameField: "\(HeroIDs.templateNameField.rawValue)\(index)", hiddenTypeLabel: "\(HeroIDs.hiddenFieldTypeLabel.rawValue)\(index)")
       }
     }
   }

@@ -50,11 +50,16 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     
     styleViews()
+    setupHero()
   }
   
   func styleViews() {
     view.backgroundColor = .white
     tableView.backgroundColor = .white
+  }
+  
+  func setupHero() {
+    tableView.hero.id = HeroIDs.newItemButton.rawValue
   }
   
   // MARK: Actions
