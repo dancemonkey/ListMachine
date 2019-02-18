@@ -62,6 +62,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   override func viewWillDisappear(_ animated: Bool) {
     Stylesheet.setSlideDownTransition()
+    self.save()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -103,12 +104,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.customFieldItemCell.rawValue) as? FieldItemCell
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
     cell?.fieldSave = { [unowned self] value in
-      self.store?.run {
+      self.store?.run(closure: {
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
         self.item?.setValues(for: field!, at: indexPath.row)
-      }
-      self.save()
+      }, completion: { [weak self] in
+        self?.save()
+      })
     }
     cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     cell?.configureAction(for: type, with: self)
@@ -193,10 +195,11 @@ extension ItemCreateEditVC: FieldSaveDelegate {
   func saveField(_ field: ItemField) { }
   
   func update(_ field: ItemField, at index: Int) {
-    store?.run {
+    store?.run(closure: {
       self.item?.setValues(for: field, at: index)
-    }
-    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+    }, completion: { [weak self] in
+      self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+    })
   }
 }
 

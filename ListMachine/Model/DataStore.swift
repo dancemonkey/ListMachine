@@ -45,7 +45,7 @@ class DataStore {
     }
   }
   
-  func run(closure: () -> ()) {
+  func run(closure: () -> (), completion: (() -> ())?) {
     do {
       try realm?.write {
         closure()
@@ -53,6 +53,7 @@ class DataStore {
     } catch let error as NSError {
       print(error)
     }
+    completion?()
   }
   
   func delete(list: List) {

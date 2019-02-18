@@ -181,9 +181,9 @@ extension TemplateCreateEditVC: DraggableCell {
       snapshot!.center = center
       if indexPath != nil && !(indexPath! == sourceIndexPath!) {
         tableView.moveRow(at: sourceIndexPath!, to: indexPath!)
-        store?.run {
-          self.itemTemplate.moveField(from: sourceIndexPath!.row, to: indexPath!.row)
-        }
+        store?.run(closure: { [weak self] in
+          self?.itemTemplate.moveField(from: sourceIndexPath!.row, to: indexPath!.row)
+        }, completion: nil)
         sourceIndexPath = indexPath
       }
       saveDelegate?.saveTemplate(itemTemplate)

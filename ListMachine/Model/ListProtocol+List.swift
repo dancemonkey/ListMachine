@@ -88,9 +88,9 @@ class List: Object, ListProtocol {
       }
       DataStore()?.delete(object: item)
     }
-    DataStore()?.run {
+    DataStore()?.run(closure: {
       setLastUpdated()
-    }
+    }, completion: nil)
   }
   
   func update(itemAt index: Int, with item: Item) {
@@ -126,9 +126,9 @@ class List: Object, ListProtocol {
   }
   
   func setSortKey(to index: Int) {
-    DataStore()?.run {
-      self.sortKey.value = index
-    }
+    DataStore()?.run(closure: { [weak self] in
+      self?.sortKey.value = index
+    }, completion: nil)
   }
   
 }

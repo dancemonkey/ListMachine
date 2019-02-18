@@ -67,9 +67,9 @@ class PopupFactory {
         return
       }
       if let list = forList {
-        DataStore()?.run {
+        DataStore()?.run(closure: {
           list.name = text
-        }
+        }, completion: nil)
       } else {
         DataStore()?.save(object: List(name: text), andRun: nil)
       }

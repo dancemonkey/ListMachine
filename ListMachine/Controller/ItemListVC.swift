@@ -113,10 +113,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func sortList(by sortKey: Int) {
     self.sortKey = sortKey
-    store?.run {
-      self.itemList.sortKey.value = self.sortKey
-      self.itemList.sortAscending = self.ascending
-    }
+    store?.run(closure: { [weak self] in
+      self?.itemList.sortKey.value = self?.sortKey
+      self?.itemList.sortAscending = self?.ascending ?? true
+    }, completion: nil)
     tableView.reloadData()
   }
   
@@ -313,14 +313,15 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     let payload = (value: value, title: title)
     cell.configure(withValue: payload.value, andTitle: payload.title, forType: type) {
       if type == FieldType.checkBox {
-        self.store?.run {
+        self.store?.run(closure: {
           do {
             try field.flipBoolean()
           } catch {
             print(error)
           }
-        }
-        self.tableView.reloadRows(at: [IndexPath(item: collectionView.tag, section: 0)], with: .fade)
+        }, completion: { [weak self] in
+          self?.tableView.reloadRows(at: [IndexPath(item: collectionView.tag, section: 0)], with: .fade)
+        })
       }
     }
     return cell

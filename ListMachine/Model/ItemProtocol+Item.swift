@@ -60,9 +60,9 @@ class Item: Object, ItemProtocol {
   func clearValues() {
     let store = DataStore()
     for field in itemFields {
-      store?.run {
+      store?.run(closure: {
         field.value = nil
-      }
+      }, completion: nil)
     }
     setLastUpdated()
   }

@@ -40,7 +40,6 @@
 		10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32221F74FF5005C6F40 /* NewItemButton.swift */; };
 		10A8C32621F7531C005C6F40 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32521F7531C005C6F40 /* SaveButton.swift */; };
 		10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */; };
-		10A8C32C21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */; };
 		10A8C33021F7646C005C6F40 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10A8C32E21F7643D005C6F40 /* Montserrat-Bold.ttf */; };
 		10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10A8C32F21F76449005C6F40 /* Montserrat-Regular.ttf */; };
 		10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A933DA21DCFF05000A70ED /* DatePickerVC.swift */; };
@@ -120,7 +119,6 @@
 		10A8C32221F74FF5005C6F40 /* NewItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemButton.swift; sourceTree = "<group>"; };
 		10A8C32521F7531C005C6F40 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Pulsate Extension.swift"; sourceTree = "<group>"; };
-		10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC Nav Item Style Extensions.swift"; sourceTree = "<group>"; };
 		10A8C32E21F7643D005C6F40 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		10A8C32F21F76449005C6F40 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		10A933DA21DCFF05000A70ED /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 				106C3D7821E4504100F8881F /* PopupFactory.swift */,
 				106C3D7A21E45E7700F8881F /* SortDescriptors.swift */,
 				10A8C32721F7561A005C6F40 /* UIButton Pulsate Extension.swift */,
-				10A8C32B21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift */,
 				10BBF9DD21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift */,
 				104A2728220340A2002489FB /* StatusBarExtension.swift */,
 				1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */,
@@ -525,7 +522,6 @@
 				104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */,
 				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,
 				10C82036220F1B4C00784A78 /* ExportBuilder.swift in Sources */,
-				10A8C32C21F75FD8005C6F40 /* VC Nav Item Style Extensions.swift in Sources */,
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */,
 				10D3963D21CEADF70053808A /* TemplateCreateEditVC.swift in Sources */,
@@ -707,7 +703,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -723,7 +722,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFEDY5M56J;
 				INFOPLIST_FILE = ListMachine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
