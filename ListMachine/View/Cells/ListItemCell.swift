@@ -13,6 +13,7 @@ class ListItemCell: UITableViewCell {
   @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var lastUpdatedLbl: LastUpdatedLabel!
   @IBOutlet weak var collection: UICollectionView!
+  @IBOutlet weak var heroBackground: UIView!
   
   func configure(withItem item: Item) {
     titleLbl.text = item.itemListTitle
@@ -32,6 +33,11 @@ class ListItemCell: UITableViewCell {
     titleLbl.textColor = Stylesheet.getColor(.black)
     self.backgroundColor = .white //.clear
     selectionStyle = .none
+  }
+  
+  func setHeroId(for row: Int) {
+    titleLbl.hero.id = "\(HeroIDs.navTitle.rawValue)\(row)"
+    heroBackground.hero.id = "\(HeroIDs.itemTableCell.rawValue)\(row)"
   }
   
   override func awakeFromNib() {

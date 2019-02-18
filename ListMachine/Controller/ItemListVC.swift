@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Hero
 
 struct ItemListHeroIDs {
   var navTitle: String
@@ -149,7 +150,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
     cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row])
-//    cell.hero.modifiers = Stylesheet.cellHeroModifiers(for: indexPath.row)
+    cell.setHeroId(for: indexPath.row)
     return cell
   }
   
@@ -281,6 +282,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       if let indexPath = (sender as? IndexPath) {
         destVC.item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
         destVC.itemIndex = indexPath.row
+        destVC.heroIDs = ItemCreateEditHeroIDs(navTitle: "\(HeroIDs.navTitle.rawValue)\(indexPath.row)", tableView: "\(HeroIDs.itemTableCell.rawValue)\(indexPath.row)")
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
       let dest = segue.destination as! TemplateCreateEditVC

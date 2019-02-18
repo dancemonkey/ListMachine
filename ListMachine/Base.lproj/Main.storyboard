@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwl-MR-8aJ">
+                                <rect key="frame" x="16" y="90" width="256" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-72-Fou">
                                 <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,6 +71,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="hiddenNavTitleLbl" destination="Kwl-MR-8aJ" id="U26-Pv-erZ"/>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
                         <segue destination="rad-PH-LNs" kind="show" identifier="showDatePicker" id="vex-8r-JFF"/>
                     </connections>
@@ -186,6 +194,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="84.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3D-P2-Epf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="84.666666666666671"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWv-1a-9I6">
                                                     <rect key="frame" x="16" y="28.999999999999996" width="326" height="51.666666666666657"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -287,17 +299,22 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="s3D-P2-Epf" firstAttribute="width" secondItem="8oN-yt-jSp" secondAttribute="width" id="DyL-15-OIV"/>
                                                 <constraint firstItem="NWv-1a-9I6" firstAttribute="top" secondItem="FLP-lG-Awe" secondAttribute="bottom" constant="8" id="Eho-3d-R1w"/>
                                                 <constraint firstItem="FLP-lG-Awe" firstAttribute="top" secondItem="8oN-yt-jSp" secondAttribute="top" constant="4" id="UJL-Hg-P7e"/>
+                                                <constraint firstItem="s3D-P2-Epf" firstAttribute="centerY" secondItem="8oN-yt-jSp" secondAttribute="centerY" id="aNO-K0-JAu"/>
+                                                <constraint firstItem="s3D-P2-Epf" firstAttribute="height" secondItem="8oN-yt-jSp" secondAttribute="height" id="dXF-yP-BPL"/>
                                                 <constraint firstAttribute="trailing" secondItem="FLP-lG-Awe" secondAttribute="trailing" constant="16" id="kRj-zL-jmx"/>
                                                 <constraint firstItem="FLP-lG-Awe" firstAttribute="leading" secondItem="8oN-yt-jSp" secondAttribute="leading" constant="16" id="lgS-dC-wr7"/>
                                                 <constraint firstAttribute="bottom" secondItem="NWv-1a-9I6" secondAttribute="bottom" constant="4" id="tD2-fW-3AW"/>
                                                 <constraint firstAttribute="trailing" secondItem="NWv-1a-9I6" secondAttribute="trailing" id="tVP-MI-DZL"/>
+                                                <constraint firstItem="s3D-P2-Epf" firstAttribute="centerX" secondItem="8oN-yt-jSp" secondAttribute="centerX" id="vhH-21-I1X"/>
                                                 <constraint firstItem="NWv-1a-9I6" firstAttribute="leading" secondItem="8oN-yt-jSp" secondAttribute="leading" constant="16" id="wtd-46-QSN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collection" destination="NWv-1a-9I6" id="nHh-9t-Qbo"/>
+                                            <outlet property="heroBackground" destination="s3D-P2-Epf" id="hnp-3Z-IHC"/>
                                             <outlet property="lastUpdatedLbl" destination="PT6-1y-uU5" id="R0w-2C-I4E"/>
                                             <outlet property="titleLbl" destination="aUY-cq-8vx" id="bZ9-U0-XLN"/>
                                         </connections>
@@ -494,11 +511,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bu-m2-3ex">
-                                                    <rect key="frame" x="4" y="4" width="367" height="74.666666666666671"/>
+                                                    <rect key="frame" x="4" y="4" width="367" height="75"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lGi-ge-T81">
-                                                    <rect key="frame" x="16" y="20.999999999999996" width="343" height="40.666666666666657"/>
+                                                    <rect key="frame" x="16" y="21.333333333333332" width="343" height="40.666666666666671"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-Af-fPP">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>

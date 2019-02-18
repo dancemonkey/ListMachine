@@ -7,7 +7,12 @@
 //
 
 import UIKit
-//import ViewAnimator
+import Hero
+
+struct ItemCreateEditHeroIDs {
+  var navTitle: String
+  var tableView: String
+}
 
 class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
@@ -16,6 +21,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var hiddenNavTitleLbl: UILabel!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
   var itemSaveDelegate: ItemSaveDelegate?
@@ -23,6 +29,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
   var state: EditState = .newItem
+  var heroIDs: ItemCreateEditHeroIDs?
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -53,13 +60,25 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     setupHero()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    Stylesheet.setSlideDownTransition()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    Stylesheet.setAutoTransition()
+  }
+  
   func styleViews() {
     view.backgroundColor = .white
     tableView.backgroundColor = .white
   }
   
   func setupHero() {
-    tableView.hero.id = HeroIDs.newItemButton.rawValue
+    Stylesheet.setSlideUpTransition()
+    if let IDs = heroIDs {
+      hiddenNavTitleLbl.hero.id = IDs.navTitle
+      tableView.hero.id = IDs.tableView
+    }
   }
   
   // MARK: Actions

@@ -26,5 +26,6 @@ enum HeroIDs: String {
   case templateNameField
   case templateTypePicker
   case hiddenFieldTypeLabel
-  case tableCell
+  case mainTableCell
+  case itemTableCell
 }

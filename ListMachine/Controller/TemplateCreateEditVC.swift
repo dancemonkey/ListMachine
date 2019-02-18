@@ -37,6 +37,14 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     styleViews()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    Stylesheet.setSlideDownTransition()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    Stylesheet.setAutoTransition()
+  }
+  
   func setupNewButton() {
     newFieldBtn = NewItemButton()
     newFieldBtn.setImageAndFrame()
@@ -51,9 +59,9 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   func setupHero() {
     self.hero.isEnabled = true
+    self.view.hero.isEnabled = true
     tableView.hero.isEnabled = true
-//    tableView.hero.modifiers = [.cascade]
-    tableView.hero.id = HeroIDs.editTemplateButton.rawValue
+    Stylesheet.setSlideUpTransition()
   }
   
   // MARK: Tableview Methods

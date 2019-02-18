@@ -59,7 +59,6 @@ class MasterListVC: UIViewController {
   func setupNewButton() {
     newButton = NewItemButton()
     newButton.setImageAndFrame()
-    newButton.hero.id = HeroIDs.listEditPopup.rawValue
     newButton.addTarget(self, action: #selector(newListPressed(sender:)), for: .touchUpInside)
   }
   
@@ -76,7 +75,7 @@ class MasterListVC: UIViewController {
       let row = (sender as! IndexPath).row
       let dest = segue.destination as! ItemListVC
       dest.itemList = store?.getAllLists()?[row]
-      dest.heroIDs = ItemListHeroIDs(navTitle: "\(HeroIDs.navTitle.rawValue)\(row)", tableView: "\(HeroIDs.tableCell.rawValue)\(row)")
+      dest.heroIDs = ItemListHeroIDs(navTitle: "\(HeroIDs.navTitle.rawValue)\(row)", tableView: "\(HeroIDs.mainTableCell.rawValue)\(row)")
       dest.masterListDelegate = self
     }
   }

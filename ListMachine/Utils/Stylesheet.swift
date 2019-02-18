@@ -29,7 +29,19 @@ struct Stylesheet {
   }
   
   static func viewControllerTransitionModifiers() -> [HeroModifier] {
-    return [.duration(0.01)]
+    return [.scale(0)]//[.duration(0.01)]
+  }
+  
+  static func setSlideUpTransition() {
+    Hero.shared.defaultAnimation = HeroDefaultAnimationType.slide(direction: .up)
+  }
+  
+  static func setSlideDownTransition() {
+    Hero.shared.defaultAnimation = HeroDefaultAnimationType.slide(direction: .down)
+  }
+  
+  static func setAutoTransition() {
+    Hero.shared.defaultAnimation = HeroDefaultAnimationType.auto
   }
   
   // MARK: Colors

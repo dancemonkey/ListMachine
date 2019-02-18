@@ -40,14 +40,6 @@ class MasterListCell: UITableViewCell {
   
   func setHeroId(for row: Int) {
     listNameLbl.hero.id = "\(HeroIDs.navTitle.rawValue)\(row)"
-//    self.hero.id = "\(HeroIDs.tableCell.rawValue)\(row)"
-    heroBackground.hero.id = "\(HeroIDs.tableCell.rawValue)\(row)"
+    heroBackground.hero.id = "\(HeroIDs.mainTableCell.rawValue)\(row)"
   }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
-  }
-  
 }
