@@ -52,7 +52,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
       state = .newField
     }
   
-    addDoneAccessory(to: nameFld)
+//    addDoneAccessory(to: nameFld)
     styleViews()
     setupHero()
   }
