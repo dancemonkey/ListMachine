@@ -61,9 +61,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   override func viewWillDisappear(_ animated: Bool) {
+    for subview in view.subviews {
+      if subview.isFirstResponder {
+        subview.resignFirstResponder()
+      }
+    }
+//    self.save()
     super.viewWillDisappear(animated)
     Stylesheet.setSlideDownTransition()
-    self.save()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -110,12 +115,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
         self.item?.setValues(for: field!, at: indexPath.row)
-//        self.state = .newItem
       }, completion: { [weak self] in
-//        print("saving in cell fieldsave closure completion block")
         self?.save()
       })
-//      self.save()
     }
     cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     cell?.configureAction(for: type, with: self)
@@ -190,7 +192,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     case .editingExistingItem:
       itemSaveDelegate?.updateItem(self.item!, at: itemIndex ?? 0)
     case .newItem:
-      itemSaveDelegate?.saveItem(item!)
+      itemSaveDelegate?.saveItem(self.item!)
       self.state = .editingExistingItem
     case .blankItem:
       break

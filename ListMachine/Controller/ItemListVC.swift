@@ -249,10 +249,8 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   func saveItem(_ item: Item) {
     store?.run(closure: {
       self.itemList.add(item: item)
-      print("added item to itemList")
     }, completion: {
-      self.tableView.reloadData()
-      print("reloaded table data")
+      self.sortList(by: self.sortKey ?? 0)
     })
     masterListDelegate?.updateMasterList()
   }

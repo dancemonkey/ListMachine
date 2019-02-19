@@ -39,7 +39,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-//    Stylesheet.setSlideUpTransition()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
