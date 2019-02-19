@@ -37,11 +37,18 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     styleViews()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+//    Stylesheet.setSlideUpTransition()
+  }
+  
   override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     Stylesheet.setSlideDownTransition()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
     Stylesheet.setAutoTransition()
   }
   
@@ -61,7 +68,6 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     self.hero.isEnabled = true
     self.view.hero.isEnabled = true
     tableView.hero.isEnabled = true
-    Stylesheet.setSlideUpTransition()
   }
   
   // MARK: Tableview Methods

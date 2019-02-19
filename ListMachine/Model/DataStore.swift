@@ -50,10 +50,10 @@ class DataStore {
       try realm?.write {
         closure()
       }
+      completion?()
     } catch let error as NSError {
       print(error)
     }
-    completion?()
   }
   
   func delete(list: List) {

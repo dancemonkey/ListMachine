@@ -40,6 +40,19 @@ class DatePickerVC: UIViewController {
     styleViews()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    Stylesheet.setSlideUpTransition()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    Stylesheet.setSlideDownTransition()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    Stylesheet.setAutoTransition()
+  }
+  
   func styleViews() {
     view.backgroundColor = .white //Stylesheet.getColor(.white)
     for button in shortcutButtons {

@@ -50,6 +50,7 @@ class ItemFieldButton: UIButton, CustomFieldUIViewProtocol {
   
   @objc private func buttonTapped(sender: UIButton) {
     tapFeedback()
+    Stylesheet.setSlideUpTransition()
     segueDelegate?.segueRequested(to: self.segueID, sender: self)
   }
 }

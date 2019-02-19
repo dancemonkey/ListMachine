@@ -51,10 +51,25 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
       self.title = "New Field"
       state = .newField
     }
-  
-//    addDoneAccessory(to: nameFld)
     styleViews()
     setupHero()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    Stylesheet.setAutoTransition()
+//    Stylesheet.setSlideUpTransition()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    Stylesheet.setAutoTransition()
+//    Stylesheet.setSlideDownTransition()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+//    Stylesheet.setAutoTransition()
   }
   
   func styleViews() {
@@ -66,10 +81,10 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     nameFld.closure = { [weak self] in
       self?.saveField()
     }
-    nameFld.becomeFirstResponder()
   }
   
   func setupHero() {
+    Stylesheet.setAutoTransition()
     if let IDs = self.heroIDs {
       hiddenTitleLabel.hero.id = IDs.nameField
       hiddenTypeLabel.hero.id = IDs.hiddenTypeLabel

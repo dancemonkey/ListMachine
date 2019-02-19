@@ -17,7 +17,7 @@ struct ItemCreateEditHeroIDs {
 class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   enum EditState {
-    case newItem, editingExistingItem
+    case newItem, editingExistingItem, blankItem
   }
   
   @IBOutlet weak var tableView: UITableView!
@@ -61,11 +61,13 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     Stylesheet.setSlideDownTransition()
     self.save()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
     Stylesheet.setAutoTransition()
   }
   
@@ -108,9 +110,12 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
         self.item?.setValues(for: field!, at: indexPath.row)
+//        self.state = .newItem
       }, completion: { [weak self] in
+//        print("saving in cell fieldsave closure completion block")
         self?.save()
       })
+//      self.save()
     }
     cell?.configure(withField: itemTemplate.defaultFields[indexPath.row], andValue: item?.itemFields[indexPath.row].value)
     cell?.configureAction(for: type, with: self)
@@ -181,11 +186,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   func save() {
-    if self.state == .newItem {
+    switch state {
+    case .editingExistingItem:
+      itemSaveDelegate?.updateItem(self.item!, at: itemIndex ?? 0)
+    case .newItem:
       itemSaveDelegate?.saveItem(item!)
       self.state = .editingExistingItem
-    } else if self.state == .editingExistingItem {
-      itemSaveDelegate?.updateItem(self.item!, at: itemIndex ?? 0)
+    case .blankItem:
+      break
     }
   }
   

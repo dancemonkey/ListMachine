@@ -32,7 +32,7 @@ class TemplateFieldCell: UITableViewCell {
   func setupHero(for row: Int) {
     titleLbl.hero.id = "\(HeroIDs.templateNameField.rawValue)\(row)"
     typeLbl.hero.id = "\(HeroIDs.hiddenFieldTypeLabel.rawValue)\(row)"
-    self.hero.modifiers = Stylesheet.cellHeroModifiers(for: row)
+//    self.hero.modifiers = Stylesheet.cellHeroModifiers(for: row)
   }
   
   override func awakeFromNib() {

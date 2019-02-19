@@ -247,10 +247,13 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   // MARK: Item Save Delegate
   func saveItem(_ item: Item) {
-    store?.save(object: item, andRun: {
+    store?.run(closure: {
       self.itemList.add(item: item)
+      print("added item to itemList")
+    }, completion: {
+      self.tableView.reloadData()
+      print("reloaded table data")
     })
-    tableView.reloadData()
     masterListDelegate?.updateMasterList()
   }
   
@@ -285,6 +288,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         destVC.heroIDs = ItemCreateEditHeroIDs(navTitle: "\(HeroIDs.navTitle.rawValue)\(indexPath.row)", tableView: "\(HeroIDs.itemTableCell.rawValue)\(indexPath.row)")
       }
     } else if segue.identifier == SegueID.showTemplateEditor.rawValue {
+      Stylesheet.setSlideUpTransition()
       let dest = segue.destination as! TemplateCreateEditVC
       dest.itemTemplate = self.itemList.templateItem
       dest.saveDelegate = self
