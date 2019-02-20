@@ -91,8 +91,10 @@ struct Stylesheet {
     switch feature {
     case .itemCollectionCellTitle, .templateFieldListType, .mainListInfo:
       fontName = Fonts.userFontEmphasisName.rawValue
-    case .itemListCellTitle, .templateFieldListTitle, .itemEntryFieldTitle:
+    case .templateFieldListTitle, .itemEntryFieldTitle:
       fontName = Fonts.userFontBoldName.rawValue
+    case .itemListCellTitle:
+      fontName = Fonts.userFontName.rawValue
     default:
       fontName = Fonts.userFontName.rawValue
     }
