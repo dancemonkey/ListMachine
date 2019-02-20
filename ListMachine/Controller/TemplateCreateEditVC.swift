@@ -101,6 +101,18 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
   }
   
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success: (Bool) -> ()) in
+      self.store?.delete(object: self.itemTemplate.defaultFields[indexPath.row])
+      self.saveDelegate?.saveTemplate(self.itemTemplate)
+      self.tableView.deleteRows(at: [indexPath], with: .fade)
+      self.view.successFeedback()
+      success(true)
+    }
+    delete.image = UIImage(named: "delete")
+    return UISwipeActionsConfiguration(actions: [delete])
+  }
+  
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
       self.store?.delete(object: self.itemTemplate.defaultFields[indexPath.row])

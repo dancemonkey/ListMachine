@@ -168,6 +168,31 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     return true
   }
   
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success: (Bool) -> ()) in
+      let item = self.itemList.getListSorted(by: self.sortKey ?? 0, andFilteredBy: self.filterString, ascending: self.ascending)[indexPath.row]
+      item.prepareForDelete()
+      self.store?.delete(object: item)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      success(true)
+      self.masterListDelegate?.updateMasterList()
+      self.view.successFeedback()
+    }
+    let share = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, _) in
+      guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
+      DispatchQueue.main.async {
+        guard let builder = ExportBuilder(with: item) else { return }
+        let popup = builder.share(text: builder.getItemText() ?? "")
+        self?.view.tapFeedback()
+        self?.present(popup, animated: true, completion: nil)
+      }
+    }
+    delete.image = UIImage(named: "delete")
+    share.backgroundColor = Stylesheet.getColor(.primary)
+    share.image = UIImage(named: "Share")
+    return UISwipeActionsConfiguration(actions: [delete, share])
+  }
+  
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
       let item = self.itemList.getListSorted(by: self.sortKey ?? 0, andFilteredBy: self.filterString, ascending: self.ascending)[indexPath.row]

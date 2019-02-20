@@ -108,6 +108,41 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
     return true
   }
   
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success: @escaping (Bool) -> ()) in
+      let confirmation = PopupFactory.confirmationRequest(action: { [weak self] in
+        self?.store?.delete(list: (self?.store!.getAllLists()![indexPath.row])!)
+        self?.tableView.deleteRows(at: [indexPath], with: .fade)
+        self?.view.tapFeedback()
+        success(true)
+      })
+      self.present(confirmation, animated: true, completion: nil)
+    }
+    let edit = UIContextualAction(style: .normal, title: nil) { (_, _, success: (Bool) -> ()) in
+      let controller = PopupFactory.listTitleAlert(completion: { [weak self] in
+        self?.tableView.reloadData()
+        }, forList: self.store!.getAllLists()![indexPath.row])
+      self.view.tapFeedback()
+      success(true)
+      self.present(controller, animated: true, completion: nil)
+    }
+    let share = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, success: (Bool) -> ()) in
+      guard let builder = ExportBuilder(with: self?.store?.getAllLists()?[indexPath.row]) else { return }
+      success(true)
+      DispatchQueue.main.async {
+        let popup = builder.share(text: builder.getListText() ?? "")
+        self?.present(popup, animated: true, completion: nil)
+        self?.view.tapFeedback()
+      }
+    }
+    edit.image = UIImage(named: "edit")
+    delete.image = UIImage(named: "delete")
+    share.backgroundColor = Stylesheet.getColor(.primary)
+    share.image = UIImage(named: "Share")
+    
+    return UISwipeActionsConfiguration(actions: [delete, edit, share])
+  }
+  
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
       let confirmation = PopupFactory.confirmationRequest(action: { [weak self] in
