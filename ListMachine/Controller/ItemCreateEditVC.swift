@@ -39,7 +39,8 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     if item == nil {
       item = Item(from: itemTemplate)
-      state = .newItem
+//      state = .newItem
+      state = .blankItem
     } else {
       state = .editingExistingItem
     }
@@ -111,6 +112,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
         self.item?.setValues(for: field!, at: indexPath.row)
+        if !value.isEmpty {
+          self.state = .newItem
+        }
       }, completion: { [weak self] in
         self?.save()
       })
