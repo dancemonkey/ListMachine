@@ -44,10 +44,12 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
     self.view.addGestureRecognizer(tap)
     
     if currentField != nil {
+//      Stylesheet.setAutoTransition()
       populateFields(with: currentField!)
       self.title = currentField!.name
       state = .editingExistingField
     } else {
+//      Stylesheet.setSlideUpTransition()
       self.title = "New Field"
       state = .newField
     }
@@ -57,13 +59,21 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    Stylesheet.setAutoTransition()
+    if currentField != nil {
+      Stylesheet.setAutoTransition()
+    } else {
+      Stylesheet.setSlideUpTransition()
+    }
 //    Stylesheet.setSlideUpTransition()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    Stylesheet.setAutoTransition()
+    if currentField != nil {
+      Stylesheet.setAutoTransition()
+    } else {
+      Stylesheet.setSlideDownTransition()
+    }
 //    Stylesheet.setSlideDownTransition()
   }
   
@@ -84,7 +94,7 @@ class TemplateFieldEditVC: UIViewController, UIPickerViewDelegate, UIPickerViewD
   }
   
   func setupHero() {
-    Stylesheet.setAutoTransition()
+//    Stylesheet.setAutoTransition()
     if let IDs = self.heroIDs {
       hiddenTitleLabel.hero.id = IDs.nameField
       hiddenTypeLabel.hero.id = IDs.hiddenTypeLabel

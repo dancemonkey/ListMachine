@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.isTranslucent = true
-    navBarAppearance.tintColor = Stylesheet.getColor(.accent)
-    navBarAppearance.barTintColor = Stylesheet.getColor(.white)
-    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
-    navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.black), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
+    navBarAppearance.tintColor = Stylesheet.getColor(.white)
+    navBarAppearance.barTintColor = Stylesheet.getColor(.primary)
+    navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .smallNavigationHeading)]
+    navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Stylesheet.getColor(.white), NSAttributedString.Key.font: Stylesheet.uiElementFont(for: .navigationHeading)]
     UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font : Stylesheet.uiElementFont(for: .barButtonItemLabel)], for: .normal)
     UINavigationBar.appearance().clipsToBounds = false
     
