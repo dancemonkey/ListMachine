@@ -31,7 +31,7 @@ class ListItemCell: UITableViewCell {
   func styleViews() {
     titleLbl.font = Stylesheet.userContentFont(for: .itemListCellTitle)
     titleLbl.textColor = Stylesheet.getColor(.black)
-    self.backgroundColor = .white //.clear
+    self.backgroundColor = .white
     selectionStyle = .none
   }
   

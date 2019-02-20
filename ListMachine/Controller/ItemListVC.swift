@@ -278,6 +278,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.sortList(by: self.sortKey ?? 0)
     })
     masterListDelegate?.updateMasterList()
+    tableView.reloadData()
   }
   
   func updateItem(_ item: Item, at row: Int) {

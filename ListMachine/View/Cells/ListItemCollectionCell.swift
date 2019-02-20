@@ -26,6 +26,9 @@ class ListItemCollectionCell: UICollectionViewCell {
       if type == .dateAndTime {
         let date = Stylesheet.dateAndTime(from: value)
         valueLbl.text = Stylesheet.labelDateAndTimeString(from: date) ?? "No date"
+      } else if type == .date {
+        let date = Stylesheet.simpleDate(fromString: value)
+        valueLbl.text = Stylesheet.simpleDateString(fromDate: date) ?? "No date"
       } else {
         valueLbl.text = value != "" ? value : " "
       }

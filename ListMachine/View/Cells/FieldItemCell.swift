@@ -24,11 +24,6 @@ class FieldItemCell: UITableViewCell {
       self.addSubview(valueView!)
       valueView!.isUserInteractionEnabled = true
       setConstraints(for: type)
-//      if type == .text {
-//        addDoneAccessory(to: valueView!.textField)
-//      } else if type == .memo {
-//        addDoneAccessory(to: valueView!.textView)
-//      }
     }
     styleViews()
   }
