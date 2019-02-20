@@ -285,8 +285,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     store?.save(object: item) {
       self.itemList!.setLastUpdated()
     }
-    tableView.reloadRows(at: [IndexPath(item: row, section: 0)], with: .fade)
+//    tableView.reloadRows(at: [IndexPath(item: row, section: 0)], with: .fade)
     masterListDelegate?.updateMasterList()
+    tableView.reloadData()
   }
   
   // MARK: Template Save Delegate

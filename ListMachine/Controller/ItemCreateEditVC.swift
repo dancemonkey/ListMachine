@@ -61,13 +61,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   }
   
   override func viewWillDisappear(_ animated: Bool) {
-//    print("viewWillDisappear")
-//    for subview in view.subviews {
-//      if subview.isFirstResponder {
-//        print("resigning first responder: \(subview)")
-//        subview.resignFirstResponder()
-//      }
-//    }
     self.view.endEditing(true)
     self.save()
     super.viewWillDisappear(animated)
