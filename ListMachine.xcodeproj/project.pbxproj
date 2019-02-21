@@ -33,6 +33,12 @@
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
+		10829F53221EE4A100ECB261 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F52221EE4A100ECB261 /* delete.wav */; };
+		10829F55221EE4FD00ECB261 /* save.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F54221EE4FD00ECB261 /* save.wav */; };
+		10829F57221EE59D00ECB261 /* AudioEffectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */; };
+		10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F58221EEB2700ECB261 /* old_buttonTap.wav */; };
+		10829F5B221EEB7000ECB261 /* check.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5A221EEB7000ECB261 /* check.wav */; };
+		10829F5D221EEE0D00ECB261 /* buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5C221EEE0D00ECB261 /* buttonTap.wav */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		1093BDC02203B9DB0015FB7A /* ViewControllerToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */; };
 		1096E73E220B24E200478026 /* LastUpdatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1096E73D220B24E200478026 /* LastUpdatedLabel.swift */; };
@@ -48,8 +54,6 @@
 		10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */; };
 		10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */; };
 		10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */; };
-		10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */; };
-		10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */; };
 		10BBF9DC21FDE85000C08278 /* TemplateFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */; };
 		10BBF9DE21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBF9DD21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift */; };
 		10C82036220F1B4C00784A78 /* ExportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C82035220F1B4C00784A78 /* ExportBuilder.swift */; };
@@ -112,6 +116,12 @@
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
+		10829F52221EE4A100ECB261 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
+		10829F54221EE4FD00ECB261 /* save.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = save.wav; sourceTree = "<group>"; };
+		10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEffectPlayer.swift; sourceTree = "<group>"; };
+		10829F58221EEB2700ECB261 /* old_buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_buttonTap.wav; sourceTree = "<group>"; };
+		10829F5A221EEB7000ECB261 /* check.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = check.wav; sourceTree = "<group>"; };
+		10829F5C221EEE0D00ECB261 /* buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonTap.wav; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerToolbarExtension.swift; sourceTree = "<group>"; };
 		1096E73D220B24E200478026 /* LastUpdatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdatedLabel.swift; sourceTree = "<group>"; };
@@ -127,8 +137,6 @@
 		10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEntryCell.swift; sourceTree = "<group>"; };
 		10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEntryCell.swift; sourceTree = "<group>"; };
-		10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
-		10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFieldCell.swift; sourceTree = "<group>"; };
 		10BBF9DD21FDEFDD00C08278 /* ItemFieldSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldSaveDelegate.swift; sourceTree = "<group>"; };
 		10C82035220F1B4C00784A78 /* ExportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportBuilder.swift; sourceTree = "<group>"; };
@@ -187,11 +195,22 @@
 			path = Pickers;
 			sourceTree = "<group>";
 		};
+		10829F4F221EE45800ECB261 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				10829F52221EE4A100ECB261 /* delete.wav */,
+				10829F54221EE4FD00ECB261 /* save.wav */,
+				10829F58221EEB2700ECB261 /* old_buttonTap.wav */,
+				10829F5C221EEE0D00ECB261 /* buttonTap.wav */,
+				10829F5A221EEB7000ECB261 /* check.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		10A8C32421F75301005C6F40 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				104C766821DA51510044346D /* ItemFieldButton.swift */,
-				10B09D4A21D5158600C1FC2B /* CheckboxButton.swift */,
 				10A8C32221F74FF5005C6F40 /* NewItemButton.swift */,
 				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
 				102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */,
@@ -312,6 +331,7 @@
 		10D4A8C121CABB9F008006FF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				10829F4F221EE45800ECB261 /* Sound */,
 				10A8C32D21F76407005C6F40 /* Fonts */,
 				10D4A8CC21CABEB1008006FF /* CellID.swift */,
 				10D4A8CE21CAC320008006FF /* SegueID.swift */,
@@ -329,6 +349,7 @@
 				10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */,
 				10F3DEF12217065000DAB9D1 /* Constants.swift */,
 				10F3DEF322170AEA00DAB9D1 /* DateIntervalExtension.swift */,
+				10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,7 +364,6 @@
 				10B09D4221D511EE00C1FC2B /* MemoEntryCell.swift */,
 				10B09D4421D5120100C1FC2B /* NumberEntryCell.swift */,
 				10B09D4621D5120F00C1FC2B /* DateEntryCell.swift */,
-				10B09D4821D5121C00C1FC2B /* CheckboxCell.swift */,
 				1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */,
 				10BBF9DB21FDE85000C08278 /* TemplateFieldCell.swift */,
 			);
@@ -427,9 +447,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10829F5D221EEE0D00ECB261 /* buttonTap.wav in Resources */,
+				10829F5B221EEB7000ECB261 /* check.wav in Resources */,
 				10A8C33021F7646C005C6F40 /* Montserrat-Bold.ttf in Resources */,
 				10D4A8B521CAB754008006FF /* LaunchScreen.storyboard in Resources */,
+				10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */,
+				10829F55221EE4FD00ECB261 /* save.wav in Resources */,
 				10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */,
+				10829F53221EE4A100ECB261 /* delete.wav in Resources */,
 				10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */,
 				1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */,
 				10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */,
@@ -491,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				104C766B21DA519F0044346D /* CustomFieldUIViewProtocol.swift in Sources */,
+				10829F57221EE59D00ECB261 /* AudioEffectPlayer.swift in Sources */,
 				10D4A8AA21CAB752008006FF /* TemplateFieldEditVC.swift in Sources */,
 				10A933DB21DCFF05000A70ED /* DatePickerVC.swift in Sources */,
 				104C766D21DA55080044346D /* ItemFieldTextView.swift in Sources */,
@@ -520,7 +546,6 @@
 				1046364421DC097400BEFCA7 /* FieldItemCellValueView.swift in Sources */,
 				10B09D4721D5120F00C1FC2B /* DateEntryCell.swift in Sources */,
 				104C766721DA4FFE0044346D /* ItemFieldSwitch.swift in Sources */,
-				10B09D4921D5121C00C1FC2B /* CheckboxCell.swift in Sources */,
 				10C82036220F1B4C00784A78 /* ExportBuilder.swift in Sources */,
 				10D4A8A821CAB752008006FF /* AppDelegate.swift in Sources */,
 				106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */,
@@ -538,7 +563,6 @@
 				1067438821FF40AC0084F1EF /* FieldDatePicker.swift in Sources */,
 				10BBF9DC21FDE85000C08278 /* TemplateFieldCell.swift in Sources */,
 				104C766921DA51510044346D /* ItemFieldButton.swift in Sources */,
-				10B09D4B21D5158600C1FC2B /* CheckboxButton.swift in Sources */,
 				102B449521F8A095009BAFA7 /* ImageFactory.swift in Sources */,
 				1096E73E220B24E200478026 /* LastUpdatedLabel.swift in Sources */,
 				10D4A8C021CABA84008006FF /* ItemCreateEditVC.swift in Sources */,

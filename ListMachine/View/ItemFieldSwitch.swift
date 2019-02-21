@@ -11,6 +11,7 @@ import UIKit
 class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
   
   var fieldSave: ((_: String) -> ())? = nil
+  var player: AudioEffectPlayer?
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -25,12 +26,17 @@ class ItemFieldSwitch: UISwitch, CustomFieldUIViewProtocol {
     self.isOn = checked ?? false
     self.onTintColor = Stylesheet.getColor(.primary)
     self.addTarget(self, action: #selector(saveField), for: .valueChanged)
+    player = AudioEffectPlayer()
   }
   
   @objc func saveField() {
     if let save = fieldSave {
       save(reportValue)
     }
+  }
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    player?.play(effect: .check)
   }
 
 }

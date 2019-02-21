@@ -43,6 +43,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var masterListDelegate: MasterListUpdate?
   var ascending: Bool = true
   var heroIDs: ItemListHeroIDs?
+  var player: AudioEffectPlayer?
   
   let revealedSearchHeight: CGFloat = 56.0
   
@@ -62,6 +63,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     setupButtons()
     styleViews()
     setupHero()
+    player = AudioEffectPlayer()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -177,6 +179,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       success(true)
       self.masterListDelegate?.updateMasterList()
       self.view.successFeedback()
+      self.player?.play(effect: .delete)
     }
     let share = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, _) in
       guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
@@ -201,6 +204,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       tableView.deleteRows(at: [indexPath], with: .fade)
       self.masterListDelegate?.updateMasterList()
       self.view.successFeedback()
+      self.player?.play(effect: .delete)
     }
     let share = UITableViewRowAction(style: .default, title: "Share") { [weak self] (_, indexPath) in
       guard let item = self?.itemList.getListSorted(by: self?.sortKey ?? 0, andFilteredBy: self?.filterString, ascending: self?.ascending ?? false)[indexPath.row] else { return }
@@ -221,10 +225,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   // MARK: Actions
   @objc func newItemPressed(sender: NewItemButton) {
+    self.player?.play(effect: .buttonTap)
     performSegue(withIdentifier: SegueID.showItemCreator.rawValue, sender: nil)
   }
   
   @objc func editTemplatePressed(sender: EditTemplateButton) {
+    self.player?.play(effect: .buttonTap)
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   

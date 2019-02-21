@@ -20,6 +20,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   var snapshot: UIView?
   var sourceIndexPath: IndexPath? = nil
   var longPress: UILongPressGestureRecognizer?
+  var player: AudioEffectPlayer?
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -35,6 +36,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     setupHero()
     setupNewButton()
     styleViews()
+    player = AudioEffectPlayer()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +109,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
       self.saveDelegate?.saveTemplate(self.itemTemplate)
       self.tableView.deleteRows(at: [indexPath], with: .fade)
       self.view.successFeedback()
+      self.player?.play(effect: .delete)
       success(true)
     }
     delete.image = UIImage(named: "delete")
@@ -119,6 +122,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
       self.saveDelegate?.saveTemplate(self.itemTemplate)
       self.tableView.deleteRows(at: [indexPath], with: .fade)
       self.view.successFeedback()
+      self.player?.play(effect: .delete)
     }
     return [delete]
   }
@@ -126,6 +130,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   // MARK: Actions
   
   @objc func addNewFieldPressed(sender: NewItemButton) {
+    self.player?.play(effect: .buttonTap)
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self)
   }
   

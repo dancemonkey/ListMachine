@@ -16,6 +16,7 @@ class MasterListVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var newButton: NewItemButton!
   var store: DataStore?
+  var player: AudioEffectPlayer?
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -23,6 +24,7 @@ class MasterListVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.store = DataStore()
+    player = AudioEffectPlayer()
     tableView.delegate = self
     tableView.dataSource = self
     styleViews()
@@ -63,8 +65,10 @@ class MasterListVC: UIViewController {
   }
   
   @objc func newListPressed(sender: NewItemButton) {
+    self.player?.play(effect: .buttonTap)
     let popup = PopupFactory.listTitleAlert(completion: { [weak self] in
       self?.tableView.reloadData()
+      self?.player?.play(effect: .save)
       }, forList: nil)
     self.present(popup, animated: true, completion: nil)
   }
@@ -115,6 +119,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
         self?.tableView.deleteRows(at: [indexPath], with: .fade)
         self?.view.tapFeedback()
         success(true)
+        self?.player?.play(effect: .delete)
       })
       self.present(confirmation, animated: true, completion: nil)
     }
@@ -149,6 +154,7 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
         self?.store?.delete(list: (self?.store!.getAllLists()![indexPath.row])!)
         self?.tableView.reloadData()
         self?.view.tapFeedback()
+        self?.player?.play(effect: .delete)
       })
       self.present(confirmation, animated: true, completion: nil)
     }
