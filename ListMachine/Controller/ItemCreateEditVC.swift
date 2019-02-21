@@ -109,12 +109,14 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     let type = FieldType(rawValue: itemTemplate.defaultFields[indexPath.row].type)!
     cell?.fieldSave = { [unowned self] value in
       self.store?.run(closure: {
+        print("STATE: \(self.state)")
         let field = self.item?.itemFields[indexPath.row]
         field?.set(value: value, forType: type)
         self.item?.setValues(for: field!, at: indexPath.row)
-        if !value.isEmpty {
+        if !value.isEmpty && self.state == .blankItem {
           self.state = .newItem
         }
+        print("STATE: \(self.state)")
       }, completion: { [weak self] in
         self?.save()
       })
