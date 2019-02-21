@@ -188,7 +188,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       }
     }
     delete.image = UIImage(named: "delete")
-    share.backgroundColor = Stylesheet.getColor(.primary)
+    share.backgroundColor = Stylesheet.getColor(.accent)
     share.image = UIImage(named: "Share")
     return UISwipeActionsConfiguration(actions: [delete, share])
   }
