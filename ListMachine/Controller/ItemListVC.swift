@@ -354,9 +354,8 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
           } catch {
             print(error)
           }
-        }, completion: { [weak self] in
+        }, completion: { 
           collectionView.reloadItems(at: [indexPath])
-//          self?.tableView.reloadRows(at: [IndexPath(item: collectionView.tag, section: 0)], with: .fade)
         })
       }
     }
