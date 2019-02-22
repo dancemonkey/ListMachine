@@ -10,5 +10,4 @@ import Foundation
 
 enum CellID: String {
   case listItemCell, itemFieldCell, templateFieldCell, customFieldItemCell, listItemCollectionCell, masterListCell
-  // itemTemplateCell
 }
