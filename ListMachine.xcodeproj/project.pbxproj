@@ -33,12 +33,13 @@
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
-		10829F53221EE4A100ECB261 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F52221EE4A100ECB261 /* delete.wav */; };
+		10829F53221EE4A100ECB261 /* old_delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F52221EE4A100ECB261 /* old_delete.wav */; };
 		10829F55221EE4FD00ECB261 /* save.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F54221EE4FD00ECB261 /* save.wav */; };
 		10829F57221EE59D00ECB261 /* AudioEffectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */; };
 		10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F58221EEB2700ECB261 /* old_buttonTap.wav */; };
 		10829F5B221EEB7000ECB261 /* check.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5A221EEB7000ECB261 /* check.wav */; };
 		10829F5D221EEE0D00ECB261 /* buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5C221EEE0D00ECB261 /* buttonTap.wav */; };
+		10829F5F221EEE9900ECB261 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5E221EEE9900ECB261 /* delete.wav */; };
 		1091F4A921E1AF53006FA755 /* ListItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */; };
 		1093BDC02203B9DB0015FB7A /* ViewControllerToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */; };
 		1096E73E220B24E200478026 /* LastUpdatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1096E73D220B24E200478026 /* LastUpdatedLabel.swift */; };
@@ -116,12 +117,13 @@
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
-		10829F52221EE4A100ECB261 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
+		10829F52221EE4A100ECB261 /* old_delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_delete.wav; sourceTree = "<group>"; };
 		10829F54221EE4FD00ECB261 /* save.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = save.wav; sourceTree = "<group>"; };
 		10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEffectPlayer.swift; sourceTree = "<group>"; };
 		10829F58221EEB2700ECB261 /* old_buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_buttonTap.wav; sourceTree = "<group>"; };
 		10829F5A221EEB7000ECB261 /* check.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = check.wav; sourceTree = "<group>"; };
 		10829F5C221EEE0D00ECB261 /* buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonTap.wav; sourceTree = "<group>"; };
+		10829F5E221EEE9900ECB261 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
 		1091F4A821E1AF53006FA755 /* ListItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCollectionCell.swift; sourceTree = "<group>"; };
 		1093BDBF2203B9DB0015FB7A /* ViewControllerToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerToolbarExtension.swift; sourceTree = "<group>"; };
 		1096E73D220B24E200478026 /* LastUpdatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdatedLabel.swift; sourceTree = "<group>"; };
@@ -198,11 +200,12 @@
 		10829F4F221EE45800ECB261 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				10829F52221EE4A100ECB261 /* delete.wav */,
+				10829F52221EE4A100ECB261 /* old_delete.wav */,
 				10829F54221EE4FD00ECB261 /* save.wav */,
 				10829F58221EEB2700ECB261 /* old_buttonTap.wav */,
 				10829F5C221EEE0D00ECB261 /* buttonTap.wav */,
 				10829F5A221EEB7000ECB261 /* check.wav */,
+				10829F5E221EEE9900ECB261 /* delete.wav */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10829F5F221EEE9900ECB261 /* delete.wav in Resources */,
 				10829F5D221EEE0D00ECB261 /* buttonTap.wav in Resources */,
 				10829F5B221EEB7000ECB261 /* check.wav in Resources */,
 				10A8C33021F7646C005C6F40 /* Montserrat-Bold.ttf in Resources */,
@@ -454,7 +458,7 @@
 				10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */,
 				10829F55221EE4FD00ECB261 /* save.wav in Resources */,
 				10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */,
-				10829F53221EE4A100ECB261 /* delete.wav in Resources */,
+				10829F53221EE4A100ECB261 /* old_delete.wav in Resources */,
 				10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */,
 				1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */,
 				10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */,

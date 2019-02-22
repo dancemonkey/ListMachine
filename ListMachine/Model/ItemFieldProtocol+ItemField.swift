@@ -60,6 +60,7 @@ class ItemField: Object, ItemFieldProtocol {
     if let boolValue = Bool(self.value ?? "") {
       self.value = (!boolValue).description
     } else {
+      self.value = true.description
       throw CheckboxSetError.nonBooleanValue
     }
   }
