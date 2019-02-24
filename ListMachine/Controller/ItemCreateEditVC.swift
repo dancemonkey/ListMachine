@@ -17,18 +17,27 @@ struct ItemCreateEditHeroIDs {
 class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   enum EditState {
-    case newItem, editingExistingItem, blankItem
+    case newItem, editingExistingItem, blankItem, deletingItem
   }
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var hiddenNavTitleLbl: UILabel!
+  @IBOutlet weak var deleteBtn: UIBarButtonItem!
   var itemTemplate: TemplateItem!
   var item: Item? = nil
   var itemSaveDelegate: ItemSaveDelegate?
   var itemIndex: Int?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
-  var state: EditState = .newItem
+  var state: EditState = .newItem {
+    didSet {
+      if state == .newItem || state == .blankItem {
+        deleteBtn.isEnabled = false
+      } else if state == .editingExistingItem {
+        deleteBtn.isEnabled = true
+      }
+    }
+  }
   var heroIDs: ItemCreateEditHeroIDs?
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -39,7 +48,6 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     if item == nil {
       item = Item(from: itemTemplate)
-//      state = .newItem
       state = .blankItem
     } else {
       state = .editingExistingItem
@@ -63,7 +71,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   override func viewWillDisappear(_ animated: Bool) {
     self.view.endEditing(true)
-    self.save()
+    if state != .deletingItem {
+      self.save()
+    }
     super.viewWillDisappear(animated)
     Stylesheet.setSlideDownTransition()
   }
@@ -92,6 +102,16 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     guard let builder = ExportBuilder(with: item) else { return }
     let popup = builder.share(text: builder.getItemText() ?? "")
     self.present(popup, animated: true, completion: nil)
+  }
+  
+  @IBAction func deleteTapped() {
+    if let existingItem = self.item, state == .editingExistingItem {
+      store?.delete(object: existingItem)
+      state = .deletingItem
+      AudioEffectPlayer().play(effect: .delete)
+      itemSaveDelegate?.refresh()
+      self.navigationController?.popViewController(animated: true)
+    }
   }
   
   // MARK: Tableview Methods
@@ -194,7 +214,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     case .newItem:
       itemSaveDelegate?.saveItem(self.item!)
       self.state = .editingExistingItem
-    case .blankItem:
+    case .blankItem, .deletingItem:
       break
     }
   }

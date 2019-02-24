@@ -61,7 +61,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Mp5-Di-pRQ"/>
+                        <barButtonItem image="delete" id="kOy-sg-NTC">
+                            <color key="tintColor" red="0.99607843139999996" green="0.18039215689999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteTapped" destination="BYZ-38-t0r" id="wnH-hG-oQT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Atc-er-rvw"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Lvp-Y0-wnk">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="Share" id="Y2U-Ep-Bhy">
                             <connections>
@@ -71,6 +80,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="deleteBtn" destination="kOy-sg-NTC" id="JKr-e6-xZf"/>
                         <outlet property="hiddenNavTitleLbl" destination="Kwl-MR-8aJ" id="U26-Pv-erZ"/>
                         <outlet property="tableView" destination="Pew-72-Fou" id="Vqq-xm-vrZ"/>
                         <segue destination="rad-PH-LNs" kind="show" identifier="showDatePicker" id="vex-8r-JFF"/>
@@ -186,19 +196,19 @@
                                 <rect key="frame" x="0.0" y="196" width="375" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="85" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" rowHeight="75" id="jLA-HX-5s1" customClass="ListItemCell" customModule="ListMachine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jLA-HX-5s1" id="8oN-yt-jSp">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="84.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3D-P2-Epf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="84.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="74.666666666666671"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWv-1a-9I6">
-                                                    <rect key="frame" x="16" y="37" width="326" height="43.666666666666657"/>
+                                                    <rect key="frame" x="16" y="33" width="326" height="37.666666666666657"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="U3e-UA-HhS">
                                                         <size key="itemSize" width="125" height="45"/>
@@ -208,7 +218,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="listItemCollectionCell" id="vyh-6G-bkE" customClass="ListItemCollectionCell" customModule="ListMachine" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-3.3333333333333335" width="100" height="50"/>
+                                                            <rect key="frame" x="0.0" y="-6.333333333333333" width="100" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
@@ -304,7 +314,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="s3D-P2-Epf" firstAttribute="width" secondItem="8oN-yt-jSp" secondAttribute="width" id="DyL-15-OIV"/>
-                                                <constraint firstItem="NWv-1a-9I6" firstAttribute="top" secondItem="FLP-lG-Awe" secondAttribute="bottom" constant="8" id="Eho-3d-R1w"/>
+                                                <constraint firstItem="NWv-1a-9I6" firstAttribute="top" secondItem="FLP-lG-Awe" secondAttribute="bottom" constant="4" id="Eho-3d-R1w"/>
                                                 <constraint firstItem="FLP-lG-Awe" firstAttribute="top" secondItem="8oN-yt-jSp" secondAttribute="top" constant="4" id="UJL-Hg-P7e"/>
                                                 <constraint firstItem="s3D-P2-Epf" firstAttribute="centerY" secondItem="8oN-yt-jSp" secondAttribute="centerY" id="aNO-K0-JAu"/>
                                                 <constraint firstItem="s3D-P2-Epf" firstAttribute="height" secondItem="8oN-yt-jSp" secondAttribute="height" id="dXF-yP-BPL"/>
@@ -740,6 +750,7 @@
     </scenes>
     <resources>
         <image name="Share" width="25" height="25"/>
+        <image name="delete" width="25" height="25"/>
         <image name="falseImage" width="60" height="60"/>
         <image name="search" width="25" height="25"/>
         <image name="sort" width="25" height="25"/>

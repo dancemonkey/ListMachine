@@ -11,6 +11,7 @@ import Foundation
 protocol ItemSaveDelegate {
   func saveItem(_ item: Item)
   func updateItem(_ item: Item, at row: Int)
+  func refresh()
 }
 
 protocol TemplateSaveDelegate {

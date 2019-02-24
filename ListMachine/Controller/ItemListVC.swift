@@ -301,8 +301,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }, completion: {
       self.sortList(by: self.sortKey ?? 0)
     })
-    masterListDelegate?.updateMasterList()
-    tableView.reloadData()
+    refresh()
   }
   
   func updateItem(_ item: Item, at row: Int) {
@@ -310,6 +309,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.itemList!.setLastUpdated()
     }
 //    tableView.reloadRows(at: [IndexPath(item: row, section: 0)], with: .fade)
+    refresh()
+  }
+  
+  func refresh() {
     masterListDelegate?.updateMasterList()
     tableView.reloadData()
   }

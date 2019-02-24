@@ -21,7 +21,7 @@ class ListItemCell: UITableViewCell {
     if let type = FieldType(rawValue: item.itemFields[0].type), type == .checkBox {
       booleanBtn.isHidden = false
       booleanBtn.configure(as: Bool(item.itemListTitle) ?? false)
-      titleLbl.text = item.itemFields[0].name
+      titleLbl.text = ""//item.itemFields[0].name
       self.buttonTapAction = action
     } else {
       booleanBtn.isHidden = true
