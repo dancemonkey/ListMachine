@@ -176,9 +176,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" List Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDB-QB-Ljo">
-                                <rect key="frame" x="16" y="90" width="255" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" List Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDB-QB-Ljo">
+                                <rect key="frame" x="20" y="90" width="143" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -199,7 +198,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWv-1a-9I6">
-                                                    <rect key="frame" x="16" y="28.999999999999996" width="326" height="51.666666666666657"/>
+                                                    <rect key="frame" x="16" y="37" width="326" height="43.666666666666657"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="U3e-UA-HhS">
                                                         <size key="itemSize" width="125" height="45"/>
@@ -209,7 +208,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="listItemCollectionCell" id="vyh-6G-bkE" customClass="ListItemCollectionCell" customModule="ListMachine" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.66666666666666663" width="100" height="50"/>
+                                                            <rect key="frame" x="0.0" y="-3.3333333333333335" width="100" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
@@ -281,17 +280,22 @@
                                                     </cells>
                                                 </collectionView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FLP-lG-Awe">
-                                                    <rect key="frame" x="16" y="4" width="310" height="17"/>
+                                                    <rect key="frame" x="16" y="4" width="310" height="25"/>
                                                     <subviews>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRv-3j-SKD" customClass="BooleanFieldBtn" customModule="ListMachine" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="ldM-2O-TWJ"/>
+                                                                <constraint firstAttribute="height" constant="25" id="zI7-Tk-w7w"/>
+                                                            </constraints>
+                                                            <state key="normal" image="falseImage"/>
+                                                            <connections>
+                                                                <action selector="buttonTapped" destination="jLA-HX-5s1" eventType="touchUpInside" id="aHM-Hr-3QB"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUY-cq-8vx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT6-1y-uU5" customClass="LastUpdatedLabel" customModule="ListMachine" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -313,9 +317,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="booleanBtn" destination="SRv-3j-SKD" id="3Go-kr-SH1"/>
                                             <outlet property="collection" destination="NWv-1a-9I6" id="nHh-9t-Qbo"/>
                                             <outlet property="heroBackground" destination="s3D-P2-Epf" id="hnp-3Z-IHC"/>
-                                            <outlet property="lastUpdatedLbl" destination="PT6-1y-uU5" id="R0w-2C-I4E"/>
                                             <outlet property="titleLbl" destination="aUY-cq-8vx" id="bZ9-U0-XLN"/>
                                         </connections>
                                     </tableViewCell>
@@ -336,8 +340,11 @@
                             <constraint firstItem="8y0-c6-beS" firstAttribute="bottom" secondItem="vky-wT-JT5" secondAttribute="bottom" id="UgU-sT-gUt"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="top" secondItem="Z3f-aC-1tV" secondAttribute="bottom" id="XOp-0S-hqR"/>
                             <constraint firstItem="Z3f-aC-1tV" firstAttribute="trailing" secondItem="8y0-c6-beS" secondAttribute="trailing" id="dtQ-7s-0pl"/>
+                            <constraint firstItem="SDB-QB-Ljo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bmv-tX-6e6" secondAttribute="leading" symbolic="YES" id="e20-To-ZYd"/>
                             <constraint firstItem="8y0-c6-beS" firstAttribute="trailing" secondItem="vky-wT-JT5" secondAttribute="trailing" id="hlQ-2g-NLh"/>
+                            <constraint firstItem="Z3f-aC-1tV" firstAttribute="top" secondItem="SDB-QB-Ljo" secondAttribute="bottom" constant="9" id="l8I-mE-m0J"/>
                             <constraint firstItem="vky-wT-JT5" firstAttribute="leading" secondItem="8y0-c6-beS" secondAttribute="leading" id="nEh-Vb-gaJ"/>
+                            <constraint firstAttribute="trailing" secondItem="SDB-QB-Ljo" secondAttribute="trailing" constant="212" id="yMS-6c-YlR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8y0-c6-beS"/>
                     </view>
@@ -732,7 +739,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Share" width="19" height="24"/>
+        <image name="Share" width="25" height="25"/>
         <image name="falseImage" width="60" height="60"/>
         <image name="search" width="25" height="25"/>
         <image name="sort" width="25" height="25"/>

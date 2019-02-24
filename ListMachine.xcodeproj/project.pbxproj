@@ -10,7 +10,6 @@
 		10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3921CC04E2000CA1DB /* ItemListVC.swift */; };
 		10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */; };
 		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */; };
-		10032F5621CFD5770075DD80 /* _FieldValueEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10032F5521CFD5770075DD80 /* _FieldValueEditVC.swift */; };
 		100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		10246BBC221069D800CDDDE8 /* HapticViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */; };
@@ -94,7 +93,6 @@
 		10027E3921CC04E2000CA1DB /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemProtocol+Item.swift"; sourceTree = "<group>"; };
 		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemSaveDelegate+TemplateSaveDelegate.swift"; sourceTree = "<group>"; };
-		10032F5521CFD5770075DD80 /* _FieldValueEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _FieldValueEditVC.swift; sourceTree = "<group>"; };
 		100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTemplateButton.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 				10D4A8BF21CABA84008006FF /* ItemCreateEditVC.swift */,
 				10027E3921CC04E2000CA1DB /* ItemListVC.swift */,
 				10D3963C21CEADF70053808A /* TemplateCreateEditVC.swift */,
-				10032F5521CFD5770075DD80 /* _FieldValueEditVC.swift */,
 				10A933DA21DCFF05000A70ED /* DatePickerVC.swift */,
 				106C3D7421E44D6900F8881F /* MasterListVC.swift */,
 				10C94BD822048F7E00EBF486 /* NewListNameAlert.swift */,
@@ -578,7 +575,6 @@
 				10F3DEF422170AEA00DAB9D1 /* DateIntervalExtension.swift in Sources */,
 				10CF79A021DE446C006F9F64 /* DateSaveDelegate.swift in Sources */,
 				10F3DEF22217065000DAB9D1 /* Constants.swift in Sources */,
-				10032F5621CFD5770075DD80 /* _FieldValueEditVC.swift in Sources */,
 				10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */,
 				10A8C32321F74FF5005C6F40 /* NewItemButton.swift in Sources */,
 				10B09D4521D5120100C1FC2B /* NumberEntryCell.swift in Sources */,

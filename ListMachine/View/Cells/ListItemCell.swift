@@ -11,13 +11,22 @@ import UIKit
 class ListItemCell: UITableViewCell {
   
   @IBOutlet weak var titleLbl: UILabel!
-  @IBOutlet weak var lastUpdatedLbl: LastUpdatedLabel!
   @IBOutlet weak var collection: UICollectionView!
   @IBOutlet weak var heroBackground: UIView!
+  @IBOutlet weak var booleanBtn: BooleanFieldBtn!
   
-  func configure(withItem item: Item) {
-    titleLbl.text = item.itemListTitle
-    lastUpdatedLbl.setLastUpdated(with: item.lastUpdated)
+  var buttonTapAction: (() -> ())? = nil
+  
+  func configure(withItem item: Item, withAction action: (() -> ())?) {
+    if let type = FieldType(rawValue: item.itemFields[0].type), type == .checkBox {
+      booleanBtn.isHidden = false
+      booleanBtn.configure(as: Bool(item.itemListTitle) ?? false)
+      titleLbl.text = item.itemFields[0].name
+      self.buttonTapAction = action
+    } else {
+      booleanBtn.isHidden = true
+      titleLbl.text = item.itemListTitle
+    }
     styleViews()
   }
   
@@ -50,6 +59,10 @@ class ListItemCell: UITableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+  }
+  
+  @IBAction func buttonTapped() {
+    buttonTapAction?()
   }
 }
 

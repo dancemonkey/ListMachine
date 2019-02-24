@@ -151,7 +151,25 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CellID.listItemCell.rawValue) as! ListItemCell
-    cell.configure(withItem: itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row])
+    let item = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending)[indexPath.row]
+    var action: (() -> ())? = nil
+    if let _ = FieldType(rawValue: item.itemFields[0].type) {
+      action = {
+        self.store?.run(closure: {
+          do {
+            try item.itemFields[0].flipBoolean()
+          } catch {
+            print(error)
+          }
+        }, completion: {
+          // have to reload entire table view
+          // if table is sorted by a field with a checkBox in it, then the check actually moves position when activated
+          // so reloading just one cell or just one row only reloads the OLD position of the object
+          self.tableView.reloadData()
+        })
+      }
+    }
+    cell.configure(withItem: item, withAction: action)
     cell.setHeroId(for: indexPath.row)
     return cell
   }
@@ -354,8 +372,11 @@ extension ItemListVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
           } catch {
             print(error)
           }
-        }, completion: { 
-          collectionView.reloadItems(at: [indexPath])
+        }, completion: {
+          // have to reload entire table view
+          // if table is sorted by a field with a checkBox in it, then the check actually moves position when activated
+          // so reloading just one cell or just one row only reloads the OLD position of the object
+          self.tableView.reloadData()
         })
       }
     }
