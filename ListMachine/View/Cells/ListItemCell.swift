@@ -14,6 +14,11 @@ class ListItemCell: UITableViewCell {
   @IBOutlet weak var collection: UICollectionView!
   @IBOutlet weak var heroBackground: UIView!
   @IBOutlet weak var booleanBtn: BooleanFieldBtn!
+  var hideDetail: Bool = false {
+    didSet {
+      collection.isHidden = hideDetail
+    }
+  }
   
   var buttonTapAction: (() -> ())? = nil
   
@@ -21,12 +26,13 @@ class ListItemCell: UITableViewCell {
     if let type = FieldType(rawValue: item.itemFields[0].type), type == .checkBox {
       booleanBtn.isHidden = false
       booleanBtn.configure(as: Bool(item.itemListTitle) ?? false)
-      titleLbl.text = ""//item.itemFields[0].name
+      titleLbl.text = ""
       self.buttonTapAction = action
     } else {
       booleanBtn.isHidden = true
       titleLbl.text = item.itemListTitle
     }
+    collection.isHidden = hideDetail
     styleViews()
   }
   

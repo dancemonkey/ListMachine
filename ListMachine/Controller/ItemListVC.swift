@@ -30,6 +30,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   var newItemButton: NewItemButton!
   var editTemplateButton: EditTemplateButton!
+  var showAndHideDetailButton: ShowHideDetailBtn!
   
   var itemList: List!
   var store: DataStore?
@@ -46,6 +47,12 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   var player: AudioEffectPlayer?
   
   let revealedSearchHeight: CGFloat = 56.0
+  var cellHeight: CGFloat = 75.0
+  var detailHidden: Bool = false {
+    didSet {
+      cellHeight = detailHidden ? 45.0 : 75.0
+    }
+  }
   
   // MARK: View Lifecycle
   override func viewDidLoad() {
@@ -85,10 +92,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     editTemplateButton.setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
     editTemplateButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
     editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
+    
+    showAndHideDetailButton = ShowHideDetailBtn()
+    showAndHideDetailButton.setImage(UIImage(named: "visible"), for: .normal)
+    showAndHideDetailButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    showAndHideDetailButton.addTarget(self, action: #selector(showHideDetailPressed), for: .touchUpInside)
   }
   
   func styleViews() {
-    setupToolbar(with: newItemButton, and: editTemplateButton)
+    setupToolbar(with: newItemButton, and: editTemplateButton, and: showAndHideDetailButton)
     view.backgroundColor = .white
     tableView.backgroundColor = .white
     searchBar.showsCancelButton = true
@@ -238,7 +250,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 75.0
+    return cellHeight
   }
   
   // MARK: Actions
@@ -250,6 +262,16 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @objc func editTemplatePressed(sender: EditTemplateButton) {
     self.player?.play(effect: .buttonTap)
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
+  }
+  
+  @objc func showHideDetailPressed() {
+    for cell in tableView.visibleCells {
+      (cell as! ListItemCell).hideDetail = !(cell as! ListItemCell).hideDetail
+    }
+    self.detailHidden = !self.detailHidden
+    showAndHideDetailButton.setVisible(to: !self.detailHidden)
+    tableView.beginUpdates()
+    tableView.endUpdates()
   }
   
   @IBAction func sortSelected(sender: SortSelectControl) {

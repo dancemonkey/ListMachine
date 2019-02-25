@@ -29,6 +29,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   var itemIndex: Int?
   var store: DataStore?
   weak var senderDelegate: SegueSenderDelegate?
+  var player: AudioEffectPlayer?
   var state: EditState = .newItem {
     didSet {
       if state == .newItem || state == .blankItem {
@@ -67,6 +68,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     styleViews()
     setupHero()
+    self.player = AudioEffectPlayer()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -106,9 +108,9 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   
   @IBAction func deleteTapped() {
     if let existingItem = self.item, state == .editingExistingItem {
+      player?.play(effect: .delete)
       store?.delete(object: existingItem)
       state = .deletingItem
-      AudioEffectPlayer().play(effect: .delete)
       itemSaveDelegate?.refresh()
       self.navigationController?.popViewController(animated: true)
     }

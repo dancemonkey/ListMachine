@@ -58,7 +58,7 @@ class DatePickerVC: UIViewController {
     for button in shortcutButtons {
       button.setTitleColor(Stylesheet.getColor(.accent), for: .normal)
     }
-    setupToolbar(with: nil, and: nil)
+    setupToolbar(with: nil, and: nil, and: nil)
     clearButton.tintColor = Stylesheet.getColor(.primary)
   }
   

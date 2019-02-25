@@ -62,7 +62,7 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   func styleViews() {
     view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
-    setupToolbar(with: newFieldBtn, and: nil)
+    setupToolbar(with: newFieldBtn, and: nil, and: nil)
   }
   
   func setupHero() {

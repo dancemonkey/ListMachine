@@ -10,6 +10,7 @@
 		10027E3A21CC04E2000CA1DB /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3921CC04E2000CA1DB /* ItemListVC.swift */; };
 		10027E3C21CC0651000CA1DB /* ItemProtocol+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */; };
 		10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */; };
+		1006517E2224268100B6FE78 /* ShowHideDetailBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006517D2224268100B6FE78 /* ShowHideDetailBtn.swift */; };
 		100FA13721F9FF1400EF7F8E /* EditTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */; };
 		102097E021D3B44B0062B367 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102097DF21D3B44B0062B367 /* DataStore.swift */; };
 		10246BBC221069D800CDDDE8 /* HapticViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */; };
@@ -32,10 +33,8 @@
 		106C3D7721E44F3400F8881F /* MasterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7621E44F3400F8881F /* MasterListCell.swift */; };
 		106C3D7921E4504100F8881F /* PopupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7821E4504100F8881F /* PopupFactory.swift */; };
 		106C3D7B21E45E7700F8881F /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C3D7A21E45E7700F8881F /* SortDescriptors.swift */; };
-		10829F53221EE4A100ECB261 /* old_delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F52221EE4A100ECB261 /* old_delete.wav */; };
 		10829F55221EE4FD00ECB261 /* save.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F54221EE4FD00ECB261 /* save.wav */; };
 		10829F57221EE59D00ECB261 /* AudioEffectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */; };
-		10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F58221EEB2700ECB261 /* old_buttonTap.wav */; };
 		10829F5B221EEB7000ECB261 /* check.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5A221EEB7000ECB261 /* check.wav */; };
 		10829F5D221EEE0D00ECB261 /* buttonTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5C221EEE0D00ECB261 /* buttonTap.wav */; };
 		10829F5F221EEE9900ECB261 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10829F5E221EEE9900ECB261 /* delete.wav */; };
@@ -93,6 +92,7 @@
 		10027E3921CC04E2000CA1DB /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		10027E3B21CC0651000CA1DB /* ItemProtocol+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemProtocol+Item.swift"; sourceTree = "<group>"; };
 		10027E3D21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemSaveDelegate+TemplateSaveDelegate.swift"; sourceTree = "<group>"; };
+		1006517D2224268100B6FE78 /* ShowHideDetailBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideDetailBtn.swift; sourceTree = "<group>"; };
 		100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTemplateButton.swift; sourceTree = "<group>"; };
 		102097DF21D3B44B0062B367 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		10246BBB221069D800CDDDE8 /* HapticViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -115,10 +115,8 @@
 		106C3D7621E44F3400F8881F /* MasterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListCell.swift; sourceTree = "<group>"; };
 		106C3D7821E4504100F8881F /* PopupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFactory.swift; sourceTree = "<group>"; };
 		106C3D7A21E45E7700F8881F /* SortDescriptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
-		10829F52221EE4A100ECB261 /* old_delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_delete.wav; sourceTree = "<group>"; };
 		10829F54221EE4FD00ECB261 /* save.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = save.wav; sourceTree = "<group>"; };
 		10829F56221EE59D00ECB261 /* AudioEffectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEffectPlayer.swift; sourceTree = "<group>"; };
-		10829F58221EEB2700ECB261 /* old_buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_buttonTap.wav; sourceTree = "<group>"; };
 		10829F5A221EEB7000ECB261 /* check.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = check.wav; sourceTree = "<group>"; };
 		10829F5C221EEE0D00ECB261 /* buttonTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonTap.wav; sourceTree = "<group>"; };
 		10829F5E221EEE9900ECB261 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
@@ -198,9 +196,7 @@
 		10829F4F221EE45800ECB261 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				10829F52221EE4A100ECB261 /* old_delete.wav */,
 				10829F54221EE4FD00ECB261 /* save.wav */,
-				10829F58221EEB2700ECB261 /* old_buttonTap.wav */,
 				10829F5C221EEE0D00ECB261 /* buttonTap.wav */,
 				10829F5A221EEB7000ECB261 /* check.wav */,
 				10829F5E221EEE9900ECB261 /* delete.wav */,
@@ -216,6 +212,7 @@
 				10A8C32521F7531C005C6F40 /* SaveButton.swift */,
 				102B449221F8A074009BAFA7 /* BooleanFieldBtn.swift */,
 				100FA13621F9FF1300EF7F8E /* EditTemplateButton.swift */,
+				1006517D2224268100B6FE78 /* ShowHideDetailBtn.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -453,10 +450,8 @@
 				10829F5B221EEB7000ECB261 /* check.wav in Resources */,
 				10A8C33021F7646C005C6F40 /* Montserrat-Bold.ttf in Resources */,
 				10D4A8B521CAB754008006FF /* LaunchScreen.storyboard in Resources */,
-				10829F59221EEB2700ECB261 /* old_buttonTap.wav in Resources */,
 				10829F55221EE4FD00ECB261 /* save.wav in Resources */,
 				10D4A8B221CAB754008006FF /* Assets.xcassets in Resources */,
-				10829F53221EE4A100ECB261 /* old_delete.wav in Resources */,
 				10A8C33121F7646E005C6F40 /* Montserrat-Regular.ttf in Resources */,
 				1067438521FF3EAC0084F1EF /* Montserrat-SemiBold.ttf in Resources */,
 				10EDC61921FB52AE00D1E4A2 /* OpenSans-Semibold.ttf in Resources */,
@@ -546,6 +541,7 @@
 				10D4A8C321CABBC2008006FF /* ItemFieldProtocol+ItemField.swift in Sources */,
 				102B449321F8A074009BAFA7 /* BooleanFieldBtn.swift in Sources */,
 				10A8C32821F7561A005C6F40 /* UIButton Pulsate Extension.swift in Sources */,
+				1006517E2224268100B6FE78 /* ShowHideDetailBtn.swift in Sources */,
 				10027E3E21CC0C05000CA1DB /* ItemSaveDelegate+TemplateSaveDelegate.swift in Sources */,
 				1067438C21FF44AD0084F1EF /* SortSelectControl.swift in Sources */,
 				10B09D4321D511EE00C1FC2B /* MemoEntryCell.swift in Sources */,
