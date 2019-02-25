@@ -21,4 +21,10 @@ class EditTemplateButton: UIButton {
     pulsateOut()
   }
   
+  func setImageAndFrame() {
+    setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
+    frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    self.imageView?.contentMode = .scaleAspectFit
+  }
+  
 }

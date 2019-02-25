@@ -20,11 +20,13 @@ extension UIViewController {
     toolBar.backgroundColor = Stylesheet.getColor(.white)
     toolBar.barTintColor = Stylesheet.getColor(.white)
     toolBar.isTranslucent = true
+    let width: CGFloat = 45.0
+    let height: CGFloat = 35.0
     var items: [UIBarButtonItem] = []
     if let button1 = newItemButton {
       let item = UIBarButtonItem(customView: button1)
-      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 35.0)
-      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 35.0)
+      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: width)
+      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: height)
       itemWidth?.isActive = true
       itemHeight?.isActive = true
       let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -33,8 +35,8 @@ extension UIViewController {
     }
     if let button3 = thirdButton {
       let item = UIBarButtonItem(customView: button3)
-      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 35.0)
-      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 35.0)
+      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: width)
+      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: height)
       itemWidth?.isActive = true
       itemHeight?.isActive = true
       let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -43,8 +45,8 @@ extension UIViewController {
     }
     if let button2 = secondButton {
       let item = UIBarButtonItem(customView: button2)
-      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: 35.0)
-      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: 35.0)
+      let itemWidth = item.customView?.widthAnchor.constraint(equalToConstant: width)
+      let itemHeight = item.customView?.heightAnchor.constraint(equalToConstant: height)
       itemWidth?.isActive = true
       itemHeight?.isActive = true
       items.insert(item, at: 0)

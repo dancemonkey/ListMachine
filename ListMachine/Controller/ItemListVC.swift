@@ -89,14 +89,16 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     newItemButton.addTarget(self, action: #selector(newItemPressed(sender:)), for: .touchUpInside)
     
     editTemplateButton = EditTemplateButton()
-    editTemplateButton.setImage(UIImage(named: "editTemplateButtonAlt"), for: .normal)
-    editTemplateButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+    editTemplateButton.setImageAndFrame()
     editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
     
     showAndHideDetailButton = ShowHideDetailBtn()
-    showAndHideDetailButton.setImage(UIImage(named: "visible"), for: .normal)
+    let title: String = self.detailHidden ? "Show" : "Hide"
+    showAndHideDetailButton.setTitle(title, for: .normal)
     showAndHideDetailButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
     showAndHideDetailButton.addTarget(self, action: #selector(showHideDetailPressed), for: .touchUpInside)
+    showAndHideDetailButton.setTitleColor(Stylesheet.getColor(.black), for: .normal)
+
   }
   
   func styleViews() {
@@ -182,6 +184,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       }
     }
     cell.configure(withItem: item, withAction: action)
+    cell.hideDetail = self.detailHidden
     cell.setHeroId(for: indexPath.row)
     return cell
   }
@@ -268,9 +271,9 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     for cell in tableView.visibleCells {
       (cell as! ListItemCell).hideDetail = !(cell as! ListItemCell).hideDetail
     }
+    tableView.beginUpdates()
     self.detailHidden = !self.detailHidden
     showAndHideDetailButton.setVisible(to: !self.detailHidden)
-    tableView.beginUpdates()
     tableView.endUpdates()
   }
   

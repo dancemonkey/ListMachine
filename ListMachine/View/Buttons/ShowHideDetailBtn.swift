@@ -22,7 +22,8 @@ class ShowHideDetailBtn: UIButton {
   }
   
   func setVisible(to visible: Bool) {
-    self.alpha = visible ? 1.0 : 0.5
+    let title: String = visible ? "Hide" : "Show"
+    self.setTitle(title, for: .normal)
   }
 
 }
