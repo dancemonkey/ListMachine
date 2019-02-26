@@ -12,6 +12,7 @@ import Hero
 class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FieldSaveDelegate {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var noFieldsLabel: UILabel!
   var newFieldBtn: NewItemButton!
   var itemTemplate: TemplateItem!
   var list: List!
@@ -63,6 +64,8 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
     view.backgroundColor = .white //Stylesheet.getColor(.white)
     tableView.backgroundColor = .clear
     setupToolbar(with: newFieldBtn, and: nil, and: nil)
+    noFieldsLabel.font = Stylesheet.uiElementFont(for: .noListLabel)
+    noFieldsLabel.alpha = 0.5
   }
   
   func setupHero() {
@@ -77,7 +80,15 @@ class TemplateCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return itemTemplate.defaultFields.count
+    let rows = itemTemplate.defaultFields.count
+    if rows == 0 {
+      tableView.isHidden = true
+      noFieldsLabel.isHidden = false
+    } else {
+      tableView.isHidden = false
+      noFieldsLabel.isHidden = true
+    }
+    return rows
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

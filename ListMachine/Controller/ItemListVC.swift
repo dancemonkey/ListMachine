@@ -24,6 +24,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
   @IBOutlet weak var hiddenNavTitleLbl: UILabel!
+  @IBOutlet weak var noItemsLabel: UILabel!
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -75,11 +76,19 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if itemList.templateItem!.defaultFields.count <= 1 {
+    if itemList.templateItem!.defaultFields.count < 1 {
       sortBtn.isEnabled = false
+      newItemButton.isEnabled = false
+      searchBtn.isEnabled = false
     } else {
       sortBtn.isEnabled = true
+      newItemButton.isEnabled = true
+      searchBtn.isEnabled = true
     }
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
   }
   
   // MARK: Setup and styling
@@ -108,12 +117,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
+    noItemsLabel.font = Stylesheet.uiElementFont(for: .noListLabel)
+    noItemsLabel.alpha = 0.5
   }
   
   func setupHero() {
     if let IDs = heroIDs {
       hiddenNavTitleLbl.hero.id = IDs.navTitle
-      tableView.hero.id = IDs.tableView
+//      tableView.hero.id = IDs.tableView
     }
   }
   
@@ -160,7 +171,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending).count
+    let rows = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending).count
+    if rows == 0 {
+      tableView.isHidden = true
+      noItemsLabel.isHidden = false
+    } else {
+      tableView.isHidden = false
+      noItemsLabel.isHidden = true
+    }
+    return rows
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

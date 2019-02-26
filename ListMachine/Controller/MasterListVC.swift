@@ -14,6 +14,7 @@ import Hero
 class MasterListVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var noListLabel: UILabel!
   var newButton: NewItemButton!
   var store: DataStore?
   var player: AudioEffectPlayer?
@@ -56,6 +57,8 @@ class MasterListVC: UIViewController {
     tableView.backgroundColor = .white
     setupNewButton()
     setupToolbar(with: newButton, and: nil, and: nil)
+    noListLabel.font = Stylesheet.uiElementFont(for: .noListLabel)
+    noListLabel.alpha = 0.5
   }
   
   func setupNewButton() {
@@ -93,7 +96,15 @@ extension MasterListVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return store?.getAllLists()?.count ?? 0
+    let rows = store?.getAllLists()?.count ?? 0
+    if rows == 0 {
+      tableView.isHidden = true
+      noListLabel.isHidden = false
+    } else {
+      tableView.isHidden = false
+      noListLabel.isHidden = true
+    }
+    return rows
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
