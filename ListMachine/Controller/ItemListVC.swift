@@ -30,7 +30,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   var newItemButton: NewItemButton!
   var editTemplateButton: EditTemplateButton!
-  var showAndHideDetailButton: ShowHideDetailBtn!
+//  var showAndHideDetailButton: ShowHideDetailBtn!
   
   var itemList: List!
   var store: DataStore?
@@ -48,11 +48,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   let revealedSearchHeight: CGFloat = 56.0
   var cellHeight: CGFloat = 75.0
-  var detailHidden: Bool = false {
-    didSet {
-      cellHeight = detailHidden ? 45.0 : 75.0
-    }
-  }
+//  var detailHidden: Bool = false {
+//    didSet {
+//      cellHeight = detailHidden ? 45.0 : 75.0
+//    }
+//  }
   
   // MARK: View Lifecycle
   override func viewDidLoad() {
@@ -92,17 +92,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     editTemplateButton.setImageAndFrame()
     editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
     
-    showAndHideDetailButton = ShowHideDetailBtn()
-    let title: String = self.detailHidden ? "Show" : "Hide"
-    showAndHideDetailButton.setTitle(title, for: .normal)
-    showAndHideDetailButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
-    showAndHideDetailButton.addTarget(self, action: #selector(showHideDetailPressed), for: .touchUpInside)
-    showAndHideDetailButton.setTitleColor(Stylesheet.getColor(.black), for: .normal)
+//    showAndHideDetailButton = ShowHideDetailBtn()
+//    let title: String = self.detailHidden ? "Show" : "Hide"
+//    showAndHideDetailButton.setTitle(title, for: .normal)
+//    showAndHideDetailButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+//    showAndHideDetailButton.addTarget(self, action: #selector(showHideDetailPressed), for: .touchUpInside)
+//    showAndHideDetailButton.setTitleColor(Stylesheet.getColor(.black), for: .normal)
 
   }
   
   func styleViews() {
-    setupToolbar(with: newItemButton, and: editTemplateButton, and: showAndHideDetailButton)
+    setupToolbar(with: newItemButton, and: editTemplateButton, and: nil)
     view.backgroundColor = .white
     tableView.backgroundColor = .white
     searchBar.showsCancelButton = true
@@ -184,7 +184,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       }
     }
     cell.configure(withItem: item, withAction: action)
-    cell.hideDetail = self.detailHidden
+//    cell.hideDetail = self.detailHidden
     cell.setHeroId(for: indexPath.row)
     return cell
   }
@@ -267,15 +267,15 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   
-  @objc func showHideDetailPressed() {
-    for cell in tableView.visibleCells {
-      (cell as! ListItemCell).hideDetail = !(cell as! ListItemCell).hideDetail
-    }
-    tableView.beginUpdates()
-    self.detailHidden = !self.detailHidden
-    showAndHideDetailButton.setVisible(to: !self.detailHidden)
-    tableView.endUpdates()
-  }
+//  @objc func showHideDetailPressed() {
+//    for cell in tableView.visibleCells {
+//      (cell as! ListItemCell).hideDetail = !(cell as! ListItemCell).hideDetail
+//    }
+//    tableView.beginUpdates()
+//    self.detailHidden = !self.detailHidden
+//    showAndHideDetailButton.setVisible(to: !self.detailHidden)
+//    tableView.endUpdates()
+//  }
   
   @IBAction func sortSelected(sender: SortSelectControl) {
     sortList(by: sender.selectedSegmentIndex)
