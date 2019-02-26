@@ -24,9 +24,9 @@ class MasterListCell: UITableViewCell {
     listNameLbl.textColor = Stylesheet.getColor(.black)
     listInfoLbl.font = Stylesheet.userContentFont(for: .mainListInfo)
     listInfoLbl.textColor = Stylesheet.getColor(.black)
-    heroBackground.backgroundColor = Stylesheet.getColor(.white)
+//    heroBackground.backgroundColor = Stylesheet.getColor(.white)
     selectionStyle = .none
-    heroBackground.layer.cornerRadius = 4
+//    heroBackground.layer.cornerRadius = 4
     
     // SHADOW
 //    heroBackground.layer.shadowColor = Stylesheet.getColor(.black).cgColor
