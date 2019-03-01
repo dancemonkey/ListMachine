@@ -24,14 +24,14 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   @IBOutlet weak var sortBtn: UIBarButtonItem!
   @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
   @IBOutlet weak var hiddenNavTitleLbl: UILabel!
-  @IBOutlet weak var noItemsLabel: UILabel!
+  @IBOutlet weak var noTemplateImg: UIImageView!
+  @IBOutlet weak var noItemsImg: UIImageView!
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
   
   var newItemButton: NewItemButton!
   var editTemplateButton: EditTemplateButton!
-//  var showAndHideDetailButton: ShowHideDetailBtn!
   
   var itemList: List!
   var store: DataStore?
@@ -49,11 +49,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   
   let revealedSearchHeight: CGFloat = 56.0
   var cellHeight: CGFloat = 75.0
-//  var detailHidden: Bool = false {
-//    didSet {
-//      cellHeight = detailHidden ? 45.0 : 75.0
-//    }
-//  }
+  var emptyTemplate: Bool = true
   
   // MARK: View Lifecycle
   override func viewDidLoad() {
@@ -61,6 +57,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     self.store = DataStore()
     
     self.title = itemList.name
+    setEmptyTemplate()
     
     setupSort()
     
@@ -92,6 +89,10 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
   }
   
   // MARK: Setup and styling
+  func setEmptyTemplate() {
+    self.emptyTemplate = (itemList.templateItem?.defaultFields.count ?? 0) == 0
+  }
+  
   func setupButtons() {
     newItemButton = NewItemButton()
     newItemButton.setImageAndFrame()
@@ -100,14 +101,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     editTemplateButton = EditTemplateButton()
     editTemplateButton.setImageAndFrame()
     editTemplateButton.addTarget(self, action: #selector(editTemplatePressed(sender:)), for: .touchUpInside)
-    
-//    showAndHideDetailButton = ShowHideDetailBtn()
-//    let title: String = self.detailHidden ? "Show" : "Hide"
-//    showAndHideDetailButton.setTitle(title, for: .normal)
-//    showAndHideDetailButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
-//    showAndHideDetailButton.addTarget(self, action: #selector(showHideDetailPressed), for: .touchUpInside)
-//    showAndHideDetailButton.setTitleColor(Stylesheet.getColor(.black), for: .normal)
-
   }
   
   func styleViews() {
@@ -117,14 +110,11 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     searchBar.showsCancelButton = true
     searchBarHeight.constant = 0.0
     searchBar.alpha = 0.0
-    noItemsLabel.font = Stylesheet.uiElementFont(for: .noListLabel)
-    noItemsLabel.alpha = 0.5
   }
   
   func setupHero() {
     if let IDs = heroIDs {
       hiddenNavTitleLbl.hero.id = IDs.navTitle
-//      tableView.hero.id = IDs.tableView
     }
   }
   
@@ -174,10 +164,17 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let rows = itemList.getListSorted(by: sortKey ?? 0, andFilteredBy: filterString, ascending: ascending).count
     if rows == 0 {
       tableView.isHidden = true
-      noItemsLabel.isHidden = false
+      if emptyTemplate {
+        noTemplateImg.isHidden = false
+        noItemsImg.isHidden = true
+      } else {
+        noTemplateImg.isHidden = true
+        noItemsImg.isHidden = false
+      }
     } else {
       tableView.isHidden = false
-      noItemsLabel.isHidden = true
+      noTemplateImg.isHidden = true
+      noItemsImg.isHidden = true
     }
     return rows
   }
@@ -286,16 +283,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     performSegue(withIdentifier: SegueID.showTemplateEditor.rawValue, sender: self.itemList.templateItem)
   }
   
-//  @objc func showHideDetailPressed() {
-//    for cell in tableView.visibleCells {
-//      (cell as! ListItemCell).hideDetail = !(cell as! ListItemCell).hideDetail
-//    }
-//    tableView.beginUpdates()
-//    self.detailHidden = !self.detailHidden
-//    showAndHideDetailButton.setVisible(to: !self.detailHidden)
-//    tableView.endUpdates()
-//  }
-  
   @IBAction func sortSelected(sender: SortSelectControl) {
     sortList(by: sender.selectedSegmentIndex)
   }
@@ -352,7 +339,6 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     store?.save(object: item) {
       self.itemList!.setLastUpdated()
     }
-//    tableView.reloadRows(at: [IndexPath(item: row, section: 0)], with: .fade)
     refresh()
   }
   
@@ -367,6 +353,7 @@ class ItemListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
       self.itemList.setTemplate(template)
     })
     setupSort()
+    setEmptyTemplate()
     tableView.reloadData()
     masterListDelegate?.updateMasterList()
   }
