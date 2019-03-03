@@ -154,10 +154,19 @@ struct Stylesheet {
   }
   
   // MARK: Date and time string formatting
+  
   static private var labelDateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.setLocalizedDateFormatFromTemplate("MM/dd/yy, h:mm a")
+      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy, h:mm a")
+      return formatter
+    }
+  }
+  
+  static private var labelDateFormatter: DateFormatter {
+    get {
+      let formatter = DateFormatter()
+      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy")
       return formatter
     }
   }
@@ -165,7 +174,7 @@ struct Stylesheet {
   static private var simpleDateFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy")
+      formatter.setLocalizedDateFormatFromTemplate("MM/dd/yy")
       return formatter
     }
   }
@@ -183,7 +192,7 @@ struct Stylesheet {
   static private var dateAndTimeFormatter: DateFormatter {
     get {
       let formatter = DateFormatter()
-      formatter.setLocalizedDateFormatFromTemplate("E, MMM d, yyyy, h:mm a")
+      formatter.setLocalizedDateFormatFromTemplate("MM/dd/yy, h:mm a")
       return formatter
     }
   }
@@ -196,6 +205,11 @@ struct Stylesheet {
   static func labelDateAndTimeString(from date: Date?) -> String? {
     guard let d = date else { return nil }
     return labelDateAndTimeFormatter.string(from: d)
+  }
+  
+  static func labelDateString(from date: Date?) -> String? {
+    guard let d = date else { return nil }
+    return labelDateFormatter.string(from: d)
   }
   
   static func dateAndTime(from string: String?) -> Date? {

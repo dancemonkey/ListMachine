@@ -69,6 +69,7 @@ class FieldItemCellValueView: UIView {
   }
   
   @objc func saveField() {
+    print("saving field")
     let workingView: CustomFieldUIViewProtocol
     if switchSubview != nil {
       workingView = switchSubview!
