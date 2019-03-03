@@ -152,7 +152,7 @@ class ItemCreateEditVC: UIViewController, UITableViewDelegate, UITableViewDataSo
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch itemTemplate.defaultFields[indexPath.row].type {
     case "memo":
-      return 200.0
+      return 240.0
     default:
       return 90.0
     }
