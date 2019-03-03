@@ -34,7 +34,7 @@ struct FieldTypeConstraints {
     case .checkBox, .date, .number, .text, .dateAndTime:
       return "V:|-8-[title]-8-[valueView(45)]-8-|"
     case .memo:
-      return "V:|-8-[title]-8-[valueView(100)]-8-|"
+      return "V:|-8-[title]-8-[valueView(200)]-8-|"
     default:
       return "V:|-8-[title]-8-[valueView(45)]-8-|"
     }
