@@ -422,6 +422,7 @@
 				TargetAttributes = {
 					10D4A8A321CAB752008006FF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -753,7 +754,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrewLanning.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -773,7 +774,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrewLanning.ListMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
