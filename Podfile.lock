@@ -1,0 +1,26 @@
+PODS:
+  - Hero (1.4.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+
+DEPENDENCIES:
+  - Hero
+  - RealmSwift
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Hero
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+
+PODFILE CHECKSUM: b76560721dbda5fd4a9c64932e646c1d9f1e4194
+
+COCOAPODS: 1.5.0
